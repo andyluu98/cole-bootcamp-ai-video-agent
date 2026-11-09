@@ -1,0 +1,18 @@
+{
+  "_ghi_chu": [
+    "File mau cau hinh MCP chatgpt-image cho Antigravity. Bo muc _ghi_chu nay khi chep vao file that.",
+    "File that: .agents/mcp_config.json trong du an, hoac ~/.gemini/config/mcp_config.json cho moi du an.",
+    "Thay C:\\Users\\TEN-MAY\\Documents\\chatgpt-image-mcp bang duong dan thu muc chatgpt-image-mcp tren may ban. Trong JSON, moi dau \\ phai viet thanh \\\\.",
+    "macOS: thay bang dang /Users/TEN-MAY/Documents/chatgpt-image-mcp (dau / giu nguyen).",
+    "Antigravity bao khong tim thay uv: thay chu uv o command bang duong dan day du, Windows: C:\\Users\\TEN-MAY\\.local\\bin\\uv.exe, macOS: /Users/TEN-MAY/.local/bin/uv.",
+    "--directory bao uv chay trong thu muc repo, thay cho truong cwd trong README cua repo.",
+    "timeoutSeconds: 300 giay cho moi lan goi tool, vi tao anh mat 30 toi 90 giay, mac dinh Antigravity la 180 giay."
+  ],
+  "mcpServers": {
+    "chatgpt-image": {
+      "command": "uv",
+      "args": ["--directory", "C:\\Users\\TEN-MAY\\Documents\\chatgpt-image-mcp", "run", "cgimg-mcp"],
+      "timeoutSeconds": 300
+    }
+  }
+}

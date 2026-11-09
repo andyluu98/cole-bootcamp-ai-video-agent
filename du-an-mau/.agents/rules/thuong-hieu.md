@@ -1,6 +1,10 @@
+---
+trigger: always_on
+---
+
 # Bộ nhận diện thương hiệu: Cà Phê Mây Núi (thương hiệu mẫu, giả lập)
 
-File này để AI Agent đọc trước mỗi việc. Thay toàn bộ phần chữ bên dưới bằng thông tin thương hiệu của bạn.
+Đây là file mẫu. Buổi 1 bạn sẽ nhờ Agent phỏng vấn rồi viết lại file này cho thương hiệu của bạn.
 
 ## Thương hiệu
 
@@ -26,11 +30,10 @@ File này để AI Agent đọc trước mỗi việc. Thay toàn bộ phần ch
 
 - Thân thiện, gần gũi, xưng "Mây Núi", gọi khách là "bạn".
 - Câu ngắn, dễ đọc khi lướt điện thoại.
-- Không dùng: "tốt nhất thị trường", "số 1", "chữa bệnh", hay bất kỳ lời hứa nào không chứng minh được.
+- Không dùng: "tốt nhất thị trường", "số 1", "chữa bệnh", hay lời hứa nào không chứng minh được.
 
-## Quy tắc khi làm video
+## Quy tắc video
 
 - Video dọc 9:16, dài 15 tới 30 giây.
 - Luôn có phụ đề tiếng Việt, logo ở góc phải phía trên.
 - Gắn nhãn "Nội dung có sử dụng AI" khi đăng.
-- Trước khi đăng hay gửi ra ngoài: dừng lại, cho tôi duyệt.

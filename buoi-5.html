@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Buổi 5: Đăng bài tự động và đấu nối quy trình | Bootcamp AI Video</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<nav class="top"><div class="wrap">
+  <a class="home" href="index.html">Bootcamp AI Video</a>
+  <a href="chuan-bi.html">Chuẩn bị</a>
+  <a href="buoi-1.html">Buổi 1</a>
+  <a href="buoi-2.html">Buổi 2</a>
+  <a href="buoi-3.html">Buổi 3</a>
+  <a href="buoi-4.html">Buổi 4</a>
+  <a href="buoi-5.html">Buổi 5</a>
+</div></nav>
+
+<header class="hero">
+  <div class="wrap">
+    <img class="logo" src="assets/logo-cole-trang.png" alt="Cole">
+    <div><span class="nhan">Buổi 5 · Buổi cuối · Thực hành</span></div>
+    <h1>Đăng bài tự động và đấu nối quy trình</h1>
+    <p>Cho Agent mở trang đăng TikTok, Facebook, điền sẵn rồi dừng chờ bạn bấm Đăng. Nối 5 skill thành một quy trình chạy bằng một câu lệnh, lưu lên GitHub để dùng lại, và trình bày sản phẩm cuối khóa.</p>
+    <div class="chips">
+      <span>Thời gian: <b>20:00 đến 22:00, thứ 3 24/11/2026</b></span>
+      <a href="slide/buoi-5.html">Mở slide buổi 5</a>
+      <a href="tai-ve/buoi-05.zip">Tải bộ cài buổi 5</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="card">
+    <h2>Lịch buổi học</h2>
+    <div class="bang-cuon"><table>
+      <tr><th style="width:130px">Giờ</th><th>Phần</th><th>Bạn làm ra</th></tr>
+      <tr><td>20:00 đến 20:10</td><td><a href="#p0">0. Kiểm tra video buổi 4</a></td><td>Video MP4 đã qua người chấm</td></tr>
+      <tr><td>20:10 đến 20:20</td><td><a href="#p1">1. Tải và cài bộ buổi 5</a></td><td>2 skill, 1 agent đã cài</td></tr>
+      <tr><td>20:20 đến 20:45</td><td><a href="#p2">2. Đăng bài có duyệt</a></td><td>Video đăng thật trên tài khoản thử</td></tr>
+      <tr><td>20:45 đến 21:00</td><td><a href="#p3">3. Đấu nối quy trình</a></td><td>Quy trình 1 câu lệnh, 3 điểm duyệt</td></tr>
+      <tr><td>21:00 đến 21:05</td><td>Nghỉ</td><td></td></tr>
+      <tr><td>21:05 đến 21:20</td><td><a href="#p4">4. Chạy thử cho sản phẩm thứ 2</a></td><td>Kịch bản sản phẩm thứ 2 qua điểm duyệt 1</td></tr>
+      <tr><td>21:20 đến 21:30</td><td><a href="#p5">5. Lưu lên GitHub</a></td><td>Repo riêng tư chứa bộ skill của bạn</td></tr>
+      <tr><td>21:30 đến 21:35</td><td><a href="#p6">6. Đặt lịch chạy (giới thiệu)</a></td><td>Biết cách hẹn giờ cho Agent</td></tr>
+      <tr><td>21:35 đến 21:55</td><td><a href="#p7">7. Showcase</a></td><td>Trình bày quy trình và video, nhận góp ý</td></tr>
+      <tr><td>21:55 đến 22:00</td><td><a href="#p8">8. Bộ skill mang về và tổng kết khóa</a></td><td>Checklist cuối khóa</td></tr>
+    </table></div>
+    <div class="note lam"><b>Cách đọc câu lệnh mẫu:</b> chữ IN HOA trong câu lệnh là chỗ bạn thay bằng thông tin của mình. Kết quả chưa ưng thì nói thẳng chỗ chưa ưng, không cần gõ lại cả câu lệnh.</div>
+    <div class="note vang"><b>Chuẩn bị trước giờ học:</b> một tài khoản TikTok phụ và một Trang Facebook thử (hoặc tài khoản phụ), đã đăng nhập sẵn trên Google Chrome. Không dùng tài khoản bán hàng chính cho lần đăng đầu tiên.</div>
+  </section>
+
+  <!-- PHẦN 0 -->
+  <section class="card" id="p0">
+    <span class="phut">20:00 đến 20:10</span>
+    <h2><span class="so">0</span>Kiểm tra video buổi 4</h2>
+    <p class="dung">Buổi này cần một video đã hoàn chỉnh để đăng. Mở lại dự án video trong Antigravity rồi dán:</p>
+    <div class="prompt"><span class="nhan-p">Kiểm tra đồ nghề trước buổi 5</span><button>Chép</button><p>Tôi gửi bạn: thư mục dự án này.
+
+Việc cần làm:
+1. Liệt kê các file video trong thư mục video/, kèm ngày tạo.
+2. Liệt kê các skill trong .agents/skills và các agent trong .agents/agents.
+3. Cho tôi biết video mới nhất đã được agent nguoi-cham-video chấm chưa, kết quả thế nào.
+
+Kết quả: trả lời trong khung chat, không tạo hay sửa file nào.</p></div>
+    <ul class="check">
+      <li>Có ít nhất 1 file MP4 dọc 9:16 trong <code>video/</code>.</li>
+      <li>Video đã qua <code>nguoi-cham-video</code> và đã sửa lỗi người chấm báo.</li>
+      <li>Đã cài các skill buổi 1 tới buổi 4: <code>file-thuong-hieu</code>, <code>hook-video-3-giay</code>, <code>kich-ban-video</code>, <code>hinh-anh-nhan-vat</code>, <code>dung-video</code>.</li>
+    </ul>
+    <div class="note vang"><b>Chưa có video?</b> Không sao. Phần 2 bạn vẫn tập đăng được với video của bạn cùng nhóm, hoặc giảng viên gửi một video mẫu vào nhóm lớp. Video của bạn làm bù sau buổi học.</div>
+  </section>
+
+  <!-- PHẦN 1 -->
+  <section class="card" id="p1">
+    <span class="phut">20:10 đến 20:20</span>
+    <h2><span class="so">1</span>Tải và cài bộ buổi 5</h2>
+    <ol>
+      <li>Tải <a href="tai-ve/buoi-05.zip">buoi-05.zip</a> về máy.</li>
+      <li>Mở File Explorer, kéo file <code>buoi-05.zip</code> vào thư mục <code>bo-cai</code> trong dự án.</li>
+      <li>Dán câu lệnh dưới đây vào Antigravity:</li>
+    </ol>
+    <div class="prompt"><span class="nhan-p">Giải nén và cài bộ buổi 5</span><button>Chép</button><p>Tôi gửi bạn: file bo-cai/buoi-05.zip, là bộ cài buổi 5 gồm thư mục skills (2 skill) và thư mục agents (1 agent).
+
+Việc cần làm:
+1. Giải nén file đó ngay trong thư mục bo-cai. Trong file zip đã có sẵn thư mục buoi-05, nên giải nén xong sẽ có bo-cai/buoi-05. Nói tôi biết bạn dùng lệnh gì, chờ tôi đồng ý rồi mới chạy.
+2. Đọc từng file SKILL.md và file agent, tóm tắt mỗi cái làm gì trong một câu.
+3. Chép từng thư mục trong bo-cai/buoi-05/skills vào .agents/skills.
+4. Chép từng file trong bo-cai/buoi-05/agents vào .agents/agents.
+5. Trùng tên thì hỏi tôi trước, không ghi đè. Không xóa file nào, kể cả file zip.
+6. Kiểm tra lại sau khi chép.
+
+Kết quả: báo tôi danh sách skill và agent đã cài, kèm đường dẫn.</p></div>
+    <div class="bang-cuon"><table>
+      <tr><th>Bộ buổi 5</th><th>Làm gì</th></tr>
+      <tr><td><code>dang-bai</code> (skill)</td><td>Viết caption, hashtag, gắn nhãn AI, mở trang đăng, điền sẵn, dừng trước nút Đăng</td></tr>
+      <tr><td><code>quy-trinh-video</code> (skill)</td><td>Chạy trọn 7 bước từ thương hiệu tới đăng bài, có 3 điểm duyệt</td></tr>
+      <tr><td><code>dao-dien</code> (agent)</td><td>Chia việc cho các agent chấm, soát; gom thành báo cáo cho bạn duyệt; không tự đăng</td></tr>
+    </table></div>
+    <p>Cài xong, mở một cuộc trò chuyện mới. Gõ <code>/</code> trong khung chat, thấy <code>dang-bai</code> và <code>quy-trinh-video</code> là được.</p>
+  </section>
+
+  <!-- PHẦN 2 -->
+  <section class="card" id="p2">
+    <span class="phut">20:20 đến 20:45</span>
+    <h2><span class="so">2</span>Đăng bài có duyệt</h2>
+    <p class="dung">Agent làm hết phần chuẩn bị, tới nút Đăng thì dừng. Người bấm Đăng luôn là bạn.</p>
+    <div class="luoi">
+      <div><b>Agent làm</b>Viết caption, hashtag, mở TikTok Studio hoặc Meta Business Suite, chọn video, dán caption, bật nhãn AI.</div>
+      <div><b>Agent dừng</b>Trước nút Đăng. Gặp trang đăng nhập hay captcha cũng dừng, báo bạn.</div>
+      <div><b>Bạn làm</b>Đọc lại trang đăng trên trình duyệt, ưng thì tự bấm Đăng.<i>Giống thư ký soạn sẵn thư, sếp đọc rồi tự bấm Gửi.</i></div>
+    </div>
+
+    <h3>2.1. Cho Agent dùng trình duyệt (làm một lần)</h3>
+    <p>Antigravity có sẵn một agent con tên <code>browser</code>, gọi bằng <code>/browser</code>, chuyên mở trang web và thao tác trên đó. Theo tài liệu chính thức, nó điều khiển chính Google Chrome đang mở trên máy bạn, nên dùng luôn các tài khoản bạn đã đăng nhập.</p>
+    <ol>
+      <li><b>Tạo một hồ sơ Chrome riêng cho việc đăng bài:</b> trong Chrome bấm ảnh đại diện góc phải trên, chọn <b>Thêm</b> (Add) để tạo hồ sơ mới. Trong hồ sơ này đăng nhập TikTok phụ và Facebook thử. Làm vậy Agent không thấy email, ngân hàng ở hồ sơ chính của bạn.</li>
+      <li>Trong hồ sơ Chrome đó, gõ vào thanh địa chỉ <code>chrome://inspect/#remote-debugging</code>, bật <b>Allow remote debugging for this browser instance</b>.</li>
+      <li>Trong Antigravity mở <b>Settings</b>, mục <b>Browser</b>, phần <b>Browser Actuation Rules</b>: chỉ cho phép <code>tiktok.com</code>, <code>facebook.com</code>, <code>business.facebook.com</code>.</li>
+      <li>Lần đầu Agent kết nối, Chrome hỏi cho phép: bấm <b>Allow</b>.</li>
+    </ol>
+    <div class="prompt"><span class="nhan-p">Thử kết nối trình duyệt</span><button>Chép</button><p>/browser
+Mở trang https://www.tiktok.com/tiktokstudio/upload rồi cho tôi biết trang đã đăng nhập chưa.
+Chỉ xem, không bấm nút nào, không điền gì.</p></div>
+    <div class="note vang">Tên mục cài đặt lấy theo tài liệu chính thức của Antigravity (antigravity.google/docs), tra ngày 09/11/2026; tên mục có thể khác trên máy bạn. Tài liệu ghi trình duyệt cần máy có Node.js: Agent báo thiếu Node.js thì tải bản LTS tại <a href="https://nodejs.org">nodejs.org</a>, cài như phần mềm thường. Bản App còn có trình duyệt dựng sẵn riêng, giữ phiên đăng nhập sau khi tắt mở lại; Agent mở trình duyệt đó thì bạn đăng nhập tài khoản phụ ngay trong đó.</div>
+    <div class="note do"><b>Bạn tự đăng nhập, không bao giờ gõ mật khẩu vào khung chat.</b> Trang đòi đăng nhập thì Agent dừng, bạn tự gõ trên trình duyệt. Gặp captcha cũng tự làm hoặc bỏ qua, không nhờ Agent vượt.</div>
+
+    <h3>2.2. Đăng bài đầu tiên</h3>
+    <div class="prompt"><span class="nhan-p">Đăng video lên TikTok, dừng trước nút Đăng</span><button>Chép</button><p>/dang-bai
+Tôi gửi bạn: video video/TEN-FILE-VIDEO.mp4, kịch bản trong thư mục kich-ban, sản phẩm trong du-lieu/TEN-FILE-SAN-PHAM.md.
+
+Việc cần làm:
+1. Viết 2 phương án caption và hashtag theo file thương hiệu, nhờ nguoi-soat soát, cho tôi chọn.
+2. Dùng /browser mở TikTok Studio, chọn video, dán caption tôi đã chọn, bật nhãn nội dung AI.
+3. Dừng trước nút Đăng, chụp màn hình trang đã điền.
+
+Kết quả: bảng tóm tắt bài đăng để tôi duyệt. Tôi tự bấm Đăng.</p></div>
+    <ol>
+      <li>Đọc kỹ trang đăng trên Chrome: đúng video, đúng caption, nhãn AI đã bật, đúng tài khoản phụ.</li>
+      <li>Ưng thì <b>bạn tự bấm Đăng</b>. Chép link bài đăng, dán lại cho Agent để nó ghi vào nhật ký.</li>
+      <li>Muốn đăng Facebook hoặc Reels: nói "Giờ làm tương tự cho Facebook Reels qua Meta Business Suite". Mỗi kênh duyệt riêng một lần.</li>
+    </ol>
+    <div class="note lam"><b>Agent không chọn được file video?</b> Một số trang không cho công cụ tự chọn file. Khi đó Agent sẽ báo, bạn kéo thả file video từ thư mục <code>video/</code> vào trang đăng, rồi bảo Agent làm tiếp phần caption.</div>
+    <div class="note xanh"><b>Nhãn nội dung AI:</b> TikTok và Facebook đều có mục tự khai báo nội dung tạo bằng AI khi đăng. Vị trí mục thay đổi theo bản cập nhật của từng nền tảng; Agent tìm không thấy thì bạn tự tìm, caption vẫn giữ dòng "Nội dung có sử dụng AI" theo file thương hiệu.</div>
+
+    <h3>2.3. Tùy chọn: bộ công cụ browser-own-profile</h3>
+    <p><code>browser-own-profile</code> là bộ công cụ giảng viên viết, chạy trên Chrome riêng đã đăng nhập, có sẵn lệnh đăng video TikTok Studio (dừng hỏi trước nút Post) và đăng bài Facebook có chữ kèm một ảnh.</p>
+    <div class="note vang"><b>Cần giảng viên mở quyền repo.</b> Repo đang để riêng tư và làm cho Claude Code, chưa đóng gói cho Antigravity. Bản hiện tại đăng Facebook mới hỗ trợ chữ và ảnh, chưa đăng video, Reels. Bạn nào muốn dùng thì nhắn giảng viên trong nhóm lớp sau buổi học. Trên lớp dùng phương án <code>/browser</code> ở trên.</div>
+  </section>
+
+  <!-- PHẦN 3 -->
+  <section class="card" id="p3">
+    <span class="phut">20:45 đến 21:00</span>
+    <h2><span class="so">3</span>Đấu nối quy trình</h2>
+    <p class="dung">Bốn buổi trước, mỗi skill là một trạm riêng. Giờ nối chúng thành một dây chuyền: bạn ra một câu lệnh, Agent đi hết các trạm, dừng ở 3 chỗ cho bạn duyệt.</p>
+    <div class="cay">/quy-trinh-video
+ 1. Thương hiệu      đọc .agents/rules/thuong-hieu.md
+ 2. Sản phẩm         đọc du-lieu/
+ 3. Hook             hook-video-3-giay      soát: nguoi-soat
+ 4. Kịch bản         kich-ban-video         chấm: nguoi-cham-kich-ban
+    ĐIỂM DUYỆT 1     bạn duyệt kịch bản
+ 5. Ảnh, nhân vật    hinh-anh-nhan-vat      soát: nguoi-soat-anh
+    ĐIỂM DUYỆT 2     bạn duyệt ảnh
+ 6. Video            dung-video             chấm: nguoi-cham-video
+ 7. Đăng             dang-bai               soát: nguoi-soat
+    ĐIỂM DUYỆT 3     bạn tự bấm Đăng</div>
+    <div class="luoi">
+      <div><b>Duyệt 1</b>Sau kịch bản.<i>Sửa chữ rẻ nhất. Kịch bản sai mà đi tiếp là làm lại cả ảnh lẫn video.</i></div>
+      <div><b>Duyệt 2</b>Sau ảnh.<i>Tạo ảnh tốn lượt dùng ChatGPT; nhân vật lệch thì sửa trước khi dựng.</i></div>
+      <div><b>Duyệt 3</b>Trước khi đăng.<i>Bài đăng đi ra ngoài, người khác thấy. Bạn tự bấm.</i></div>
+    </div>
+    <p>Ở mỗi điểm duyệt, agent <code>dao-dien</code> gom kết quả của các người chấm thành một bảng ngắn để bạn quyết nhanh.</p>
+    <div class="prompt"><span class="nhan-p">Đọc quy trình trước khi chạy</span><button>Chép</button><p>Tôi gửi bạn: skill .agents/skills/quy-trinh-video/SKILL.md.
+
+Việc cần làm:
+1. Kiểm tra dự án này đã cài đủ các skill và agent mà quy trình cần chưa, thiếu cái nào.
+2. Vẽ lại quy trình thành danh sách 7 bước, đánh dấu 3 điểm duyệt.
+
+Kết quả: trả lời trong khung chat, chưa chạy gì.</p></div>
+    <div class="note vang"><b>Báo thiếu skill?</b> Skill của buổi nào chưa cài thì mở lại trang buổi đó, làm phần cài bộ cài. Tên skill phải đúng như bảng trong <code>quy-trinh-video</code>.</div>
+  </section>
+
+  <!-- PHẦN 4 -->
+  <section class="card" id="p4">
+    <span class="phut">21:05 đến 21:20</span>
+    <h2><span class="so">4</span>Chạy thử quy trình cho sản phẩm thứ 2</h2>
+    <p class="dung">Quy trình tốt là quy trình dùng lại được. Thử với một sản phẩm khác, chỉ đổi tên file.</p>
+    <ol>
+      <li>Chưa có sản phẩm thứ 2 thì nhờ Agent tạo file sản phẩm mới theo mẫu <code>du-lieu/san-pham-mau.md</code>, bạn tự điền giá, ưu đãi thật.</li>
+      <li>Dán câu lệnh:</li>
+    </ol>
+    <div class="prompt"><span class="nhan-p">Một câu lệnh cho cả quy trình</span><button>Chép</button><p>/quy-trinh-video
+Làm video cho sản phẩm trong du-lieu/TEN-FILE-SAN-PHAM-THU-2.md, đăng lên TIKTOK.</p></div>
+    <ol start="3">
+      <li>Đọc kế hoạch Agent đưa ra, đồng ý.</li>
+      <li>Trên lớp chạy tới <b>Điểm duyệt 1</b> (có kịch bản đã chấm). Đọc báo cáo của <code>dao-dien</code>, duyệt hoặc yêu cầu sửa.</li>
+      <li>Phần ảnh, video, đăng bài chạy tiếp ở nhà vì tạo ảnh và dựng video mất thời gian.</li>
+    </ol>
+    <div class="note lam"><b>Dừng giữa chừng không sao.</b> Quy trình ghi nhật ký vào <code>kich-ban/quy-trinh-TEN-SAN-PHAM.md</code>. Lần sau nói "Chạy tiếp quy trình cho sản phẩm TÊN SẢN PHẨM từ bước còn dở" là Agent làm tiếp.</div>
+  </section>
+
+  <!-- PHẦN 5 -->
+  <section class="card" id="p5">
+    <span class="phut">21:20 đến 21:30</span>
+    <h2><span class="so">5</span>Lưu lên GitHub</h2>
+    <p class="dung">Bộ skill của bạn là tài sản. Lưu lên GitHub để không mất khi đổi máy, và mang sang dự án khác.</p>
+    <h3>5.1. Tạo repo riêng tư (không cần dòng lệnh)</h3>
+    <ol>
+      <li>Đăng nhập <a href="https://github.com">github.com</a>, bấm dấu <b>+</b> góc phải trên, chọn <b>New repository</b>.</li>
+      <li>Đặt tên, ví dụ <code>bo-skill-video-TEN-BAN</code>. Chọn <b>Private</b> (riêng tư). Bấm <b>Create repository</b>.</li>
+      <li>Ở trang repo mới, bấm dòng <b>uploading an existing file</b>.</li>
+      <li>Mở File Explorer (bật <b>Hidden items</b> để thấy <code>.agents</code>), kéo thả vào trang: thư mục <code>.agents</code>, file <code>AGENTS.md</code>, thư mục <code>bo-cai</code>.</li>
+      <li>Kéo xuống dưới, bấm <b>Commit changes</b>.</li>
+    </ol>
+    <div class="note do"><b>Không tải lên:</b> mật khẩu, mã khóa (API key), file <code>.env</code>, cookie, thư mục hồ sơ Chrome, file đăng nhập của bất kỳ công cụ nào. Không tải dữ liệu khách hàng thật. Video lớn cũng không cần đưa lên: GitHub chỉ cho tải qua trang web file tối đa 25 MB.</div>
+    <div class="prompt"><span class="nhan-p">Nhờ Agent soát trước khi tải lên</span><button>Chép</button><p>Tôi gửi bạn: thư mục .agents, file AGENTS.md và thư mục bo-cai trong dự án này.
+
+Việc cần làm:
+1. Tìm xem có file nào chứa mật khẩu, mã khóa, cookie, số điện thoại, email, dữ liệu khách hàng thật không.
+2. Liệt kê file đáng ngờ kèm dòng đáng ngờ.
+
+Kết quả: trả lời trong khung chat, không sửa, không xóa file nào.</p></div>
+    <h3>5.2. Dùng lại ở dự án mới</h3>
+    <p>Mở repo của bạn trên GitHub, bấm <b>Code</b>, chọn <b>Download ZIP</b>, giải nén. File zip của GitHub luôn bọc ngoài một thư mục tên <code>TEN-REPO-main</code>: mở đúng thư mục đó trong Antigravity làm dự án mới, để <code>AGENTS.md</code> và <code>.agents</code> nằm ở gốc dự án. Chạy <code>/file-thuong-hieu</code> cho thương hiệu mới là dùng được ngay.</p>
+  </section>
+
+  <!-- PHẦN 6 -->
+  <section class="card" id="p6">
+    <span class="phut">21:30 đến 21:35</span>
+    <h2><span class="so">6</span>Đặt lịch chạy (giới thiệu)</h2>
+    <p class="dung">Hẹn giờ cho Agent tự làm phần chuẩn bị, bạn chỉ vào duyệt. Phần đăng vẫn do bạn bấm.</p>
+    <div class="bang-cuon"><table>
+      <tr><th>Cách</th><th>Dùng khi</th><th>Lưu ý</th></tr>
+      <tr><td>Lệnh <code>/schedule</code> trong khung chat</td><td>Hẹn một lần hoặc lặp lại trong cuộc trò chuyện đang mở</td><td>Lịch thuộc về cuộc trò chuyện đã tạo ra nó</td></tr>
+      <tr><td>Automations trong App</td><td>Việc định kỳ, chạy cả khi đã đóng cuộc trò chuyện</td><td>Mỗi lần chạy mở một cuộc trò chuyện mới; tên mục có thể khác trên máy bạn</td></tr>
+    </table></div>
+    <div class="prompt"><span class="nhan-p">Thử hẹn giờ</span><button>Chép</button><p>/schedule in 10 minutes, chạy quy-trinh-video cho sản phẩm trong du-lieu/TEN-FILE-SAN-PHAM.md, chỉ làm tới điểm duyệt 1 rồi dừng, ghi nhật ký và chờ tôi duyệt.</p></div>
+    <div class="note vang">Cách viết <code>/schedule</code> lấy theo ví dụ trong tài liệu chính thức (antigravity.google/docs/commands/schedule), tra ngày 09/11/2026. Máy cần bật và có Antigravity thì lịch mới chạy được. Skill <code>quy-trinh-video</code> đã ghi sẵn: chạy theo lịch thì dừng ở điểm duyệt 1, không bao giờ tự đăng.</div>
+  </section>
+
+  <!-- PHẦN 7 -->
+  <section class="card" id="p7">
+    <span class="phut">21:35 đến 21:55</span>
+    <h2><span class="so">7</span>Showcase: trình bày quy trình và video</h2>
+    <p class="dung">Mỗi bạn 3 phút, chia sẻ màn hình. Giảng viên góp ý ngay sau mỗi phần trình bày.</p>
+    <div class="bang-cuon"><table>
+      <tr><th style="width:90px">Thời lượng</th><th>Bạn trình bày</th></tr>
+      <tr><td>30 giây</td><td>Thương hiệu, sản phẩm, khách hàng mục tiêu</td></tr>
+      <tr><td>60 giây</td><td>Câu lệnh đã dùng; ở 3 điểm duyệt bạn đã sửa gì</td></tr>
+      <tr><td>60 giây</td><td>Chiếu video, mở link bài đăng trên tài khoản thử</td></tr>
+      <tr><td>30 giây</td><td>Một điều bạn sẽ đổi trong skill để lần sau tốt hơn</td></tr>
+    </table></div>
+    <div class="luoi">
+      <div><b>Đúng thương hiệu</b>Màu, giọng, điều cấm, nhãn AI.</div>
+      <div><b>3 giây đầu</b>Hook có giữ chân người xem không.</div>
+      <div><b>Dùng lại được</b>Đổi sản phẩm có chạy lại bằng một câu lệnh không.</div>
+    </div>
+    <p>Ba tiêu chí trên là thứ giảng viên dùng để góp ý. Bạn nghe góp ý cho người khác cũng ghi lại, áp vào skill của mình.</p>
+  </section>
+
+  <!-- PHẦN 8 -->
+  <section class="card" id="p8">
+    <span class="phut">21:55 đến 22:00</span>
+    <h2><span class="so">8</span>Bộ skill mang về và tổng kết khóa</h2>
+    <div class="bang-cuon"><table>
+      <tr><th>Buổi</th><th>Skill</th><th>Agent soát, chấm</th></tr>
+      <tr><td>1</td><td><code>file-thuong-hieu</code>, <code>hook-video-3-giay</code></td><td><code>nguoi-soat</code></td></tr>
+      <tr><td>2</td><td><code>kich-ban-video</code></td><td><code>nguoi-cham-kich-ban</code></td></tr>
+      <tr><td>3</td><td><code>hinh-anh-nhan-vat</code></td><td><code>nguoi-soat-anh</code></td></tr>
+      <tr><td>4</td><td><code>dung-video</code></td><td><code>nguoi-cham-video</code></td></tr>
+      <tr><td>5</td><td><code>dang-bai</code>, <code>quy-trinh-video</code></td><td><code>dao-dien</code></td></tr>
+    </table></div>
+    <h3>Checklist cuối khóa</h3>
+    <ul class="check">
+      <li>Đã cài <code>dang-bai</code>, <code>quy-trinh-video</code>, <code>dao-dien</code>; gõ <code>/</code> thấy skill.</li>
+      <li>Có ít nhất 1 video đăng thật trên tài khoản thử, có nhãn AI, chính bạn bấm Đăng.</li>
+      <li>Chạy được <code>/quy-trinh-video</code> bằng một câu lệnh, có dừng ở điểm duyệt.</li>
+      <li>Sản phẩm thứ 2 đã qua điểm duyệt 1.</li>
+      <li>Có repo GitHub riêng tư chứa <code>.agents</code>, <code>AGENTS.md</code>, <code>bo-cai</code>, không có mật khẩu hay file đăng nhập.</li>
+    </ul>
+    <h3>Sau khóa học</h3>
+    <ol>
+      <li>Chạy tiếp quy trình cho sản phẩm thứ 2 tới khi đăng xong; gửi link vào nhóm lớp.</li>
+      <li>Mỗi tuần sửa skill một chỗ theo điều bạn rút ra, rồi tải bản mới lên repo GitHub.</li>
+      <li>Đăng ổn định trên tài khoản thử vài tuần rồi mới chuyển sang tài khoản chính, vẫn từng bài một, vẫn tự bấm Đăng.</li>
+    </ol>
+    <div class="note xanh"><b>Bạn mang về:</b> một quy trình chạy bằng một câu lệnh, một video đã đăng thật, và bộ 7 skill và 5 agent của riêng bạn trên GitHub.</div>
+  </section>
+
+</main>
+
+<footer><div class="wrap">
+  <img src="assets/logo-cole-trang.png" alt="Cole">
+  <span>Bootcamp AI Agent for Video Marketing · Giảng viên Lưu Tuấn Anh · Tài liệu tra cứu ngày 09/11/2026</span>
+</div></footer>
+<script src="assets/app.js"></script>
+</body>
+</html>

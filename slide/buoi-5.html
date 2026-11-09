@@ -1,0 +1,699 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Buổi 5: Đăng bài và đấu nối quy trình</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+.sm-stage{
+  --navy:#1E3A5F; --blue:#3A7CC6; --sky:#5BA3E6; --ice:#E8F4FD; --ink:#0f1e33; --paper:#F4F8FC;
+  --amber:#F59E0B; --amber-dk:#B45309; --green:#22C55E; --green-dk:#15803D; --muted:#5b6b80;
+  --fd:'Montserrat',sans-serif; --fb:'Be Vietnam Pro',sans-serif;
+  background:var(--navy); color:#fff; font-family:var(--fb);
+}
+.slide{overflow:hidden}
+.sm-stage *{box-sizing:border-box}
+.dark{background:radial-gradient(1200px 800px at 85% 15%,#2b5487 0%,transparent 60%),radial-gradient(900px 700px at 0% 100%,#16304f 0%,transparent 70%),var(--navy);color:#fff}
+.light{background:radial-gradient(1000px 700px at 100% 0%,#dcecfb 0%,transparent 60%),var(--paper);color:var(--ink)}
+.kicker{position:absolute;left:120px;top:84px;font:700 24px var(--fd);letter-spacing:.16em;text-transform:uppercase;color:var(--sky)}
+.light .kicker{color:var(--blue)}
+.title{position:absolute;left:120px;top:130px;margin:0;font:800 60px/1.12 var(--fd);max-width:1680px;white-space:nowrap}
+.light .title{color:var(--navy)}
+.src{position:absolute;left:120px;bottom:56px;font:400 22px var(--fb);color:#9fb6d2}
+.light .src{color:var(--muted)}
+.pg{position:absolute;right:120px;bottom:56px;font:700 22px var(--fd);color:#9fb6d2}
+.light .pg{color:var(--muted)}
+code,.mono{font-family:Consolas,'Courier New',monospace}
+
+/* 1. Bìa */
+.s1 .logo{position:absolute;left:120px;top:90px;font:900 40px var(--fd);letter-spacing:.02em}
+.s1 .logo span{color:var(--sky)}
+.s1 .nhan{position:absolute;left:120px;top:250px;font:700 26px var(--fd);letter-spacing:.18em;color:var(--sky);text-transform:uppercase}
+.s1 h1{position:absolute;left:120px;top:310px;margin:0;font:900 92px/1.08 var(--fd);width:1120px}
+.s1 h1 em{font-style:normal;color:var(--sky)}
+.s1 .hoi{position:absolute;left:120px;top:690px;width:980px;font:500 36px/1.45 var(--fb);color:#d6e6f7}
+.s1 .meta{position:absolute;left:120px;bottom:90px;font:500 26px var(--fb);color:#b8cde4}
+.s1 .meta b{color:#fff}
+.khung{position:absolute;border-radius:36px;border:6px solid var(--sky);background:linear-gradient(160deg,rgba(91,163,230,.35),rgba(30,58,95,.2))}
+.s1 .khung{left:1330px;top:150px;width:420px;height:746px;box-shadow:0 40px 120px rgba(0,0,0,.45)}
+.s1 .khung svg{position:absolute;inset:0;width:100%;height:100%}
+.s1 .orbit{position:absolute;left:1180px;top:60px;width:720px;height:920px}
+
+/* 2. Bản đồ */
+.s2 .tram{position:absolute;top:400px;width:250px;text-align:center}
+.s2 .tram .dot{width:96px;height:96px;margin:0 auto 22px;border-radius:50%;background:#fff;border:5px solid var(--blue);display:grid;place-items:center;font:800 38px var(--fd);color:var(--blue)}
+.s2 .tram b{display:block;font:700 30px/1.25 var(--fd);color:var(--navy)}
+.s2 .tram i{display:block;font:400 24px/1.4 var(--fb);color:var(--muted);font-style:normal;margin-top:8px}
+.s2 svg.duong{position:absolute;left:0;top:0;width:1920px;height:1080px}
+
+/* 3. Nguyên tắc */
+.s3 .big{position:absolute;left:120px;top:200px;margin:0;font:900 84px/1.1 var(--fd);width:1180px}
+.s3 .big span{color:var(--amber)}
+.s3 .def{position:absolute;left:120px;top:440px;width:1000px;font:400 34px/1.5 var(--fb);color:#d6e6f7}
+.s3 .vi{position:absolute;left:120px;top:700px;width:1000px;padding:26px 32px;border-left:6px solid var(--amber);background:rgba(255,255,255,.06);border-radius:0 16px 16px 0;font:500 30px/1.45 var(--fb);color:#fff}
+.s3 .khung{left:1370px;top:180px;width:380px;height:676px}
+.s3 .nut{position:absolute;left:1415px;top:720px;width:290px;height:96px;border-radius:18px;background:var(--amber);color:var(--ink);font:800 38px var(--fd);display:grid;place-items:center;box-shadow:0 0 0 0 rgba(245,158,11,.6)}
+.s3 .tay{position:absolute;left:1640px;top:770px;font:800 26px var(--fd);color:#fff;background:var(--blue);padding:10px 18px;border-radius:12px}
+.s3 .dong{position:absolute;left:1400px;width:320px;height:22px;border-radius:11px;background:rgba(255,255,255,.22)}
+
+/* 4. Trình duyệt */
+.s4 .cot{position:absolute;top:330px;width:520px;height:520px;border-radius:24px;background:#fff;border:2px solid #d6e4f2;padding:40px;box-shadow:0 18px 50px rgba(30,58,95,.08)}
+.s4 .cot .n{font:900 72px var(--fd);color:var(--blue);line-height:1}
+.s4 .cot b{display:block;font:800 36px/1.2 var(--fd);color:var(--navy);margin:22px 0 16px}
+.s4 .cot p{margin:0;font:400 28px/1.5 var(--fb);color:#334155}
+.s4 .cot code{font-size:24px;background:var(--ice);padding:2px 8px;border-radius:6px;color:var(--navy);word-break:break-all}
+.s4 .sub{position:absolute;left:120px;top:236px;font:500 32px var(--fb);color:var(--muted)}
+.s4 .sub code{color:var(--blue);font-weight:700}
+
+/* 5. Luồng đăng */
+.s5 .buoc{position:absolute;top:360px;width:290px;height:330px;border-radius:22px;background:rgba(255,255,255,.07);border:2px solid rgba(143,193,242,.35);padding:30px 26px}
+.s5 .buoc .n{font:900 30px var(--fd);color:var(--sky)}
+.s5 .buoc b{display:block;font:800 34px/1.2 var(--fd);margin:14px 0 12px}
+.s5 .buoc p{margin:0;font:400 26px/1.45 var(--fb);color:#cfe0f2}
+.s5 .buoc.dung{background:rgba(245,158,11,.14);border-color:var(--amber)}
+.s5 .buoc.dung .n,.s5 .buoc.dung b{color:var(--amber)}
+.s5 .stamp{position:absolute;left:1300px;top:770px;padding:18px 40px;border:7px solid var(--amber);border-radius:16px;color:var(--amber);font:900 50px var(--fd);letter-spacing:.06em;rotate:-6deg}
+.s5 .ghi{position:absolute;left:120px;top:770px;width:1050px;font:500 30px/1.45 var(--fb);color:#d6e6f7}
+
+/* 6. Câu hỏi */
+.s6 .q{position:absolute;left:120px;top:200px;width:1680px;margin:0;font:800 66px/1.2 var(--fd);color:var(--navy)}
+.s6 .opt{position:absolute;top:560px;width:520px;height:250px;border-radius:22px;background:#fff;border:3px solid #d6e4f2;padding:34px;font:500 32px/1.4 var(--fb);color:#334155}
+.s6 .opt b{display:block;font:900 40px var(--fd);color:var(--blue);margin-bottom:10px}
+.s6 .opt.dung{border-color:var(--green-dk);background:#f0fdf4}
+.s6 .opt.dung b{color:var(--green-dk)}
+.s6 .dap{position:absolute;left:120px;top:860px;width:1680px;font:600 32px/1.4 var(--fb);color:var(--green-dk)}
+
+/* 7. Băng chuyền */
+.s7 .bang{position:absolute;left:0;top:0;width:1920px;height:1080px}
+.s7 .tram{position:absolute;top:640px;width:250px;margin-left:-125px;text-align:center;font:700 26px/1.25 var(--fd);color:#fff}
+.s7 .tram i{display:block;font:400 20px/1.3 var(--fb);color:#9fc3e8;font-style:normal;margin-top:6px}
+.s7 .cong{position:absolute;top:300px;width:200px;margin-left:-100px;text-align:center;font:800 24px/1.25 var(--fd);color:var(--amber)}
+.s7 .cong span{display:block;font:500 22px var(--fb);color:#cfe0f2;margin-top:4px}
+.s7 .phim{position:absolute;left:1760px;top:468px;width:52px;height:92px;margin-left:-26px;border-radius:10px;background:var(--sky);border:4px solid #fff;box-shadow:0 0 40px rgba(91,163,230,.8)}
+.s7 .lenh{position:absolute;left:120px;top:236px;font:600 30px var(--fb);color:#cfe0f2}
+.s7 .lenh code{color:#fff;background:rgba(255,255,255,.12);padding:4px 12px;border-radius:8px}
+
+/* 8. Vì sao duyệt ở đó */
+.s8 .cot{position:absolute;bottom:250px;width:300px;border-radius:18px 18px 0 0}
+.s8 .nhan{position:absolute;top:850px;width:420px;margin-left:-60px;text-align:center;font:700 30px/1.3 var(--fd);color:var(--navy)}
+.s8 .nhan i{display:block;font:400 24px/1.35 var(--fb);color:var(--muted);font-style:normal;margin-top:6px}
+.s8 .y{position:absolute;left:1300px;top:330px;width:500px;font:500 32px/1.5 var(--fb);color:#334155}
+.s8 .y b{color:var(--navy)}
+.s8 .day{position:absolute;left:120px;top:830px;width:1100px;height:4px;background:#c8d8ea}
+
+/* 9. Sản phẩm 2 */
+.s9 .cmd{position:absolute;left:120px;top:330px;width:1680px;padding:50px 60px;border-radius:24px;background:#0f1e33;color:#e9f2ff;font:500 44px/1.5 Consolas,monospace;box-shadow:0 30px 80px rgba(0,0,0,.35)}
+.s9 .cmd .doi{color:var(--amber);font-weight:700;border-bottom:4px solid var(--amber)}
+.s9 .swap{display:inline-grid;vertical-align:bottom}.s9 .swap>span{grid-area:1/1}.s9 .cu{opacity:0;color:#e9f2ff}
+.s9 .cmd .goi{color:var(--sky)}
+.s9 .giu{position:absolute;top:720px;width:520px;font:500 30px/1.45 var(--fb);color:#d6e6f7}
+.s9 .giu b{display:block;font:800 34px var(--fd);color:#fff;margin-bottom:8px}
+.s9 .mh{position:absolute;right:120px;top:290px;font:400 22px var(--fb);color:#9fb6d2}
+
+/* 10. GitHub */
+.s10 .b{position:absolute;left:120px;width:980px;font:500 32px/1.4 var(--fb);color:#1f2a3a;display:flex;gap:26px;align-items:flex-start}
+.s10 .b span{flex:none;width:58px;height:58px;border-radius:14px;background:var(--blue);color:#fff;display:grid;place-items:center;font:800 28px var(--fd)}
+.s10 .b code{background:var(--ice);color:var(--navy);padding:2px 8px;border-radius:6px;font-size:28px}
+.s10 .cam{position:absolute;left:1200px;top:300px;width:600px;padding:40px;border-radius:24px;background:#fef2f2;border:3px solid #dc2626}
+.s10 .cam b{display:block;font:800 36px var(--fd);color:#b91c1c;margin-bottom:18px}
+.s10 .cam li{font:500 28px/1.45 var(--fb);color:#3b1d1d;margin:8px 0}
+.s10 .cam ul{margin:0;padding-left:30px}
+
+/* 11. Lịch */
+.s11 .the{position:absolute;top:320px;width:780px;height:420px;border-radius:24px;padding:44px;background:rgba(255,255,255,.07);border:2px solid rgba(143,193,242,.35)}
+.s11 .the b{display:block;font:800 40px var(--fd);margin-bottom:18px}
+.s11 .the code{font-size:30px;color:var(--sky)}
+.s11 .the p{margin:0 0 12px;font:400 29px/1.45 var(--fb);color:#d6e6f7}
+.s11 .luat{position:absolute;left:120px;top:800px;width:1680px;padding:28px 36px;border-radius:18px;background:rgba(245,158,11,.14);border-left:8px solid var(--amber);font:600 32px/1.4 var(--fb)}
+.s11 .luat b{color:var(--amber)}
+.s11 svg.dongho{position:absolute;right:120px;top:110px;width:110px;height:110px}
+
+/* 12. Showcase */
+.s12 .tl{position:absolute;left:120px;top:320px;width:900px}
+.s12 .row{display:flex;align-items:center;gap:24px;margin-bottom:28px}
+.s12 .row .bar{height:64px;border-radius:12px;background:var(--blue);color:#fff;font:800 26px var(--fd);display:flex;align-items:center;padding:0 20px;flex:none}
+.s12 .row p{margin:0;font:500 29px/1.35 var(--fb);color:#1f2a3a}
+.s12 .tc{position:absolute;left:1120px;width:680px;padding:30px 36px;border-radius:20px;background:#fff;border:2px solid #d6e4f2;box-shadow:0 14px 40px rgba(30,58,95,.08)}
+.s12 .tc b{display:block;font:800 34px var(--fd);color:var(--blue);margin-bottom:6px}
+.s12 .tc p{margin:0;font:400 27px/1.4 var(--fb);color:#334155}
+.s12 .tcn{position:absolute;left:1120px;top:250px;font:700 26px var(--fd);letter-spacing:.12em;color:var(--blue);text-transform:uppercase}
+
+/* 13. Bộ mang về */
+.s13 .o{position:absolute;width:520px;height:150px;border-radius:20px;padding:24px 30px;background:rgba(255,255,255,.07);border:2px solid rgba(143,193,242,.3)}
+.s13 .o .bu{font:700 22px var(--fd);letter-spacing:.14em;color:var(--sky);text-transform:uppercase}
+.s13 .o b{display:block;font:700 30px/1.3 Consolas,monospace;color:#fff;margin-top:8px}
+.s13 .o i{display:block;font:400 24px var(--fb);color:#b8cde4;font-style:normal;margin-top:4px}
+.s13 .o.moi{border-color:var(--amber);background:rgba(245,158,11,.12)}
+.s13 .o.moi .bu{color:var(--amber)}
+.s13 .tong{position:absolute;left:1260px;top:560px;width:540px;font:500 30px/1.5 var(--fb);color:#d6e6f7}
+.s13 .tong b{display:block;font:900 64px/1.05 var(--fd);color:#fff;margin-bottom:10px}
+
+/* 14. Kết */
+.s14 .q{position:absolute;left:120px;top:250px;width:1100px;font:600 34px/1.4 var(--fb);color:var(--muted)}
+.s14 h2{position:absolute;left:120px;top:340px;margin:0;width:1120px;font:900 88px/1.1 var(--fd);color:var(--navy)}
+.s14 h2 span{color:var(--blue)}
+.s14 .ra{position:absolute;left:120px;top:720px;width:1100px;font:500 30px/1.6 var(--fb);color:#334155}
+.s14 .ra b{color:var(--navy)}
+.s14 .khung{left:1400px;top:200px;width:360px;height:640px;border-color:var(--blue);background:linear-gradient(160deg,#dcecfb,#fff)}
+.s14 .tick{position:absolute;left:1460px;top:400px;width:240px;height:240px}
+.s14 .ky{position:absolute;left:1400px;top:880px;width:360px;text-align:center;font:700 26px var(--fd);color:var(--navy)}
+</style>
+</head>
+<body>
+<div class="sm-stage">
+
+<!-- 1. BÌA -->
+<section class="slide dark s1" data-scene="bia">
+  <div class="logo" data-anim="fade">Cole<span>.vn</span></div>
+  <div class="nhan" data-anim="wipe">Bootcamp AI Agent for Video Marketing · Buổi 5</div>
+  <h1 data-anim="rise" data-delay="150">Đăng bài tự động và <em>đấu nối quy trình</em></h1>
+  <div class="hoi" data-anim="blur" data-delay="500">Một câu lệnh đi từ sản phẩm tới bài đăng. Agent chuẩn bị, người làm marketing quyết định.</div>
+  <div class="meta" data-anim="fade" data-delay="700">Giảng viên <b>Lưu Tuấn Anh</b> · Thứ 3, 24/11/2026 · 20:00 đến 22:00</div>
+  <svg class="orbit" viewBox="0 0 720 920" fill="none">
+    <g data-anim="draw" data-delay="300" data-stagger="200">
+      <ellipse cx="360" cy="460" rx="330" ry="420" stroke="rgba(143,193,242,.25)" stroke-width="2"/>
+      <ellipse cx="360" cy="460" rx="250" ry="330" stroke="rgba(143,193,242,.18)" stroke-width="2"/>
+    </g>
+  </svg>
+  <div class="khung" data-morph="khung" data-anim="zoom" data-delay="200">
+    <svg viewBox="0 0 420 746" fill="none">
+      <rect x="40" y="60" width="340" height="420" rx="22" fill="rgba(255,255,255,.12)"/>
+      <path d="M180 210 L270 270 L180 330 Z" fill="#fff" data-loop="pulse"/>
+      <rect x="40" y="520" width="260" height="20" rx="10" fill="rgba(255,255,255,.55)"/>
+      <rect x="40" y="560" width="200" height="20" rx="10" fill="rgba(255,255,255,.3)"/>
+      <rect x="40" y="630" width="340" height="70" rx="16" fill="#F59E0B"/>
+    </svg>
+  </div>
+</section>
+
+<!-- 2. BẢN ĐỒ -->
+<section class="slide light s2" data-scene="ban-do">
+  <div class="kicker">Bản đồ buổi học</div>
+  <h2 class="title" data-anim="wipe">Sáu trạm của buổi học cuối</h2>
+  <svg class="duong" viewBox="0 0 1920 1080" fill="none">
+    <path d="M245 448 H1675" stroke="#3A7CC6" stroke-width="5" stroke-dasharray="4 14" stroke-linecap="round" data-anim="draw" data-dur="1600"/>
+  </svg>
+  <div data-stagger="140" data-delay="300">
+    <div class="tram" style="left:120px" data-anim="pop"><div class="dot">1</div><b>Đăng bài có duyệt</b><i>TikTok, Facebook, Reels</i></div>
+    <div class="tram" style="left:406px" data-anim="pop"><div class="dot">2</div><b>Đấu nối quy trình</b><i>5 skill, 1 câu lệnh</i></div>
+    <div class="tram" style="left:692px" data-anim="pop"><div class="dot">3</div><b>Sản phẩm thứ 2</b><i>dùng lại quy trình</i></div>
+    <div class="tram" style="left:978px" data-anim="pop"><div class="dot">4</div><b>Lưu lên GitHub</b><i>repo riêng tư</i></div>
+    <div class="tram" style="left:1264px" data-anim="pop"><div class="dot">5</div><b>Đặt lịch chạy</b><i>giới thiệu</i></div>
+    <div class="tram" style="left:1550px" data-anim="pop"><div class="dot">6</div><b>Showcase</b><i>trình bày, góp ý</i></div>
+  </div>
+  <div class="src">Đầu ra: quy trình 1 câu lệnh, video đăng thật trên tài khoản thử, bộ skill mang về.</div>
+  <div class="pg">02</div>
+</section>
+
+<!-- 3. NGUYÊN TẮC -->
+<section class="slide dark s3" data-scene="nguyen-tac" data-steps="0">
+  <div class="kicker">Trạm 1 · Nguyên tắc</div>
+  <h2 class="big" data-anim="rise">Agent chuẩn bị.<br><span>Con người bấm Đăng.</span></h2>
+  <p class="def" data-anim="fade" data-delay="400">Đăng bài có duyệt: Agent viết caption, mở trang đăng, điền sẵn mọi ô, rồi dừng trước nút Đăng để chủ tài khoản kiểm tra và tự bấm.</p>
+  <div class="vi" data-step="1" data-anim="left">Giống thư ký soạn sẵn thư: người phụ trách đọc lại, ký, rồi mới gửi đi.</div>
+  <div class="khung" data-morph="khung"></div>
+  <div class="dong" style="top:260px;width:300px"></div>
+  <div class="dong" style="top:310px;width:240px"></div>
+  <div class="dong" style="top:380px;height:280px;border-radius:18px;width:300px"></div>
+  <div class="nut" data-loop="pulse">Đăng</div>
+  <div class="tay" data-step="1" data-anim="pop">Bạn bấm</div>
+  <div class="pg">03</div>
+</section>
+
+<!-- 4. TRÌNH DUYỆT -->
+<section class="slide light s4" data-scene="trinh-duyet">
+  <div class="kicker">Trạm 1 · Cho Agent dùng trình duyệt</div>
+  <h2 class="title" data-anim="wipe">Thiết lập một lần, dùng cho mọi bài đăng</h2>
+  <div class="sub" data-anim="fade" data-delay="300">Antigravity có sẵn agent con <code>/browser</code>, điều khiển chính Google Chrome trên máy bạn.</div>
+  <div class="cot" style="left:120px" data-step="1" data-anim="rise">
+    <div class="n">01</div><b>Hồ sơ Chrome riêng</b>
+    <p>Tạo hồ sơ mới, chỉ đăng nhập tài khoản TikTok phụ và Trang Facebook thử. Bạn tự đăng nhập một lần.</p>
+  </div>
+  <div class="cot" style="left:700px" data-step="2" data-anim="rise">
+    <div class="n">02</div><b>Bật kết nối</b>
+    <p>Mở <code>chrome://inspect/#remote-debugging</code>, bật cho phép. Lần đầu Agent kết nối, bấm Allow.</p>
+  </div>
+  <div class="cot" style="left:1280px" data-step="3" data-anim="rise">
+    <div class="n">03</div><b>Giới hạn trang</b>
+    <p>Settings, Browser, Browser Actuation Rules: chỉ cho phép tiktok.com, facebook.com.</p>
+  </div>
+  <div class="src">Nguồn: antigravity.google/docs, mục Subagents và Chrome profile, tra ngày 09/11/2026. Tên mục có thể khác theo phiên bản.</div>
+  <div class="pg">04</div>
+</section>
+
+<!-- 5. LUỒNG ĐĂNG -->
+<section class="slide dark s5" data-scene="luong-dang">
+  <div class="kicker">Trạm 1 · Skill dang-bai</div>
+  <h2 class="title" data-anim="wipe">Năm bước, dừng đúng trước nút Đăng</h2>
+  <div class="buoc" style="left:120px" data-step="1" data-anim="drop"><div class="n">1</div><b>Caption</b><p>2 phương án, hashtag, dòng "Nội dung có sử dụng AI"</p></div>
+  <div class="buoc" style="left:455px" data-step="2" data-anim="drop"><div class="n">2</div><b>Soát</b><p><span class="mono">nguoi-soat</span> đối chiếu file thương hiệu; bạn chọn phương án</p></div>
+  <div class="buoc" style="left:790px" data-step="3" data-anim="drop"><div class="n">3</div><b>Mở trang</b><p>TikTok Studio hoặc Meta Business Suite qua <span class="mono">/browser</span></p></div>
+  <div class="buoc" style="left:1125px" data-step="4" data-anim="drop"><div class="n">4</div><b>Điền sẵn</b><p>Chọn video, dán caption, bật nhãn nội dung AI</p></div>
+  <div class="buoc dung" style="left:1460px" data-step="5" data-anim="drop"><div class="n">5</div><b>Dừng</b><p>Chụp màn hình, báo cáo, chờ bạn bấm Đăng</p></div>
+  <div class="ghi" data-step="5" data-anim="fade">Mỗi lần một bài, một kênh. Gặp trang đăng nhập hoặc captcha: Agent dừng và báo, không tự vượt qua.</div>
+  <div class="stamp" data-step="5" data-anim="stamp" data-delay="300">CHỜ DUYỆT</div>
+  <div class="pg">05</div>
+</section>
+
+<!-- 6. CÂU HỎI -->
+<section class="slide light s6" data-scene="hoi" data-steps="0">
+  <div class="kicker">Câu hỏi kiểm tra</div>
+  <h2 class="q" data-anim="rise">Trang TikTok Studio bỗng hiện captcha giữa lúc Agent đang điền. Agent nên làm gì?</h2>
+  <div class="opt" style="left:120px" data-anim="pop" data-delay="300"><b>A</b>Thử lại liên tục tới khi qua được</div>
+  <div class="opt dung" style="left:700px" data-anim="pop" data-delay="420"><b>B</b>Dừng lại, báo chủ tài khoản tự xử lý</div>
+  <div class="opt" style="left:1280px" data-anim="pop" data-delay="540"><b>C</b>Chuyển sang tài khoản khác để đăng</div>
+  <div class="dap" data-step="1" data-anim="wipe">Đáp án B. Vượt cơ chế chống bot làm tài khoản dễ bị khóa; đổi tài khoản để né cũng vậy.</div>
+  <div class="pg">06</div>
+</section>
+
+<!-- 7. BĂNG CHUYỀN -->
+<section class="slide dark s7" data-scene="bang-chuyen" data-steps="3">
+  <div class="kicker">Trạm 2 · Skill quy-trinh-video</div>
+  <h2 class="title" data-anim="wipe">Bảy công đoạn, ba điểm duyệt</h2>
+  <div class="lenh" data-anim="fade" data-delay="300"><code>/quy-trinh-video</code> Làm video cho sản phẩm trong du-lieu/TEN-FILE.md, đăng lên TIKTOK.</div>
+  <svg class="bang" viewBox="0 0 1920 1080" fill="none">
+    <line class="ray" x1="140" y1="514" x2="1760" y2="514" stroke="rgba(143,193,242,.45)" stroke-width="6" stroke-linecap="round"/>
+    <g class="cac-tram" fill="#1E3A5F" stroke="#5BA3E6" stroke-width="5">
+      <circle cx="140" cy="514" r="26"/><circle cx="387" cy="514" r="26"/><circle cx="633" cy="514" r="26"/>
+      <circle cx="880" cy="514" r="26"/><circle cx="1127" cy="514" r="26"/><circle cx="1373" cy="514" r="26"/><circle cx="1620" cy="514" r="26"/>
+    </g>
+    <g class="cac-cong" stroke-width="10" stroke-linecap="round">
+      <line class="g1" x1="1003" y1="420" x2="1003" y2="608" stroke="#22C55E"/>
+      <line class="g2" x1="1250" y1="420" x2="1250" y2="608" stroke="#22C55E"/>
+      <line class="g3" x1="1760" y1="420" x2="1760" y2="608" stroke="#22C55E"/>
+    </g>
+  </svg>
+  <div class="tram" style="left:140px">Thương hiệu<i>thuong-hieu.md</i></div>
+  <div class="tram" style="left:387px">Sản phẩm<i>du-lieu/</i></div>
+  <div class="tram" style="left:633px">Hook<i>nguoi-soat</i></div>
+  <div class="tram" style="left:880px">Kịch bản<i>nguoi-cham-kich-ban</i></div>
+  <div class="tram" style="left:1127px">Ảnh<i>nguoi-soat-anh</i></div>
+  <div class="tram" style="left:1373px">Video<i>nguoi-cham-video</i></div>
+  <div class="tram" style="left:1620px">Đăng<i>dang-bai</i></div>
+  <div class="cong" style="left:1003px">Duyệt 1<span>kịch bản</span></div>
+  <div class="cong" style="left:1250px">Duyệt 2<span>ảnh</span></div>
+  <div class="cong" style="left:1760px">Duyệt 3<span>bạn bấm Đăng</span></div>
+  <div class="phim"></div>
+  <div class="src">Ở mỗi điểm duyệt, agent dao-dien gom kết quả của các người chấm thành một bảng ngắn.</div>
+  <div class="pg">07</div>
+</section>
+
+<!-- 8. VÌ SAO -->
+<section class="slide light s8" data-scene="vi-sao">
+  <div class="kicker">Trạm 2 · Vì sao duyệt ở ba chỗ này</div>
+  <h2 class="title" data-anim="wipe">Phát hiện lỗi càng sớm, công sửa càng nhỏ</h2>
+  <div class="cot" style="left:180px;height:140px;background:#5BA3E6" data-step="1" data-anim="rise-wipe"></div>
+  <div class="nhan" style="left:180px" data-step="1" data-anim="fade">Duyệt 1<i>Sửa vài câu chữ</i></div>
+  <div class="cot" style="left:560px;height:300px;background:#3A7CC6" data-step="2" data-anim="rise-wipe"></div>
+  <div class="nhan" style="left:560px" data-step="2" data-anim="fade">Duyệt 2<i>Tạo lại ảnh, tốn lượt dùng</i></div>
+  <div class="cot" style="left:940px;height:470px;background:#1E3A5F" data-step="3" data-anim="rise-wipe"></div>
+  <div class="nhan" style="left:940px" data-step="3" data-anim="fade">Duyệt 3<i>Bài đã ra ngoài, khó rút lại</i></div>
+  <div class="day"></div>
+  <div class="y" data-step="3" data-anim="right"><b>Quy tắc của skill:</b> không bỏ điểm duyệt nào, kể cả khi được bảo "chạy một mạch". Chỉ đi tiếp khi chủ dự án trả lời rõ là đồng ý.</div>
+  <div class="src">Chiều cao cột là minh họa mức công sức, không phải số đo.</div>
+  <div class="pg">08</div>
+</section>
+
+<!-- 9. SẢN PHẨM 2 -->
+<section class="slide dark s9" data-scene="san-pham-2" data-steps="1">
+  <div class="kicker">Trạm 3 · Dùng lại quy trình</div>
+  <h2 class="title" data-anim="wipe">Sản phẩm mới: chỉ đổi một chỗ trong câu lệnh</h2>
+  <div class="mh">Tên file minh họa</div>
+  <div class="cmd" data-anim="zoom" data-delay="200"><span class="goi">/quy-trinh-video</span><br>Làm video cho sản phẩm trong du-lieu/<span class="swap"><span class="cu">san-pham-mau.md</span><span class="doi">tra-o-long.md</span></span>, đăng lên TIKTOK.</div>
+  <div class="giu" style="left:120px" data-anim="rise" data-delay="500"><b>Giữ nguyên</b>Thương hiệu, nhân vật, phong cách: video thứ hai đồng bộ với video đầu.</div>
+  <div class="giu" style="left:700px" data-anim="rise" data-delay="650"><b>Trên lớp</b>Chạy tới Điểm duyệt 1, đọc báo cáo của dao-dien.</div>
+  <div class="giu" style="left:1280px" data-anim="rise" data-delay="800"><b>Ở nhà</b>Chạy tiếp từ bước còn dở nhờ file nhật ký trong kich-ban/.</div>
+  <div class="pg">09</div>
+</section>
+
+<!-- 10. GITHUB -->
+<section class="slide light s10" data-scene="github">
+  <div class="kicker">Trạm 4 · Lưu lên GitHub</div>
+  <h2 class="title" data-anim="wipe">Repo riêng tư, kéo thả, không cần dòng lệnh</h2>
+  <div data-stagger="160" data-delay="300">
+    <div class="b" style="top:320px" data-anim="left"><span>1</span>github.com, dấu +, New repository</div>
+    <div class="b" style="top:420px" data-anim="left"><span>2</span>Đặt tên, chọn Private, Create repository</div>
+    <div class="b" style="top:520px" data-anim="left"><span>3</span>Bấm "uploading an existing file"</div>
+    <div class="b" style="top:620px" data-anim="left"><span>4</span>Kéo thả <code>.agents</code>, <code>AGENTS.md</code>, <code>bo-cai</code></div>
+    <div class="b" style="top:720px" data-anim="left"><span>5</span>Commit changes</div>
+  </div>
+  <div class="cam" data-step="1" data-anim="pop">
+    <b>Không tải lên</b>
+    <ul><li>Mật khẩu, mã khóa (API key), file .env</li><li>Cookie, thư mục hồ sơ Chrome, file đăng nhập</li><li>Dữ liệu khách hàng thật</li></ul>
+  </div>
+  <div class="src">Nhờ Agent quét file nhạy cảm trước khi tải lên. Dùng lại: Code, Download ZIP, giải nén vào dự án mới.</div>
+  <div class="pg">10</div>
+</section>
+
+<!-- 11. LỊCH -->
+<section class="slide dark s11" data-scene="lich">
+  <div class="kicker">Trạm 5 · Đặt lịch chạy</div>
+  <h2 class="title" data-anim="wipe">Hẹn giờ phần chuẩn bị, giữ quyền duyệt</h2>
+  <svg class="dongho" viewBox="0 0 150 150" fill="none">
+    <circle cx="75" cy="75" r="64" stroke="#5BA3E6" stroke-width="7"/>
+    <line x1="75" y1="75" x2="75" y2="34" stroke="#fff" stroke-width="7" stroke-linecap="round" data-loop="spin" data-loop-dur="6000" style="transform-origin:75px 75px;transform-box:view-box"/>
+    <line x1="75" y1="75" x2="104" y2="75" stroke="#F59E0B" stroke-width="7" stroke-linecap="round"/>
+  </svg>
+  <div class="the" style="left:120px" data-anim="left" data-delay="200">
+    <b><code>/schedule</code> trong khung chat</b>
+    <p>Hẹn một lần hoặc lặp lại.</p>
+    <p>Lịch thuộc về cuộc trò chuyện đã tạo ra nó.</p>
+  </div>
+  <div class="the" style="left:1020px" data-anim="right" data-delay="350">
+    <b>Automations trong App</b>
+    <p>Việc định kỳ, vẫn chạy khi đã đóng cuộc trò chuyện.</p>
+    <p>Mỗi lần chạy mở một cuộc trò chuyện mới.</p>
+  </div>
+  <div class="luat" data-step="1" data-anim="rise"><b>Chạy theo lịch:</b> quy trình chỉ làm tới Điểm duyệt 1 rồi dừng, ghi nhật ký, chờ bạn vào duyệt. Không bao giờ tự đăng.</div>
+  <div class="src">Nguồn: antigravity.google/docs/commands/schedule, tra ngày 09/11/2026. Tên mục có thể khác theo phiên bản.</div>
+  <div class="pg">11</div>
+</section>
+
+<!-- 12. SHOWCASE -->
+<section class="slide light s12" data-scene="showcase">
+  <div class="kicker">Trạm 6 · Showcase</div>
+  <h2 class="title" data-anim="wipe">Ba phút mỗi học viên, góp ý theo ba tiêu chí</h2>
+  <div class="tl" data-stagger="150" data-delay="300">
+    <div class="row" data-anim="left"><div class="bar" style="width:150px">30 giây</div><p>Thương hiệu, sản phẩm, khách hàng</p></div>
+    <div class="row" data-anim="left"><div class="bar" style="width:260px">60 giây</div><p>Câu lệnh và điều đã sửa ở 3 điểm duyệt</p></div>
+    <div class="row" data-anim="left"><div class="bar" style="width:260px">60 giây</div><p>Chiếu video, mở link bài đăng</p></div>
+    <div class="row" data-anim="left"><div class="bar" style="width:150px">30 giây</div><p>Một điều sẽ đổi trong skill</p></div>
+  </div>
+  <div class="tcn" data-anim="fade" data-delay="700">Tiêu chí góp ý</div>
+  <div class="tc" style="top:310px" data-step="1" data-anim="right"><b>Đúng thương hiệu</b><p>Màu, giọng văn, điều cấm, nhãn AI</p></div>
+  <div class="tc" style="top:500px" data-step="2" data-anim="right"><b>Ba giây đầu</b><p>Hook có giữ chân người xem</p></div>
+  <div class="tc" style="top:690px" data-step="3" data-anim="right"><b>Dùng lại được</b><p>Đổi sản phẩm vẫn chạy bằng một câu lệnh</p></div>
+  <div class="pg">12</div>
+</section>
+
+<!-- 13. BỘ MANG VỀ -->
+<section class="slide dark s13" data-scene="mang-ve">
+  <div class="kicker">Tóm tắt khóa học</div>
+  <h2 class="title" data-anim="wipe">Bộ skill và agent bạn mang về</h2>
+  <div data-stagger="120" data-delay="250">
+    <div class="o" style="left:120px;top:300px" data-anim="pop"><div class="bu">Buổi 1</div><b>file-thuong-hieu</b><i>hook-video-3-giay · nguoi-soat</i></div>
+    <div class="o" style="left:680px;top:300px" data-anim="pop"><div class="bu">Buổi 2</div><b>kich-ban-video</b><i>nguoi-cham-kich-ban</i></div>
+    <div class="o" style="left:120px;top:490px" data-anim="pop"><div class="bu">Buổi 3</div><b>hinh-anh-nhan-vat</b><i>nguoi-soat-anh</i></div>
+    <div class="o" style="left:680px;top:490px" data-anim="pop"><div class="bu">Buổi 4</div><b>dung-video</b><i>nguoi-cham-video</i></div>
+    <div class="o moi" style="left:120px;top:680px;width:1080px" data-anim="pop"><div class="bu">Buổi 5</div><b>dang-bai · quy-trinh-video</b><i>dao-dien</i></div>
+  </div>
+  <div class="tong" data-anim="right" data-delay="900"><b>7 skill<br>5 agent</b>Lưu trong repo GitHub riêng tư của bạn, mang sang dự án mới chỉ cần đổi file thương hiệu.</div>
+  <div class="pg">13</div>
+</section>
+
+<!-- 14. KẾT -->
+<section class="slide light s14" data-scene="ket">
+  <div class="q" data-anim="fade">Một câu lệnh có làm được video marketing thật?</div>
+  <h2 data-anim="rise" data-delay="200">Được, khi Agent làm đủ các bước và <span>bạn giữ ba điểm duyệt.</span></h2>
+  <div class="ra" data-anim="fade" data-delay="600">Đầu ra của khóa: <b>quy trình một câu lệnh</b>, <b>video đăng thật</b> trên tài khoản thử, <b>bộ skill</b> trên GitHub.<br>Bước tiếp theo: chạy tiếp sản phẩm thứ 2, gửi link vào nhóm lớp.</div>
+  <div class="khung" data-morph="khung"></div>
+  <svg class="tick" viewBox="0 0 240 240" fill="none">
+    <circle cx="120" cy="120" r="100" stroke="#3A7CC6" stroke-width="10" data-anim="draw" data-delay="400"/>
+    <path d="M72 124 L106 158 L172 88" stroke="#15803D" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" data-anim="draw" data-delay="900"/>
+  </svg>
+  <div class="ky" data-anim="fade" data-delay="1000">Cole.vn · Lưu Tuấn Anh</div>
+</section>
+
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+/* SlideMotion runtime: the smallest thing a free-form deck needs.
+   - scales a 1920x1080 .sm-stage to the window
+   - keys / click / swipe / F fullscreen / #hash
+   - data-anim (enter effects), data-loop (ambient loops), data-step (click reveals)
+   - data-morph="id": same id on consecutive slides glides between positions (Morph by name)
+   - data-count="1234": number counts up on entry
+   - data-steps="n" on a slide: n clicks driven by a script; events 'sm:change' and 'sm:step' carry { index, slide, step }
+   - copies the slide's data-scene onto the stage, so persistent layers can morph with plain CSS
+   - data-cam on a slide + data-parallax="0.3..1" on background layers: camera pan with depth
+   - print (Ctrl+P): every slide on its own page, every step shown, no motion: a handout
+   No layouts, no frames: every slide is designed by the author. */
+(() => {
+  const W = 1920, H = 1080;
+  const css = `
+html,body{margin:0;height:100%;background:#000;overflow:hidden}
+.sm-stage{position:absolute;width:${W}px;height:${H}px;transform-origin:0 0;overflow:hidden;--sm-ease:cubic-bezier(.2,.8,.2,1)}
+.sm-stage>.slide{position:absolute;inset:0;visibility:hidden;opacity:0;transition:opacity var(--sm-tr,.5s) ease,visibility 0s var(--sm-tr,.5s)}
+.sm-stage>.slide.on{visibility:visible;opacity:1;z-index:1;transition:opacity var(--sm-tr,.5s) ease}
+.sm-stage:not(.sm-ready)>.slide{transition:none!important}
+.slide[data-transition=cut]{--sm-tr:0s}
+.slide[data-transition=wipe].on{animation:sm-wipe .7s var(--sm-ease)}
+.slide[data-transition=zoom].on{animation:sm-zoomin .7s var(--sm-ease)}
+svg [data-anim],svg [data-loop]{transform-box:fill-box;transform-origin:center}
+[data-anim]{transition:opacity .3s,transform .3s,filter .3s,clip-path .3s,stroke-dashoffset .3s}
+[data-anim=fade]{opacity:0}
+[data-anim=rise]{opacity:0;transform:translateY(40px)}
+[data-anim=drop]{opacity:0;transform:translateY(-140px)}
+[data-anim=left]{opacity:0;transform:translateX(-90px)}
+[data-anim=right]{opacity:0;transform:translateX(90px)}
+[data-anim=zoom]{opacity:0;transform:scale(.82)}
+[data-anim=pop]{opacity:0;transform:scale(.4)}
+[data-anim=blur]{opacity:0;filter:blur(14px)}
+[data-anim=wipe]{clip-path:inset(0 100% 0 0)}
+[data-anim=rise-wipe]{clip-path:inset(100% 0 0 0)}
+[data-anim=stamp]{opacity:0;transform:scale(2.4) rotate(-14deg)}
+[data-anim=draw]{stroke-dasharray:1;stroke-dashoffset:1}
+.on [data-anim]:not([data-step]),.on [data-anim].sm-shown{opacity:1;transform:none;filter:none;clip-path:inset(-400px -400px -400px -400px);stroke-dashoffset:0;
+  transition:opacity var(--sm-t,800ms) var(--sm-ease) var(--sm-d,0ms),transform var(--sm-t,800ms) var(--sm-ease) var(--sm-d,0ms),
+  filter var(--sm-t,800ms) var(--sm-ease) var(--sm-d,0ms),clip-path var(--sm-t,900ms) var(--sm-ease) var(--sm-d,0ms),
+  stroke-dashoffset var(--sm-t,1400ms) var(--sm-ease) var(--sm-d,0ms)}
+.on :is([data-anim=pop],[data-anim=drop],[data-anim=stamp]):is(:not([data-step]),.sm-shown){transition-timing-function:cubic-bezier(.3,1.6,.5,1)}
+[data-step]:not([data-anim]){opacity:0;transition:opacity .4s}
+[data-step].sm-shown:not([data-anim]){opacity:1}
+[data-loop=pulse]{animation:sm-pulse 1.6s ease-in-out infinite}
+[data-loop=float]{animation:sm-float 5s ease-in-out infinite}
+[data-loop=spin]{animation:sm-spin var(--sm-loop,20s) linear infinite}
+[data-loop=sway]{animation:sm-sway 4s ease-in-out infinite}
+[data-loop=blink]{animation:sm-blink 1s steps(1) infinite}
+[data-loop=scan]{animation:sm-scan var(--sm-loop,2.6s) linear infinite}
+.slide:not(.on) [data-loop]{animation-play-state:paused}
+@keyframes sm-pulse{50%{opacity:.4;transform:scale(.88)}}
+@keyframes sm-float{50%{transform:translateY(-14px)}}
+@keyframes sm-spin{to{transform:rotate(360deg)}}
+@keyframes sm-sway{50%{transform:rotate(3deg)}}
+@keyframes sm-blink{50%{opacity:0}}
+@keyframes sm-scan{from{transform:translateY(0)}to{transform:translateY(var(--sm-scan,400px))}}
+@keyframes sm-wipe{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes sm-zoomin{from{transform:scale(1.08);filter:blur(6px)}to{transform:none;filter:none}}
+[data-parallax]{transition:transform 1.6s cubic-bezier(.65,0,.25,1)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+@media print{@page{size:16in 9in;margin:0}
+ html,body{height:auto;overflow:visible;overflow-x:hidden;background:#fff}
+ .sm-stage{position:relative!important;transform:none!important;left:0!important;top:0!important;height:auto!important;overflow:hidden!important;zoom:.8}
+ .sm-stage>.slide{position:relative!important;visibility:visible!important;opacity:1!important;height:1080px;overflow:hidden;break-after:page}
+ [data-anim],[data-step]{opacity:1!important;transform:none!important;filter:none!important;clip-path:none!important;stroke-dashoffset:0!important}
+ *{animation:none!important;transition:none!important}}`;
+  document.head.insertAdjacentHTML('beforeend', `<style id="sm-base">${css}</style>`);
+
+  const stage = document.querySelector('.sm-stage');
+  const slides = [...stage.querySelectorAll(':scope > .slide')];
+  const SHAPES = 'path,line,polyline,polygon,rect,circle,ellipse';
+  let cur = -1, step = 0, scale = 1;
+
+  // prepare: draw on groups, pathLength, stagger, delays and durations
+  stage.querySelectorAll('g[data-anim=draw]').forEach(g => {
+    g.querySelectorAll(SHAPES).forEach((s, i) => {
+      s.dataset.anim = 'draw';
+      s.dataset.delay = s.dataset.delay || (+(g.dataset.delay || 0) + i * +(g.dataset.stagger || 120));
+    });
+    g.removeAttribute('data-anim');
+  });
+  stage.querySelectorAll('[data-anim=draw]').forEach(s => s.hasAttribute('pathLength') || s.setAttribute('pathLength', 1));
+  stage.querySelectorAll('[data-stagger]:not(g)').forEach(p => [...p.children].forEach((c, i) => {
+    if (!c.dataset.delay) c.dataset.delay = +(p.dataset.delay || 0) + i * +p.dataset.stagger;
+  }));
+  stage.querySelectorAll('[data-delay],[data-dur],[data-loop-dur]').forEach(e => {
+    if (e.dataset.delay) e.style.setProperty('--sm-d', e.dataset.delay + 'ms');
+    if (e.dataset.dur) e.style.setProperty('--sm-t', e.dataset.dur + 'ms');
+    if (e.dataset.loopDur) e.style.setProperty('--sm-loop', e.dataset.loopDur + 'ms');
+  });
+
+  // data-steps on a slide: clicks handled by a script (e.g. a GSAP timeline), not by [data-step] elements
+  const maxStep = s => Math.max(+(s.dataset.steps || 0), ...[...s.querySelectorAll('[data-step]')].map(e => +e.dataset.step));
+  const showSteps = (s, n) => s.querySelectorAll('[data-step]').forEach(e => e.classList.toggle('sm-shown', +e.dataset.step <= n));
+
+  function fit() {
+    scale = Math.min(innerWidth / W, innerHeight / H);
+    Object.assign(stage.style, { transform: `scale(${scale})`, left: (innerWidth - W * scale) / 2 + 'px', top: (innerHeight - H * scale) / 2 + 'px' });
+  }
+
+  function morph(from, to) {
+    to.querySelectorAll('[data-morph]').forEach(n => {
+      const o = from.querySelector(`[data-morph="${n.dataset.morph}"]`);
+      if (!o) return;
+      const a = o.getBoundingClientRect(), b = n.getBoundingClientRect();
+      if (!b.width || !b.height) return;
+      n.style.transition = 'none';
+      n.style.transformOrigin = '0 0';
+      n.style.transform = `translate(${(a.left - b.left) / scale}px,${(a.top - b.top) / scale}px) scale(${a.width / b.width},${a.height / b.height})`;
+      o.style.visibility = 'hidden';
+      n.getBoundingClientRect();
+      n.style.transition = 'transform var(--sm-t,1000ms) cubic-bezier(.7,0,.2,1)';
+      n.style.transform = '';
+      setTimeout(() => { o.style.visibility = ''; }, 1100);
+    });
+  }
+
+  function count(s) {
+    s.querySelectorAll('[data-count]').forEach(e => {
+      const to = +e.dataset.count, t0 = performance.now(), dur = +(e.dataset.dur || 1400), d = +(e.dataset.delay || 0);
+      const fmt = v => Math.round(v).toLocaleString('vi-VN');
+      e.textContent = fmt(0);
+      const tick = t => {
+        const k = Math.min(1, Math.max(0, (t - t0 - d) / dur));
+        e.textContent = fmt(to * (1 - Math.pow(1 - k, 3)));
+        if (k < 1 && s.classList.contains('on')) requestAnimationFrame(tick);
+        else e.textContent = fmt(to);
+      };
+      requestAnimationFrame(tick);
+    });
+  }
+
+  function go(n, full = false) {
+    n = Math.max(0, Math.min(slides.length - 1, n));
+    if (n === cur) return;
+    const prev = slides[cur], next = slides[n];
+    if (prev) { morph(prev, next); prev.classList.remove('on'); }
+    cur = n; step = full ? maxStep(next) : 0;
+    showSteps(next, step);
+    next.classList.add('on');
+    stage.dataset.slide = n + 1;
+    stage.dataset.scene = next.dataset.scene || n + 1;
+    stage.style.setProperty('--sm-progress', slides.length > 1 ? n / (slides.length - 1) : 1);
+    if (next.dataset.cam !== undefined) stage.querySelectorAll('[data-parallax]').forEach(l => {
+      if (!prev) l.style.transition = 'none';   // first slide: stand in place, do not pan from 0
+      l.style.transform = `translateX(${-(+next.dataset.cam) * +l.dataset.parallax}px)`;
+      if (!prev) { l.getBoundingClientRect(); l.style.transition = ''; }
+    });
+    count(next);
+    history.replaceState(null, '', '#' + (n + 1));
+    stage.dispatchEvent(new CustomEvent('sm:change', { detail: { index: n, slide: next, step, full } }));
+  }
+  const stepTo = n => { step = n; showSteps(slides[cur], n); stage.dispatchEvent(new CustomEvent('sm:step', { detail: { index: cur, slide: slides[cur], step: n } })); };
+  const nextStep = () => cur < 0 ? go(0) : step < maxStep(slides[cur]) ? stepTo(step + 1) : go(cur + 1);
+  const prevStep = () => cur < 0 ? go(0) : step > 0 ? stepTo(step - 1) : go(cur - 1, true);
+
+  addEventListener('keydown', e => {
+    if (['ArrowRight', 'ArrowDown', 'PageDown', ' ', 'Enter'].includes(e.key)) { e.preventDefault(); nextStep(); }
+    else if (['ArrowLeft', 'ArrowUp', 'PageUp', 'Backspace'].includes(e.key)) { e.preventDefault(); prevStep(); }
+    else if (e.key === 'Home') go(0);
+    else if (e.key === 'End') go(slides.length - 1, true);
+    else if (e.key === 'f' || e.key === 'F') document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen();
+  });
+  addEventListener('click', e => {
+    if (e.target.closest('a,button,input,textarea,select,[contenteditable]') || String(getSelection())) return;
+    e.clientX > innerWidth / 3 ? nextStep() : prevStep();
+  });
+  let tx = null;
+  addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
+  addEventListener('touchend', e => {
+    if (tx === null) return;
+    const d = e.changedTouches[0].clientX - tx;
+    if (Math.abs(d) > 40) d < 0 ? nextStep() : prevStep();
+    tx = null;
+  });
+  addEventListener('resize', fit);
+  fit();
+  window.deck = { go: i => go(i, true), next: nextStep, prev: prevStep, get index() { return cur; }, count: slides.length, stage, slides };
+  // start after the whole page is parsed, so listeners on 'sm:change' in later scripts catch the first slide;
+  // setTimeout, not requestAnimationFrame: rAF never fires while the tab is hidden
+  // until the first slide is up, slides switch without fading: otherwise every slide painted before this script
+  // ran would fade out together on load
+  const start = () => setTimeout(() => { cur < 0 && go((parseInt(location.hash.slice(1)) || 1) - 1); setTimeout(() => stage.classList.add('sm-ready'), 60); }, 0);
+  document.readyState === 'loading' ? addEventListener('DOMContentLoaded', start) : start();
+})();
+
+</script>
+<script>
+/* SlideMotion x GSAP: one timeline per slide, clicks move between labels. Load AFTER gsap (+ plugins) and deck.js.
+   scene('#s-cat', (s, tl, k) => {
+     tl.from(...)                       // intro: plays on entry
+     tl.addLabel('step1').to(...)       // click 1 plays from 'step1' to 'step2' (or to the end)
+     tl.addLabel('step2').to(...)
+     k.loop(gsap.to(...))               // optional ambient tweens, killed when the slide leaves
+   });
+   The slide must declare data-steps="2" (number of step labels) so deck.js knows how many clicks it owns.
+   Clicking back plays the segment in reverse. HTML is the FINAL state; use from()/fromTo() for entrances,
+   so print (Ctrl+P) and a missing GSAP both show a complete slide.
+   k.px(el) gives an element's box in stage pixels (1920x1080), for "fly from that word to here" moves. */
+(() => {
+  const deck = window.deck, G = window.gsap;
+  if (!deck || !G) return;
+  G.registerPlugin(...['SplitText', 'DrawSVGPlugin', 'MorphSVGPlugin', 'MotionPathPlugin', 'Flip', 'CustomEase', 'CustomBounce', 'ScrambleTextPlugin'].map(n => window[n]).filter(Boolean));
+  const stage = deck.stage, builds = new Map(), dying = new Map();
+  let live = null;
+
+  const px = el => {
+    const k = stage.getBoundingClientRect().width / 1920, r = el.getBoundingClientRect(), o = stage.getBoundingClientRect();
+    return { x: (r.left - o.left) / k, y: (r.top - o.top) / k, w: r.width / k, h: r.height / k };
+  };
+  window.scene = (target, build) => {
+    const s = typeof target === 'string' ? document.querySelector(target) : target;
+    if (!s) return console.warn('scene: not found', target);
+    builds.set(s, build);
+  };
+
+  const endOf = (tl, n) => tl.labels['step' + (n + 1)] ?? tl.duration();
+  function retire(s, ctx) {   // revert after the fade-out, so nothing snaps while still visible
+    clearTimeout(dying.get(s)?.t);
+    dying.set(s, { ctx, t: setTimeout(() => { ctx.revert(); dying.delete(s); }, 650) });
+  }
+  function enter(s, step, full) {
+    if (live) { live.tw && live.tw.kill(); retire(live.s, live.ctx); live = null; }
+    const b = builds.get(s);
+    if (!b) return;
+    const d = dying.get(s); if (d) { clearTimeout(d.t); d.ctx.revert(); dying.delete(s); }
+    const tl = G.timeline({ paused: true }), loops = [];
+    const k = { px, loop: t => (loops.push(t), t) };
+    const ctx = G.context(() => b(s, tl, k), s);
+    const n = Object.keys(tl.labels).filter(l => /^step\d+$/.test(l)).length;
+    if (n !== +(s.dataset.steps || 0)) console.warn(`scene: ${n} step labels but data-steps="${s.dataset.steps || 0}"`, s);
+    live = { s, ctx, tl, tw: null };
+    if (full) tl.progress(1); else go(step);
+  }
+  function go(step) {
+    const { tl } = live, from = tl.time(), to = endOf(tl, step);
+    live.tw && live.tw.kill();
+    live.tw = tl.tweenTo(to);
+    if (to < from) live.tw.timeScale(1.8);   // rewind a little faster than it played
+  }
+
+  stage.addEventListener('sm:change', e => enter(e.detail.slide, e.detail.step, e.detail.full));
+  stage.addEventListener('sm:step', e => live && live.s === e.detail.slide && go(e.detail.step));
+  if (deck.index >= 0) enter(deck.slides[deck.index], 0, false);
+  addEventListener('beforeprint', () => { live && live.ctx.revert(); dying.forEach(d => d.ctx.revert()); });
+  addEventListener('afterprint', () => { if (live) { const s = live.s; live = null; enter(s, 0, true); } });
+  window.scenes = { px, get live() { return live; } };
+})();
+
+</script>
+<script>
+
+scene('.s7', (s, tl, k) => {
+  const phim = s.querySelector('.phim');
+  gsap.set(phim, { x: -1620 });
+  gsap.set(s.querySelectorAll('.cac-cong line'), { attr: { stroke: '#F59E0B' } });
+  tl.from(s.querySelector('.ray'), { attr: { x2: 140 }, duration: 1, ease: 'power2.out' })
+    .from(s.querySelectorAll('.cac-tram circle'), { scale: 0, transformOrigin: '50% 50%', stagger: .08, duration: .4, ease: 'back.out(2)' }, '<.2')
+    .from(phim, { scale: 0, duration: .4, ease: 'back.out(2)' }, '-=.1');
+  tl.addLabel('step1').to(phim, { x: 1003 - 1760, duration: 1.4, ease: 'power3.inOut' })
+    .to(s.querySelector('.g1'), { attr: { stroke: '#22C55E' }, duration: .3 });
+  tl.addLabel('step2').to(phim, { x: 1250 - 1760, duration: .9, ease: 'power3.inOut' })
+    .to(s.querySelector('.g2'), { attr: { stroke: '#22C55E' }, duration: .3 });
+  tl.addLabel('step3').to(phim, { x: 0, duration: 1.3, ease: 'power3.inOut' })
+    .to(s.querySelector('.g3'), { attr: { stroke: '#22C55E' }, duration: .3 });
+  k.loop(gsap.to(phim, { boxShadow: '0 0 70px rgba(91,163,230,1)', repeat: -1, yoyo: true, duration: .9 }));
+});
+scene('.s9', (s, tl, k) => {
+  const cu = s.querySelector('.cu'), moi = s.querySelector('.doi');
+  gsap.set(cu, { opacity: 1 });
+  gsap.set(moi, { opacity: 0 });
+  tl.to({}, { duration: .2 });
+  tl.addLabel('step1').to(cu, { y: -50, opacity: 0, duration: .5, ease: 'power2.in' })
+    .fromTo(moi, { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: .6, ease: 'back.out(2)' }, '-=.1');
+});
+
+</script>
+</body>
+</html>

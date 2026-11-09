@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Buổi 4: Dựng và hiệu chỉnh video | Bootcamp AI Video</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<nav class="top"><div class="wrap">
+  <a class="home" href="index.html">Bootcamp AI Video</a>
+  <a href="chuan-bi.html">Chuẩn bị</a>
+  <a href="buoi-1.html">Buổi 1</a>
+  <a href="buoi-2.html">Buổi 2</a>
+  <a href="buoi-3.html">Buổi 3</a>
+  <a href="buoi-4.html">Buổi 4</a>
+  <a href="buoi-5.html">Buổi 5</a>
+</div></nav>
+
+<header class="hero">
+  <div class="wrap">
+    <img class="logo" src="assets/logo-cole-trang.png" alt="Cole">
+    <div><span class="nhan">Buổi 4 · Thực hành</span></div>
+    <h1>Dựng và hiệu chỉnh video</h1>
+    <p>Ghép kịch bản buổi 2 và bộ ảnh buổi 3 thành video quảng cáo dọc 9:16 có giọng đọc tiếng Việt, nhạc nền, phụ đề, đúng màu thương hiệu. Xem và chỉnh trên timeline, chấm video theo checklist trước khi đăng. Mỗi bước có câu lệnh mẫu, bấm Chép rồi dán vào Antigravity.</p>
+    <div class="chips">
+      <span>Thời gian: <b>20:00 đến 22:00, thứ 5 19/11/2026</b></span>
+      <a href="slide/buoi-4.html">Mở slide buổi 4</a>
+      <a href="tai-ve/buoi-04.zip">Tải bộ cài buổi 4</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="card">
+    <h2>Lịch buổi học</h2>
+    <div class="bang-cuon"><table>
+      <tr><th style="width:130px">Giờ</th><th>Phần</th><th>Bạn làm ra</th></tr>
+      <tr><td>20:00 đến 20:10</td><td><a href="#p0">0. Kiểm tra kịch bản và ảnh buổi 3</a></td><td>Bảng ghép ảnh vào từng cảnh</td></tr>
+      <tr><td>20:10 đến 20:30</td><td><a href="#p1">1. Cài VideoMotion và phần phụ trợ</a></td><td>Máy báo <code>SAN SANG</code></td></tr>
+      <tr><td>20:30 đến 20:35</td><td><a href="#p2">2. Tải và cài bộ buổi 4</a></td><td>1 skill, 1 agent, 1 checklist đã cài</td></tr>
+      <tr><td>20:35 đến 20:55</td><td><a href="#p3">3. Dựng video đầu tiên</a></td><td>Video đang render</td></tr>
+      <tr><td>20:55 đến 21:00</td><td>Nghỉ (máy vẫn render)</td><td></td></tr>
+      <tr><td>21:00 đến 21:15</td><td><a href="#p4">4. Xem và chỉnh trên HyperFrames Studio</a></td><td>Đã xem từng cảnh trên timeline</td></tr>
+      <tr><td>21:15 đến 21:30</td><td><a href="#p5">5. Phối màu, phụ đề, nhạc</a></td><td>Bản video đã chỉnh</td></tr>
+      <tr><td>21:30 đến 21:40</td><td><a href="#p6">6. Agent chấm video</a></td><td>Bảng chấm theo checklist</td></tr>
+      <tr><td>21:40 đến 21:52</td><td><a href="#p7">7. Cảnh nhân vật chuyển động bằng Google Flow</a></td><td>Xem giảng viên demo</td></tr>
+      <tr><td>21:52 đến 22:00</td><td><a href="#p8">8. Kiểm tra cuối buổi và bài tập</a></td><td>01 video 9:16 MP4 đạt checklist</td></tr>
+    </table></div>
+    <div class="note lam"><b>Cách đọc câu lệnh mẫu:</b> chữ IN HOA trong câu lệnh là chỗ bạn thay bằng thông tin của mình. Kết quả chưa ưng thì nói thẳng chỗ chưa ưng, không cần gõ lại cả câu lệnh.</div>
+    <div class="note vang"><b>Nên làm phần 1 trước giờ học:</b> lần cài đầu tải khoảng 2 đến 3 GB (giọng đọc VieNeu, model nghe lại Whisper). Mạng chậm thì 20 phút trên lớp không đủ. Làm trước ở nhà, lên lớp chỉ còn bước kiểm tra.</div>
+  </section>
+
+  <!-- PHẦN 0 -->
+  <section class="card" id="p0">
+    <span class="phut">20:00 đến 20:10</span>
+    <h2><span class="so">0</span>Kiểm tra kịch bản và ảnh buổi 3</h2>
+    <p class="dung">Video dựng từ ba thứ đã có: kịch bản (buổi 2), bộ ảnh (buổi 3), file thương hiệu (buổi 1). Thiếu một thứ thì dừng ở đây bổ sung trước.</p>
+    <div class="prompt"><span class="nhan-p">Dán vào Antigravity</span><button>Chép</button><p>Tôi gửi bạn: kịch bản trong thư mục kich-ban, bộ ảnh trong thư mục anh, file thương hiệu .agents/rules/thuong-hieu.md.
+
+Việc cần làm:
+1. Cho tôi biết kịch bản nào sẽ dùng để dựng video, có bao nhiêu cảnh, tổng bao nhiêu giây.
+2. Ghép từng ảnh trong thư mục anh vào đúng cảnh của kịch bản. Cảnh nào chưa có ảnh, ảnh nào không rõ của cảnh nào thì ghi rõ.
+3. Kiểm tra trong thư mục du-lieu có file logo không.
+
+Kết quả: một bảng gồm cảnh, lời thoại, ảnh dùng, ghi chú. Chỉ trả lời trong khung chat, không tạo hay sửa file nào.</p></div>
+    <div class="note xanh"><b>Ảnh buổi 3 đã đặt tên theo cảnh</b> (<code>anh/canh/canh-01-dau.png</code>, <code>canh-01-cuoi.png</code>...) và có bảng <code>anh/danh-sach-anh.md</code>, nên Agent ghép tự động, khỏi hỏi lại. Logo nên là file PNG nền trong suốt, đặt tên có chữ <code>logo</code>, để trong <code>du-lieu/</code>.</div>
+  </section>
+
+  <!-- PHẦN 1 -->
+  <section class="card" id="p1">
+    <span class="phut">20:10 đến 20:30</span>
+    <h2><span class="so">1</span>Cài VideoMotion và phần phụ trợ</h2>
+    <p class="dung"><b>VideoMotion</b> là bộ công cụ dựng video tiếng Việt miễn phí của giảng viên (repo công khai <a class="link" href="https://github.com/andyluu98/VideoMotion">github.com/andyluu98/VideoMotion</a>). Nó đọc kịch bản, đọc giọng bằng VieNeu, chia cảnh theo từng từ, dựng hình bằng HyperFrames, trộn nhạc, gắn phụ đề, xuất MP4.</p>
+
+    <h3>1.1. Cài 3 phần mềm nền (tự cài bằng tay)</h3>
+    <div class="bang-cuon"><table>
+      <tr><th>Phần mềm</th><th>Bản cần</th><th>Tải ở đâu</th><th>Để làm gì</th></tr>
+      <tr><td>Node.js</td><td>22 trở lên</td><td><a class="link" href="https://nodejs.org">nodejs.org</a></td><td>Chạy HyperFrames: dựng hình, render video</td></tr>
+      <tr><td>Python</td><td>3.10 trở lên</td><td><a class="link" href="https://www.python.org/downloads/">python.org</a></td><td>Chạy giọng đọc, trộn nhạc, phụ đề</td></tr>
+      <tr><td>ffmpeg</td><td>bản đầy đủ</td><td><a class="link" href="https://ffmpeg.org/download.html">ffmpeg.org</a></td><td>Ghép âm thanh, xuất MP4</td></tr>
+      <tr><td>uv (nên có)</td><td>không bắt buộc</td><td><a class="link" href="https://docs.astral.sh/uv/">docs.astral.sh/uv</a></td><td>Cài phần Python nhanh hơn</td></tr>
+    </table></div>
+    <ul>
+      <li>Cài Python trên Windows: ở màn hình đầu tiên tích ô <b>Add python.exe to PATH</b> rồi mới bấm Install.</li>
+      <li>ffmpeg trên Windows không có trình cài: tải bản nén, giải nén, rồi thêm thư mục <code>bin</code> vào PATH. Chưa quen thì nhờ Agent hướng dẫn từng bước, hoặc hỏi giảng viên.</li>
+      <li>Cài xong cả ba thì <b>tắt hẳn Antigravity rồi mở lại</b>, để Antigravity nhận phần mềm mới.</li>
+    </ul>
+
+    <h3>1.2. Tải VideoMotion vào dự án</h3>
+    <ol>
+      <li>Mở <a class="link" href="https://github.com/andyluu98/VideoMotion">github.com/andyluu98/VideoMotion</a>, bấm nút xanh <b>Code</b>, chọn <b>Download ZIP</b> (như buổi 1).</li>
+      <li>Trong thư mục dự án <code>du-an-video</code>, tạo thư mục <code>cong-cu</code>.</li>
+      <li>Giải nén file ZIP vào <code>cong-cu</code>. Thư mục giải nén ra tên <code>VideoMotion-master</code>: đổi tên thành <code>VideoMotion</code>.</li>
+      <li>Kiểm tra: có file <code>cong-cu/VideoMotion/README.md</code> và <code>cong-cu/VideoMotion/skills/videomotion/SKILL.md</code>.</li>
+    </ol>
+    <div class="cay">du-an-video
+├── cong-cu/
+│   └── VideoMotion/         mới: bộ công cụ dựng video
+│       ├── README.md
+│       ├── skills/          hướng dẫn dựng (videomotion, vm-giong, vm-nhac, vm-dung, vm-cai-dat)
+│       ├── agents/vm-canh.md   cách dựng một cảnh
+│       ├── styles/          91 phong cách hình
+│       └── tools/           công cụ chạy giọng, nhạc, ghép, kiểm tra máy
+├── kich-ban/  anh/  du-lieu/  video/  ...</div>
+    <div class="note lam"><b>Vì sao để VideoMotion trong dự án:</b> quy tắc trong <code>AGENTS.md</code> chỉ cho Agent làm việc bên trong thư mục dự án. Để VideoMotion ở đây thì Agent đọc được hướng dẫn mà không phải đụng chỗ khác trên máy.</div>
+
+    <h3>1.3. Nhờ Agent kiểm tra máy</h3>
+    <div class="prompt"><span class="nhan-p">Kiểm tra máy làm video</span><button>Chép</button><p>Tôi gửi bạn: thư mục cong-cu/VideoMotion, là bộ công cụ dựng video VideoMotion.
+
+Việc cần làm:
+1. Đọc cong-cu/VideoMotion/README.md và cong-cu/VideoMotion/skills/vm-cai-dat/SKILL.md.
+2. Chạy bước kiểm tra máy đúng như skill vm-cai-dat hướng dẫn (file tools/setup/doctor.py). Nói tôi biết lệnh trước, chờ tôi đồng ý rồi mới chạy.
+3. Giải thích bảng kết quả bằng lời dễ hiểu: dòng nào có, dòng nào THIẾU, dòng nào tùy chọn.
+
+Kết quả: một bảng ngắn, kèm việc tôi cần tự làm cho từng dòng THIẾU. Không tự cài phần mềm, không sửa file nào trong cong-cu/VideoMotion.</p></div>
+
+    <h3>1.4. Cài giọng đọc và phần Python</h3>
+    <p>Chỉ làm bước này khi bảng kiểm tra báo THIẾU dòng <b>Môi trường Python</b> hoặc <b>Giọng VieNeu</b>, còn Node.js, ffmpeg, HyperFrames đã có.</p>
+    <div class="prompt"><span class="nhan-p">Cài giọng VieNeu</span><button>Chép</button><p>Tôi gửi bạn: kết quả kiểm tra máy vừa rồi.
+
+Việc cần làm:
+1. Làm Bước 2 trong cong-cu/VideoMotion/skills/vm-cai-dat/SKILL.md để cài môi trường Python, giọng VieNeu và Whisper. Bước này tải khoảng 2 đến 3 GB, tôi đồng ý tải.
+2. Nói tôi biết lệnh trước khi chạy, chờ tôi đồng ý. Ghi nhật ký cài như skill hướng dẫn.
+3. Cài xong thì chạy lại bước kiểm tra máy.
+
+Kết quả: báo tôi máy đã SAN SANG chưa; chưa thì dòng nào còn THIẾU và vì sao.</p></div>
+    <div class="note vang"><b>VideoMotion ghi vào một thư mục ngoài dự án:</b> môi trường Python và model giọng được cài vào thư mục <code>.motionfly</code> trong thư mục người dùng của máy. Đây là chỗ duy nhất được phép ghi ngoài dự án, và chỉ qua lệnh cài của VideoMotion khi bạn đã đồng ý.</div>
+
+    <h3>Lỗi hay gặp</h3>
+    <div class="bang-cuon"><table>
+      <tr><th>Bảng báo</th><th>Nguyên nhân thường gặp</th><th>Cách xử lý</th></tr>
+      <tr><td><code>Node.js 22+ THIẾU</code></td><td>Chưa cài, hoặc bản cũ dưới 22</td><td>Cài bản mới từ nodejs.org, tắt và mở lại Antigravity</td></tr>
+      <tr><td><code>ffmpeg THIẾU</code> dù đã tải</td><td>Chưa thêm thư mục <code>bin</code> của ffmpeg vào PATH</td><td>Thêm vào PATH, mở lại Antigravity, kiểm tra lại</td></tr>
+      <tr><td><code>ffmpeg loudnorm</code> báo thiếu</td><td>Bản ffmpeg rút gọn</td><td>Tải bản đầy đủ</td></tr>
+      <tr><td>Lệnh <code>python</code> không chạy</td><td>Lúc cài Python quên tích Add python.exe to PATH</td><td>Chạy lại trình cài Python, chọn Modify, bật thêm vào PATH</td></tr>
+      <tr><td><code>HyperFrames THIẾU</code></td><td>Thiếu Node.js hoặc mạng chặn tải gói</td><td>Cài Node.js trước, kiểm tra mạng, chạy lại</td></tr>
+      <tr><td>Tải model đứng lâu hoặc đứt</td><td>Mạng chậm, file lớn</td><td>Để máy chạy tiếp; đứt thì chạy lại bước 1.4</td></tr>
+      <tr><td><code>External data path escapes model directory</code></td><td>Lỗi bộ đệm model trên Windows</td><td>Bước kiểm tra của VideoMotion tự sửa lỗi này; chạy lại bước 1.3</td></tr>
+      <tr><td><code>Skill HyperFrames cho Claude: tùy chọn</code></td><td>Mục này dành cho Claude Code</td><td>Bỏ qua, không ảnh hưởng khi dùng Antigravity</td></tr>
+      <tr><td><code>Card NVIDIA: tùy chọn</code></td><td>Máy không có card đồ họa rời</td><td>Vẫn chạy được, giọng đọc chạy chậm hơn</td></tr>
+    </table></div>
+  </section>
+
+  <!-- PHẦN 2 -->
+  <section class="card" id="p2">
+    <span class="phut">20:30 đến 20:35</span>
+    <h2><span class="so">2</span>Tải và cài bộ buổi 4</h2>
+    <ol>
+      <li>Tải <a href="tai-ve/buoi-04.zip">buoi-04.zip</a>. Trình duyệt thường lưu vào thư mục <b>Downloads</b>.</li>
+      <li>Mở File Explorer, kéo file <code>buoi-04.zip</code> vào thư mục <code>bo-cai</code> trong dự án.</li>
+      <li>Dán câu lệnh dưới đây vào Antigravity:</li>
+    </ol>
+    <div class="prompt"><span class="nhan-p">Giải nén và cài bộ buổi 4</span><button>Chép</button><p>Tôi gửi bạn: file bo-cai/buoi-04.zip, là bộ cài buổi 4 gồm thư mục skills (1 skill), agents (1 agent) và mau (checklist chấm video).
+
+Việc cần làm:
+1. Giải nén file đó ngay trong thư mục bo-cai. Trong file zip đã có sẵn thư mục buoi-04, nên giải nén xong sẽ có bo-cai/buoi-04. Nói tôi biết bạn dùng lệnh gì, chờ tôi đồng ý rồi mới chạy.
+2. Chép từng thư mục trong bo-cai/buoi-04/skills vào .agents/skills.
+3. Chép từng file trong bo-cai/buoi-04/agents vào .agents/agents.
+4. Thư mục mau giữ nguyên trong bo-cai/buoi-04, không chép đi đâu.
+5. Trùng tên thì hỏi tôi trước, không ghi đè. Không xóa file nào, kể cả file zip.
+6. Kiểm tra lại sau khi chép.
+
+Kết quả: báo tôi danh sách skill và agent đã cài, kèm đường dẫn.</p></div>
+    <div class="note vang"><b>Agent xin chạy lệnh giải nén:</b> trên Windows thường là lệnh <code>Expand-Archive</code>, trên macOS là <code>unzip</code>. Đọc lệnh, thấy chỉ giải nén vào thư mục <code>bo-cai</code> thì đồng ý. Lỡ ra thư mục lồng <code>bo-cai/buoi-04/buoi-04</code> thì báo Agent chuyển lên một cấp, không xóa gì. Lệnh có chữ <code>-Force</code>, <code>delete</code>, <code>rm</code> thì hỏi lại Agent nó làm gì trước khi đồng ý.</div>
+    <div class="cay">du-an-video
+├── .agents/
+│   ├── skills/
+│   │   ├── ...                    các buổi trước
+│   │   └── dung-video/            mới: dựng video từ kịch bản và ảnh
+│   └── agents/
+│       ├── ...                    các buổi trước
+│       └── nguoi-cham-video.md    mới: chấm video theo checklist
+└── bo-cai/buoi-04/mau/
+    └── checklist-cham-video.md    mới: 8 tiêu chí chấm video</div>
+    <p>Cài xong, mở một cuộc trò chuyện mới trong Antigravity. Gõ <code>/</code> trong khung chat, thấy <code>dung-video</code> là được.</p>
+  </section>
+
+  <!-- PHẦN 3 -->
+  <section class="card" id="p3">
+    <span class="phut">20:35 đến 20:55</span>
+    <h2><span class="so">3</span>Dựng video đầu tiên</h2>
+    <p class="dung">Skill <code>dung-video</code> là cầu nối: nó lấy kịch bản, ảnh, thương hiệu của bạn rồi làm theo quy trình của VideoMotion.</p>
+    <div class="luoi">
+      <div><b>1. Giọng đọc</b>Lời thoại trong kịch bản được đọc bằng giọng VieNeu, mặc định giọng Ngọc Huyền.<i>Máy tự nghe lại bằng Whisper để bắt chữ đọc sai.</i></div>
+      <div><b>2. Phân cảnh và nhạc</b>Mỗi cảnh neo theo từ khóa trong lời đọc; nhạc nền tự nhỏ đi khi có lời.<i>Chưa có file nhạc thì dùng nhạc máy tạo bằng code.</i></div>
+      <div><b>3. Dựng, render</b>Từng cảnh được dựng thành hình động có ảnh của bạn, màu thương hiệu, phụ đề, rồi xuất MP4.<i>Khoảng 2 giây máy cho mỗi giây video.</i></div>
+    </div>
+    <div class="prompt"><span class="nhan-p">Dựng video</span><button>Chép</button><p>/dung-video
+Tôi gửi bạn: kịch bản kich-ban/KICH-BAN-CUA-BAN.md, bộ ảnh trong thư mục anh, file thương hiệu .agents/rules/thuong-hieu.md.
+
+Việc cần làm:
+1. Dựng video quảng cáo dọc 9:16 đúng lời thoại trong kịch bản, mỗi cảnh dùng đúng ảnh đã ghép ở phần 0.
+2. Giọng Ngọc Huyền, nhạc nền vui tươi, có phụ đề, màu và logo theo file thương hiệu.
+3. Trình bày kế hoạch trước, tôi đồng ý thì mới làm. Lệnh nào tải hay cài thêm thì hỏi tôi trước.
+
+Kết quả: file MP4 trong thư mục video, báo tôi đường dẫn, thời lượng và file phụ đề.</p></div>
+    <div class="note lam"><b>Trong lúc chờ:</b> Agent sẽ xin chạy nhiều lệnh (sinh giọng, dựng cảnh, kiểm tra, render). Đọc từng lệnh, thấy chỉ làm việc trong <code>video/</code> và <code>cong-cu/VideoMotion</code> thì đồng ý. Render chạy tiếp trong giờ nghỉ, đừng tắt máy.</div>
+    <div class="note xanh"><b>Antigravity dựng từng cảnh lần lượt:</b> trên Claude Code, VideoMotion giao mỗi cảnh cho một trợ lý riêng dựng cùng lúc. Trên Antigravity, Agent tự dựng lần lượt từng cảnh theo file <code>agents/vm-canh.md</code>, đúng cách README của VideoMotion hướng dẫn cho công cụ khác. Kết quả như nhau, chỉ chậm hơn.</div>
+    <div class="note do"><b>Không ghi đè:</b> video xuất ra tên <code>video/TEN-SAN-PHAM-NGAYTHANGNAM.mp4</code>. Dựng lại cùng ngày thì bản cũ được chuyển vào <code>_backup/</code> trước, không mất.</div>
+  </section>
+
+  <!-- PHẦN 4 -->
+  <section class="card" id="p4">
+    <span class="phut">21:00 đến 21:15</span>
+    <h2><span class="so">4</span>Xem và chỉnh trên HyperFrames Studio</h2>
+    <p class="dung">HyperFrames Studio mở video trong trình duyệt dạng timeline: bấm chạy để xem, bấm vào từng cảnh để xem chữ, hình, thời điểm xuất hiện.</p>
+    <div class="prompt"><span class="nhan-p">Mở Studio</span><button>Chép</button><p>Tôi gửi bạn: thư mục dự án video vừa dựng trong thư mục video.
+
+Việc cần làm:
+1. Mở bản xem trước HyperFrames Studio cho dự án video đó, theo đúng lệnh preview trong cong-cu/VideoMotion/skills/vm-dung/SKILL.md. Nói tôi biết lệnh trước khi chạy.
+2. Báo tôi địa chỉ để mở trên trình duyệt.
+
+Kết quả: địa chỉ Studio và hướng dẫn ngắn cách xem từng cảnh.</p></div>
+    <ol>
+      <li>Mở địa chỉ Agent báo trên trình duyệt. Bấm chạy, xem hết video một lượt.</li>
+      <li>Ghi lại chỗ chưa ưng theo dạng: <b>cảnh mấy, giây thứ mấy, chưa ưng gì</b>. Ví dụ: "Cảnh 2, giây 6: chữ giá tiền nhỏ quá".</li>
+      <li>Chỉnh nhỏ (vị trí, thời điểm xuất hiện của chữ) làm ngay trên Studio được. Chỉnh lớn (lời đọc, nhạc, màu) thì nói cho Agent ở phần 5.</li>
+    </ol>
+    <div class="note vang"><b>Chỉnh trên Studio xong phải xuất lại:</b> Studio sửa file dựng, chưa sửa file MP4. Nhờ Agent "Xuất lại video theo bản đã chỉnh trên Studio, giữ bản cũ" để có MP4 mới.</div>
+  </section>
+
+  <!-- PHẦN 5 -->
+  <section class="card" id="p5">
+    <span class="phut">21:15 đến 21:30</span>
+    <h2><span class="so">5</span>Phối màu, phụ đề, nhạc</h2>
+    <p class="dung">Sửa bằng lời, mỗi lần một nhóm việc. Agent sửa đúng chỗ, giữ bản cũ.</p>
+    <h3>5.1. Phối màu theo thương hiệu</h3>
+    <div class="prompt"><span class="nhan-p">Chỉnh màu</span><button>Chép</button><p>Tôi gửi bạn: video vừa dựng và file .agents/rules/thuong-hieu.md.
+
+Việc cần làm:
+1. So màu nền, màu chữ, màu nhấn của video với bảng màu trong file thương hiệu. Báo tôi chỗ nào lệch.
+2. Sửa cho đúng: màu chính làm nền hoặc khối lớn, màu nhấn chỉ dùng cho chữ quan trọng như giá, nút kêu gọi.
+3. Xuất lại bản mới, giữ bản cũ.
+
+Kết quả: đường dẫn video mới và bảng màu đã dùng.</p></div>
+    <h3>5.2. Phụ đề đọc kịp</h3>
+    <div class="prompt"><span class="nhan-p">Chỉnh phụ đề</span><button>Chép</button><p>Tôi gửi bạn: video vừa dựng và file phụ đề phude.srt của nó.
+
+Việc cần làm:
+1. Chữ phụ đề to, rõ, đọc được trên điện thoại; nền phụ đề tương phản với chữ.
+2. Dòng nào dài thì tách cho ngắn lại; kiểm tra chính tả, đủ dấu.
+3. Phụ đề không che sản phẩm và logo.
+4. Xuất lại bản mới, giữ bản cũ.
+
+Kết quả: đường dẫn video mới, danh sách dòng phụ đề đã sửa.</p></div>
+    <h3>5.3. Nhạc nền và giọng</h3>
+    <div class="prompt"><span class="nhan-p">Chỉnh nhạc</span><button>Chép</button><p>Tôi gửi bạn: video vừa dựng.
+
+Việc cần làm:
+1. Nhạc nền NHỎ LẠI MỘT CHÚT để nghe rõ giọng đọc.
+2. Giữ đúng độ to chuẩn như skill vm-nhac của VideoMotion hướng dẫn.
+3. Xuất lại bản mới, giữ bản cũ.
+
+Kết quả: đường dẫn video mới và số đo độ to sau khi trộn.</p></div>
+    <div class="note xanh"><b>Đổi nhạc bằng file của bạn:</b> bỏ file nhạc vào <code>du-lieu/</code>, nói "Đổi nhạc nền sang file du-lieu/TEN-FILE-NHAC". Chỉ dùng nhạc bạn có quyền dùng cho quảng cáo. Không tải nhạc trên mạng về dùng khi chưa rõ giấy phép.</div>
+    <div class="note lam"><b>Đọc sai một chữ:</b> nói "Câu ... đọc sai chữ ..., sửa phát âm rồi sinh lại giọng câu đó". VideoMotion chỉ sinh lại đúng câu đã sửa.</div>
+  </section>
+
+  <!-- PHẦN 6 -->
+  <section class="card" id="p6">
+    <span class="phut">21:30 đến 21:40</span>
+    <h2><span class="so">6</span>Agent chấm video</h2>
+    <p class="dung">Người dựng không tự chấm bài mình. Agent <code>nguoi-cham-video</code> chấm độc lập theo 8 tiêu chí:</p>
+    <div class="bang-cuon"><table>
+      <tr><th>#</th><th>Tiêu chí</th><th>Đạt khi (tóm tắt)</th></tr>
+      <tr><td>1</td><td>Hook 3 giây</td><td>3 giây đầu có hình chính rõ và câu hook đúng kịch bản</td></tr>
+      <tr><td>2</td><td>Phụ đề đọc kịp</td><td>Mỗi dòng hiện ít nhất 1 giây, không quá 34 ký tự, đúng chính tả</td></tr>
+      <tr><td>3</td><td>Đúng màu</td><td>Dùng đúng màu chính, phụ, nhấn của file thương hiệu</td></tr>
+      <tr><td>4</td><td>Logo</td><td>Đúng vị trí, rõ, không che phụ đề</td></tr>
+      <tr><td>5</td><td>Âm lượng</td><td>Khoảng -14 LUFS; giọng rõ, nhạc nằm dưới giọng</td></tr>
+      <tr><td>6</td><td>Tỷ lệ 9:16</td><td>1080 x 1920, không viền đen</td></tr>
+      <tr><td>7</td><td>Thời lượng</td><td>Trong khoảng của file thương hiệu (mẫu: 15 tới 30 giây)</td></tr>
+      <tr><td>8</td><td>Lỗi hình</td><td>Không chữ tràn mép, ảnh vỡ, khung đen, chữ sai dấu</td></tr>
+    </table></div>
+    <div class="prompt"><span class="nhan-p">Trích khung rồi gọi người chấm</span><button>Chép</button><p>Tôi gửi bạn: file video/TEN-VIDEO.mp4 vừa xuất.
+
+Việc cần làm:
+1. Dùng ffmpeg trích ảnh khung ở giây 0,5; 1,5; 2,5; giữa video và giây cuối, lưu vào thư mục cham bên trong thư mục dự án video đó. Nói tôi biết lệnh trước khi chạy.
+2. Gọi agent nguoi-cham-video chấm video này theo checklist bo-cai/buoi-04/mau/checklist-cham-video.md.
+3. Chưa sửa gì.
+
+Kết quả: bảng chấm 8 tiêu chí, kèm câu sửa cho từng tiêu chí chưa đạt.</p></div>
+    <p>Tiêu chí nào chưa đạt, chép câu sửa trong bảng chấm dán lại cho Agent. Sửa xong chấm lại đúng tiêu chí đó.</p>
+    <div class="note vang"><b>Agent không nghe được tiếng:</b> tiêu chí âm lượng và lỗi hình, bạn luôn tự nghe bằng tai nghe và tự xem hết video một lượt trước khi đăng.</div>
+  </section>
+
+  <!-- PHẦN 7 -->
+  <section class="card" id="p7">
+    <span class="phut">21:40 đến 21:52</span>
+    <h2><span class="so">7</span>Cảnh nhân vật chuyển động bằng Google Flow</h2>
+    <p class="dung">Giảng viên demo, bạn xem và ghi chú. <b>Google Flow</b> là công cụ làm video bằng AI của Google: đưa ảnh nhân vật, mô tả chuyển động, Flow tạo ra một đoạn clip ngắn nhân vật cử động thật.</p>
+    <div class="luoi">
+      <div><b>VideoMotion</b>Hình động dựng bằng code: chữ, ảnh, chuyển cảnh, phụ đề, giọng, nhạc.<i>Chính xác, sửa được từng chi tiết, không tốn lượt tạo.</i></div>
+      <div><b>Google Flow</b>Clip do AI tạo: nhân vật cầm sản phẩm, rót cà phê, mỉm cười.<i>Sống động, nhưng mỗi lần tạo ra một kết quả khác, khó sửa chi tiết.</i></div>
+      <div><b>Khi nào dùng Flow</b>Cảnh cần người thật cử động, ví dụ cảnh mở đầu có nhân vật đã khóa ở buổi 3.<i>Các cảnh còn lại để VideoMotion lo.</i></div>
+    </div>
+    <h3>Các bước giảng viên demo</h3>
+    <ol>
+      <li>Mở Google Flow, đăng nhập tài khoản Google.</li>
+      <li>Đưa ảnh nhân vật đã khóa ở buổi 3 vào làm khung hình gốc.</li>
+      <li>Dán mô tả chuyển động (mẫu bên dưới), chọn khung dọc nếu Flow có tùy chọn này.</li>
+      <li>Xem các bản tạo ra, chọn bản đẹp nhất, tải clip về máy.</li>
+    </ol>
+    <div class="prompt"><span class="nhan-p">Mẫu mô tả chuyển động cho Flow</span><button>Chép</button><p>Tôi gửi bạn: ảnh nhân vật NHÂN VẬT CỦA BẠN, đang ở BỐI CẢNH TRONG ẢNH.
+
+Việc cần làm:
+1. Nhân vật làm một hành động: HÀNH ĐỘNG, ví dụ cầm ly cà phê lên, ngửi hương rồi mỉm cười.
+2. Máy quay: CHUYỂN ĐỘNG MÁY, ví dụ đẩy vào gần chậm.
+3. Giữ nguyên khuôn mặt, trang phục, ánh sáng như ảnh gốc. Không thêm chữ, không thêm logo.
+
+Kết quả: một đoạn clip dọc 9:16 ngắn, chuyển động tự nhiên.</p></div>
+    <div class="note vang"><b>Lưu ý:</b> quyền dùng Flow, số lượt tạo và hạn mức tùy gói tài khoản Google của bạn; xem trực tiếp trên trang Flow. Clip tạo bằng AI phải gắn nhãn nội dung AI khi đăng. Cách ghép clip Flow vào video VideoMotion giảng viên hướng dẫn trực tiếp trên lớp.</div>
+  </section>
+
+  <!-- PHẦN 8 -->
+  <section class="card" id="p8">
+    <span class="phut">21:52 đến 22:00</span>
+    <h2><span class="so">8</span>Kiểm tra cuối buổi và bài tập</h2>
+    <ul class="check">
+      <li>Máy báo <code>SAN SANG</code> khi kiểm tra bằng VideoMotion.</li>
+      <li>Đã cài skill <code>dung-video</code> và agent <code>nguoi-cham-video</code>; gõ <code>/</code> thấy skill.</li>
+      <li>Có 01 file MP4 dọc 9:16 trong <code>video/</code>: có giọng đọc, nhạc nền, phụ đề, logo, đúng màu thương hiệu.</li>
+      <li>Đã mở video trên HyperFrames Studio và xem từng cảnh.</li>
+      <li>Có bảng chấm của <code>nguoi-cham-video</code>, 8 tiêu chí đều Đạt (hoặc đã ghi chỗ cần sửa).</li>
+      <li>Bản cũ trước khi sửa nằm trong <code>_backup/</code>.</li>
+    </ul>
+    <p>Gửi video và ảnh chụp bảng chấm vào nhóm lớp.</p>
+    <h3>Bài tập trước buổi 5</h3>
+    <ol>
+      <li>Sửa video tới khi đạt cả 8 tiêu chí; tự xem và nghe lại một lượt bằng điện thoại.</li>
+      <li>Chuẩn bị <b>tài khoản TikTok phụ và trang Facebook phụ</b> để thử đăng bài tự động ở buổi 5. Không dùng tài khoản chính khi thử.</li>
+      <li>Tạo một hồ sơ Chrome riêng chỉ để làm việc với Agent (xem buổi 5, mục 2.1), đăng nhập các tài khoản phụ trong hồ sơ đó.</li>
+      <li>Ghi lại nhạc, phông chữ đã dùng và nguồn của chúng, để kiểm tra bản quyền trước khi đăng.</li>
+    </ol>
+    <div class="note do"><b>Trước khi đăng bất kỳ video nào:</b> nhạc và phông chữ phải có quyền dùng cho quảng cáo; video có giọng, hình làm bằng AI thì bật nhãn nội dung AI của nền tảng.</div>
+  </section>
+
+</main>
+
+<footer><div class="wrap">
+  <img src="assets/logo-cole-trang.png" alt="Cole">
+  <span>Bootcamp AI Agent for Video Marketing · Giảng viên Lưu Tuấn Anh · Tài liệu tra cứu ngày 09/11/2026</span>
+</div></footer>
+<script src="assets/app.js"></script>
+</body>
+</html>

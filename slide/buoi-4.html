@@ -1,0 +1,874 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Buổi 4: Dựng và hiệu chỉnh video</title>
+<meta name="description" content="Slide buổi 4, Bootcamp AI Agent for Video Marketing, Cole.vn">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+.sm-stage {
+  --bg:#F4F8FC; --fg:#1E3A5F; --muted:#56657a; --accent:#3A7CC6; --sky:#5BA3E6; --light:#E8F4FD; --line:#cfe0f2; --ok:#1f8a4c; --warn:#b45309;
+  --fd:'Montserrat', Arial, sans-serif; --fb:'Inter', Arial, sans-serif;
+  background:var(--bg); color:var(--fg); font-family:var(--fb);
+}
+.slide { background:var(--bg); }
+.slide *, .slide *::before, .slide *::after { box-sizing:border-box; }
+.slide h1, .slide h2 { font-family:var(--fd); margin:0; color:var(--fg); }
+.kick { position:absolute; left:120px; top:84px; font:700 24px var(--fb); letter-spacing:.16em; text-transform:uppercase; color:var(--accent); }
+.tit { position:absolute; left:120px; top:128px; right:120px; font:800 64px/1.14 var(--fd); }
+.src { position:absolute; left:120px; bottom:150px; font:500 21px var(--fb); color:var(--muted); }
+code { font-family:Consolas, monospace; }
+
+/* thước timeline xuyên suốt */
+.thuoc { position:absolute; left:120px; right:120px; bottom:52px; height:34px; z-index:5; pointer-events:none; transition:opacity .6s; }
+.thuoc .day { position:absolute; left:0; right:0; top:14px; height:6px; border-radius:6px; background:var(--line); }
+.thuoc .da { position:absolute; left:0; top:14px; height:6px; border-radius:6px; background:var(--accent); width:calc(var(--sm-progress,0) * 100%); transition:width 1s cubic-bezier(.65,0,.25,1); }
+.thuoc .dau { position:absolute; top:-4px; width:6px; height:42px; margin-left:-3px; border-radius:3px; background:#e0453a; left:calc(var(--sm-progress,0) * 100%); transition:left 1s cubic-bezier(.65,0,.25,1); }
+.thuoc .dau::before { content:""; position:absolute; left:-9px; top:-14px; border:12px solid transparent; border-top:14px solid #e0453a; }
+.thuoc .mo { position:absolute; top:-30px; font:600 18px var(--fb); color:var(--muted); }
+.sm-stage[data-scene=bia] .thuoc, .sm-stage[data-scene=ket] .thuoc, .sm-stage[data-scene=hoi] .thuoc { opacity:0; }
+
+/* khung điện thoại 9:16 dùng lại */
+.dt { position:absolute; width:360px; height:640px; border-radius:40px; background:#0f1e33; border:10px solid #0f1e33; box-shadow:0 30px 70px rgba(15,30,51,.35); overflow:hidden; }
+.dt .man { position:absolute; inset:0; border-radius:30px; overflow:hidden; background:linear-gradient(170deg,#5B3A29 0%,#7a5240 45%,#F2E6D8 100%); }
+.dt .ly { position:absolute; left:110px; top:220px; width:140px; height:170px; }
+.dt .logo { position:absolute; right:18px; top:20px; padding:6px 12px; border-radius:8px; background:#F2E6D8; color:#5B3A29; font:800 16px var(--fd); }
+.dt .hook { position:absolute; left:24px; right:24px; top:90px; font:900 34px/1.1 var(--fd); color:#fff; text-align:center; }
+.dt .pd { position:absolute; left:20px; right:20px; bottom:40px; padding:10px 12px; border-radius:10px; background:rgba(15,30,51,.82); color:#fff; font:600 19px/1.3 var(--fb); text-align:center; }
+.dt .song { position:absolute; left:24px; bottom:110px; display:flex; gap:5px; align-items:flex-end; height:40px; }
+.dt .song i { width:7px; background:#2F6B4F; border-radius:3px; display:block; }
+
+/* 1 bìa */
+.s1 { background:linear-gradient(135deg,#1E3A5F 0%,#25507f 55%,#3A7CC6 100%); color:#fff; }
+.s1 .vong { position:absolute; right:-200px; top:-160px; width:900px; height:900px; border-radius:50%; border:3px solid rgba(255,255,255,.14); }
+.s1 .nhan { position:absolute; left:120px; top:120px; font:700 24px var(--fb); letter-spacing:.18em; text-transform:uppercase; color:#bcd8f5; }
+.s1 h1 { position:absolute; left:120px; top:190px; width:1050px; color:#fff; font:900 116px/1.04 var(--fd); }
+.s1 .hoi { position:absolute; left:120px; top:640px; width:1000px; font:500 36px/1.4 var(--fb); color:#e3f0fc; }
+.s1 .meta { position:absolute; left:120px; bottom:90px; font:600 24px var(--fb); color:#bcd8f5; }
+.s1 .dt { right:260px; top:200px; }
+
+/* 2 bản đồ */
+.ban-do { position:absolute; left:120px; right:120px; top:420px; height:360px; }
+.ban-do .duong { position:absolute; left:60px; right:60px; top:58px; height:6px; background:var(--line); border-radius:6px; }
+.tram { position:absolute; top:0; width:300px; margin-left:-150px; text-align:center; }
+.tram .o { width:120px; height:120px; margin:0 auto 22px; border-radius:50%; background:#fff; border:6px solid var(--line); display:grid; place-items:center; font:800 44px var(--fd); color:var(--muted); }
+.tram b { display:block; font:800 32px/1.2 var(--fd); color:var(--fg); }
+.tram span { display:block; margin-top:8px; font:500 24px/1.35 var(--fb); color:var(--muted); }
+.tram.now .o { border-color:var(--accent); background:var(--accent); color:#fff; box-shadow:0 0 0 14px rgba(58,124,198,.15); }
+.s2 .ra { position:absolute; left:120px; top:840px; font:600 28px var(--fb); color:var(--fg); }
+.s2 .ra b { color:var(--accent); }
+
+/* 3 VideoMotion là gì */
+.s3 .dn { position:absolute; left:120px; top:200px; width:1680px; font:700 50px/1.3 var(--fd); }
+.s3 .dn em { font-style:normal; color:var(--accent); }
+.s3 .vv { position:absolute; left:120px; top:400px; width:1680px; padding:26px 34px; border-left:8px solid var(--accent); background:#fff; border-radius:0 18px 18px 0; font:500 30px/1.45 var(--fb); box-shadow:0 10px 30px rgba(30,58,95,.08); }
+.s3 .day7 { position:absolute; left:120px; right:120px; top:590px; display:grid; grid-template-columns:repeat(7,1fr); gap:14px; }
+.s3 .day7 div { background:#fff; border:2px solid var(--line); border-radius:16px; padding:20px 18px; min-height:190px; }
+.s3 .day7 i { display:block; font:900 40px var(--fd); font-style:normal; color:var(--accent); }
+.s3 .day7 b { display:block; font:800 25px/1.2 var(--fd); margin:6px 0 8px; }
+.s3 .day7 span { font:500 20px/1.35 var(--fb); color:var(--muted); }
+.s3 .day7 .cong { border-color:var(--fg); background:var(--fg); color:#fff; }
+.s3 .day7 .cong i { color:#9cc6f0; } .s3 .day7 .cong b { color:#fff; } .s3 .day7 .cong span { color:#cfe0f2; }
+
+/* 4 cài đặt: chồng lớp */
+.s4 .chong { position:absolute; left:120px; top:300px; width:880px; display:flex; flex-direction:column-reverse; gap:14px; }
+.s4 .chong div { display:flex; justify-content:space-between; align-items:center; border-radius:16px; padding:20px 28px; background:#fff; border:2px solid var(--line); font:700 30px var(--fd); }
+.s4 .chong div span { font:500 23px var(--fb); color:var(--muted); }
+.s4 .chong .l3 { border-color:var(--accent); }
+.s4 .chong .l4 { background:var(--accent); color:#fff; border-color:var(--accent); }
+.s4 .chong .l4 span { color:#e3f0fc; }
+.s4 .chong .l5 { background:var(--ok); color:#fff; border-color:var(--ok); font:800 34px Consolas, monospace; justify-content:center; }
+.s4 .ben { position:absolute; right:120px; top:300px; width:700px; display:flex; flex-direction:column; gap:20px; }
+.s4 .ben div { background:var(--light); border-left:8px solid var(--accent); border-radius:0 16px 16px 0; padding:22px 28px; font:500 27px/1.42 var(--fb); }
+.s4 .ben b { color:var(--fg); }
+.s4 .ben .vang { background:#fff7ed; border-color:#d97706; color:#7c2d12; }
+
+/* 5 Claude Code và Antigravity */
+.s5 .cot { position:absolute; top:300px; width:800px; height:480px; background:#fff; border:2px solid var(--line); border-radius:24px; padding:30px 36px; }
+.s5 .c1 { left:120px; } .s5 .c2 { right:120px; border-color:var(--accent); box-shadow:0 18px 44px rgba(58,124,198,.18); }
+.s5 .cot h3 { margin:0 0 6px; font:800 36px var(--fd); }
+.s5 .cot p { margin:0 0 24px; font:500 25px/1.4 var(--fb); color:var(--muted); }
+.s5 .lan { position:relative; height:46px; margin:12px 0; }
+.s5 .lan i { position:absolute; top:0; height:46px; border-radius:10px; background:var(--accent); color:#fff; font:700 20px/46px var(--fb); font-style:normal; text-align:center; }
+.s5 .c1 .lan i { background:var(--sky); }
+.s5 .truc { margin-top:18px; font:600 21px var(--fb); color:var(--muted); display:flex; justify-content:space-between; }
+.s5 .cach { position:absolute; left:120px; right:120px; top:800px; font:600 27px/1.4 var(--fb); background:var(--light); padding:18px 26px; border-radius:16px; border-left:8px solid var(--accent); }
+
+/* 6 cầu nối */
+.s6 .flow { position:absolute; left:120px; right:120px; top:300px; height:470px; }
+.s6 .vao { position:absolute; left:0; top:0; width:420px; display:flex; flex-direction:column; gap:18px; }
+.s6 .vao div, .s6 .ra div { background:#fff; border:2px solid var(--line); border-radius:16px; padding:20px 24px; font:600 27px/1.3 var(--fb); }
+.s6 .vao small, .s6 .ra small { display:block; font:500 21px var(--fb); color:var(--muted); margin-top:4px; }
+.s6 .giua { position:absolute; left:560px; top:60px; width:560px; height:340px; border-radius:28px; background:var(--accent); color:#fff; display:flex; flex-direction:column; justify-content:center; align-items:center; box-shadow:0 20px 50px rgba(58,124,198,.35); }
+.s6 .giua b { font:800 44px var(--fd); }
+.s6 .giua span { font:500 24px var(--fb); opacity:.92; margin-top:8px; }
+.s6 .giua .vm { margin-top:22px; padding:10px 22px; border-radius:12px; background:#1E3A5F; font:700 24px var(--fb); }
+.s6 .ra { position:absolute; right:0; top:60px; width:440px; display:flex; flex-direction:column; gap:18px; }
+.s6 .ra div { border-color:var(--accent); }
+.s6 svg.mui { position:absolute; left:0; top:0; width:1680px; height:470px; overflow:visible; }
+.s6 .lenh { position:absolute; left:120px; top:820px; font:600 28px var(--fb); color:var(--muted); }
+.s6 .lenh code { font:700 30px Consolas, monospace; color:var(--fg); background:var(--light); padding:4px 14px; border-radius:8px; }
+
+/* 7 câu hỏi */
+.s7 { background:var(--fg); color:#fff; }
+.s7 .kick { color:#9cc6f0; }
+.s7 .q { position:absolute; left:120px; top:190px; width:1500px; font:800 62px/1.2 var(--fd); color:#fff; margin:0; }
+.s7 .phuong { position:absolute; left:120px; top:470px; display:flex; gap:28px; }
+.s7 .phuong div { width:520px; padding:30px; border-radius:20px; border:3px solid rgba(255,255,255,.25); font:700 34px/1.25 var(--fd); color:#fff; transition:all .5s; }
+.s7.q-ok .phuong .right { background:#fff; color:var(--fg); border-color:#fff; }
+.s7.q-ok .phuong div:not(.right) { opacity:.35; }
+.s7 .dap { position:absolute; left:120px; top:700px; width:1600px; font:500 34px/1.45 var(--fb); color:#e3f0fc; margin:0; }
+.s7 .dap b { color:#fff; }
+
+/* 8 Studio timeline */
+.s8 .studio { position:absolute; left:120px; right:120px; top:290px; height:500px; border-radius:22px; background:#0f1e33; box-shadow:0 24px 60px rgba(15,30,51,.3); overflow:hidden; }
+.s8 .xem { position:absolute; left:40px; top:30px; width:180px; height:320px; border-radius:16px; background:linear-gradient(170deg,#5B3A29,#F2E6D8); }
+.s8 .xem::after { content:"9:16"; position:absolute; left:12px; top:10px; font:800 20px var(--fd); color:#fff; }
+.s8 .tracks { position:absolute; left:270px; right:40px; top:40px; }
+.s8 .tr { position:relative; height:62px; margin-bottom:16px; }
+.s8 .tr b { position:absolute; left:0; top:16px; width:150px; font:700 22px var(--fb); color:#9cc6f0; }
+.s8 .tr .lane { position:absolute; left:160px; right:0; top:6px; height:50px; border-radius:10px; background:rgba(255,255,255,.06); }
+.s8 .tr .lane i { position:absolute; top:6px; height:38px; border-radius:8px; font:600 18px/38px var(--fb); font-style:normal; color:#fff; padding:0 12px; white-space:nowrap; overflow:hidden; }
+.s8 .t-h i { background:#3A7CC6; } .s8 .t-g i { background:#2f8f6b; } .s8 .t-n i { background:#7a5cc4; } .s8 .t-p i { background:#c9822b; }
+.s8 .ph { position:absolute; top:30px; bottom:30px; width:4px; background:#e0453a; left:430px; }
+.s8 .ph::before { content:""; position:absolute; left:-10px; top:-6px; border:12px solid transparent; border-top:14px solid #e0453a; }
+.s8 .nho { position:absolute; left:120px; right:120px; top:820px; display:flex; gap:22px; }
+.s8 .nho div { flex:1; font:600 26px/1.4 var(--fb); background:#fff; border:2px solid var(--line); border-radius:16px; padding:18px 24px; }
+.s8 .nho .vang { background:#fff7ed; border-color:#f3c48a; color:#7c2d12; }
+
+/* 9 ba núm chỉnh */
+.s9 .num { position:absolute; top:300px; width:520px; height:440px; background:#fff; border:2px solid var(--line); border-radius:26px; padding:32px 34px; }
+.s9 .n1 { left:120px; } .s9 .n2 { left:700px; } .s9 .n3 { left:1280px; }
+.s9 .num h3 { margin:0 0 14px; font:800 40px var(--fd); }
+.s9 .num .so { font:900 64px/1 var(--fd); color:var(--accent); margin:6px 0 10px; }
+.s9 .num p { margin:0 0 12px; font:500 25px/1.42 var(--fb); }
+.s9 .num small { font:500 20px var(--fb); color:var(--muted); }
+.s9 .mau { display:flex; gap:12px; margin:8px 0 16px; }
+.s9 .mau i { width:80px; height:80px; border-radius:16px; display:block; border:2px solid var(--line); }
+
+/* 10 checklist */
+.s10 .luoi8 { position:absolute; left:120px; top:290px; width:1240px; display:grid; grid-template-columns:repeat(4,1fr); gap:18px; }
+.s10 .luoi8 div { background:#fff; border:2px solid var(--line); border-radius:18px; padding:22px 22px; min-height:220px; position:relative; }
+.s10 .luoi8 i { display:block; font:900 34px var(--fd); font-style:normal; color:var(--accent); }
+.s10 .luoi8 b { display:block; font:800 27px/1.2 var(--fd); margin:6px 0 8px; }
+.s10 .luoi8 span { font:500 21px/1.35 var(--fb); color:var(--muted); }
+.s10 .dau-dat { position:absolute; right:150px; top:360px; width:330px; height:330px; border-radius:50%; border:10px solid var(--ok); color:var(--ok); display:flex; flex-direction:column; justify-content:center; align-items:center; rotate:-12deg; }
+.s10 .dau-dat b { font:900 84px/1 var(--fd); }
+.s10 .dau-dat span { font:700 24px var(--fb); margin-top:6px; text-align:center; }
+.s10 .chu { position:absolute; left:120px; top:820px; width:1680px; font:600 26px/1.4 var(--fb); color:var(--muted); }
+.s10 .chu b { color:var(--fg); }
+
+/* 11 thực hành */
+.s11 .de { position:absolute; left:120px; top:300px; width:1000px; display:flex; flex-direction:column; gap:18px; }
+.s11 .de div { display:flex; gap:22px; align-items:center; background:#fff; border:2px solid var(--line); border-radius:16px; padding:18px 24px; }
+.s11 .de i { flex:none; width:56px; height:56px; border-radius:14px; background:var(--accent); color:#fff; display:grid; place-items:center; font:800 28px var(--fd); font-style:normal; }
+.s11 .de span { font:600 27px/1.35 var(--fb); }
+.s11 .the { position:absolute; right:120px; top:300px; width:560px; background:var(--fg); color:#fff; border-radius:26px; padding:36px 40px; }
+.s11 .the h3 { margin:0 0 10px; font:800 30px var(--fd); color:#9cc6f0; }
+.s11 .the .gio { font:900 72px/1.05 var(--fd); }
+.s11 .the p { margin:18px 0 0; font:500 26px/1.45 var(--fb); color:#e3f0fc; }
+.s11 .the b { color:#fff; }
+
+/* 12 Google Flow */
+.s12 .so2 { position:absolute; top:300px; width:800px; height:380px; border-radius:24px; padding:32px 36px; }
+.s12 .a { left:120px; background:#fff; border:2px solid var(--line); }
+.s12 .b { right:120px; background:#0f1e33; color:#e9f2ff; }
+.s12 .so2 h3 { margin:0 0 6px; font:800 38px var(--fd); }
+.s12 .b h3 { color:#fff; }
+.s12 .so2 .vai { font:600 23px var(--fb); color:var(--accent); margin-bottom:18px; }
+.s12 .b .vai { color:#8fc1f2; }
+.s12 .so2 ul { margin:0; padding-left:30px; font:500 26px/1.5 var(--fb); }
+.s12 .so2 li { margin:6px 0; }
+.s12 .demo { position:absolute; left:120px; right:120px; top:720px; display:flex; gap:20px; }
+.s12 .demo div { flex:1; background:#fff7ed; border-left:8px solid #d97706; border-radius:0 14px 14px 0; padding:18px 24px; font:600 25px/1.35 var(--fb); color:#7c2d12; }
+
+/* 13 tóm tắt + bài tập */
+.s13 .ba { position:absolute; left:120px; top:290px; width:900px; display:flex; flex-direction:column; gap:24px; }
+.s13 .ba div { display:flex; gap:26px; align-items:center; }
+.s13 .ba i { flex:none; width:84px; height:84px; border-radius:22px; background:var(--accent); color:#fff; display:grid; place-items:center; font:900 42px var(--fd); font-style:normal; }
+.s13 .ba span { font:600 31px/1.35 var(--fb); }
+.s13 .bt { position:absolute; right:120px; top:270px; width:640px; background:var(--fg); color:#fff; border-radius:26px; padding:36px 40px; }
+.s13 .bt h3 { margin:0 0 18px; font:800 34px var(--fd); color:#9cc6f0; }
+.s13 .bt ol { margin:0; padding-left:30px; font:500 26px/1.45 var(--fb); }
+.s13 .bt li { margin:10px 0; }
+
+/* 14 kết */
+.s14 { background:linear-gradient(135deg,#3A7CC6 0%,#25507f 60%,#1E3A5F 100%); color:#fff; }
+.s14 .cau { position:absolute; left:120px; top:250px; width:1150px; font:900 70px/1.15 var(--fd); color:#fff; margin:0; }
+.s14 .cau em { font-style:normal; color:#bfe0ff; }
+.s14 .sau { position:absolute; left:120px; top:780px; font:500 34px/1.4 var(--fb); color:#e3f0fc; margin:0; }
+.s14 .meta { position:absolute; left:120px; bottom:90px; font:600 24px var(--fb); color:#bcd8f5; }
+.s14 .dt { right:200px; top:220px; }
+</style>
+</head>
+<body>
+<div class="sm-stage">
+
+  <div class="thuoc"><div class="day"></div><div class="da"></div><div class="dau"></div><span class="mo" style="left:0">0 giây</span><span class="mo" style="right:0">30 giây</span></div>
+
+  <!-- 1 BÌA -->
+  <section class="slide s1" data-scene="bia">
+    <div class="vong" data-loop="float"></div>
+    <div class="nhan" data-anim="fade">Bootcamp AI Agent for Video Marketing · Buổi 4</div>
+    <h1 data-fx="chars" data-stagger="22">Dựng và hiệu chỉnh video</h1>
+    <p class="hoi" data-anim="rise" data-delay="900">Câu hỏi của buổi học: làm thế nào để kịch bản và bộ ảnh trở thành một video 9:16 có giọng, nhạc, phụ đề, đạt chuẩn để đăng?</p>
+    <div class="dt" data-anim="zoom" data-delay="400">
+      <div class="man">
+        <div class="logo" data-anim="pop" data-delay="1400">LOGO</div>
+        <div class="hook" data-anim="rise" data-delay="1100">Ly ngon như quán, pha 3 phút</div>
+        <svg class="ly" viewBox="0 0 140 170" aria-hidden="true"><path d="M20 30 H120 L108 150 Q106 162 94 162 H46 Q34 162 32 150 Z" fill="#F2E6D8"/><path d="M120 60 Q146 62 140 92 Q134 116 112 114" fill="none" stroke="#F2E6D8" stroke-width="10"/><rect x="20" y="30" width="100" height="22" fill="#2F6B4F"/></svg>
+        <div class="song" data-loop="pulse"><i style="height:14px"></i><i style="height:30px"></i><i style="height:22px"></i><i style="height:38px"></i><i style="height:18px"></i><i style="height:28px"></i></div>
+        <div class="pd" data-anim="fade" data-delay="1700">Mây Núi rang mộc, không tẩm hương liệu</div>
+      </div>
+    </div>
+    <div class="meta" data-anim="fade" data-delay="1200">Cole.vn · Giảng viên Lưu Tuấn Anh · Thứ 5, 19/11/2026, 20:00 đến 22:00</div>
+  </section>
+
+  <!-- 2 BẢN ĐỒ -->
+  <section class="slide s2" data-scene="ban-do" data-trans="iris" data-origin="50% 50%">
+    <div class="kick" data-anim="fade">Bản đồ buổi học</div>
+    <h2 class="tit" data-anim="wipe">Năm trạm từ kịch bản tới video đạt chuẩn</h2>
+    <div class="ban-do">
+      <div class="duong"></div>
+      <div class="tram now" style="left:6%" data-anim="pop" data-delay="300"><div class="o">1</div><b>Chuẩn bị</b><span>Kiểm tra đầu vào, cài VideoMotion</span></div>
+      <div class="tram" style="left:28%" data-anim="pop" data-delay="450"><div class="o">2</div><b>Dựng</b><span>Skill dung-video</span></div>
+      <div class="tram" style="left:50%" data-anim="pop" data-delay="600"><div class="o">3</div><b>Chỉnh</b><span>Studio, màu, phụ đề, nhạc</span></div>
+      <div class="tram" style="left:72%" data-anim="pop" data-delay="750"><div class="o">4</div><b>Chấm</b><span>Agent nguoi-cham-video</span></div>
+      <div class="tram" style="left:94%" data-anim="pop" data-delay="900"><div class="o">5</div><b>Mở rộng</b><span>Google Flow, giảng viên demo</span></div>
+    </div>
+    <p class="ra" data-anim="rise" data-delay="1100">Sản phẩm cuối buổi: <b>01 video quảng cáo 9:16, MP4, đạt checklist</b>.</p>
+  </section>
+
+  <!-- 3 VIDEOMOTION LÀ GÌ -->
+  <section class="slide s3" data-scene="dn" data-trans="push">
+    <div class="kick" data-anim="fade">Trạm 1 · Công cụ dựng</div>
+    <p class="dn" data-fx="words"><em>VideoMotion</em> là bộ công cụ dựng video tiếng Việt: đưa kịch bản vào, nhận về MP4 có giọng đọc, nhạc nền, phụ đề.</p>
+    <div class="vv" data-step="1" data-anim="left">Tương tự một ê-kíp hậu kỳ thu nhỏ trên máy tính: người đọc lời, người chọn nhạc, người dựng hình, người làm phụ đề, phối hợp theo một quy trình cố định.</div>
+    <div class="day7" data-stagger="110" data-delay="500">
+      <div data-anim="rise"><i>1</i><b>Brief</b><span>Chủ đề, khung, độ dài, giọng</span></div>
+      <div data-anim="rise"><i>2</i><b>Style</b><span>Chọn 1 trong 91 phong cách hình</span></div>
+      <div class="cong" data-anim="rise"><i>3</i><b>Kịch bản</b><span>Cổng duyệt duy nhất</span></div>
+      <div data-anim="rise"><i>4</i><b>Giọng</b><span>VieNeu, mốc thời gian từng từ</span></div>
+      <div data-anim="rise"><i>5</i><b>Phân cảnh</b><span>Neo theo từ khóa lời đọc</span></div>
+      <div data-anim="rise"><i>6</i><b>Nhạc nền</b><span>Tự hạ khi có lời</span></div>
+      <div data-anim="rise"><i>7</i><b>Dựng, xuất</b><span>HyperFrames, phụ đề, MP4</span></div>
+    </div>
+    <div class="src">Nguồn: README VideoMotion, github.com/andyluu98/VideoMotion, tra 09/11/2026</div>
+  </section>
+
+  <!-- 4 CÀI ĐẶT -->
+  <section class="slide s4" data-scene="cai" data-trans="push">
+    <div class="kick" data-anim="fade">Trạm 1 · Cài đặt</div>
+    <h2 class="tit" data-anim="wipe">Cài từ dưới lên, mỗi lớp là nền cho lớp trên</h2>
+    <div class="chong">
+      <div class="l1" data-anim="drop" data-delay="300">Node.js 22 trở lên<span>chạy HyperFrames</span></div>
+      <div class="l2" data-anim="drop" data-delay="500">Python 3.10 trở lên<span>giọng, nhạc, phụ đề</span></div>
+      <div class="l3" data-anim="drop" data-delay="700">ffmpeg bản đầy đủ<span>ghép âm, xuất MP4</span></div>
+      <div class="l4" data-step="1" data-anim="drop">VideoMotion<span>giải nén vào cong-cu/VideoMotion</span></div>
+      <div class="l4" data-step="2" data-anim="drop">Giọng VieNeu, Whisper<span>tải khoảng 2 đến 3 GB</span></div>
+      <div class="l5" data-step="3" data-anim="stamp">SAN SANG</div>
+    </div>
+    <div class="ben">
+      <div data-anim="right" data-delay="900"><b>Ba phần mềm nền</b> do học viên tự cài bằng tay. VideoMotion không tự cài phần mềm hệ thống.</div>
+      <div data-anim="right" data-delay="1100"><b>Kiểm tra máy</b> bằng công cụ của VideoMotion. Dòng nào báo THIẾU thì xử lý đúng dòng đó.</div>
+      <div class="vang" data-anim="right" data-delay="1300">Phần giọng đọc tải dung lượng lớn. Nên cài trước giờ học.</div>
+    </div>
+    <div class="src">Nguồn: README và skills/vm-cai-dat/SKILL.md của VideoMotion, tra 09/11/2026</div>
+  </section>
+
+  <!-- 5 CLAUDE CODE VÀ ANTIGRAVITY -->
+  <section class="slide s5" data-scene="ag" data-trans="push">
+    <div class="kick" data-anim="fade">Trạm 1 · Chạy trên Antigravity</div>
+    <h2 class="tit" data-anim="wipe">Một quy trình, hai cách chia việc dựng cảnh</h2>
+    <div class="cot c1" data-anim="left" data-delay="300">
+      <h3>Claude Code</h3>
+      <p>Mỗi cảnh giao cho một agent con, các cảnh dựng cùng lúc.</p>
+      <div class="lan"><i style="left:0;width:46%">Cảnh 1</i></div>
+      <div class="lan"><i style="left:0;width:46%">Cảnh 2</i></div>
+      <div class="lan"><i style="left:0;width:46%">Cảnh 3</i></div>
+      <div class="lan"><i style="left:0;width:46%">Cảnh 4</i></div>
+      <div class="truc"><span>bắt đầu</span><span>thời gian</span></div>
+    </div>
+    <div class="cot c2" data-anim="right" data-delay="500">
+      <h3>Antigravity</h3>
+      <p>Agent đọc hướng dẫn chính của VideoMotion, tự dựng lần lượt từng cảnh.</p>
+      <div class="lan"><i style="left:0;width:24%">Cảnh 1</i></div>
+      <div class="lan"><i style="left:25%;width:24%">Cảnh 2</i></div>
+      <div class="lan"><i style="left:50%;width:24%">Cảnh 3</i></div>
+      <div class="lan"><i style="left:75%;width:24%">Cảnh 4</i></div>
+      <div class="truc"><span>bắt đầu</span><span>thời gian</span></div>
+    </div>
+    <p class="cach" data-step="1" data-anim="rise">Cách làm trên Antigravity theo README: đọc <code>skills/videomotion/SKILL.md</code> làm hướng dẫn chính, dựng từng cảnh theo <code>agents/vm-canh.md</code>. Kết quả như nhau, thời gian dựng dài hơn.</p>
+  </section>
+
+  <!-- 6 CẦU NỐI dung-video -->
+  <section class="slide s6" data-scene="dung" data-trans="iris" data-origin="50% 45%">
+    <div class="kick" data-anim="fade">Trạm 2 · Dựng video</div>
+    <h2 class="tit" data-anim="wipe">Skill dung-video nối dự án với VideoMotion</h2>
+    <div class="flow">
+      <svg class="mui" viewBox="0 0 1680 470" aria-hidden="true">
+        <g data-anim="draw" data-delay="700" data-stagger="150" fill="none" stroke="#3A7CC6" stroke-width="5" stroke-linecap="round">
+          <path d="M425 50 C 500 50, 500 200, 560 210"/>
+          <path d="M425 200 L 560 230"/>
+          <path d="M425 350 C 500 350, 500 260, 560 250"/>
+          <path d="M1120 230 C 1180 230, 1180 115, 1240 110"/>
+          <path d="M1120 230 C 1180 230, 1180 300, 1240 300"/>
+        </g>
+      </svg>
+      <div class="vao" data-stagger="120" data-delay="200">
+        <div data-anim="left">Kịch bản buổi 2<small>kich-ban/kich-ban-....md</small></div>
+        <div data-anim="left">Bộ ảnh buổi 3<small>anh/canh/canh-01-dau.png, canh-01-cuoi.png...</small></div>
+        <div data-anim="left">File thương hiệu<small>màu, phông, logo, quy tắc video</small></div>
+      </div>
+      <div class="giua" data-anim="pop" data-delay="500"><b>/dung-video</b><span>lời thoại giữ nguyên văn</span><span>màu lấy từ file thương hiệu</span><div class="vm">quy trình VideoMotion</div></div>
+      <div class="ra" data-stagger="150" data-delay="1000">
+        <div data-anim="right">Video MP4 9:16<small>video/ten-san-pham-ngay.mp4</small></div>
+        <div data-anim="right">Phụ đề phude.srt<small>bản cũ chuyển vào _backup/</small></div>
+      </div>
+    </div>
+    <p class="lenh" data-anim="fade" data-delay="1400">Gọi trong Antigravity: <code>/dung-video</code> kèm kịch bản, bộ ảnh, file thương hiệu.</p>
+  </section>
+
+  <!-- 7 CÂU HỎI -->
+  <section class="slide s7" data-scene="hoi" data-quiz data-trans="zoom">
+    <div class="kick">Câu hỏi kiểm tra</div>
+    <p class="q" data-fx="words">Bạn dựng lại video trong cùng ngày, file mới trùng tên file cũ. File cũ sẽ ở đâu?</p>
+    <div class="phuong">
+      <div data-anim="rise" data-delay="600">A. Bị ghi đè bằng bản mới</div>
+      <div class="right" data-anim="rise" data-delay="750">B. Chuyển vào _backup/</div>
+      <div data-anim="rise" data-delay="900">C. Bị xóa để lấy chỗ</div>
+    </div>
+    <p class="dap" data-step="1" data-anim="pop">Đáp án <b>B</b>. Quy tắc trong AGENTS.md và skill dung-video: không xóa, không ghi đè; bản cũ chuyển vào <b>_backup/</b> kèm giờ phút, rồi mới ghi bản mới.</p>
+  </section>
+
+  <!-- 8 STUDIO -->
+  <section class="slide s8" data-scene="studio" data-trans="iris" data-origin="50% 55%">
+    <div class="kick" data-anim="fade">Trạm 3 · Xem và chỉnh</div>
+    <h2 class="tit" data-anim="wipe">Studio hiển thị video dạng timeline để soát từng cảnh</h2>
+    <div class="studio" data-anim="zoom" data-delay="200">
+      <div class="xem"></div>
+      <div class="tracks">
+        <div class="tr t-h"><b>Hình</b><div class="lane"><i style="left:0;width:22%" data-anim="wipe" data-delay="500">Cảnh 1 hook</i><i style="left:23%;width:30%" data-anim="wipe" data-delay="600">Cảnh 2</i><i style="left:54%;width:26%" data-anim="wipe" data-delay="700">Cảnh 3</i><i style="left:81%;width:19%" data-anim="wipe" data-delay="800">CTA</i></div></div>
+        <div class="tr t-g"><b>Giọng</b><div class="lane"><i style="left:2%;width:94%" data-anim="wipe" data-delay="900">Ngọc Huyền</i></div></div>
+        <div class="tr t-n"><b>Nhạc nền</b><div class="lane"><i style="left:0;width:100%" data-anim="wipe" data-delay="1000">nhạc tự hạ khi có lời</i></div></div>
+        <div class="tr t-p"><b>Phụ đề</b><div class="lane"><i style="left:2%;width:18%" data-anim="wipe" data-delay="1100">dòng 1</i><i style="left:21%;width:20%" data-anim="wipe" data-delay="1150">dòng 2</i><i style="left:42%;width:18%" data-anim="wipe" data-delay="1200">dòng 3</i><i style="left:61%;width:18%" data-anim="wipe" data-delay="1250">dòng 4</i><i style="left:80%;width:16%" data-anim="wipe" data-delay="1300">dòng 5</i></div></div>
+      </div>
+      <div class="ph" data-loop="sway"></div>
+    </div>
+    <div class="nho">
+      <div data-step="1" data-anim="rise">Ghi lỗi theo mẫu: <b>cảnh mấy, giây thứ mấy, chưa ưng gì</b>.</div>
+      <div class="vang" data-step="2" data-anim="rise">Chỉnh trên Studio xong phải xuất lại MP4 mới, bản cũ giữ trong _backup/.</div>
+    </div>
+  </section>
+
+  <!-- 9 BA NÚM CHỈNH -->
+  <section class="slide s9" data-scene="chinh" data-trans="push">
+    <div class="kick" data-anim="fade">Trạm 3 · Phối màu, phụ đề, nhạc</div>
+    <h2 class="tit" data-anim="wipe">Ba điểm chỉnh tạo nên bản sắc thương hiệu</h2>
+    <div class="num n1" data-anim="drop" data-delay="300">
+      <h3>Màu</h3>
+      <div class="mau"><i style="background:#5B3A29"></i><i style="background:#F2E6D8"></i><i style="background:#2F6B4F"></i></div>
+      <p>Nền, chữ, điểm nhấn lấy đúng mã màu trong file thương hiệu. Màu nhấn chỉ dành cho giá và lời kêu gọi.</p>
+      <small>Ví dụ: bảng màu mẫu Cà Phê Mây Núi</small>
+    </div>
+    <div class="num n2" data-anim="drop" data-delay="500">
+      <h3>Phụ đề</h3>
+      <div class="so">34 ký tự</div>
+      <p>Tối đa mỗi dòng ở khung dọc. Mỗi dòng hiện ít nhất 1 giây, tương phản chữ và nền từ 4,5:1.</p>
+      <small>Nguồn: thông số mặc định VideoMotion; ngưỡng 1 giây là quy ước của khóa</small>
+    </div>
+    <div class="num n3" data-anim="drop" data-delay="700">
+      <h3>Nhạc</h3>
+      <div class="so">-14 LUFS</div>
+      <p>Độ to chuẩn sau khi trộn. Nhạc nằm dưới giọng khi có lời, tự to lên ở khoảng nghỉ.</p>
+      <small>Nguồn: skills/vm-nhac/SKILL.md của VideoMotion</small>
+    </div>
+  </section>
+
+  <!-- 10 CHECKLIST -->
+  <section class="slide s10" data-scene="cham" data-trans="iris" data-origin="70% 45%">
+    <div class="kick" data-anim="fade">Trạm 4 · Chấm video</div>
+    <h2 class="tit" data-anim="wipe">Tám tiêu chí phải đạt trước khi đăng</h2>
+    <div class="luoi8" data-stagger="90" data-delay="300">
+      <div data-anim="pop"><i>1</i><b>Hook 3 giây</b><span>Hình chính và câu hook có ngay</span></div>
+      <div data-anim="pop"><i>2</i><b>Phụ đề đọc kịp</b><span>Ngắn, đủ lâu, đúng chính tả</span></div>
+      <div data-anim="pop"><i>3</i><b>Đúng màu</b><span>Khớp file thương hiệu</span></div>
+      <div data-anim="pop"><i>4</i><b>Logo</b><span>Đúng vị trí, không che phụ đề</span></div>
+      <div data-anim="pop"><i>5</i><b>Âm lượng</b><span>Giọng rõ, nhạc nằm dưới</span></div>
+      <div data-anim="pop"><i>6</i><b>Tỷ lệ 9:16</b><span>1080 x 1920, không viền đen</span></div>
+      <div data-anim="pop"><i>7</i><b>Thời lượng</b><span>Trong khoảng của thương hiệu</span></div>
+      <div data-anim="pop"><i>8</i><b>Lỗi hình</b><span>Không tràn mép, vỡ ảnh, sai dấu</span></div>
+    </div>
+    <div class="dau-dat" data-step="1" data-anim="stamp"><b>ĐẠT</b><span>cả 8 tiêu chí</span></div>
+    <p class="chu" data-anim="fade" data-delay="1200">Agent <b>nguoi-cham-video</b> chỉ đọc và báo cáo. Agent không nghe được tiếng: âm lượng và lỗi hình, <b>học viên tự xem, tự nghe</b> một lượt.</p>
+  </section>
+
+  <!-- 11 THỰC HÀNH -->
+  <section class="slide s11" data-scene="thuc-hanh" data-trans="push">
+    <div class="kick" data-anim="fade">Thực hành</div>
+    <h2 class="tit" data-anim="wipe">Dựng, chỉnh và chấm video của chính bạn</h2>
+    <div class="de" data-stagger="130" data-delay="300">
+      <div data-anim="left"><i>1</i><span>Kiểm tra kịch bản, ghép ảnh vào từng cảnh</span></div>
+      <div data-anim="left"><i>2</i><span>Cài bộ buổi 4, gọi /dung-video</span></div>
+      <div data-anim="left"><i>3</i><span>Xem trên Studio, ghi các chỗ cần chỉnh</span></div>
+      <div data-anim="left"><i>4</i><span>Chỉnh màu, phụ đề, nhạc; xuất lại bản mới</span></div>
+      <div data-anim="left"><i>5</i><span>Gọi nguoi-cham-video, sửa tới khi đạt</span></div>
+    </div>
+    <div class="the" data-anim="right" data-delay="600">
+      <h3>Thời gian</h3>
+      <div class="gio">20:35 đến 21:40</div>
+      <p>Sản phẩm nộp: <b>01 file MP4 dọc 9:16</b> trong thư mục video/ và <b>ảnh chụp bảng chấm</b>, gửi vào nhóm lớp.</p>
+    </div>
+  </section>
+
+  <!-- 12 GOOGLE FLOW -->
+  <section class="slide s12" data-scene="flow" data-trans="iris" data-origin="70% 50%">
+    <div class="kick" data-anim="fade">Trạm 5 · Mở rộng</div>
+    <h2 class="tit" data-anim="wipe">Google Flow bổ sung cảnh nhân vật cử động</h2>
+    <div class="so2 a" data-anim="left" data-delay="300">
+      <h3>VideoMotion</h3>
+      <div class="vai">Hình động dựng bằng code</div>
+      <ul><li>Chữ, ảnh, chuyển cảnh, phụ đề, giọng, nhạc</li><li>Sửa được từng chi tiết</li><li>Dùng cho phần lớn các cảnh</li></ul>
+    </div>
+    <div class="so2 b" data-anim="right" data-delay="500">
+      <h3>Google Flow</h3>
+      <div class="vai">Clip do AI tạo từ ảnh và mô tả</div>
+      <ul><li>Nhân vật cử động: cầm ly, mỉm cười</li><li>Mỗi lần tạo cho kết quả khác nhau</li><li>Dùng cho cảnh cần người cử động</li></ul>
+    </div>
+    <div class="demo">
+      <div data-step="1" data-anim="rise">Giảng viên demo trên lớp với ảnh nhân vật đã khóa ở buổi 3.</div>
+      <div data-step="2" data-anim="rise">Quyền dùng và hạn mức tùy gói tài khoản; clip AI phải gắn nhãn khi đăng.</div>
+    </div>
+  </section>
+
+  <!-- 13 TÓM TẮT -->
+  <section class="slide s13" data-scene="tom-tat" data-trans="shutter" data-trans-color="#1E3A5F">
+    <div class="kick" data-anim="fade">Tóm tắt buổi 4</div>
+    <h2 class="tit" data-anim="wipe">Ba ý cần nhớ và việc chuẩn bị cho buổi 5</h2>
+    <div class="ba" data-stagger="180" data-delay="300">
+      <div data-anim="left"><i>1</i><span>VideoMotion biến kịch bản thành MP4 có giọng, nhạc, phụ đề; skill dung-video giữ đúng lời thoại và màu thương hiệu.</span></div>
+      <div data-anim="left"><i>2</i><span>Xem trên Studio, chỉnh bằng lời; mỗi lần xuất lại, bản cũ vào _backup/.</span></div>
+      <div data-anim="left"><i>3</i><span>Chấm đủ 8 tiêu chí, tự nghe và tự xem trước khi đăng.</span></div>
+    </div>
+    <div class="bt" data-anim="right" data-delay="700">
+      <h3>Bài tập trước buổi 5</h3>
+      <ol>
+        <li>Sửa video tới khi đạt cả 8 tiêu chí.</li>
+        <li>Chuẩn bị tài khoản TikTok phụ và trang Facebook phụ để thử đăng tự động.</li>
+        <li>Đăng nhập sẵn các tài khoản phụ trên trình duyệt.</li>
+        <li>Ghi nguồn nhạc, phông chữ đã dùng.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 14 KẾT -->
+  <section class="slide s14" data-scene="ket" data-trans="iris" data-origin="50% 50%">
+    <p class="cau" data-fx="words">Kịch bản và bộ ảnh, qua VideoMotion và người chấm, thành <em>video 9:16 sẵn sàng đăng</em>.</p>
+    <p class="sau" data-anim="rise" data-delay="1400">Buổi 5: Đăng bài tự động và đấu nối quy trình.</p>
+    <div class="dt" data-anim="zoom" data-delay="600">
+      <div class="man">
+        <div class="logo">LOGO</div>
+        <div class="hook">Đạt checklist</div>
+        <svg class="ly" viewBox="0 0 140 170" aria-hidden="true"><path d="M20 30 H120 L108 150 Q106 162 94 162 H46 Q34 162 32 150 Z" fill="#F2E6D8"/><path d="M120 60 Q146 62 140 92 Q134 116 112 114" fill="none" stroke="#F2E6D8" stroke-width="10"/><rect x="20" y="30" width="100" height="22" fill="#2F6B4F"/></svg>
+        <div class="pd">01 video MP4 · giọng · nhạc · phụ đề</div>
+      </div>
+    </div>
+    <div class="meta" data-anim="fade" data-delay="1600">Cole.vn · Giảng viên Lưu Tuấn Anh</div>
+  </section>
+
+</div>
+<script>
+/* SlideMotion runtime: the smallest thing a free-form deck needs.
+   - scales a 1920x1080 .sm-stage to the window
+   - keys / click / swipe / F fullscreen / #hash
+   - data-anim (enter effects), data-loop (ambient loops), data-step (click reveals)
+   - data-morph="id": same id on consecutive slides glides between positions (Morph by name)
+   - data-count="1234": number counts up on entry
+   - data-steps="n" on a slide: n clicks driven by a script; events 'sm:change' and 'sm:step' carry { index, slide, step }
+   - copies the slide's data-scene onto the stage, so persistent layers can morph with plain CSS
+   - data-cam on a slide + data-parallax="0.3..1" on background layers: camera pan with depth
+   - print (Ctrl+P): every slide on its own page, every step shown, no motion: a handout
+   No layouts, no frames: every slide is designed by the author. */
+(() => {
+  const W = 1920, H = 1080;
+  const css = `
+html,body{margin:0;height:100%;background:#000;overflow:hidden}
+.sm-stage{position:absolute;width:${W}px;height:${H}px;transform-origin:0 0;overflow:hidden;--sm-ease:cubic-bezier(.2,.8,.2,1)}
+.sm-stage>.slide{position:absolute;inset:0;visibility:hidden;opacity:0;transition:opacity var(--sm-tr,.5s) ease,visibility 0s var(--sm-tr,.5s)}
+.sm-stage>.slide.on{visibility:visible;opacity:1;z-index:1;transition:opacity var(--sm-tr,.5s) ease}
+.sm-stage:not(.sm-ready)>.slide{transition:none!important}
+.slide[data-transition=cut]{--sm-tr:0s}
+.slide[data-transition=wipe].on{animation:sm-wipe .7s var(--sm-ease)}
+.slide[data-transition=zoom].on{animation:sm-zoomin .7s var(--sm-ease)}
+svg [data-anim],svg [data-loop]{transform-box:fill-box;transform-origin:center}
+[data-anim]{transition:opacity .3s,transform .3s,filter .3s,clip-path .3s,stroke-dashoffset .3s}
+[data-anim=fade]{opacity:0}
+[data-anim=rise]{opacity:0;transform:translateY(40px)}
+[data-anim=drop]{opacity:0;transform:translateY(-140px)}
+[data-anim=left]{opacity:0;transform:translateX(-90px)}
+[data-anim=right]{opacity:0;transform:translateX(90px)}
+[data-anim=zoom]{opacity:0;transform:scale(.82)}
+[data-anim=pop]{opacity:0;transform:scale(.4)}
+[data-anim=blur]{opacity:0;filter:blur(14px)}
+[data-anim=wipe]{clip-path:inset(0 100% 0 0)}
+[data-anim=rise-wipe]{clip-path:inset(100% 0 0 0)}
+[data-anim=stamp]{opacity:0;transform:scale(2.4) rotate(-14deg)}
+[data-anim=draw]{stroke-dasharray:1;stroke-dashoffset:1}
+.on [data-anim]:not([data-step]),.on [data-anim].sm-shown{opacity:1;transform:none;filter:none;clip-path:inset(-400px -400px -400px -400px);stroke-dashoffset:0;
+  transition:opacity var(--sm-t,800ms) var(--sm-ease) var(--sm-d,0ms),transform var(--sm-t,800ms) var(--sm-ease) var(--sm-d,0ms),
+  filter var(--sm-t,800ms) var(--sm-ease) var(--sm-d,0ms),clip-path var(--sm-t,900ms) var(--sm-ease) var(--sm-d,0ms),
+  stroke-dashoffset var(--sm-t,1400ms) var(--sm-ease) var(--sm-d,0ms)}
+.on :is([data-anim=pop],[data-anim=drop],[data-anim=stamp]):is(:not([data-step]),.sm-shown){transition-timing-function:cubic-bezier(.3,1.6,.5,1)}
+[data-step]:not([data-anim]){opacity:0;transition:opacity .4s}
+[data-step].sm-shown:not([data-anim]){opacity:1}
+[data-loop=pulse]{animation:sm-pulse 1.6s ease-in-out infinite}
+[data-loop=float]{animation:sm-float 5s ease-in-out infinite}
+[data-loop=spin]{animation:sm-spin var(--sm-loop,20s) linear infinite}
+[data-loop=sway]{animation:sm-sway 4s ease-in-out infinite}
+[data-loop=blink]{animation:sm-blink 1s steps(1) infinite}
+[data-loop=scan]{animation:sm-scan var(--sm-loop,2.6s) linear infinite}
+.slide:not(.on) [data-loop]{animation-play-state:paused}
+@keyframes sm-pulse{50%{opacity:.4;transform:scale(.88)}}
+@keyframes sm-float{50%{transform:translateY(-14px)}}
+@keyframes sm-spin{to{transform:rotate(360deg)}}
+@keyframes sm-sway{50%{transform:rotate(3deg)}}
+@keyframes sm-blink{50%{opacity:0}}
+@keyframes sm-scan{from{transform:translateY(0)}to{transform:translateY(var(--sm-scan,400px))}}
+@keyframes sm-wipe{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes sm-zoomin{from{transform:scale(1.08);filter:blur(6px)}to{transform:none;filter:none}}
+[data-parallax]{transition:transform 1.6s cubic-bezier(.65,0,.25,1)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+@media print{@page{size:16in 9in;margin:0}
+ html,body{height:auto;overflow:visible;overflow-x:hidden;background:#fff}
+ .sm-stage{position:relative!important;transform:none!important;left:0!important;top:0!important;height:auto!important;overflow:hidden!important;zoom:.8}
+ .sm-stage>.slide{position:relative!important;visibility:visible!important;opacity:1!important;height:1080px;overflow:hidden;break-after:page}
+ [data-anim],[data-step]{opacity:1!important;transform:none!important;filter:none!important;clip-path:none!important;stroke-dashoffset:0!important}
+ *{animation:none!important;transition:none!important}}`;
+  document.head.insertAdjacentHTML('beforeend', `<style id="sm-base">${css}</style>`);
+
+  const stage = document.querySelector('.sm-stage');
+  const slides = [...stage.querySelectorAll(':scope > .slide')];
+  const SHAPES = 'path,line,polyline,polygon,rect,circle,ellipse';
+  let cur = -1, step = 0, scale = 1;
+
+  // prepare: draw on groups, pathLength, stagger, delays and durations
+  stage.querySelectorAll('g[data-anim=draw]').forEach(g => {
+    g.querySelectorAll(SHAPES).forEach((s, i) => {
+      s.dataset.anim = 'draw';
+      s.dataset.delay = s.dataset.delay || (+(g.dataset.delay || 0) + i * +(g.dataset.stagger || 120));
+    });
+    g.removeAttribute('data-anim');
+  });
+  stage.querySelectorAll('[data-anim=draw]').forEach(s => s.hasAttribute('pathLength') || s.setAttribute('pathLength', 1));
+  stage.querySelectorAll('[data-stagger]:not(g)').forEach(p => [...p.children].forEach((c, i) => {
+    if (!c.dataset.delay) c.dataset.delay = +(p.dataset.delay || 0) + i * +p.dataset.stagger;
+  }));
+  stage.querySelectorAll('[data-delay],[data-dur],[data-loop-dur]').forEach(e => {
+    if (e.dataset.delay) e.style.setProperty('--sm-d', e.dataset.delay + 'ms');
+    if (e.dataset.dur) e.style.setProperty('--sm-t', e.dataset.dur + 'ms');
+    if (e.dataset.loopDur) e.style.setProperty('--sm-loop', e.dataset.loopDur + 'ms');
+  });
+
+  // data-steps on a slide: clicks handled by a script (e.g. a GSAP timeline), not by [data-step] elements
+  const maxStep = s => Math.max(+(s.dataset.steps || 0), ...[...s.querySelectorAll('[data-step]')].map(e => +e.dataset.step));
+  const showSteps = (s, n) => s.querySelectorAll('[data-step]').forEach(e => e.classList.toggle('sm-shown', +e.dataset.step <= n));
+
+  function fit() {
+    scale = Math.min(innerWidth / W, innerHeight / H);
+    Object.assign(stage.style, { transform: `scale(${scale})`, left: (innerWidth - W * scale) / 2 + 'px', top: (innerHeight - H * scale) / 2 + 'px' });
+  }
+
+  function morph(from, to) {
+    to.querySelectorAll('[data-morph]').forEach(n => {
+      const o = from.querySelector(`[data-morph="${n.dataset.morph}"]`);
+      if (!o) return;
+      const a = o.getBoundingClientRect(), b = n.getBoundingClientRect();
+      if (!b.width || !b.height) return;
+      n.style.transition = 'none';
+      n.style.transformOrigin = '0 0';
+      n.style.transform = `translate(${(a.left - b.left) / scale}px,${(a.top - b.top) / scale}px) scale(${a.width / b.width},${a.height / b.height})`;
+      o.style.visibility = 'hidden';
+      n.getBoundingClientRect();
+      n.style.transition = 'transform var(--sm-t,1000ms) cubic-bezier(.7,0,.2,1)';
+      n.style.transform = '';
+      setTimeout(() => { o.style.visibility = ''; }, 1100);
+    });
+  }
+
+  function count(s) {
+    s.querySelectorAll('[data-count]').forEach(e => {
+      const to = +e.dataset.count, t0 = performance.now(), dur = +(e.dataset.dur || 1400), d = +(e.dataset.delay || 0);
+      const fmt = v => Math.round(v).toLocaleString('vi-VN');
+      e.textContent = fmt(0);
+      const tick = t => {
+        const k = Math.min(1, Math.max(0, (t - t0 - d) / dur));
+        e.textContent = fmt(to * (1 - Math.pow(1 - k, 3)));
+        if (k < 1 && s.classList.contains('on')) requestAnimationFrame(tick);
+        else e.textContent = fmt(to);
+      };
+      requestAnimationFrame(tick);
+    });
+  }
+
+  function go(n, full = false) {
+    n = Math.max(0, Math.min(slides.length - 1, n));
+    if (n === cur) return;
+    const prev = slides[cur], next = slides[n];
+    if (prev) { morph(prev, next); prev.classList.remove('on'); }
+    cur = n; step = full ? maxStep(next) : 0;
+    showSteps(next, step);
+    next.classList.add('on');
+    stage.dataset.slide = n + 1;
+    stage.dataset.scene = next.dataset.scene || n + 1;
+    stage.style.setProperty('--sm-progress', slides.length > 1 ? n / (slides.length - 1) : 1);
+    if (next.dataset.cam !== undefined) stage.querySelectorAll('[data-parallax]').forEach(l => {
+      if (!prev) l.style.transition = 'none';   // first slide: stand in place, do not pan from 0
+      l.style.transform = `translateX(${-(+next.dataset.cam) * +l.dataset.parallax}px)`;
+      if (!prev) { l.getBoundingClientRect(); l.style.transition = ''; }
+    });
+    count(next);
+    history.replaceState(null, '', '#' + (n + 1));
+    stage.dispatchEvent(new CustomEvent('sm:change', { detail: { index: n, slide: next, step, full } }));
+  }
+  const stepTo = n => { step = n; showSteps(slides[cur], n); stage.dispatchEvent(new CustomEvent('sm:step', { detail: { index: cur, slide: slides[cur], step: n } })); };
+  const nextStep = () => cur < 0 ? go(0) : step < maxStep(slides[cur]) ? stepTo(step + 1) : go(cur + 1);
+  const prevStep = () => cur < 0 ? go(0) : step > 0 ? stepTo(step - 1) : go(cur - 1, true);
+
+  addEventListener('keydown', e => {
+    if (['ArrowRight', 'ArrowDown', 'PageDown', ' ', 'Enter'].includes(e.key)) { e.preventDefault(); nextStep(); }
+    else if (['ArrowLeft', 'ArrowUp', 'PageUp', 'Backspace'].includes(e.key)) { e.preventDefault(); prevStep(); }
+    else if (e.key === 'Home') go(0);
+    else if (e.key === 'End') go(slides.length - 1, true);
+    else if (e.key === 'f' || e.key === 'F') document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen();
+  });
+  addEventListener('click', e => {
+    if (e.target.closest('a,button,input,textarea,select,[contenteditable]') || String(getSelection())) return;
+    e.clientX > innerWidth / 3 ? nextStep() : prevStep();
+  });
+  let tx = null;
+  addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
+  addEventListener('touchend', e => {
+    if (tx === null) return;
+    const d = e.changedTouches[0].clientX - tx;
+    if (Math.abs(d) > 40) d < 0 ? nextStep() : prevStep();
+    tx = null;
+  });
+  addEventListener('resize', fit);
+  fit();
+  window.deck = { go: i => go(i, true), next: nextStep, prev: prevStep, get index() { return cur; }, count: slides.length, stage, slides };
+  // start after the whole page is parsed, so listeners on 'sm:change' in later scripts catch the first slide;
+  // setTimeout, not requestAnimationFrame: rAF never fires while the tab is hidden
+  // until the first slide is up, slides switch without fading: otherwise every slide painted before this script
+  // ran would fade out together on load
+  const start = () => setTimeout(() => { cur < 0 && go((parseInt(location.hash.slice(1)) || 1) - 1); setTimeout(() => stage.classList.add('sm-ready'), 60); }, 0);
+  document.readyState === 'loading' ? addEventListener('DOMContentLoaded', start) : start();
+})();
+</script>
+<script>
+/* SlideMotion cinema layer: optional, load AFTER deck.js. Web Animations API only, no dependency, works offline.
+   - data-trans on a slide (how it ARRIVES): iris | shutter | zoom | push | flash
+       data-origin="30% 60%" for iris, data-trans-color="#000" for shutter / flash
+   - data-fx on any element: chars | words | scramble | spring | curtain | glow | flip | kenburns
+       data-delay, data-dur (ms), data-stagger (ms per char / word), data-from="x,y" (spring), --fx-bar (curtain color)
+       works with data-step: plays when the step is shown, resets when stepped back
+   - data-depth="0.03" on layers: follows the mouse (3D depth); data-particles="#ffb347,60" on a box: drifting sparks
+   - print (Ctrl+P): everything finished, visible, still. */
+(() => {
+  const deck = window.deck, stage = deck && deck.stage;
+  if (!stage || !Element.prototype.animate || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const SPRING = CSS.supports('animation-timing-function', 'linear(0,1)')
+    ? 'linear(0,.009,.035 2.1%,.141,.281 6.7%,.723 12.9%,.938 16.7%,1.017,1.077,1.121,1.149 24.3%,1.159,1.163,1.161,1.154 29.9%,1.129 32.8%,1.051 39.6%,1.017 43.1%,.991,.977 51%,.974 53.8%,.975 57.1%,.997 69.8%,1.003 76.9%,1)'
+    : 'cubic-bezier(.3,1.6,.5,1)';
+  const EXPO = 'cubic-bezier(.16,1,.3,1)', INOUT = 'cubic-bezier(.76,0,.24,1)';
+  document.head.insertAdjacentHTML('beforeend', `<style id="sm-cinema">
+.sm-stage>.slide.sm-leaving{visibility:visible!important;opacity:1!important;z-index:0!important;transition:none!important}
+.sm-stage>.slide.on.sm-entering{transition:none!important;opacity:1!important;z-index:2}
+.sm-w{display:inline-block;white-space:nowrap}.sm-c{display:inline-block}
+.sm-bar{position:absolute;inset:0;transform:scaleX(0);pointer-events:none;background:var(--fx-bar,currentColor)}
+.sm-shut{position:absolute;inset:0;z-index:50;display:flex;pointer-events:none}.sm-shut i{flex:1;transform:scaleY(0)}
+[data-depth]{transition:translate .9s cubic-bezier(.2,.8,.2,1)}
+.sm-sparks{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+@media print{.sm-shut,.sm-sparks,.sm-bar{display:none!important}[data-depth]{translate:none!important}}</style>`);
+
+  // split text into words and chars once, keeping inner markup (b, em, span...)
+  function split(el) {
+    if (el.dataset.smSplit) return; el.dataset.smSplit = 1;
+    const walk = n => [...n.childNodes].forEach(c => {
+      if (c.nodeType === 1) return walk(c);
+      if (c.nodeType !== 3 || !c.data.trim()) return;
+      const f = document.createDocumentFragment();
+      c.data.normalize('NFC').split(/(\s+)/).forEach(t => {
+        if (!t) return;
+        if (/^\s+$/.test(t)) return f.append(t);
+        const w = document.createElement('span'); w.className = 'sm-w';
+        Array.from(t).forEach(ch => { const s = document.createElement('span'); s.className = 'sm-c'; s.textContent = ch; w.append(s); });
+        f.append(w);
+      });
+      c.replaceWith(f);
+    });
+    walk(el);
+  }
+
+  const num = (el, k, d) => +(el.dataset[k] || d);
+  const FX = {
+    chars(el, d) {
+      split(el);
+      const st = num(el, 'stagger', 28);
+      el.querySelectorAll('.sm-c').forEach((c, i) => c.animate([
+        { opacity: 0, transform: 'perspective(700px) translateY(.55em) rotateX(-85deg)', filter: 'blur(8px)' },
+        { opacity: 1, transform: 'none', filter: 'blur(0)' }], { duration: num(el, 'dur', 900), delay: d + i * st, easing: EXPO, fill: 'both' }));
+    },
+    words(el, d) {
+      split(el);
+      const st = num(el, 'stagger', 70);
+      el.querySelectorAll('.sm-w').forEach((w, i) => w.animate([
+        { opacity: 0, transform: 'translateY(.8em) scale(.96)', filter: 'blur(10px)' },
+        { opacity: 1, transform: 'none', filter: 'blur(0)' }], { duration: num(el, 'dur', 1000), delay: d + i * st, easing: EXPO, fill: 'both' }));
+    },
+    scramble(el, d) {
+      const fin = el.dataset.smText || (el.dataset.smText = el.textContent), pool = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#%&@$';
+      const dur = num(el, 'dur', 1200), t0 = performance.now() + d;
+      clearInterval(el._smT);
+      el._smT = setInterval(() => {
+        const k = (performance.now() - t0) / dur;
+        if (k < 0) return;
+        if (k >= 1) { el.textContent = fin; return clearInterval(el._smT); }
+        el.textContent = [...fin].map((ch, i) => ch === ' ' || i < k * fin.length ? ch : pool[Math.random() * pool.length | 0]).join('');
+      }, 40);
+      el.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 200, delay: d, fill: 'both' });
+    },
+    spring(el, d) {
+      const [x, y] = (el.dataset.from || '0,140').split(',').map(Number);
+      el.animate([{ opacity: 0, transform: `translate(${x}px,${y}px) scale(.6)` }, { opacity: 1, transform: 'none' }],
+        { duration: num(el, 'dur', 1300), delay: d, easing: SPRING, fill: 'both' });
+    },
+    curtain(el, d) {
+      if (getComputedStyle(el).position === 'static') el.style.position = 'relative';
+      let bar = el.querySelector(':scope>.sm-bar');
+      if (!bar) { bar = document.createElement('i'); bar.className = 'sm-bar'; el.append(bar); }
+      const dur = num(el, 'dur', 1100);
+      bar.animate([{ transform: 'scaleX(0)', transformOrigin: 'left' }, { transform: 'scaleX(1)', transformOrigin: 'left', offset: .5 },
+        { transform: 'scaleX(1)', transformOrigin: 'right', offset: .5 }, { transform: 'scaleX(0)', transformOrigin: 'right' }],
+        { duration: dur, delay: d, easing: INOUT, fill: 'both' });
+      [...el.children].filter(c => c !== bar).forEach(c => c.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 1, delay: d + dur / 2, fill: 'both' }));
+      if (!el.children.length || el.childNodes.length > el.children.length)
+        el.animate([{ color: 'transparent' }, { color: 'transparent', offset: .5 }, { color: getComputedStyle(el).color, offset: .5 }, {}], { duration: dur, delay: d, fill: 'both' });
+    },
+    glow(el, d) {
+      el.animate([{ opacity: 0, filter: 'brightness(3) blur(14px)', transform: 'scale(1.06)' }, { opacity: 1, filter: 'none', transform: 'none' }],
+        { duration: num(el, 'dur', 1400), delay: d, easing: EXPO, fill: 'both' });
+    },
+    flip(el, d) {
+      el.animate([{ opacity: 0, transform: 'perspective(1400px) rotateY(-75deg) translateZ(-200px)' }, { opacity: 1, transform: 'none' }],
+        { duration: num(el, 'dur', 1200), delay: d, easing: SPRING, fill: 'both' });
+    },
+    kenburns(el, d) {
+      const [x, y] = (el.dataset.from || '-3,2').split(',').map(Number);
+      el.animate([{ transform: `scale(1.18) translate(${x}%,${y}%)` }, { transform: 'scale(1.03)' }],
+        { duration: num(el, 'dur', 12000), delay: d, easing: 'cubic-bezier(.2,.6,.3,1)', fill: 'both' });
+    }
+  };
+
+  const fxIn = el => el.querySelectorAll('*').length ? [el, ...el.querySelectorAll('*')] : [el];
+  const cancel = root => fxIn(root).forEach(n => { n.getAnimations().forEach(a => a.cancel()); clearInterval(n._smT); if (n._smT && n.dataset.smText) n.textContent = n.dataset.smText; });
+  function play(el, lead = 0) { const f = FX[el.dataset.fx]; if (f) { cancel(el); f(el, lead + num(el, 'delay', 0)); } }
+  const pending = s => { const st = s.closest('[data-step]'); return st && !st.classList.contains('sm-shown'); };
+
+  // steps: deck.js toggles .sm-shown; play / reset the fx inside
+  new MutationObserver(ms => ms.forEach(m => {
+    const el = m.target, s = el.closest('.slide');
+    if (!s || !s.classList.contains('on')) return;
+    const list = [el, ...el.querySelectorAll('[data-fx]')].filter(n => n.dataset.fx);
+    el.classList.contains('sm-shown') ? list.filter(n => !pending(n)).forEach(n => play(n)) : list.forEach(cancel);
+  })).observe(stage, { subtree: true, attributes: true, attributeFilter: ['class'] });
+
+  // slide transitions
+  let last = null;
+  function arrive(prev, next, back) {
+    const t = next.dataset.trans;
+    stage.querySelectorAll('.sm-leaving').forEach(s => s.classList.remove('sm-leaving'));
+    stage.querySelectorAll('.sm-shut').forEach(s => s.remove());
+    if (!t || !prev) return 0;
+    prev.classList.add('sm-leaving'); next.classList.add('sm-entering');
+    const done = (ms, also) => setTimeout(() => { prev.classList.remove('sm-leaving'); next.classList.remove('sm-entering'); also && also(); }, ms);
+    const o = next.dataset.origin || '50% 50%';
+    if (t === 'iris') { next.animate([{ clipPath: `circle(0% at ${o})` }, { clipPath: `circle(150% at ${o})` }], { duration: 1100, easing: INOUT }); done(1100); return 450; }
+    if (t === 'zoom') {
+      prev.animate([{ transform: 'none', opacity: 1, filter: 'blur(0)' }, { transform: 'scale(1.7)', opacity: 0, filter: 'blur(12px)' }], { duration: 900, easing: INOUT, fill: 'forwards' });
+      next.animate([{ transform: 'scale(.6)', opacity: 0, filter: 'blur(14px)' }, { transform: 'none', opacity: 1, filter: 'blur(0)' }], { duration: 1000, easing: EXPO });
+      done(1000, () => prev.getAnimations().forEach(a => a.cancel())); return 350;
+    }
+    if (t === 'push') {
+      const k = back ? -1 : 1;
+      prev.animate([{ transform: 'none' }, { transform: `translateX(${-k * 100}%)` }], { duration: 1000, easing: INOUT, fill: 'forwards' });
+      next.animate([{ transform: `translateX(${k * 100}%)` }, { transform: 'none' }], { duration: 1000, easing: INOUT });
+      done(1000, () => prev.getAnimations().forEach(a => a.cancel())); return 600;
+    }
+    const sh = document.createElement('div'); sh.className = 'sm-shut';
+    const col = next.dataset.transColor || (t === 'flash' ? '#fff' : '#000');
+    if (t === 'flash') {
+      sh.style.background = col; stage.append(sh);
+      sh.animate([{ opacity: 0 }, { opacity: 1, offset: .25 }, { opacity: 0 }], { duration: 900, easing: 'ease-out' });
+      done(250); setTimeout(() => sh.remove(), 900); return 250;
+    }
+    sh.innerHTML = '<i></i>'.repeat(8); stage.append(sh);   // shutter
+    [...sh.children].forEach((b, i) => { b.style.background = col; b.animate([
+      { transform: 'scaleY(0)', transformOrigin: 'top' }, { transform: 'scaleY(1)', transformOrigin: 'top', offset: .45 },
+      { transform: 'scaleY(1)', transformOrigin: 'bottom', offset: .55 }, { transform: 'scaleY(0)', transformOrigin: 'bottom' }],
+      { duration: 1300, delay: i * 45, easing: INOUT, fill: 'both' }); });
+    done(650); setTimeout(() => sh.remove(), 1700); return 750;
+  }
+
+  function onChange() {
+    const next = deck.slides[deck.index]; if (!next) return;
+    const back = last && deck.slides.indexOf(last) > deck.index;
+    if (last && last !== next) setTimeout(((s) => () => s.classList.contains('on') || s.querySelectorAll('[data-fx]').forEach(cancel))(last), 1200);
+    const lead = arrive(last !== next ? last : null, next, back);
+    next.querySelectorAll('[data-fx]').forEach(el => pending(el) || play(el, lead));
+    last = next;
+  }
+  stage.addEventListener('sm:change', onChange);
+  if (deck.index >= 0) onChange();
+
+  // depth: layers follow the mouse
+  addEventListener('mousemove', e => {
+    const s = deck.slides[deck.index]; if (!s) return;
+    const dx = e.clientX / innerWidth - .5, dy = e.clientY / innerHeight - .5;
+    s.querySelectorAll('[data-depth]').forEach(l => { const k = +l.dataset.depth * 1920; l.style.translate = `${-dx * k}px ${-dy * k * .6}px`; });
+  });
+
+  // sparks
+  stage.querySelectorAll('[data-particles]').forEach(box => {
+    const [col, n] = box.dataset.particles.split(','), cv = document.createElement('canvas'), g = cv.getContext('2d');
+    cv.className = 'sm-sparks'; cv.width = 1920; cv.height = 1080; box.append(cv);
+    // glow drawn once into a sprite: shadowBlur per spark per frame is far too slow
+    const sp = document.createElement('canvas'), sg = sp.getContext('2d'); sp.width = sp.height = 32;
+    const gr = sg.createRadialGradient(16, 16, 0, 16, 16, 16); gr.addColorStop(0, '#fff'); gr.addColorStop(.18, col || '#ffb347'); gr.addColorStop(1, 'transparent');
+    sg.fillStyle = gr; sg.fillRect(0, 0, 32, 32);
+    const P = Array.from({ length: +n || 60 }, () => ({ x: Math.random() * 1920, y: Math.random() * 1080, r: 6 + Math.random() * 14, v: .2 + Math.random() * .9, p: Math.random() * 6 }));
+    const tick = t => {
+      const s = box.closest('.slide');
+      if (!s || s.classList.contains('on') || s.classList.contains('sm-leaving')) {
+        g.clearRect(0, 0, 1920, 1080);
+        P.forEach(q => { q.y -= q.v; q.x += Math.sin(t / 1400 + q.p) * .35; if (q.y < -10) { q.y = 1090; q.x = Math.random() * 1920; }
+          g.globalAlpha = .35 + .5 * Math.sin(t / 500 + q.p * 3) ** 2; g.drawImage(sp, q.x - q.r, q.y - q.r, q.r * 2, q.r * 2); });
+      }
+    requestAnimationFrame(tick);
+  });
+
+  addEventListener('beforeprint', () => document.getAnimations().forEach(a => { try { a.finish(); } catch (_) { a.cancel(); } }));
+  window.cinema = { play, cancel };
+})();
+</script>
+<script>
+(() => {
+  const stage = document.querySelector('.sm-stage');
+  const check = () => document.querySelectorAll('[data-quiz]').forEach(q =>
+    q.classList.toggle('q-ok', !!q.querySelector('[data-step].sm-shown')));
+  stage.addEventListener('sm:change', check);
+  stage.addEventListener('sm:step', check);
+})();
+</script>
+</body>
+</html>

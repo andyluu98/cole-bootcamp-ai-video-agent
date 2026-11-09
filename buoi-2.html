@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Buổi 2: Kịch bản video bằng Agent | Bootcamp AI Video</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<nav class="top"><div class="wrap">
+  <a class="home" href="index.html">Bootcamp AI Video</a>
+  <a href="chuan-bi.html">Chuẩn bị</a>
+  <a href="buoi-1.html">Buổi 1</a>
+  <a href="buoi-2.html">Buổi 2</a>
+  <a href="buoi-3.html">Buổi 3</a>
+  <a href="buoi-4.html">Buổi 4</a>
+  <a href="buoi-5.html">Buổi 5</a>
+</div></nav>
+
+<header class="hero">
+  <div class="wrap">
+    <img class="logo" src="assets/logo-cole-trang.png" alt="Cole">
+    <div><span class="nhan">Buổi 2 · Thực hành</span></div>
+    <h1>Kịch bản video bằng Agent</h1>
+    <p>Hiểu cấu trúc một video ngắn bán hàng, chạy skill viết kịch bản chia cảnh, nhờ người chấm độc lập rồi sửa, và tách mô tả hình ảnh từng cảnh để buổi 3 tạo ảnh. Mỗi bước có câu lệnh mẫu, bấm Chép rồi dán vào Antigravity.</p>
+    <div class="chips">
+      <span>Thời gian: <b>20:00 đến 22:00, thứ 5 12/11/2026</b></span>
+      <a href="slide/buoi-2.html">Mở slide buổi 2</a>
+      <a href="tai-ve/buoi-02.zip">Tải bộ cài buổi 2</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="card">
+    <h2>Lịch buổi học</h2>
+    <div class="bang-cuon"><table>
+      <tr><th style="width:130px">Giờ</th><th>Phần</th><th>Bạn làm ra</th></tr>
+      <tr><td>20:00 đến 20:10</td><td><a href="#p0">0. Ôn buổi 1, kiểm tra cài đặt</a></td><td>Dự án mở được, skill buổi 1 còn chạy</td></tr>
+      <tr><td>20:10 đến 20:20</td><td><a href="#p1">1. Tải và cài bộ buổi 2</a></td><td>1 skill, 1 agent mới đã cài</td></tr>
+      <tr><td>20:20 đến 20:35</td><td><a href="#p2">2. Cấu trúc video ngắn bán hàng</a></td><td>Biết chia hook, thân, kêu gọi hành động</td></tr>
+      <tr><td>20:35 đến 21:00</td><td><a href="#p3">3. Chạy skill kịch bản</a></td><td>File kịch bản phân cảnh đầu tiên</td></tr>
+      <tr><td>21:00 đến 21:05</td><td>Nghỉ</td><td></td></tr>
+      <tr><td>21:05 đến 21:25</td><td><a href="#p4">4. Gọi người chấm, sửa theo góp ý</a></td><td>Bảng điểm và kịch bản đã sửa</td></tr>
+      <tr><td>21:25 đến 21:40</td><td><a href="#p5">5. Tách mô tả hình ảnh từng cảnh</a></td><td>File mô tả hình ảnh cho buổi 3</td></tr>
+      <tr><td>21:40 đến 21:52</td><td><a href="#p6">6. Mở rộng: MCP tìm video đang hot</a></td><td>Xem giảng viên demo, không cần cài</td></tr>
+      <tr><td>21:52 đến 22:00</td><td><a href="#p7">7. Kiểm tra và bài tập</a></td><td>Checklist cuối buổi</td></tr>
+    </table></div>
+    <div class="note lam"><b>Nhắc lại cách đọc câu lệnh mẫu:</b> chữ IN HOA trong câu lệnh là chỗ bạn thay bằng thông tin của mình. Kết quả chưa ưng thì nói thẳng chỗ chưa ưng, không cần gõ lại cả câu lệnh.</div>
+  </section>
+
+  <!-- PHẦN 0 -->
+  <section class="card" id="p0">
+    <span class="phut">20:00 đến 20:10</span>
+    <h2><span class="so">0</span>Ôn buổi 1, kiểm tra cài đặt</h2>
+    <p class="dung">Mở Antigravity, chọn <b>Open Folder</b>, mở lại đúng thư mục dự án <code>du-an-video</code> của buổi 1. Mở một cuộc trò chuyện mới rồi dán:</p>
+    <div class="prompt"><span class="nhan-p">Kiểm tra nhanh</span><button>Chép</button><p>Tôi gửi bạn: thư mục dự án này, đã cài bộ buổi 1.
+
+Việc cần làm:
+1. Liệt kê các skill trong .agents/skills và các agent trong .agents/agents.
+2. Cho tôi biết file .agents/rules/thuong-hieu.md đang là thương hiệu nào.
+3. Liệt kê các file trong thư mục kich-ban, nhất là file hook (tên bắt đầu bằng hook-).
+
+Kết quả: trả lời ngắn trong khung chat, không tạo hay sửa file nào.</p></div>
+    <p>Kết quả đúng: có skill <code>file-thuong-hieu</code>, <code>hook-video-3-giay</code>; có agent <code>nguoi-soat</code>; có ít nhất 1 file <code>kich-ban/hook-....md</code>.</p>
+    <div class="note vang"><b>Thiếu file hook?</b> Chạy lại phần 7 của <a href="buoi-1.html#p7">buổi 1</a>. Không kịp thì bỏ qua: skill kịch bản hôm nay tự viết hook mới khi không tìm thấy file hook.</div>
+    <p>Ôn ba khái niệm: <b>Agent</b> là nhân viên làm thật trên máy bạn; <b>Skill</b> là sổ tay quy trình, gõ <code>/</code> để gọi; <b>MCP</b> là ổ cắm nối Agent với phần mềm khác. Hôm nay dùng cả ba.</p>
+  </section>
+
+  <!-- PHẦN 1 -->
+  <section class="card" id="p1">
+    <span class="phut">20:10 đến 20:20</span>
+    <h2><span class="so">1</span>Tải và cài bộ buổi 2</h2>
+    <p class="dung">Làm tới đâu cài tới đó: mỗi buổi chỉ cài đúng bộ của buổi đó.</p>
+    <ol>
+      <li>Tải <a href="tai-ve/buoi-02.zip">buoi-02.zip</a>. Trình duyệt thường lưu vào thư mục <b>Downloads</b>.</li>
+      <li>Mở File Explorer, kéo file <code>buoi-02.zip</code> vào thư mục <code>bo-cai</code> trong dự án. Agent chỉ được làm việc bên trong thư mục dự án, nên file phải nằm ở đây.</li>
+      <li>Dán câu lệnh dưới đây vào Antigravity:</li>
+    </ol>
+    <div class="prompt"><span class="nhan-p">Giải nén và cài bộ buổi 2</span><button>Chép</button><p>Tôi gửi bạn: file bo-cai/buoi-02.zip, là bộ cài buổi 2 gồm thư mục skills (1 skill), agents (1 agent) và mau (khung mẫu).
+
+Việc cần làm:
+1. Giải nén file đó ngay trong thư mục bo-cai. Trong file zip đã có sẵn thư mục buoi-02, nên giải nén xong sẽ có bo-cai/buoi-02. Nói tôi biết bạn dùng lệnh gì, chờ tôi đồng ý rồi mới chạy.
+2. Chép từng thư mục trong bo-cai/buoi-02/skills vào .agents/skills.
+3. Chép từng file trong bo-cai/buoi-02/agents vào .agents/agents.
+4. Trùng tên thì hỏi tôi trước, không ghi đè. Không xóa file nào, kể cả file zip.
+5. Kiểm tra lại sau khi chép.
+
+Kết quả: báo tôi danh sách skill và agent đã cài, kèm đường dẫn.</p></div>
+    <div class="note vang"><b>Agent xin chạy lệnh giải nén:</b> trên Windows thường là lệnh <code>Expand-Archive</code>, trên macOS là <code>unzip</code>. Đọc lệnh, thấy chỉ giải nén vào thư mục <code>bo-cai</code> thì đồng ý. Lỡ ra thư mục lồng <code>bo-cai/buoi-02/buoi-02</code> thì báo Agent chuyển lên một cấp, không xóa gì. Lệnh có chữ <code>-Force</code>, <code>delete</code>, <code>rm</code> thì hỏi lại Agent nó làm gì trước khi đồng ý.</div>
+    <div class="cay">du-an-video
+├── .agents/
+│   ├── skills/
+│   │   ├── file-thuong-hieu/      buổi 1
+│   │   ├── hook-video-3-giay/     buổi 1
+│   │   └── kich-ban-video/        mới: viết kịch bản chia cảnh
+│   └── agents/
+│       ├── nguoi-soat.md          buổi 1
+│       └── nguoi-cham-kich-ban.md mới: chấm kịch bản theo thang điểm
+└── bo-cai/buoi-02/
+    └── mau/mau-kich-ban.md        khung kịch bản trống để tham khảo</div>
+    <p>Cài xong, mở một cuộc trò chuyện mới. Gõ <code>/</code> trong khung chat, thấy <code>kich-ban-video</code> là được.</p>
+  </section>
+
+  <!-- PHẦN 2 -->
+  <section class="card" id="p2">
+    <span class="phut">20:20 đến 20:35</span>
+    <h2><span class="so">2</span>Cấu trúc video ngắn bán hàng</h2>
+    <p class="dung">Video ngắn bán hàng 15 tới 30 giây luôn có 3 phần, giống một lời chào hàng ngắn ở cửa tiệm: gọi khách dừng lại, cho khách thấy hàng, chỉ chỗ trả tiền.</p>
+    <div class="luoi">
+      <div><b>Hook</b>3 giây đầu. Một câu nói hoặc dòng chữ khiến người xem dừng lướt.<i>Bạn đã viết ở buổi 1.</i></div>
+      <div><b>Thân</b>Phần giữa, 2 tới 4 cảnh. Nỗi đau của khách, sản phẩm giải quyết thế nào, điểm khác biệt.<i>Mỗi cảnh một ý, không nhồi.</i></div>
+      <div><b>Kêu gọi hành động</b>Còn gọi là CTA, 3 tới 5 giây cuối. Nói rõ một việc người xem cần làm.<i>Ví dụ: bấm giỏ hàng, nhắn tin cho fanpage.</i></div>
+    </div>
+    <h3>Ví dụ chia cảnh với sản phẩm mẫu Cà Phê Mây Núi (20 giây)</h3>
+    <div class="bang-cuon"><table>
+      <tr><th>Cảnh</th><th>Giây</th><th>Phần</th><th>Ý chính</th></tr>
+      <tr><td>1</td><td>0 tới 3</td><td>Hook</td><td>Cà phê quán đắt, chờ lâu</td></tr>
+      <tr><td>2</td><td>3 tới 8</td><td>Thân</td><td>Pha phin tại nhà, buổi sáng ở bếp</td></tr>
+      <tr><td>3</td><td>8 tới 13</td><td>Thân</td><td>Rang mộc, ngày rang in trên túi</td></tr>
+      <tr><td>4</td><td>13 tới 17</td><td>Thân</td><td>Vị chua nhẹ, hậu ngọt</td></tr>
+      <tr><td>5</td><td>17 tới 20</td><td>CTA</td><td>Mua 2 túi tặng 1 phin nhôm</td></tr>
+    </table></div>
+    <p>Mọi ý trong bảng đều lấy từ <code>du-lieu/san-pham-mau.md</code>, không thêm số liệu nào ngoài file.</p>
+    <div class="note xanh"><b>Quy tắc đọc kịp:</b> người đọc thoải mái khoảng 3 chữ mỗi giây. Cảnh dài 4 giây thì lời thoại không quá 12 chữ. Chữ trên màn hình tối đa 8 chữ, vì người xem còn phải nhìn hình.</div>
+    <div class="prompt"><span class="nhan-p">Thử ngay: chia cảnh một video bạn vừa xem</span><button>Chép</button><p>Tôi gửi bạn: mô tả một video ngắn bán hàng tôi vừa xem trên mạng: MÔ TẢ VIDEO BẠN NHỚ, VÍ DỤ MỞ ĐẦU NÓI GÌ, GIỮA CHO XEM GÌ, CUỐI NÓI GÌ.
+
+Việc cần làm:
+1. Chia video đó thành 3 phần: hook, thân, kêu gọi hành động.
+2. Cho tôi biết phần nào làm tốt, phần nào còn yếu, mỗi ý một câu.
+
+Kết quả: trả lời trong khung chat, không tạo file.</p></div>
+  </section>
+
+  <!-- PHẦN 3 -->
+  <section class="card" id="p3">
+    <span class="phut">20:35 đến 21:00</span>
+    <h2><span class="so">3</span>Chạy skill kịch bản</h2>
+    <p class="dung">Skill <code>kich-ban-video</code> đọc file thương hiệu, file sản phẩm và file hook của bạn, rồi viết kịch bản dọc 9:16, 15 tới 30 giây, 4 tới 6 cảnh.</p>
+    <div class="prompt"><span class="nhan-p">Viết kịch bản với sản phẩm mẫu</span><button>Chép</button><p>/kich-ban-video
+Viết kịch bản video 20 giây cho sản phẩm trong file du-lieu/san-pham-mau.md. Dùng hook đã chọn trong thư mục kich-ban. Trình bày kế hoạch trước, tôi đồng ý thì mới viết.</p></div>
+    <p>Agent sẽ trình bày kế hoạch: hook định dùng, số cảnh, ý chính từng cảnh. Đọc kỹ, chỗ nào chưa ưng thì nói luôn, ví dụ "Cảnh 3 đổi sang cảnh rót cà phê ra ly". Đồng ý rồi Agent mới viết.</p>
+    <h3>Kịch bản bạn nhận được có gì</h3>
+    <div class="bang-cuon"><table>
+      <tr><th>Cột</th><th>Nghĩa là</th></tr>
+      <tr><td>Cảnh</td><td>Số thứ tự cảnh, cảnh 1 là hook, cảnh cuối là kêu gọi hành động</td></tr>
+      <tr><td>Giây</td><td>Cảnh chạy từ giây nào tới giây nào</td></tr>
+      <tr><td>Hình ảnh</td><td>Người xem thấy gì trên màn hình</td></tr>
+      <tr><td>Chuyển động máy quay</td><td>Khung hình đứng yên, đẩy vào gần, kéo ra xa, lia ngang...</td></tr>
+      <tr><td>Lời thoại</td><td>Giọng đọc nói gì (buổi 4 dùng để tạo giọng đọc)</td></tr>
+      <tr><td>Chữ trên màn hình</td><td>Dòng chữ lớn hiện trên video, khác phụ đề</td></tr>
+    </table></div>
+    <p>File lưu ở <code>kich-ban/kich-ban-TEN-SAN-PHAM.md</code>. Mở ra đọc: có bảng kịch bản, phần mô tả hình ảnh từng cảnh và phần ghi chú.</p>
+    <div class="note vang"><b>Thấy chữ [CHỜ BỔ SUNG]?</b> Nghĩa là file sản phẩm thiếu thông tin đó và Agent không tự bịa. Bổ sung vào file trong <code>du-lieu/</code> rồi bảo Agent viết lại đúng chỗ đó.</div>
+    <div class="prompt"><span class="nhan-p">Làm với sản phẩm của bạn</span><button>Chép</button><p>/kich-ban-video
+Viết kịch bản video DÀI BAO NHIÊU GIÂY, TỪ 15 TỚI 30 cho sản phẩm trong file du-lieu/TEN-FILE-SAN-PHAM.md. Khách xem video là KHÁCH HÀNG CỦA BẠN, VÍ DỤ MẸ BỈM 25 TỚI 35 TUỔI. Trình bày kế hoạch trước, tôi đồng ý thì mới viết.</p></div>
+  </section>
+
+  <!-- PHẦN 4 -->
+  <section class="card" id="p4">
+    <span class="phut">21:05 đến 21:25</span>
+    <h2><span class="so">4</span>Gọi người chấm, sửa theo góp ý</h2>
+    <p class="dung">Người viết khó tự thấy lỗi của mình. Agent <code>nguoi-cham-kich-ban</code> chấm độc lập, chỉ đọc và báo cáo, không sửa file.</p>
+    <h3>Thang chấm 10 điểm</h3>
+    <div class="bang-cuon"><table>
+      <tr><th>Tiêu chí</th><th>Đạt 2 điểm khi</th></tr>
+      <tr><td>Hook</td><td>Cảnh 1 không quá 3 giây, câu hook không quá 12 chữ, gây tò mò</td></tr>
+      <tr><td>Nhịp</td><td>4 tới 6 cảnh, mỗi cảnh 2 tới 7 giây, tổng 15 tới 30 giây</td></tr>
+      <tr><td>Kêu gọi hành động</td><td>Cảnh cuối nói rõ một việc cần làm, ưu đãi đúng file sản phẩm</td></tr>
+      <tr><td>Đúng thương hiệu</td><td>Đúng giọng văn, không từ cấm, không số liệu ngoài file</td></tr>
+      <tr><td>Độ dài đọc kịp</td><td>Lời thoại không quá 3 chữ mỗi giây, chữ trên màn hình tối đa 8 chữ</td></tr>
+    </table></div>
+    <p>Từ 9 điểm: dùng được. 6 tới 8 điểm: sửa nhẹ. Dưới 6 điểm: viết lại.</p>
+    <div class="prompt"><span class="nhan-p">Nhờ người chấm</span><button>Chép</button><p>Gọi agent nguoi-cham-kich-ban chấm file kịch bản vừa lưu trong thư mục kich-ban. Báo tôi bảng điểm và góp ý, chưa sửa gì.</p></div>
+    <p>Đọc bảng điểm, chọn góp ý bạn đồng ý rồi bảo Agent sửa:</p>
+    <div class="prompt"><span class="nhan-p">Sửa theo góp ý, có sao lưu</span><button>Chép</button><p>Tôi gửi bạn: bảng góp ý người chấm vừa đưa cho file kịch bản trong thư mục kich-ban.
+
+Việc cần làm:
+1. Trước khi sửa, chép bản cũ vào thư mục _backup theo đúng quy tắc trong AGENTS.md.
+2. Sửa theo góp ý SỐ 1 VÀ SỐ 3. Chỉ sửa đúng các cảnh được góp ý, giữ nguyên phần còn lại.
+3. Cộng lại thời lượng các cảnh, bảo đảm vẫn đúng tổng.
+
+Kết quả: ghi bản mới vào đúng file cũ, báo tôi đã sửa cảnh nào và tên file bản cũ trong _backup.</p></div>
+    <p>Sửa xong, gọi người chấm thêm một lần nữa. Mục tiêu: từ 9 điểm.</p>
+    <div class="note xanh"><b>Mẹo:</b> không đồng ý với góp ý nào thì cứ bỏ qua. Người chấm chỉ gợi ý, bạn là người quyết định cuối cùng.</div>
+  </section>
+
+  <!-- PHẦN 5 -->
+  <section class="card" id="p5">
+    <span class="phut">21:25 đến 21:40</span>
+    <h2><span class="so">5</span>Tách mô tả hình ảnh từng cảnh</h2>
+    <p class="dung">Buổi 3 bạn sẽ tạo ảnh cho từng cảnh. Công cụ tạo ảnh cần một đoạn mô tả rõ ràng cho mỗi ảnh, nên ta tách riêng phần này ra một file.</p>
+    <div class="luoi">
+      <div><b>Nhân vật</b>Tuổi, trang phục, biểu cảm, đang làm gì.<i>Cùng một người thì mô tả giống hệt nhau ở mọi cảnh, buổi 3 dùng để giữ khuôn mặt không đổi.</i></div>
+      <div><b>Bối cảnh, ánh sáng</b>Ở đâu, đồ vật xung quanh, màu chủ đạo; sáng sớm hay chiều tối, ánh sáng ấm hay dịu.<i>Màu lấy theo file thương hiệu.</i></div>
+      <div><b>Góc máy, tỷ lệ</b>Cận, trung hay toàn cảnh; luôn ghi tỷ lệ 9:16 (dọc).<i>Không ghi chữ, logo vào mô tả ảnh: buổi 4 mới thêm.</i></div>
+    </div>
+    <div class="prompt"><span class="nhan-p">Tách mô tả hình ảnh ra file riêng</span><button>Chép</button><p>Tôi gửi bạn: file kịch bản đã sửa trong thư mục kich-ban.
+
+Việc cần làm:
+1. Lấy phần mô tả hình ảnh từng cảnh trong file đó.
+2. Viết lại mỗi cảnh thành một đoạn liền mạch, đủ nhân vật, sản phẩm, bối cảnh, ánh sáng, góc máy, tỷ lệ 9:16, để tôi dán thẳng vào công cụ tạo ảnh.
+3. Kiểm tra nhân vật: cùng một người thì mô tả phải giống hệt nhau ở mọi cảnh. Chỗ nào lệch thì báo tôi.
+4. Không thêm chữ hay logo vào mô tả.
+
+Kết quả: lưu vào kich-ban/mo-ta-hinh-anh-TEN-SAN-PHAM.md, mỗi cảnh một mục có tiêu đề "Cảnh 1", "Cảnh 2"... Trùng tên thì chép bản cũ vào _backup trước.</p></div>
+    <p>Tới đây bạn có đủ sản phẩm của buổi 2: <b>01 kịch bản phân cảnh</b> và <b>01 danh sách mô tả hình ảnh từng cảnh</b>.</p>
+  </section>
+
+  <!-- PHẦN 6 -->
+  <section class="card" id="p6">
+    <span class="phut">21:40 đến 21:52</span>
+    <h2><span class="so">6</span>Mở rộng: MCP tìm video đang hot làm nguồn ý tưởng</h2>
+    <p class="dung">Phần này giảng viên demo, bạn chỉ cần xem. Không bắt buộc cài.</p>
+    <p><b>Scrape Creators MCP</b> là một "ổ cắm" nối Agent với dịch vụ Scrape Creators. Dịch vụ này đọc dữ liệu công khai trên TikTok, Instagram, YouTube, Facebook: tìm video theo từ khóa, xem lượt xem, lấy lời thoại của video. Nhờ vậy Agent tự đi tìm video đang được xem nhiều trong ngành của bạn, rồi phân tích hook của chúng.</p>
+    <div class="note do"><b>Vì sao không bắt học viên cài:</b> Scrape Creators cần mã khóa (API key) và tính phí theo lượt dùng. Bạn nào muốn dùng sau khóa thì tự xem bảng giá trên trang chính thức của Scrape Creators. Không dán API key vào khung chat hay vào nhóm lớp.</div>
+    <h3>Giảng viên demo</h3>
+    <ol>
+      <li>Mở <b>Customizations</b>, mục <b>Installed</b>, phần <b>MCP Servers</b>, bấm <b>Add MCP Server</b>. Cấu hình lưu trong file <code>.agents/mcp_config.json</code> của dự án. Tên mục có thể khác trên máy bạn.</li>
+      <li>Chạy câu lệnh dưới đây với từ khóa của ngành cà phê.</li>
+      <li>Đưa kết quả vào skill kịch bản để viết một kịch bản lấy cảm hứng từ hook đang hot.</li>
+    </ol>
+    <div class="prompt"><span class="nhan-p">Câu lệnh giảng viên demo</span><button>Chép</button><p>Tôi gửi bạn: từ khóa TỪ KHÓA NGÀNH, VÍ DỤ CÀ PHÊ PHA PHIN.
+
+Việc cần làm:
+1. Dùng MCP Scrape Creators tìm các video TikTok theo từ khóa đó.
+2. Chọn 5 video có lượt xem cao nhất, lấy lời thoại của từng video.
+3. Với mỗi video, ghi lại: link, lượt xem, câu hook 3 giây đầu, kiểu hook (nỗi đau, câu hỏi, con số, trái ngược, kết quả).
+4. Rút ra 3 ý tưởng hook phù hợp với file thương hiệu của tôi. Chỉ lấy ý tưởng, không chép nguyên lời thoại của người khác.
+
+Kết quả: lưu vào kich-ban/y-tuong-video-hot.md rồi báo tôi đường dẫn.</p></div>
+    <div class="note lam"><b>Cách làm miễn phí cho bạn:</b> tự lướt TikTok, chép link và tả lại 3 giây đầu của 3 video bạn thấy hay vào một file trong <code>du-lieu/</code>, rồi nhờ Agent phân tích theo bước 3 và 4 ở trên.</div>
+  </section>
+
+  <!-- PHẦN 7 -->
+  <section class="card" id="p7">
+    <span class="phut">21:52 đến 22:00</span>
+    <h2><span class="so">7</span>Kiểm tra cuối buổi và bài tập</h2>
+    <ul class="check">
+      <li>Đã cài skill <code>kich-ban-video</code> và agent <code>nguoi-cham-kich-ban</code>; gõ <code>/</code> thấy skill.</li>
+      <li>Có file <code>kich-ban/kich-ban-....md</code>: 4 tới 6 cảnh, tổng 15 tới 30 giây, có hook và kêu gọi hành động.</li>
+      <li>Có bảng điểm của người chấm; kịch bản đã sửa đạt từ 9 điểm.</li>
+      <li>Bản cũ trước khi sửa nằm trong <code>_backup/</code>.</li>
+      <li>Có file <code>kich-ban/mo-ta-hinh-anh-....md</code>, mỗi cảnh một đoạn mô tả.</li>
+    </ul>
+    <p>Chụp màn hình bảng kịch bản và bảng điểm gửi vào nhóm lớp.</p>
+    <h3>Bài tập trước buổi 3</h3>
+    <ol>
+      <li>Viết kịch bản cho 1 sản phẩm thật của bạn, chấm tới khi đạt từ 9 điểm, tách file mô tả hình ảnh.</li>
+      <li>Chuẩn bị 1 tới 3 ảnh sản phẩm thật: chụp rõ nét, đủ sáng, nền gọn. Bỏ vào thư mục <code>du-lieu/</code>.</li>
+      <li>Chuẩn bị một tài khoản <b>ChatGPT phụ</b> (không dùng tài khoản chính vì có rủi ro bị khóa), đăng nhập sẵn trên trình duyệt. Buổi 3 dùng để tạo hình ảnh và khóa nhân vật.</li>
+    </ol>
+  </section>
+
+</main>
+
+<footer><div class="wrap">
+  <img src="assets/logo-cole-trang.png" alt="Cole">
+  <span>Bootcamp AI Agent for Video Marketing · Giảng viên Lưu Tuấn Anh · Tài liệu tra cứu ngày 09/11/2026</span>
+</div></footer>
+<script src="assets/app.js"></script>
+</body>
+</html>

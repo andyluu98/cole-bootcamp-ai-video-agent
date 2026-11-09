@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Buổi 1: Nền tảng Agent, Skill, MCP | Bootcamp AI Video</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<nav class="top"><div class="wrap">
+  <a class="home" href="index.html">Bootcamp AI Video</a>
+  <a href="chuan-bi.html">Chuẩn bị</a>
+  <a href="buoi-1.html">Buổi 1</a>
+  <a href="buoi-2.html">Buổi 2</a>
+  <a href="buoi-3.html">Buổi 3</a>
+  <a href="buoi-4.html">Buổi 4</a>
+  <a href="buoi-5.html">Buổi 5</a>
+</div></nav>
+
+<header class="hero">
+  <div class="wrap">
+    <img class="logo" src="assets/logo-cole-trang.png" alt="Cole">
+    <div><span class="nhan">Buổi 1 · Thực hành</span></div>
+    <h1>Nền tảng: Agent, Skill, MCP và cách làm việc</h1>
+    <p>Mở dự án video đầu tiên trong Antigravity, cài nguyên tắc chống mất dữ liệu, viết file thương hiệu và chạy skill đầu tiên. Mỗi bước có câu lệnh mẫu, bấm Chép rồi dán vào Antigravity.</p>
+    <div class="chips">
+      <span>Thời gian: <b>20:00 đến 22:00, thứ 3 10/11/2026</b></span>
+      <a href="slide/buoi-1.html">Mở slide buổi 1</a>
+      <a href="tai-ve/du-an-mau.zip">Tải thư mục dự án mẫu</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="card">
+    <h2>Lịch buổi học</h2>
+    <div class="bang-cuon"><table>
+      <tr><th style="width:130px">Giờ</th><th>Phần</th><th>Bạn làm ra</th></tr>
+      <tr><td>20:00 đến 20:10</td><td><a href="#p0">0. Mở dự án</a></td><td>Thư mục dự án mở trong Antigravity</td></tr>
+      <tr><td>20:10 đến 20:30</td><td><a href="#p1">1. Agent, Skill, MCP là gì</a></td><td>Hiểu 3 khái niệm qua ví dụ</td></tr>
+      <tr><td>20:30 đến 20:45</td><td><a href="#p2">2. Cài đặt an toàn, chống mất dữ liệu</a></td><td>Antigravity hỏi trước khi làm việc nhạy cảm</td></tr>
+      <tr><td>20:45 đến 21:00</td><td><a href="#p3">3. Cách giao việc cho Agent</a></td><td>Câu giao việc đầu tiên có kế hoạch, có duyệt</td></tr>
+      <tr><td>21:00 đến 21:05</td><td>Nghỉ</td><td></td></tr>
+      <tr><td>21:05 đến 21:15</td><td><a href="#p4">4. GitHub cơ bản</a></td><td>Biết tải skill từ GitHub</td></tr>
+      <tr><td>21:15 đến 21:30</td><td><a href="#p5">5. Cài skill và agent buổi 1</a></td><td>2 skill, 1 agent đã cài</td></tr>
+      <tr><td>21:30 đến 21:45</td><td><a href="#p6">6. File thương hiệu của bạn</a></td><td>File <code>thuong-hieu.md</code></td></tr>
+      <tr><td>21:45 đến 21:55</td><td><a href="#p7">7. Chạy skill đầu tiên</a></td><td>5 câu hook đã được soát</td></tr>
+      <tr><td>21:55 đến 22:00</td><td><a href="#p8">8. Kiểm tra và bài tập</a></td><td>Checklist cuối buổi</td></tr>
+    </table></div>
+    <div class="note lam"><b>Cách đọc câu lệnh mẫu:</b> chữ IN HOA trong câu lệnh là chỗ bạn thay bằng thông tin của mình. Kết quả chưa ưng thì nói thẳng chỗ chưa ưng, không cần gõ lại cả câu lệnh.</div>
+  </section>
+
+  <!-- PHẦN 0 -->
+  <section class="card" id="p0">
+    <span class="phut">20:00 đến 20:10</span>
+    <h2><span class="so">0</span>Mở dự án</h2>
+    <p class="dung">Chưa cài Antigravity thì làm trang <a href="chuan-bi.html">Chuẩn bị</a> trước.</p>
+    <ol>
+      <li>Tải <a href="tai-ve/du-an-mau.zip">du-an-mau.zip</a>, giải nén vào một chỗ dễ tìm, ví dụ thư mục <code>Documents</code>. Bạn sẽ có thư mục <code>du-an-video</code>.</li>
+      <li>Mở Antigravity, chọn <b>Open Folder</b>, chọn đúng thư mục <code>du-an-video</code> vừa giải nén.</li>
+      <li>Dán câu lệnh dưới đây vào khung chat:</li>
+    </ol>
+    <div class="prompt"><span class="nhan-p">Dán vào Antigravity</span><button>Chép</button><p>Chào bạn. Bạn đọc giúp tôi file AGENTS.md trong thư mục này rồi cho tôi biết:
+1. Thư mục này có những thư mục con nào, mỗi cái để làm gì.
+2. Những quy tắc nào bạn phải tuân theo khi làm việc ở đây.
+Trả lời ngắn gọn, không tạo hay sửa file nào.</p></div>
+    <div class="cay">du-an-video
+├── AGENTS.md            quy tắc làm việc, chống mất dữ liệu
+├── .agents/rules/       file thương hiệu (thuong-hieu.md)
+├── du-lieu/             thông tin sản phẩm, ảnh sản phẩm gốc
+├── kich-ban/            kịch bản video
+├── anh/                 ảnh AI tạo, nhân vật
+├── video/               video xuất ra
+├── bo-cai/              bộ skill, agent tải về theo từng buổi
+└── _backup/             bản cũ, file bỏ đi</div>
+    <div class="note vang"><b>Không thấy thư mục .agents?</b> Thư mục bắt đầu bằng dấu chấm thường bị ẩn. Trên Windows: File Explorer, tab View, tích <b>Hidden items</b>. Antigravity vẫn đọc được dù bạn không thấy.</div>
+  </section>
+
+  <!-- PHẦN 1 -->
+  <section class="card" id="p1">
+    <span class="phut">20:10 đến 20:30</span>
+    <h2><span class="so">1</span>Agent, Skill, MCP là gì</h2>
+    <p class="dung">Hình dung bạn mở một xưởng làm video:</p>
+    <div class="luoi">
+      <div><b>Agent</b>Một nhân viên làm việc ngay trên máy bạn: tự lập kế hoạch, mở file, tạo file, làm xong báo lại.<i>Khác chatbot: chatbot chỉ trả lời chữ, bạn phải tự chép tự làm tiếp.</i></div>
+      <div><b>Skill</b>Sổ tay quy trình viết sẵn. Gõ tên skill là Agent làm đúng các bước đó, lần nào cũng như nhau.<i>Ví dụ: skill viết hook 3 giây (hôm nay), skill kịch bản (buổi 2).</i></div>
+      <div><b>MCP</b>Cái "ổ cắm" để Agent nối sang phần mềm khác: tạo ảnh, đọc mạng xã hội, điều khiển trình duyệt.<i>Ví dụ: ChatGPT Image MCP ở buổi 3.</i></div>
+    </div>
+    <p>Thêm hai khái niệm sẽ gặp trong khóa:</p>
+    <ul>
+      <li><b>Rule (quy tắc):</b> điều Agent luôn phải nhớ, ví dụ file thương hiệu, quy tắc chống mất dữ liệu.</li>
+      <li><b>Subagent (agent con):</b> một trợ lý chuyên một việc, Agent chính gọi khi cần, ví dụ người soát nội dung.</li>
+    </ul>
+    <div class="prompt"><span class="nhan-p">Thử ngay: so sánh chatbot và Agent</span><button>Chép</button><p>Tôi gửi bạn: file du-lieu/san-pham-mau.md, đây là thông tin một sản phẩm cà phê mẫu.
+
+Việc cần làm: viết 3 dòng giới thiệu sản phẩm này cho bài đăng Facebook.
+
+Kết quả: lưu vào file kich-ban/gioi-thieu-thu.md rồi báo tôi đường dẫn.</p></div>
+    <p>Mở file vừa tạo trong thư mục <code>kich-ban</code>. Đó là điểm khác chatbot: Agent tự đọc file, tự tạo file trên máy bạn.</p>
+  </section>
+
+  <!-- PHẦN 2 -->
+  <section class="card" id="p2">
+    <span class="phut">20:30 đến 20:45</span>
+    <h2><span class="so">2</span>Cài đặt an toàn, chống mất dữ liệu</h2>
+    <p class="dung">Agent làm thật trên máy bạn, nên phải đặt "phanh" trước khi giao việc lớn.</p>
+    <h3>2.1. Chọn mức quyền</h3>
+    <ol>
+      <li>Trong Antigravity mở <b>Settings</b>, mục <b>General</b>, phần <b>Global Permissions</b>, chọn <b>Permission Preset</b>.</li>
+      <li>Chọn <b>Default</b> (hỏi trước các việc nhạy cảm) hoặc <b>Request Review</b> (lệnh nào cũng hỏi). Người mới nên chọn <b>Request Review</b>.</li>
+      <li><b>Không chọn Turbo</b>: chế độ này chạy mọi lệnh không hỏi.</li>
+    </ol>
+    <div class="note vang">Tên mục cài đặt lấy theo tài liệu chính thức của Antigravity, tra ngày 09/11/2026. Antigravity cập nhật thường xuyên, tên mục có thể khác đôi chút trên máy bạn.</div>
+    <h3>2.2. Nguyên tắc chống mất dữ liệu đã có sẵn</h3>
+    <p>File <code>AGENTS.md</code> trong dự án mẫu đã ghi sẵn: chỉ làm trong thư mục dự án, không xóa file, bản cũ chuyển vào <code>_backup/</code> trước khi sửa, hỏi trước khi ghi đè, không lưu mật khẩu. Antigravity tự đọc file này mỗi lần làm việc.</p>
+    <div class="prompt"><span class="nhan-p">Kiểm tra Agent đã nhớ quy tắc chưa</span><button>Chép</button><p>Giả sử tôi bảo bạn sửa lại file kich-ban/gioi-thieu-thu.md. Bạn sẽ làm những bước gì trước khi sửa, theo quy tắc trong AGENTS.md? Chỉ trả lời, chưa làm.</p></div>
+    <p>Câu trả lời đúng phải có bước <b>chép bản cũ vào _backup/</b> trước khi sửa.</p>
+    <div class="note do"><b>Ba điều không bao giờ làm:</b> mở Antigravity ở cả ổ <code>C:\</code> hay thư mục Desktop; dán mật khẩu, mã khóa vào khung chat; bấm đồng ý lệnh có chữ <code>delete</code>, <code>rm</code>, <code>Remove-Item</code> khi chưa hiểu nó xóa gì.</div>
+  </section>
+
+  <!-- PHẦN 3 -->
+  <section class="card" id="p3">
+    <span class="phut">20:45 đến 21:00</span>
+    <h2><span class="so">3</span>Cách giao việc cho Agent</h2>
+    <p class="dung">Bốn bước, dùng cho mọi việc trong khóa.</p>
+    <div class="luoi">
+      <div><b>1. Giao rõ</b>Bạn gửi gì, cần làm gì, kết quả là file gì, lưu ở đâu.</div>
+      <div><b>2. Đòi kế hoạch</b>Bảo Agent trình bày cách làm trước, chưa làm ngay.</div>
+      <div><b>3. Duyệt rồi làm</b>Đọc kế hoạch, sửa chỗ chưa đúng, rồi mới đồng ý.</div>
+      <div><b>4. Kiểm tra</b>Mở file Agent tạo ra, xem có đúng yêu cầu không.</div>
+    </div>
+    <div class="prompt"><span class="nhan-p">Mẫu giao việc chuẩn</span><button>Chép</button><p>Tôi gửi bạn: file .agents/rules/thuong-hieu.md, đây là bộ nhận diện thương hiệu mẫu.
+
+Việc cần làm:
+1. Đọc file đó.
+2. Tóm tắt trong 5 gạch đầu dòng: thương hiệu bán gì, cho ai, màu chính, giọng văn, điều cấm.
+
+Trình bày kế hoạch trước, tôi đồng ý thì mới làm.
+Kết quả: trả lời ngay trong khung chat, không tạo file.</p></div>
+    <div class="note xanh"><b>Mẹo:</b> kết quả chưa ưng thì nói "Câu thứ 2 dài quá, rút còn 10 chữ" thay vì viết lại cả yêu cầu.</div>
+  </section>
+
+  <!-- PHẦN 4 -->
+  <section class="card" id="p4">
+    <span class="phut">21:05 đến 21:15</span>
+    <h2><span class="so">4</span>GitHub cơ bản</h2>
+    <ul>
+      <li><b>GitHub</b> là nơi lưu và chia sẻ code, tài liệu, skill. Mỗi dự án trên GitHub gọi là một <b>repo</b> (kho).</li>
+      <li>Tải repo về máy: bấm nút xanh <b>Code</b>, chọn <b>Download ZIP</b>, giải nén.</li>
+      <li>Rất nhiều skill hay được chia sẻ miễn phí trên GitHub. <b>Trước khi cài skill lạ, mở file SKILL.md ra đọc</b> xem nó làm gì, có lệnh xóa hay gửi dữ liệu ra ngoài không.</li>
+    </ul>
+    <p>Repo của khóa: <a class="link" href="https://github.com/andyluu98/cole-bootcamp-ai-video-agent">github.com/andyluu98/cole-bootcamp-ai-video-agent</a></p>
+    <div class="prompt"><span class="nhan-p">Nhờ Agent đọc một skill trước khi cài</span><button>Chép</button><p>Tôi gửi bạn: file bo-cai/buoi-01/skills/hook-video-3-giay/SKILL.md, đây là một skill tải từ GitHub.
+
+Việc cần làm: đọc và cho tôi biết skill này làm gì, cần đọc file nào, sẽ tạo file nào, có lệnh nào xóa file hay gửi dữ liệu ra ngoài không.
+
+Kết quả: trả lời trong khung chat, không cài, không sửa gì.</p></div>
+  </section>
+
+  <!-- PHẦN 5 -->
+  <section class="card" id="p5">
+    <span class="phut">21:15 đến 21:30</span>
+    <h2><span class="so">5</span>Cài skill và agent buổi 1</h2>
+    <p class="dung">Antigravity chỉ thấy skill và agent khi chúng nằm đúng thư mục:</p>
+    <div class="bang-cuon"><table>
+      <tr><th>Loại</th><th>Thư mục trong dự án</th></tr>
+      <tr><td>Skill</td><td><code>.agents/skills/TEN-SKILL/SKILL.md</code></td></tr>
+      <tr><td>Agent con (subagent)</td><td><code>.agents/agents/TEN-AGENT.md</code></td></tr>
+      <tr><td>Quy tắc (rule)</td><td><code>.agents/rules/</code> và file <code>AGENTS.md</code></td></tr>
+    </table></div>
+    <p>Bộ cài buổi 1 đã nằm sẵn trong <code>bo-cai/buoi-01</code>. Nhờ Agent cài:</p>
+    <div class="prompt"><span class="nhan-p">Cài bộ buổi 1</span><button>Chép</button><p>Tôi gửi bạn: thư mục bo-cai/buoi-01, gồm thư mục skills (2 skill) và thư mục agents (1 agent).
+
+Việc cần làm:
+1. Chép từng thư mục trong bo-cai/buoi-01/skills vào .agents/skills.
+2. Chép từng file trong bo-cai/buoi-01/agents vào .agents/agents.
+3. Chưa có thư mục đích thì tạo mới. Trùng tên thì hỏi tôi trước, không ghi đè.
+4. Kiểm tra lại sau khi chép.
+
+Kết quả: báo tôi danh sách skill và agent đã cài, kèm đường dẫn.</p></div>
+    <p>Cài xong, mở một cuộc trò chuyện mới trong Antigravity để Agent nhận skill mới. Gõ <code>/</code> trong khung chat, thấy <code>file-thuong-hieu</code> và <code>hook-video-3-giay</code> là được.</p>
+  </section>
+
+  <!-- PHẦN 6 -->
+  <section class="card" id="p6">
+    <span class="phut">21:30 đến 21:45</span>
+    <h2><span class="so">6</span>File thương hiệu của bạn</h2>
+    <p class="dung">File <code>.agents/rules/thuong-hieu.md</code> là sổ tay Agent luôn đọc, để video nào cũng đúng màu, đúng giọng.</p>
+    <div class="prompt"><span class="nhan-p">Nhờ Agent phỏng vấn rồi viết</span><button>Chép</button><p>/file-thuong-hieu
+Phỏng vấn tôi để viết lại file thương hiệu cho thương hiệu TÊN THƯƠNG HIỆU CỦA BẠN. Hỏi từng câu một.</p></div>
+    <div class="note lam">Chưa có thương hiệu riêng thì giữ file mẫu <b>Cà Phê Mây Núi</b> để thực hành. Bạn có thể làm lại bước này bất cứ lúc nào.</div>
+  </section>
+
+  <!-- PHẦN 7 -->
+  <section class="card" id="p7">
+    <span class="phut">21:45 đến 21:55</span>
+    <h2><span class="so">7</span>Chạy skill đầu tiên</h2>
+    <div class="prompt"><span class="nhan-p">Viết hook</span><button>Chép</button><p>/hook-video-3-giay
+Viết hook cho video giới thiệu sản phẩm trong file du-lieu/san-pham-mau.md.</p></div>
+    <div class="prompt"><span class="nhan-p">Nhờ người soát kiểm tra</span><button>Chép</button><p>Gọi agent nguoi-soat soát file hook vừa lưu trong thư mục kich-ban. Báo tôi kết quả soát, chưa sửa gì.</p></div>
+    <p>Đọc bảng soát: chỗ nào người soát báo lỗi, bạn bảo Agent sửa đúng chỗ đó. Agent sẽ chép bản cũ vào <code>_backup/</code> trước khi sửa.</p>
+  </section>
+
+  <!-- PHẦN 8 -->
+  <section class="card" id="p8">
+    <span class="phut">21:55 đến 22:00</span>
+    <h2><span class="so">8</span>Kiểm tra cuối buổi và bài tập</h2>
+    <ul class="check">
+      <li>Mở được dự án trong Antigravity, Agent đọc được <code>AGENTS.md</code>.</li>
+      <li>Đã chọn mức quyền Default hoặc Request Review.</li>
+      <li>Đã cài 2 skill, 1 agent; gõ <code>/</code> thấy skill.</li>
+      <li>Có file thương hiệu (của bạn hoặc file mẫu).</li>
+      <li>Có file hook trong <code>kich-ban/</code> và bảng soát.</li>
+    </ul>
+    <p>Chụp màn hình bảng hook gửi vào nhóm lớp.</p>
+    <h3>Bài tập trước buổi 2</h3>
+    <ol>
+      <li>Hoàn thiện file thương hiệu; thêm thông tin 1 tới 2 sản phẩm thật vào thư mục <code>du-lieu/</code> theo mẫu <code>san-pham-mau.md</code>.</li>
+      <li>Chạy skill hook cho từng sản phẩm, chọn ra 1 hook ưng nhất.</li>
+      <li>Chuẩn bị 1 tới 3 ảnh sản phẩm thật (nếu có) bỏ vào <code>du-lieu/</code> để dùng ở buổi 3.</li>
+    </ol>
+  </section>
+
+</main>
+
+<footer><div class="wrap">
+  <img src="assets/logo-cole-trang.png" alt="Cole">
+  <span>Bootcamp AI Agent for Video Marketing · Giảng viên Lưu Tuấn Anh · Tài liệu tra cứu ngày 09/11/2026</span>
+</div></footer>
+<script src="assets/app.js"></script>
+</body>
+</html>
