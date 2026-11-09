@@ -14,7 +14,7 @@ MCP `chatgpt-image`, tool `generate_image`. Các tham số dùng trong skill nà
 | Tham số | Giá trị dùng | Ghi chú |
 |---|---|---|
 | `prompt` | đoạn mô tả ảnh | ghép theo khung ở mục "Khung prompt ảnh" |
-| `aspect` | `1:1`, `9:16`, `16:9` | ChatGPT giữ đúng tỷ lệ, kích thước pixel tự chuẩn hóa |
+| `aspect` | `1:1`, `9:16`, `16:9`, `3:4` | ChatGPT giữ đúng tỷ lệ, kích thước pixel tự chuẩn hóa |
 | `n` | `1` | mỗi lần gọi một ảnh, tránh quá thời gian chờ |
 | `out_dir` | **đường dẫn tuyệt đối** tới thư mục con trong `anh/` của dự án | để trống hoặc ghi đường dẫn tương đối thì ảnh rơi vào thư mục của MCP, không vào dự án |
 | `enhance` | `false` | giữ nguyên prompt, không để công cụ tự viết lại |
@@ -29,7 +29,9 @@ Trước việc đầu tiên, gọi tool `login_status`. Kết quả chưa đăn
 ## Trước khi tạo ảnh
 
 1. Đọc `.agents/rules/thuong-hieu.md`: tên thương hiệu, khách hàng, màu chính, màu phụ, màu nhấn, điều cấm.
-2. Đọc kịch bản trong `kich-ban/` (thường là `kich-ban/kich-ban-<ten-san-pham>.md`), lấy phần **Mô tả hình ảnh từng cảnh** và cột **Chuyển động máy quay** của từng cảnh. Có nhiều kịch bản mà người dùng chưa nói rõ thì hỏi đúng 1 câu: "Làm ảnh cho kịch bản nào?"
+2. Đọc mô tả hình ảnh từng cảnh. Có nhiều kịch bản mà người dùng chưa nói rõ thì hỏi đúng 1 câu: "Làm ảnh cho kịch bản nào?"
+   - **Ưu tiên** file danh sách làm ở buổi 2 bằng skill `mo-ta-hinh-canh`: `kich-ban/mo-ta-hinh-canh-<ten-san-pham>.md`. Lấy mục **Nhân vật cố định**, **Bảng tổng các cảnh** và từng mục **Cảnh NN** (nhân vật, sản phẩm, bối cảnh, ánh sáng, góc máy, chuyển động máy quay, ảnh đầu cảnh, ảnh cuối cảnh).
+   - Chưa có file đó: đọc kịch bản `kich-ban/kich-ban-<ten-san-pham>.md`, lấy phần **Mô tả hình ảnh từng cảnh** và cột **Chuyển động máy quay** của từng cảnh, rồi gợi ý người dùng chạy `/mo-ta-hinh-canh` trước nếu dự án có skill này.
 3. Đọc thông tin sản phẩm trong `du-lieu/`. Tìm ảnh sản phẩm thật (`.png`, `.jpg`) và file logo (nếu có) trong `du-lieu/`.
 4. Hỏi người dùng muốn làm phần nào (có thể làm tất cả, theo thứ tự):
    - Phần A: phiếu nhân vật và ảnh nhân vật gốc.
@@ -61,7 +63,7 @@ Quy tắc lưu (bắt buộc):
 
 ### A1. Viết phiếu nhân vật
 
-1. Lấy mô tả nhân vật trong kịch bản (mục "Nhân vật" của các cảnh). Kịch bản không có người ở cảnh nào thì hỏi người dùng có cần nhân vật đại diện không.
+1. Lấy mô tả nhân vật ở mục "Nhân vật cố định" của file `mo-ta-hinh-canh-<ten-san-pham>.md` (chưa có file đó thì lấy mục "Nhân vật" của các cảnh trong kịch bản). Kịch bản không có người ở cảnh nào thì hỏi người dùng có cần nhân vật đại diện không.
 2. Đề xuất **2 phương án** nhân vật hợp với khách hàng mục tiêu trong file thương hiệu, mỗi phương án 2 dòng. Người dùng chọn rồi mới viết phiếu.
 3. Viết phiếu theo mẫu dưới, lưu `anh/nhan-vat/phieu-nhan-vat.md`:
 
@@ -123,13 +125,13 @@ Quy tắc phiếu:
 Với mỗi cảnh trong kịch bản, làm lần lượt:
 
 1. **Ảnh đầu cảnh** `anh/canh/canh-NN-dau.png`, tỷ lệ `9:16`:
-   - Prompt = đoạn mô tả cố định trong phiếu (nếu cảnh có nhân vật) + mô tả cảnh trong kịch bản + khung chống "ảnh AI".
+   - Prompt = đoạn mô tả cố định trong phiếu (nếu cảnh có nhân vật) + mô tả cảnh (mục "Ảnh đầu cảnh" trong file `mo-ta-hinh-canh-...md`, hoặc mô tả cảnh trong kịch bản) + khung chống "ảnh AI".
    - Cảnh có nhân vật: `ref_image` = `anh/nhan-vat/nhan-vat-goc.png`.
    - Cảnh chỉ có sản phẩm: `ref_image` = ảnh sản phẩm thật (nếu có), `ref_mode` = `asset`.
 2. **Ảnh cuối cảnh** `anh/canh/canh-NN-cuoi.png`, tỷ lệ `9:16`:
    - `ref_image` = ảnh đầu cảnh vừa tạo, `ref_mode` = `style`.
-   - Prompt giữ nguyên phần nhân vật, bối cảnh, ánh sáng; chỉ đổi phần tư thế, khoảng cách máy theo cột "Chuyển động máy quay". Ví dụ: "đẩy vào gần" thì ảnh cuối cận hơn; "lia ngang" thì ảnh cuối lệch khung sang bên; "đứng yên" thì nhân vật đổi động tác nhỏ (cầm ly lên, mỉm cười).
-3. Xong mỗi cảnh, cho người dùng xem cặp ảnh, hỏi "Dùng được, hay tạo lại ảnh nào?" rồi mới làm cảnh tiếp.
+   - Prompt giữ nguyên phần nhân vật, bối cảnh, ánh sáng; chỉ đổi phần tư thế, khoảng cách máy theo mục "Ảnh cuối cảnh" trong file `mo-ta-hinh-canh-...md` (chưa có thì theo cột "Chuyển động máy quay"). Ví dụ: "đẩy vào gần" thì ảnh cuối cận hơn; "lia ngang" thì ảnh cuối lệch khung sang bên; "đứng yên" thì nhân vật đổi động tác nhỏ (cầm ly lên, mỉm cười).
+3. Xong mỗi cảnh, cho người dùng xem cặp ảnh, hỏi "Dùng được, hay tạo lại ảnh nào?" rồi mới làm cảnh tiếp. Người dùng nói dùng được thì ghi Trạng thái "đã duyệt" cho hai ảnh đó trong `anh/danh-sach-anh.md` (sao lưu bản cũ trước); buổi 4 chỉ dựng ảnh đã duyệt.
 
 Đánh số cảnh hai chữ số theo kịch bản: `canh-01-dau.png`, `canh-01-cuoi.png`, `canh-02-dau.png`...
 

@@ -4,10 +4,12 @@ Bạn là trợ lý làm video marketing cho chủ dự án. Đọc kỹ các qu
 
 ## 1. Chống mất dữ liệu (bắt buộc)
 
-1. Chỉ đọc, ghi file **bên trong thư mục dự án này**. Không đụng tới file ở nơi khác trên máy. Ngoại lệ duy nhất: khi cài VideoMotion (buổi 4), trình cài ghi môi trường Python và giọng đọc vào thư mục `.motionfly` trong thư mục người dùng; chỉ làm sau khi chủ dự án đồng ý.
+1. Chỉ đọc, ghi file **bên trong thư mục dự án này**. Không đụng tới file ở nơi khác trên máy. Hai ngoại lệ, chỉ làm sau khi chủ dự án đồng ý:
+   - Buổi 4, VideoMotion: được đọc, chạy và ghi trong thư mục `.motionfly` của người dùng (môi trường Python, giọng đọc) và bộ đệm do lệnh `npx hyperframes` của VideoMotion tạo.
+   - Buổi 5, cài bộ skill global: được chép skill, agent vào `~/.gemini/config/skills`, `~/.gemini/config/agents` khi chủ dự án nói rõ "Tôi đồng ý chạy lệnh này"; không ghi đè file trùng tên.
 2. **Không bao giờ xóa** file hay thư mục. Cần bỏ file nào thì chuyển vào thư mục `_backup/`.
 3. Trước khi sửa hoặc thay một file đã có: chép bản cũ vào `_backup/` với tên `ten-file_ngay-gio.duoi` (ví dụ `kich-ban_1011-2030.md`), rồi mới ghi bản mới.
-4. Không ghi đè file trùng tên. Gặp trùng tên thì hỏi chủ dự án trước.
+4. Không ghi đè file trùng tên. Gặp trùng tên thì hỏi chủ dự án trước, trừ khi skill đang chạy đã ghi rõ cách sao lưu bản cũ vào `_backup/` rồi mới ghi.
 5. Lệnh nào chạy trên Terminal có thể xóa, ghi đè hay cài phần mềm: nói rõ lệnh đó làm gì và **chờ chủ dự án đồng ý** rồi mới chạy.
 6. Không dán, không lưu mật khẩu, mã khóa (API key), cookie vào file hay vào khung chat.
 
@@ -27,5 +29,5 @@ Bạn là trợ lý làm video marketing cho chủ dự án. Đọc kỹ các qu
 | `anh/` | Ảnh AI tạo, nhân vật |
 | `video/` | Video xuất ra |
 | `bo-cai/` | Bộ skill, agent tải về theo từng buổi, chưa cài |
-| `cong-cu/` | Công cụ tải về từ GitHub (ví dụ VideoMotion ở buổi 4) |
+| `cong-cu/` | Công cụ tải về từ GitHub (tạo ở buổi 4, ví dụ VideoMotion) |
 | `_backup/` | Bản cũ, file bỏ đi. Không sửa, không xóa gì trong này |

@@ -63,7 +63,7 @@ Không ghi chữ, logo vào mô tả ảnh (chữ và logo thêm lúc dựng vid
    4. Ghi chú: các chỗ `[CHỜ BỔ SUNG]`, nhạc nền gợi ý (chỉ mô tả cảm giác, không ghi tên bài hát), quy tắc video của thương hiệu.
 2. Lưu vào `kich-ban/kich-ban-<ten-san-pham>.md`, tên viết thường, không dấu, nối bằng gạch ngang (ví dụ `kich-ban/kich-ban-ca-phe-arabica-cau-dat.md`).
 3. File trùng tên đã có: chép bản cũ vào `_backup/kich-ban-<ten-san-pham>_<ngày-giờ>.md` trước, rồi mới ghi bản mới.
-4. Báo lại đường dẫn file, tổng thời lượng và số cảnh. Gợi ý bước tiếp: gọi agent `nguoi-cham-kich-ban` để chấm.
+4. Báo lại đường dẫn file, tổng thời lượng và số cảnh. Gợi ý bước tiếp: gọi agent `nguoi-cham-kich-ban` để chấm; chấm đạt rồi thì chạy `/mo-ta-hinh-canh` (nếu dự án đã có skill này) để tách mô tả hình ảnh ra file `kich-ban/mo-ta-hinh-canh-<ten-san-pham>.md` cho buổi 3.
 
 ## Lưu ý
 

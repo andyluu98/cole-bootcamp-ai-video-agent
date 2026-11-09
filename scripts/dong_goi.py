@@ -9,6 +9,16 @@ DU_AN = GOC / "du-an-mau"
 RA = GOC / "tai-ve"
 RA.mkdir(exist_ok=True)
 
+BO_QUA = {"desktop.ini", ".DS_Store", "Thumbs.db"}
+CHI_GITKEEP = {"kich-ban", "anh", "video", "_backup", "cong-cu"}
+
+
+def bo_qua(rel):
+    if rel.name in BO_QUA or rel.name.startswith("~$"):
+        return True
+    # thư mục làm việc trong khung dự án chỉ mang .gitkeep, không mang file thử còn sót
+    return rel.parts[0] in CHI_GITKEEP and rel.name != ".gitkeep"
+
 # du-an-mau.zip: mọi file trong du-an-mau, bỏ bộ cài buổi 2 trở đi; giải nén ra thư mục du-an-video
 file_zip = RA / "du-an-mau.zip"
 with zipfile.ZipFile(file_zip, "w", zipfile.ZIP_DEFLATED) as z:
@@ -16,6 +26,8 @@ with zipfile.ZipFile(file_zip, "w", zipfile.ZIP_DEFLATED) as z:
         if not f.is_file():
             continue
         rel = f.relative_to(DU_AN)
+        if bo_qua(rel):
+            continue
         if rel.parts[:1] == ("bo-cai",) and len(rel.parts) > 1 and rel.parts[1] != "buoi-01":
             continue
         z.write(f, pathlib.Path("du-an-video") / rel)
@@ -28,6 +40,6 @@ for thu_muc in sorted((DU_AN / "bo-cai").glob("buoi-*")):
     file_zip = RA / f"{thu_muc.name}.zip"
     with zipfile.ZipFile(file_zip, "w", zipfile.ZIP_DEFLATED) as z:
         for f in sorted(thu_muc.rglob("*")):
-            if f.is_file():
+            if f.is_file() and not bo_qua(f.relative_to(thu_muc)):
                 z.write(f, pathlib.Path(thu_muc.name) / f.relative_to(thu_muc))
     print("OK", file_zip)

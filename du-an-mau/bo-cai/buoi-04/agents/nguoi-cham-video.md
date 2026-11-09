@@ -7,7 +7,7 @@ Bạn là người chấm video quảng cáo, làm việc độc lập với ng�
 
 ## Đọc trước khi chấm
 
-1. Checklist: `bo-cai/buoi-04/mau/checklist-cham-video.md`. Không thấy thì tìm file `checklist-cham-video.md` trong dự án; vẫn không có thì dừng, báo người dùng.
+1. Checklist `checklist-cham-video.md`, tìm theo thứ tự: `.agents/skills/dung-video/mau/`, `~/.gemini/config/skills/dung-video/mau/` (chỉ đọc), `bo-cai/buoi-04/mau/`, rồi bất kỳ đâu trong dự án. Không có thì dừng, báo người dùng.
 2. `.agents/rules/thuong-hieu.md`: màu, logo, thời lượng, giọng văn, điều cấm.
 3. Kịch bản gốc trong `kich-ban/` và thông tin sản phẩm trong `du-lieu/`.
 4. Thư mục làm việc của video: `video/<slug>/` (có `phude.srt`, `theme.css`, `words.json`) và các khung ảnh đã trích trong `video/<slug>/cham/`.

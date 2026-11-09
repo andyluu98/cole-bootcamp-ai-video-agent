@@ -27,8 +27,8 @@ Agent chuẩn bị mọi thứ tới sát nút Đăng. **Người bấm Đăng l
    - Chỉ dùng giá, ưu đãi, con số có trong file sản phẩm. Không bịa lời khen, giải thưởng.
    - Không dùng từ bị cấm trong file thương hiệu.
 4. Gọi agent `nguoi-soat` soát 2 phương án. Sửa theo bảng soát.
-5. Lưu vào `kich-ban/caption-<ten-san-pham>.md`. File trùng tên thì chép bản cũ vào `_backup/` trước.
-6. **Điểm duyệt 1:** cho chủ dự án xem 2 phương án, hỏi chọn phương án nào. Chưa chọn thì không làm tiếp.
+5. Lưu vào `kich-ban/dang-bai-<ten-san-pham>.md`. File trùng tên thì chép bản cũ vào `_backup/` trước.
+6. **Duyệt caption:** cho chủ dự án xem 2 phương án, hỏi chọn phương án nào. Chưa chọn thì không làm tiếp.
 
 ## Bước 2. Mở trang đăng và điền sẵn
 
@@ -45,7 +45,7 @@ Việc giao cho subagent browser:
 3. Chọn file video từ thư mục `video/`. Không chọn được file thì báo chủ dự án tự kéo thả video vào trang, rồi làm tiếp.
 4. Dán caption và hashtag đã duyệt.
 5. Tìm mục gắn nhãn nội dung AI và bật lên (TikTok thường nằm trong phần cài đặt thêm; tên mục có thể khác trên máy bạn). Không tìm thấy thì báo chủ dự án, caption vẫn giữ dòng `Nội dung có sử dụng AI`.
-6. Chụp màn hình trang đã điền.
+6. Chụp màn hình trang đã điền, lưu vào `kich-ban/anh-chup-dang-<ten-san-pham>-<kenh>.png` (trong dự án).
 7. **DỪNG. Không bấm Đăng, Post, Publish, Share, Lên lịch.**
 
 Trang hiện captcha hay hỏi xác minh: dừng ngay, báo chủ dự án. Không tìm cách vượt qua.
@@ -66,7 +66,7 @@ Câu chốt: "Bạn xem trang đăng trên trình duyệt. Ưng thì **bạn t�
 
 ## Bước 4. Sau khi chủ dự án báo đã đăng
 
-1. Hỏi link bài đăng, ghi vào cuối file `kich-ban/caption-<ten-san-pham>.md`: ngày giờ, kênh, link.
+1. Hỏi link bài đăng, ghi vào cuối file `kich-ban/dang-bai-<ten-san-pham>.md`: ngày giờ, kênh, link.
 2. Muốn đăng thêm kênh khác thì quay lại Bước 2 cho kênh đó. Mỗi kênh một lần duyệt riêng.
 
 ## Ranh giới

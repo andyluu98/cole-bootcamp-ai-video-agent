@@ -111,7 +111,11 @@ code,.mono{font-family:Consolas,'Courier New',monospace}
 .s9 .giu b{display:block;font:800 34px var(--fd);color:#fff;margin-bottom:8px}
 .s9 .mh{position:absolute;right:120px;top:290px;font:400 22px var(--fb);color:#9fb6d2}
 
-/* 10. GitHub */
+/* 10. Đóng gói bộ skill */
+.s10 .b em{font-style:normal;padding-top:8px}
+.s10 .giu{position:absolute;left:1200px;top:720px;width:600px;padding:30px 40px;border-radius:24px;background:#fff;border:3px solid var(--blue)}
+.s10 .giu b{display:block;font:800 32px var(--fd);color:var(--navy);margin-bottom:10px}
+.s10 .giu p{margin:0;font:500 26px/1.45 var(--fb);color:#1f2a3a}
 .s10 .b{position:absolute;left:120px;width:980px;font:500 32px/1.4 var(--fb);color:#1f2a3a;display:flex;gap:26px;align-items:flex-start}
 .s10 .b span{flex:none;width:58px;height:58px;border-radius:14px;background:var(--blue);color:#fff;display:grid;place-items:center;font:800 28px var(--fd)}
 .s10 .b code{background:var(--ice);color:var(--navy);padding:2px 8px;border-radius:6px;font-size:28px}
@@ -198,7 +202,7 @@ code,.mono{font-family:Consolas,'Courier New',monospace}
     <div class="tram" style="left:120px" data-anim="pop"><div class="dot">1</div><b>Đăng bài có duyệt</b><i>TikTok, Facebook, Reels</i></div>
     <div class="tram" style="left:406px" data-anim="pop"><div class="dot">2</div><b>Đấu nối quy trình</b><i>5 skill, 1 câu lệnh</i></div>
     <div class="tram" style="left:692px" data-anim="pop"><div class="dot">3</div><b>Sản phẩm thứ 2</b><i>dùng lại quy trình</i></div>
-    <div class="tram" style="left:978px" data-anim="pop"><div class="dot">4</div><b>Lưu lên GitHub</b><i>repo riêng tư</i></div>
+    <div class="tram" style="left:978px" data-anim="pop"><div class="dot">4</div><b>Đóng gói bộ skill</b><i>file zip, cài global</i></div>
     <div class="tram" style="left:1264px" data-anim="pop"><div class="dot">5</div><b>Đặt lịch chạy</b><i>giới thiệu</i></div>
     <div class="tram" style="left:1550px" data-anim="pop"><div class="dot">6</div><b>Showcase</b><i>trình bày, góp ý</i></div>
   </div>
@@ -327,22 +331,26 @@ code,.mono{font-family:Consolas,'Courier New',monospace}
   <div class="pg">09</div>
 </section>
 
-<!-- 10. GITHUB -->
-<section class="slide light s10" data-scene="github">
-  <div class="kicker">Trạm 4 · Lưu lên GitHub</div>
-  <h2 class="title" data-anim="wipe">Repo riêng tư, kéo thả, không cần dòng lệnh</h2>
+<!-- 10. ĐÓNG GÓI BỘ SKILL -->
+<section class="slide light s10" data-scene="dong-goi">
+  <div class="kicker">Trạm 4 · Đóng gói bộ skill mang về</div>
+  <h2 class="title" data-anim="wipe">Gói một lần, dùng cho mọi dự án</h2>
   <div data-stagger="160" data-delay="300">
-    <div class="b" style="top:320px" data-anim="left"><span>1</span>github.com, dấu +, New repository</div>
-    <div class="b" style="top:420px" data-anim="left"><span>2</span>Đặt tên, chọn Private, Create repository</div>
-    <div class="b" style="top:520px" data-anim="left"><span>3</span>Bấm "uploading an existing file"</div>
-    <div class="b" style="top:620px" data-anim="left"><span>4</span>Kéo thả <code>.agents</code>, <code>AGENTS.md</code>, <code>bo-cai</code></div>
-    <div class="b" style="top:720px" data-anim="left"><span>5</span>Commit changes</div>
+    <div class="b" style="top:300px" data-anim="left"><span>1</span><em>Agent gom skill, agent vào <code>bo-skill-cua-toi</code></em></div>
+    <div class="b" style="top:400px" data-anim="left"><span>2</span><em>Nén zip, ngày trong tên: <code>bo-skill-cua-toi_2026-11-24.zip</code></em></div>
+    <div class="b" style="top:500px" data-anim="left"><span>3</span><em>Cất lên Google Drive hoặc USB</em></div>
+    <div class="b" style="top:600px" data-anim="left"><span>4</span><em>Bạn tự chép vào <code>~/.gemini/config/skills</code> và <code>agents</code></em></div>
+    <div class="b" style="top:700px" data-anim="left"><span>5</span><em>Dự án mới: đổi file thương hiệu, gõ <code>/</code> thấy skill</em></div>
   </div>
   <div class="cam" data-step="1" data-anim="pop">
-    <b>Không tải lên</b>
+    <b>Không cho vào zip</b>
     <ul><li>Mật khẩu, mã khóa (API key), file .env</li><li>Cookie, thư mục hồ sơ Chrome, file đăng nhập</li><li>Dữ liệu khách hàng thật</li></ul>
   </div>
-  <div class="src">Nhờ Agent quét file nhạy cảm trước khi tải lên. Dùng lại: Code, Download ZIP, giải nén vào dự án mới.</div>
+  <div class="giu" data-step="2" data-anim="pop">
+    <b>Giữ ở project</b>
+    <p>File thương hiệu, skill ghi cứng một thương hiệu, <code>cong-cu/VideoMotion</code>, <code>mcp_config.json</code></p>
+  </div>
+  <div class="src">Agent không ghi ra ngoài dự án nên bạn tự chép phần global. Đường dẫn: antigravity.google/docs, tra ngày 09/11/2026.</div>
   <div class="pg">10</div>
 </section>
 
@@ -398,7 +406,7 @@ code,.mono{font-family:Consolas,'Courier New',monospace}
     <div class="o" style="left:680px;top:490px" data-anim="pop"><div class="bu">Buổi 4</div><b>dung-video</b><i>nguoi-cham-video</i></div>
     <div class="o moi" style="left:120px;top:680px;width:1080px" data-anim="pop"><div class="bu">Buổi 5</div><b>dang-bai · quy-trinh-video</b><i>dao-dien</i></div>
   </div>
-  <div class="tong" data-anim="right" data-delay="900"><b>7 skill<br>5 agent</b>Lưu trong repo GitHub riêng tư của bạn, mang sang dự án mới chỉ cần đổi file thương hiệu.</div>
+  <div class="tong" data-anim="right" data-delay="900"><b>7 skill<br>5 agent</b>Cất trong file zip có ngày, cài global cho mọi dự án; dự án mới chỉ cần đổi file thương hiệu.</div>
   <div class="pg">13</div>
 </section>
 
@@ -406,7 +414,7 @@ code,.mono{font-family:Consolas,'Courier New',monospace}
 <section class="slide light s14" data-scene="ket">
   <div class="q" data-anim="fade">Một câu lệnh có làm được video marketing thật?</div>
   <h2 data-anim="rise" data-delay="200">Được, khi Agent làm đủ các bước và <span>bạn giữ ba điểm duyệt.</span></h2>
-  <div class="ra" data-anim="fade" data-delay="600">Đầu ra của khóa: <b>quy trình một câu lệnh</b>, <b>video đăng thật</b> trên tài khoản thử, <b>bộ skill</b> trên GitHub.<br>Bước tiếp theo: chạy tiếp sản phẩm thứ 2, gửi link vào nhóm lớp.</div>
+  <div class="ra" data-anim="fade" data-delay="600">Đầu ra của khóa: <b>quy trình một câu lệnh</b>, <b>video đăng thật</b> trên tài khoản thử, <b>bộ skill</b> cài global, dùng cho mọi dự án.<br>Bước tiếp theo: chạy tiếp sản phẩm thứ 2, gửi link vào nhóm lớp.</div>
   <div class="khung" data-morph="khung"></div>
   <svg class="tick" viewBox="0 0 240 240" fill="none">
     <circle cx="120" cy="120" r="100" stroke="#3A7CC6" stroke-width="10" data-anim="draw" data-delay="400"/>

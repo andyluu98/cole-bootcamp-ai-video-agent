@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Buổi 3: Hình ảnh và khóa nhân vật | Bootcamp AI Video</title>
+<title>Buổi 3: MCP đầu tiên, hình ảnh và khóa nhân vật | Bootcamp AI Video</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
 </head>
@@ -22,8 +22,8 @@
   <div class="wrap">
     <img class="logo" src="assets/logo-cole-trang.png" alt="Cole">
     <div><span class="nhan">Buổi 3 · Thực hành</span></div>
-    <h1>Hình ảnh và khóa nhân vật</h1>
-    <p>Nối Antigravity với ChatGPT Image MCP để Agent tự tạo ảnh. Từ kịch bản buổi 2, bạn làm ra một nhân vật đại diện giữ nguyên khuôn mặt, trang phục qua mọi cảnh, ảnh sản phẩm, poster 3 tỷ lệ và cặp ảnh đầu cảnh, cuối cảnh để dựng video ở buổi 4.</p>
+    <h1>MCP đầu tiên: hình ảnh và khóa nhân vật</h1>
+    <p>Buổi đầu tiên cắm MCP vào Agent. Bạn hiểu MCP là gì, khác Skill ở đâu, cài cho dự án hay cho cả máy, quản lý và cài sao cho an toàn. Sau đó nối Antigravity với ChatGPT Image MCP để Agent tự tạo ảnh: một nhân vật đại diện giữ nguyên qua mọi cảnh, cặp ảnh đầu cảnh, cuối cảnh để dựng video ở buổi 4, ảnh sản phẩm và poster.</p>
     <div class="chips">
       <span>Thời gian: <b>20:00 đến 22:00, thứ 3 17/11/2026</b></span>
       <a href="slide/buoi-3.html">Mở slide buổi 3</a>
@@ -38,49 +38,155 @@
     <h2>Lịch buổi học</h2>
     <div class="bang-cuon"><table>
       <tr><th style="width:130px">Giờ</th><th>Phần</th><th>Bạn làm ra</th></tr>
-      <tr><td>20:00 đến 20:10</td><td><a href="#p0">0. Kiểm tra kịch bản buổi 2</a></td><td>Kịch bản có đủ mô tả hình ảnh từng cảnh</td></tr>
-      <tr><td>20:10 đến 20:40</td><td><a href="#p1">1. Cài ChatGPT Image MCP</a></td><td>Agent tạo được ảnh thử đầu tiên</td></tr>
-      <tr><td>20:40 đến 20:50</td><td><a href="#p2">2. Tải và cài bộ buổi 3</a></td><td>1 skill, 1 agent đã cài</td></tr>
-      <tr><td>20:50 đến 21:05</td><td><a href="#p3">3. Ảnh sản phẩm và poster</a></td><td>Ảnh sản phẩm, poster 1:1, 9:16, 16:9</td></tr>
+      <tr><td>20:00 đến 20:05</td><td><a href="#p0">0. Kiểm tra đầu vào từ buổi 2</a></td><td>Kịch bản và mô tả hình ảnh từng cảnh đủ ý</td></tr>
+      <tr><td>20:05 đến 20:20</td><td><a href="#p1">1. MCP là gì, khác Skill ở đâu</a></td><td>Phân biệt được việc nào cần Skill, việc nào cần MCP</td></tr>
+      <tr><td>20:20 đến 20:30</td><td><a href="#p2">2. Cài MCP ở đâu, cài sao cho an toàn</a></td><td>Biết file cấu hình project, global; 4 điều an toàn</td></tr>
+      <tr><td>20:30 đến 20:55</td><td><a href="#p3">3. Cài ChatGPT Image MCP</a></td><td>MCP <code>chatgpt-image</code> khai báo trong dự án</td></tr>
+      <tr><td>20:55 đến 21:05</td><td><a href="#p4">4. Xem, kiểm tra, gọi thử MCP</a></td><td>Agent kể đúng công cụ của MCP, ảnh thử đầu tiên</td></tr>
       <tr><td>21:05 đến 21:10</td><td>Nghỉ</td><td></td></tr>
-      <tr><td>21:10 đến 21:30</td><td><a href="#p4">4. Khóa nhân vật</a></td><td>Phiếu nhân vật và ảnh nhân vật gốc</td></tr>
-      <tr><td>21:30 đến 21:45</td><td><a href="#p5">5. Ảnh từng cảnh, cặp đầu cuối</a></td><td>Cặp ảnh cho cảnh 1 và cảnh 2</td></tr>
-      <tr><td>21:45 đến 21:52</td><td><a href="#p6">6. Gọi agent soát ảnh</a></td><td>Bảng soát bộ ảnh</td></tr>
-      <tr><td>21:52 đến 22:00</td><td><a href="#p7">7. Kiểm tra và bài tập</a></td><td>Checklist cuối buổi</td></tr>
+      <tr><td>21:10 đến 21:15</td><td><a href="#p5">5. Cài bộ buổi 3</a></td><td>1 skill dùng MCP, 1 agent soát ảnh</td></tr>
+      <tr><td>21:15 đến 21:30</td><td><a href="#p6">6. Khóa nhân vật</a></td><td>Phiếu nhân vật và ảnh nhân vật gốc</td></tr>
+      <tr><td>21:30 đến 21:42</td><td><a href="#p7">7. Ảnh từng cảnh, cặp đầu cuối</a></td><td>Cặp ảnh cho cảnh 1 và cảnh 2</td></tr>
+      <tr><td>21:42 đến 21:50</td><td><a href="#p8">8. Ảnh sản phẩm và poster</a></td><td>Ảnh sản phẩm, poster 1:1</td></tr>
+      <tr><td>21:50 đến 21:55</td><td><a href="#p9">9. Gọi agent soát ảnh</a></td><td>Bảng soát bộ ảnh</td></tr>
+      <tr><td>21:55 đến 22:00</td><td><a href="#p10">10. Kiểm tra và bài tập</a></td><td>Checklist cuối buổi</td></tr>
     </table></div>
     <div class="note lam"><b>Cách đọc câu lệnh mẫu:</b> chữ IN HOA trong câu lệnh là chỗ bạn thay bằng thông tin của mình. Mỗi ảnh mất khoảng 30 tới 90 giây, nên trên lớp làm mẫu 2 cảnh, các cảnh còn lại làm ở nhà theo đúng cách đó.</div>
+    <div class="note vang">Vị trí file cấu hình MCP, tên mục trong giao diện và các khóa <code>timeoutSeconds</code>, <code>disabled</code>, <code>enabledTools</code>, <code>disabledTools</code> lấy theo tài liệu chính thức antigravity.google/docs/mcp, tra ngày 09/11/2026. Antigravity cập nhật thường xuyên, tên mục có thể khác đôi chút trên máy bạn.</div>
   </section>
 
   <!-- PHẦN 0 -->
   <section class="card" id="p0">
-    <span class="phut">20:00 đến 20:10</span>
-    <h2><span class="so">0</span>Kiểm tra kịch bản buổi 2</h2>
-    <p class="dung">Ảnh hôm nay vẽ theo phần <b>Mô tả hình ảnh từng cảnh</b> trong kịch bản. Thiếu phần này thì AI phải đoán, mỗi cảnh ra một kiểu.</p>
+    <span class="phut">20:00 đến 20:05</span>
+    <h2><span class="so">0</span>Kiểm tra đầu vào từ buổi 2</h2>
+    <p class="dung">Ảnh hôm nay vẽ theo <b>mô tả hình ảnh từng cảnh</b> bạn làm ở buổi 2 bằng skill tự tạo <code>mo-ta-hinh-canh</code>. Thiếu phần này thì AI phải đoán, mỗi cảnh ra một kiểu.</p>
     <ol>
-      <li>Mở Antigravity, chọn <b>Open Folder</b>, mở đúng thư mục dự án <code>du-an-video</code> đã dùng ở buổi 1, buổi 2.</li>
+      <li>Mở Antigravity, mở đúng thư mục dự án <code>du-an-video</code> đã dùng ở buổi 1, buổi 2.</li>
       <li>Dán câu lệnh dưới đây:</li>
     </ol>
-    <div class="prompt"><span class="nhan-p">Kiểm tra kịch bản trước khi tạo ảnh</span><button>Chép</button><p>Tôi gửi bạn: file kịch bản trong thư mục kich-ban (file KICH-BAN-CUA-BAN.md).
+    <div class="prompt"><span class="nhan-p">Kiểm tra kịch bản và mô tả hình ảnh</span><button>Chép</button><p>Tôi gửi bạn: kịch bản kich-ban/KICH-BAN-CUA-BAN.md và file mô tả hình ảnh từng cảnh kich-ban/mo-ta-hinh-canh-TEN-SAN-PHAM.md mà tôi làm ở buổi 2.
 
 Việc cần làm:
-1. Đếm số cảnh trong kịch bản.
-2. Với từng cảnh, kiểm tra phần mô tả hình ảnh có đủ: nhân vật, sản phẩm, bối cảnh, ánh sáng, góc máy, tỷ lệ 9:16 không.
-3. Kiểm tra nhân vật có được tả giống nhau ở mọi cảnh không.
+1. Đếm số cảnh trong kịch bản, xem file mô tả có đủ từng cảnh không.
+2. Với từng cảnh, xem mô tả có đủ: nhân vật, sản phẩm, bối cảnh, ánh sáng, góc máy, chuyển động máy quay, tỷ lệ 9:16 không.
+3. Xem nhân vật có được tả giống hệt nhau ở mọi cảnh không.
 
 Kết quả: trả lời bằng một bảng trong khung chat, chỗ nào thiếu thì ghi rõ. Chưa sửa file nào.</p></div>
-    <div class="note xanh"><b>Chưa có kịch bản?</b> Gõ <code>/kich-ban-video</code> và nhờ Agent viết nhanh cho sản phẩm mẫu trong <code>du-lieu/san-pham-mau.md</code>. Thiếu mục nào thì bảo Agent bổ sung đúng mục đó.</div>
+    <div class="note xanh"><b>Chưa có file mô tả hình ảnh?</b> Gõ <code>/mo-ta-hinh-canh</code> để chạy skill bạn tạo ở buổi 2. Chưa có cả kịch bản thì gõ <code>/kich-ban-video</code> và nhờ Agent viết nhanh cho sản phẩm mẫu trong <code>du-lieu/san-pham-mau.md</code>.</div>
   </section>
 
   <!-- PHẦN 1 -->
   <section class="card" id="p1">
-    <span class="phut">20:10 đến 20:40</span>
-    <h2><span class="so">1</span>Cài ChatGPT Image MCP</h2>
-    <p class="dung">MCP là "ổ cắm" nối Agent sang phần mềm khác. Hôm nay ta cắm Antigravity vào ChatGPT để Agent tự gửi yêu cầu vẽ ảnh và tự lưu ảnh vào dự án, bạn không phải mở ChatGPT, tải từng ảnh về.</p>
+    <span class="phut">20:05 đến 20:20</span>
+    <h2><span class="so">1</span>MCP là gì, khác Skill ở đâu</h2>
+    <p class="dung">Tới giờ Agent chỉ làm việc với file trên máy: đọc, viết, sắp xếp. Muốn Agent vẽ ảnh, đọc mạng xã hội, xem lịch hẹn, Agent phải nối được sang phần mềm khác. MCP là cách nối đó.</p>
+
+    <h3>1.1. Hình dung MCP như ổ cắm điện</h3>
+    <p>Ổ cắm trong nhà có một chuẩn chung: quạt, nồi cơm, cục sạc, hãng nào cũng cắm vào là chạy, không ai phải đi dây riêng cho từng món. MCP là chuẩn ổ cắm cho Agent. Phần mềm nào làm "phích cắm" theo chuẩn MCP thì cắm được vào Antigravity, và cũng cắm được vào các phần mềm Agent khác dùng cùng chuẩn.</p>
+    <div class="luoi">
+      <div><b>Agent</b>Người dùng điện: nhận câu lệnh của bạn, tự quyết lúc nào cần dùng công cụ nào.<i>Trong khóa: Agent của Antigravity.</i></div>
+      <div><b>MCP server</b>Thiết bị cắm vào ổ: một phần mềm nhỏ chạy trên máy bạn, hoặc chạy trên mạng.<i>Hôm nay: <code>chatgpt-image</code>, chạy trên máy bạn, nối sang ChatGPT.</i></div>
+      <div><b>Công cụ (tool)</b>Các nút bấm trên thiết bị. Mỗi MCP mang theo vài công cụ, Agent bấm đúng nút cho từng việc.<i>Ví dụ: <code>generate_image</code> để vẽ ảnh, <code>login_status</code> để xem đã đăng nhập chưa.</i></div>
+    </div>
+    <div class="cay">Bạn: "Tạo ảnh ly cà phê cho tôi"
+  │
+  ▼
+Agent (Antigravity)          tự chọn công cụ generate_image
+  │
+  ▼
+MCP chatgpt-image            chạy trên máy bạn, giữ mã đăng nhập ChatGPT
+  │
+  ▼
+ChatGPT                      vẽ ảnh theo mô tả
+  │
+  ▼
+anh/thu/....png              ảnh lưu thẳng vào dự án, bạn không phải tải tay</div>
+
+    <h3>1.2. Skill là cách làm, MCP là công cụ</h3>
+    <p>Hình dung một bếp ăn: <b>Skill</b> là công thức nấu ăn, ghi bước nào trước, nêm bao nhiêu. <b>MCP</b> là cái bếp, cái nồi. Có công thức mà không có bếp thì món ăn chỉ nằm trên giấy; có bếp mà không có công thức thì mỗi lần nấu ra một vị.</p>
+    <div class="bang-cuon"><table>
+      <tr><th></th><th>Skill</th><th>MCP</th></tr>
+      <tr><td>Là gì</td><td>Cách làm: quy trình, quy tắc, mẫu câu</td><td>Công cụ: giúp Agent làm được việc nó không tự làm được</td></tr>
+      <tr><td>Ví dụ trong khóa</td><td><code>hinh-anh-nhan-vat</code>: cách viết phiếu nhân vật, khung prompt chống "ảnh AI", cách đặt tên file</td><td><code>chatgpt-image</code>: thật sự gửi yêu cầu vẽ sang ChatGPT và lưu file ảnh</td></tr>
+      <tr><td>Nằm ở đâu</td><td>Thư mục có file <code>SKILL.md</code></td><td>Một phần mềm chạy riêng, khai báo trong file <code>mcp_config.json</code></td></tr>
+      <tr><td>Ai làm ra</td><td>Viết bằng chữ, bạn tự viết được (buổi 2)</td><td>Người lập trình; người dùng thường cài cái có sẵn</td></tr>
+      <tr><td>Gọi thế nào</td><td>Gõ <code>/ten-skill</code>, hoặc Agent tự chọn theo phần mô tả</td><td>Agent tự gọi công cụ khi cần, bạn cho phép từng lần</td></tr>
+      <tr><td>Thiếu thì sao</td><td>Agent vẫn làm, nhưng mỗi lần một kiểu</td><td>Agent không làm được việc đó, chỉ viết prompt để bạn tự dán</td></tr>
+    </table></div>
+    <div class="note lam"><b>Một skill có thể dùng MCP.</b> Trong file <code>SKILL.md</code> của <code>hinh-anh-nhan-vat</code> có ghi rõ: dùng MCP <code>chatgpt-image</code>, công cụ <code>generate_image</code>, đặt tham số thế nào cho từng loại ảnh. Skill là người đầu bếp cầm công thức, MCP là cái bếp. Vì vậy hôm nay ta cài MCP trước, cài skill sau.</div>
+    <div class="note lam"><b>Câu hỏi nhanh:</b> mỗi việc dưới đây cần Skill hay MCP?<br>A. Mọi caption phải có 5 hashtag và một câu kêu gọi mua hàng.<br>B. Agent tự đọc bình luận dưới video TikTok của bạn.<br>C. Mỗi ảnh tạo xong phải ghi vào file danh sách ảnh kèm prompt đã dùng.<br><b>Đáp án:</b> A và C là cách làm, viết thành Skill. B cần nối sang TikTok, phải có MCP.</div>
+  </section>
+
+  <!-- PHẦN 2 -->
+  <section class="card" id="p2">
+    <span class="phut">20:20 đến 20:30</span>
+    <h2><span class="so">2</span>Cài MCP ở đâu, cài sao cho an toàn</h2>
+    <p class="dung">Giống Rule và Skill ở buổi 1, MCP cũng có hai chỗ để: trong dự án hoặc cho cả máy. Khác ở chỗ: tất cả MCP của một nơi nằm chung trong <b>một file</b> <code>mcp_config.json</code>.</p>
+
+    <h3>2.1. Project hay global</h3>
+    <div class="bang-cuon"><table>
+      <tr><th></th><th>Project (dự án)</th><th>Global (cả máy)</th></tr>
+      <tr><td>File cấu hình</td><td><code>du-an-video/.agents/mcp_config.json</code></td><td><code>~/.gemini/config/mcp_config.json</code></td></tr>
+      <tr><td>Dùng được ở</td><td>Chỉ dự án đó</td><td>Mọi dự án trên máy</td></tr>
+      <tr><td>Hợp với</td><td>MCP riêng của dự án, MCP đang thử</td><td>MCP bạn dùng hằng ngày, đã tin tưởng</td></tr>
+      <tr><td>Agent tự sửa được không</td><td>Được, file nằm trong dự án</td><td>Không, nội quy cấm Agent ghi ra ngoài dự án; bạn tự sửa</td></tr>
+      <tr><td>Khi gửi dự án cho người khác</td><td>File đi theo dự án: phải kiểm tra không có mã khóa</td><td>Không đi theo</td></tr>
+    </table></div>
+    <div class="note xanh"><b>Khóa này cài project.</b> Dễ kiểm soát: MCP chỉ chạy trong dự án video, gỡ thì sửa đúng một file trong dự án, Agent đọc và sửa giúp được. Buổi 5 mới bàn chuyện chuyển MCP dùng nhiều sang global. Để khỏi nhầm, mỗi MCP chỉ khai báo ở một nơi.</div>
+    <div class="note lam"><b>Dấu <code>~</code></b> là thư mục tài khoản của bạn trên máy: Windows <code>C:\Users\TEN-BAN</code>, macOS <code>/Users/TEN-BAN</code>. Thư mục <code>.agents</code>, <code>.gemini</code> bắt đầu bằng dấu chấm nên thường bị ẩn (cách hiện: xem buổi 1, phần 1).</div>
+
+    <h3>2.2. File cấu hình trông thế nào</h3>
+    <p>Mỗi MCP là một mục trong <code>mcpServers</code>. MCP chạy trên máy khai báo lệnh chạy; MCP trên mạng chỉ cần địa chỉ.</p>
+    <div class="cay">{
+  "mcpServers": {
+    "ten-mcp-chay-tren-may": {
+      "command": "lệnh chạy MCP",
+      "args": ["các", "tham", "số"],
+      "env": { "TEN_MA_KHOA": "mã khóa, chỉ khi MCP cần" }
+    },
+    "ten-mcp-tren-mang": {
+      "serverUrl": "https://dia-chi-cua-mcp"
+    }
+  }
+}</div>
+    <div class="bang-cuon"><table>
+      <tr><th>Khóa thêm</th><th>Dùng để</th></tr>
+      <tr><td><code>timeoutSeconds</code></td><td>Số giây chờ mỗi lần gọi công cụ. Mặc định 180; tạo ảnh ta đặt 300</td></tr>
+      <tr><td><code>disabled</code></td><td><code>true</code> là tắt tạm MCP mà vẫn giữ cấu hình</td></tr>
+      <tr><td><code>enabledTools</code></td><td>Chỉ cho Agent dùng những công cụ có tên trong danh sách</td></tr>
+      <tr><td><code>disabledTools</code></td><td>Cấm Agent dùng những công cụ có tên trong danh sách</td></tr>
+    </table></div>
+
+    <h3>2.3. Bốn điều an toàn khi cài MCP lạ</h3>
+    <p>MCP là phần mềm chạy thật trên máy bạn, có thể đọc file, gửi dữ liệu ra ngoài. Cài MCP lạ giống cắm một thiết bị không rõ nguồn gốc vào ổ điện, nên kiểm tra trước.</p>
+    <div class="bang-cuon"><table>
+      <tr><th>Điều</th><th>Làm thế nào</th></tr>
+      <tr><td><b>1. Đọc trước khi cài</b></td><td>Xem ai làm, README có rõ ràng, có cập nhật gần đây không. Nhờ Agent đọc README và giải thích MCP làm gì, gửi dữ liệu đi đâu (câu lệnh bên dưới).</td></tr>
+      <tr><td><b>2. Mã khóa không dán vào khung chat</b></td><td>Cuộc trò chuyện được lưu lại, Agent có thể chép mã sang file khác. Bạn tự mở file <code>mcp_config.json</code> bằng Notepad (Windows) hoặc TextEdit (macOS), dán mã vào mục <code>env</code>, lưu.</td></tr>
+      <tr><td><b>3. Không chia sẻ file cấu hình có mã khóa</b></td><td>Không gửi, không chụp màn hình file đó, không đưa vào file zip dự án gửi người khác. Lỡ lộ mã: vào trang cấp mã thu hồi ngay, tạo mã mới.</td></tr>
+      <tr><td><b>4. Cho phép từng lần</b></td><td>Giữ Permission Preset là <b>Request Review</b> như buổi 1. Antigravity hỏi trước khi gọi công cụ thì đọc tên công cụ và nội dung gửi đi; công cụ có chữ <code>delete</code>, <code>send</code>, <code>post</code> thì dừng lại hỏi giảng viên.</td></tr>
+    </table></div>
+    <div class="prompt"><span class="nhan-p">Nhờ Agent đọc MCP trước khi cài</span><button>Chép</button><p>Tôi gửi bạn: đường link repo MCP https://github.com/andyluu98/chatgpt-image-mcp, tôi định cài MCP này cho dự án.
+
+Việc cần làm:
+1. Đọc trang README của repo.
+2. Cho tôi biết: MCP này làm gì, có những công cụ nào, cần đăng nhập hay mã khóa gì, thông tin đăng nhập lưu ở đâu, dữ liệu gửi đi đâu, README có cảnh báo rủi ro nào.
+3. Chưa cài, chưa chạy lệnh nào.
+
+Kết quả: trả lời bằng bảng trong khung chat, cuối bảng ghi rõ điểm nào tôi cần cân nhắc trước khi cài.</p></div>
+    <div class="note lam"><b>Câu hỏi nhanh:</b> bạn được cấp mã khóa cho một MCP đọc số liệu quảng cáo. Cách nào đúng?<br>A. Dán mã vào khung chat, nhờ Agent điền vào file cấu hình.<br>B. Tự mở <code>.agents/mcp_config.json</code>, dán mã vào mục <code>env</code>, lưu, không gửi file đó cho ai.<br>C. Gửi mã vào nhóm lớp nhờ giảng viên cài giúp.<br><b>Đáp án B.</b> Mã khóa giống chìa khóa nhà: tự tay cất, không đưa qua người trung gian.</div>
+  </section>
+
+  <!-- PHẦN 3 -->
+  <section class="card" id="p3">
+    <span class="phut">20:30 đến 20:55</span>
+    <h2><span class="so">3</span>Cài ChatGPT Image MCP</h2>
+    <p class="dung">Hôm nay ta cắm Antigravity vào ChatGPT để Agent tự gửi yêu cầu vẽ ảnh và tự lưu ảnh vào dự án, bạn không phải mở ChatGPT, tải từng ảnh về.</p>
     <p>MCP dùng trong khóa: <a class="link" href="https://github.com/andyluu98/chatgpt-image-mcp">github.com/andyluu98/chatgpt-image-mcp</a> (repo công khai của giảng viên).</p>
 
     <div class="note do"><b>Đọc trước khi cài:</b> theo README của repo, công cụ này đi qua giao diện web của ChatGPT chứ không qua đường chính thức của OpenAI. README ghi rõ việc dùng công cụ này vi phạm điều khoản của OpenAI, tài khoản có thể bị giới hạn hoặc khóa vĩnh viễn. Hãy dùng <b>tài khoản ChatGPT phụ</b>, không dùng tài khoản chính đang lưu dữ liệu quan trọng. Mã đăng nhập chỉ lưu trên máy bạn.</div>
 
-    <h3>1.1. Cài uv</h3>
+    <h3>3.1. Cài uv</h3>
     <p><b>uv</b> là trình cài Python gọn nhẹ: nó tự tải Python và các thư viện mà MCP cần, bạn không phải cài Python riêng. Làm một lần cho mỗi máy.</p>
     <ol>
       <li>Windows: bấm phím Windows, gõ <code>PowerShell</code>, mở <b>Windows PowerShell</b>. macOS: mở <b>Terminal</b>.</li>
@@ -92,15 +198,15 @@ Kết quả: trả lời bằng một bảng trong khung chat, chỗ nào thiế
       <li><b>Đóng cửa sổ đó, mở cửa sổ mới</b>, gõ <code>uv --version</code> rồi Enter. Thấy dòng <code>uv 0.x.x</code> là được.</li>
     </ol>
 
-    <h3>1.2. Tải repo về máy</h3>
+    <h3>3.2. Tải repo về máy</h3>
     <ol>
       <li>Mở trang repo ở trên, bấm nút xanh <b>Code</b>, chọn <b>Download ZIP</b>.</li>
       <li>Giải nén vào <code>Documents</code>. Thư mục giải nén thường tên <code>chatgpt-image-mcp-master</code>; đổi tên thành <code>chatgpt-image-mcp</code> cho dễ nhớ.</li>
       <li>Ghi lại đường dẫn thư mục: trên Windows bấm chuột phải vào thư mục, chọn <b>Copy as path</b>. Ví dụ <code>C:\Users\TEN-MAY\Documents\chatgpt-image-mcp</code>.</li>
     </ol>
-    <div class="note vang"><b>Không để repo trong thư mục dự án video.</b> Repo là phần mềm dùng chung cho mọi dự án, để riêng ở <code>Documents</code>.</div>
+    <div class="note vang"><b>Không để repo trong thư mục dự án video.</b> Repo là phần mềm dùng chung cho mọi dự án, để riêng ở <code>Documents</code>. Trong dự án chỉ có file cấu hình trỏ tới nó.</div>
 
-    <h3>1.3. Chạy trình cài và đăng nhập ChatGPT</h3>
+    <h3>3.3. Chạy trình cài và đăng nhập ChatGPT</h3>
     <ol>
       <li>Windows: mở thư mục <code>chatgpt-image-mcp</code> trong File Explorer, bấm vào thanh địa chỉ, gõ <code>powershell</code> rồi Enter. Cửa sổ PowerShell mở ra đúng tại thư mục đó.</li>
       <li>Dán lệnh dưới, Enter:</li>
@@ -116,14 +222,15 @@ bash install.sh</p></div>
       <tr><td><code>3/4 Login to ChatGPT</code>, trình duyệt tự mở</td><td>Đăng nhập tài khoản ChatGPT phụ. Xong sẽ chuyển sang một trang <code>platform.openai.com</code>, có thể báo "Oops": như vậy là bình thường.</td></tr>
       <tr><td><code>Paste the FULL callback URL...</code></td><td>Bấm vào thanh địa chỉ của trang đó, chép <b>toàn bộ</b> đường link, dán vào cửa sổ PowerShell, Enter.</td></tr>
       <tr><td><code>[OK] Logged in.</code></td><td>Đăng nhập xong.</td></tr>
-      <tr><td><code>Auto-register with Claude Code...? (y/N)</code></td><td>Gõ <code>N</code>, Enter. Ta dùng Antigravity, sẽ thêm ở bước 1.4.</td></tr>
-      <tr><td><code>4/4</code> hiện một đoạn cấu hình JSON</td><td>Bỏ qua đoạn này. Ta dùng đoạn cấu hình ở bước 1.4.</td></tr>
+      <tr><td><code>Auto-register with Claude Code...? (y/N)</code></td><td>Gõ <code>N</code>, Enter. Ta dùng Antigravity, sẽ thêm ở bước 3.4.</td></tr>
+      <tr><td><code>4/4</code> hiện một đoạn cấu hình JSON</td><td>Bỏ qua đoạn này. Ta dùng đoạn cấu hình ở bước 3.4.</td></tr>
       <tr><td><code>[DONE] cgimg is ready.</code></td><td>Xong. Giữ cửa sổ này lại để xem lại nếu cần.</td></tr>
     </table></div>
     <div class="note vang"><b>Đường link chỉ dùng được một lần, trong vài phút.</b> Dán nhầm hay quá lâu thì chạy lại lệnh cài từ đầu. Đường link này là mã đăng nhập: không dán vào nhóm lớp, không gửi cho ai.</div>
+    <div class="note lam"><b>MCP này không cần mã khóa trong <code>env</code>.</b> Mã đăng nhập ChatGPT được lưu trong file <code>%APPDATA%\cgimg\auth.json</code> (Windows) hoặc <code>~/.config/cgimg/auth.json</code> (macOS), theo README của repo. Coi file đó như mật khẩu: không gửi, không chép vào dự án.</div>
 
-    <h3>1.4. Thêm MCP vào Antigravity</h3>
-    <p>Cách nhanh nhất: nhờ Agent viết file cấu hình MCP cho dự án (file <code>.agents/mcp_config.json</code>). Thay đường dẫn bằng đường dẫn bạn chép ở bước 1.2.</p>
+    <h3>3.4. Khai báo MCP cho dự án</h3>
+    <p>Nhờ Agent viết file cấu hình MCP của dự án (<code>.agents/mcp_config.json</code>). Thay đường dẫn bằng đường dẫn bạn chép ở bước 3.2.</p>
     <div class="prompt"><span class="nhan-p">Nhờ Agent tạo file cấu hình MCP</span><button>Chép</button><p>Tôi gửi bạn: đường dẫn thư mục MCP tạo ảnh trên máy tôi là DUONG-DAN-THU-MUC-CHATGPT-IMAGE-MCP.
 
 Việc cần làm:
@@ -142,38 +249,88 @@ Việc cần làm:
 }
 
 Kết quả: cho tôi xem nội dung file đã ghi.</p></div>
-    <p><b>Cách thứ hai, qua giao diện:</b> trong Antigravity mở <b>Customizations</b>, tab <b>Installed</b>, mục <b>MCP Servers</b>, bấm <b>Add MCP Server</b>; hoặc bấm <b>Copy Config File Path</b> để lấy đường dẫn file cấu hình chung rồi mở file đó, dán đoạn JSON ở trên vào.</p>
-    <p>Thêm xong, <b>tắt Antigravity, mở lại</b> để Antigravity nạp MCP mới.</p>
-    <div class="note vang">Vị trí file cấu hình, tên mục trong giao diện và trường <code>timeoutSeconds</code> lấy theo tài liệu chính thức của Antigravity, tra ngày 09/11/2026. Mỗi lần gọi tool, Antigravity mặc định chờ 180 giây; ta đặt 300 giây vì tạo một ảnh có thể mất tới 90 giây. Antigravity cập nhật thường xuyên, tên mục có thể khác đôi chút trên máy bạn.</div>
+    <p>Sau khi cài bộ buổi 3 ở phần 5, bạn có thể đối chiếu với file mẫu <code>bo-cai/buoi-03/mau/mcp_config-mau.json</code>.</p>
+    <div class="bang-cuon"><table>
+      <tr><th>Dòng trong cấu hình</th><th>Nghĩa là</th></tr>
+      <tr><td><code>"chatgpt-image"</code></td><td>Tên bạn đặt cho MCP, hiện trong Customizations và trong câu trả lời của Agent</td></tr>
+      <tr><td><code>"command": "uv"</code></td><td>Antigravity dùng uv để khởi động MCP</td></tr>
+      <tr><td><code>"--directory", "DUONG-DAN"</code></td><td>Chạy trong thư mục repo đã tải ở bước 3.2</td></tr>
+      <tr><td><code>"run", "cgimg-mcp"</code></td><td>Tên chương trình MCP trong repo</td></tr>
+      <tr><td><code>"timeoutSeconds": 300</code></td><td>Chờ tối đa 300 giây mỗi lần gọi; mặc định 180 giây, một ảnh có thể mất tới 90 giây</td></tr>
+    </table></div>
+    <p><b>Nút Add MCP Server</b> trong Customizations dùng để cài MCP có sẵn trong danh sách của Antigravity: bấm <b>+</b>, gõ tên tìm, bấm <b>Add</b>. <code>chatgpt-image</code> là MCP tự tải về nên ta khai báo bằng file cấu hình như trên.</p>
+    <p>Khai báo xong, khởi động lại MCP theo phần 4.1 (hoặc tắt Antigravity, mở lại) để Antigravity nạp MCP mới.</p>
+  </section>
 
-    <h3>1.5. Gọi thử 1 ảnh</h3>
+  <!-- PHẦN 4 -->
+  <section class="card" id="p4">
+    <span class="phut">20:55 đến 21:05</span>
+    <h2><span class="so">4</span>Xem, kiểm tra và gọi thử MCP</h2>
+    <p class="dung">Cài xong phải kiểm tra hai chỗ: Antigravity có nạp MCP không, và Agent có thấy các công cụ của MCP không.</p>
+
+    <h3>4.1. Xem MCP đang cài trong Customizations</h3>
+    <ol>
+      <li>Mở <b>Customizations</b>, tab <b>Installed</b>, kéo tới mục <b>MCP Servers</b>.</li>
+      <li>Thấy <code>chatgpt-image</code> trong danh sách là Antigravity đã nạp. Bấm vào tên để xem danh sách công cụ của MCP (tùy phiên bản; không thấy thì dùng câu lệnh ở 4.2).</li>
+      <li>Bấm nút <b>⋮</b> cạnh tên MCP để quản lý:</li>
+    </ol>
+    <div class="bang-cuon"><table>
+      <tr><th>Nút</th><th>Làm gì</th><th>Dùng khi</th></tr>
+      <tr><td><b>Restart</b></td><td>Khởi động lại MCP</td><td>Vừa sửa file cấu hình; MCP treo, gọi mãi không trả lời; vừa đăng nhập lại</td></tr>
+      <tr><td><b>Disable</b></td><td>Tắt tạm, giữ nguyên cấu hình</td><td>Không dùng một thời gian, hoặc nghi MCP gây lỗi. Bật lại khi cần</td></tr>
+      <tr><td><b>Delete</b></td><td>Gỡ MCP khỏi danh sách</td><td>Chắc chắn không dùng nữa. Nên Disable trước, chép file cấu hình vào <code>_backup/</code> rồi mới Delete</td></tr>
+    </table></div>
+    <p>Tiêu đề mục MCP Servers có nút <b>Copy Config File Path</b>: chép đường dẫn file cấu hình Antigravity đang đọc, dùng khi cần mở file đó để sửa tay.</p>
+
+    <h3>4.2. Hỏi Agent: bạn thấy MCP nào, có công cụ gì</h3>
+    <p>Mở một cuộc trò chuyện mới rồi dán:</p>
+    <div class="prompt"><span class="nhan-p">Kiểm tra Agent thấy MCP chưa</span><button>Chép</button><p>Việc cần làm:
+1. Liệt kê các MCP server bạn đang kết nối được trong dự án này.
+2. Với MCP chatgpt-image: kể tên từng công cụ, mỗi công cụ làm gì, cần những thông tin gì, nói bằng tiếng Việt dễ hiểu.
+3. Chỉ đọc thông tin, chưa gọi công cụ nào.
+
+Kết quả: trả lời bằng bảng trong khung chat. Không thấy chatgpt-image thì nói rõ là không thấy, đừng đoán.</p></div>
+    <p>Kết quả đúng: Agent kể ra 6 công cụ. Khóa này chỉ dùng 2 công cụ đầu.</p>
+    <div class="bang-cuon"><table>
+      <tr><th>Công cụ</th><th>Làm gì</th><th>Trong khóa</th></tr>
+      <tr><td><code>login_status</code></td><td>Xem đã đăng nhập ChatGPT chưa</td><td>Dùng</td></tr>
+      <tr><td><code>generate_image</code></td><td>Vẽ ảnh theo mô tả, chọn tỷ lệ, có thể đính kèm một ảnh tham chiếu</td><td>Dùng</td></tr>
+      <tr><td><code>build_pptx</code></td><td>Ghép các ảnh có sẵn thành file PowerPoint</td><td>Không</td></tr>
+      <tr><td><code>generate_slide_deck</code></td><td>Vẽ mỗi slide một ảnh rồi ghép thành PowerPoint</td><td>Không</td></tr>
+      <tr><td><code>branded_deck</code></td><td>Làm slide theo màu lấy từ logo</td><td>Không</td></tr>
+      <tr><td><code>styled_deck</code></td><td>Làm slide theo phong cách một ảnh mẫu</td><td>Không</td></tr>
+    </table></div>
+    <div class="note xanh"><b>Mở rộng, không bắt buộc:</b> muốn Agent chỉ thấy 2 công cụ cần dùng, thêm dòng <code>"enabledTools": ["login_status", "generate_image"]</code> vào mục <code>chatgpt-image</code> (sau dòng <code>timeoutSeconds</code>, nhớ dấu phẩy), rồi Restart MCP. Ít công cụ hơn thì Agent ít chọn nhầm hơn.</div>
+
+    <h3>4.3. Gọi thử 1 ảnh</h3>
     <div class="prompt"><span class="nhan-p">Tạo ảnh thử đầu tiên</span><button>Chép</button><p>Việc cần làm:
-1. Gọi tool login_status của MCP chatgpt-image, báo tôi đã đăng nhập chưa.
-2. Đã đăng nhập thì gọi tool generate_image một lần với: prompt "a cup of black coffee on a light wooden table, soft natural window light, neutral white balance, no text", aspect 1:1, n 1, enhance false, out_dir là đường dẫn tuyệt đối tới thư mục anh/thu trong dự án này.
+1. Gọi công cụ login_status của MCP chatgpt-image, báo tôi đã đăng nhập chưa.
+2. Đã đăng nhập thì gọi công cụ generate_image một lần với: prompt "a cup of black coffee on a light wooden table, soft natural window light, neutral white balance, no text", aspect 1:1, n 1, enhance false, out_dir là đường dẫn tuyệt đối tới thư mục anh/thu trong dự án này.
 3. Chưa có thư mục anh/thu thì tạo mới.
 
 Kết quả: báo tôi đường dẫn file ảnh vừa tạo.</p></div>
-    <p>Mở thư mục <code>anh/thu</code>, thấy ảnh ly cà phê là MCP đã chạy. Antigravity hỏi cho phép gọi tool thì đọc tên tool (<code>login_status</code>, <code>generate_image</code>) rồi đồng ý.</p>
+    <p>Antigravity hỏi cho phép gọi công cụ thì đọc tên (<code>login_status</code>, <code>generate_image</code>) và nội dung gửi đi rồi mới đồng ý. Mở thư mục <code>anh/thu</code>, thấy ảnh ly cà phê là MCP đã chạy.</p>
 
     <h3>Lỗi hay gặp</h3>
     <div class="bang-cuon"><table>
       <tr><th>Hiện tượng</th><th>Cách xử lý</th></tr>
       <tr><td>PowerShell báo <code>uv</code> không phải là lệnh</td><td>Chưa mở cửa sổ mới sau khi cài uv. Đóng hết PowerShell, mở lại, gõ <code>uv --version</code>.</td></tr>
-      <tr><td>Antigravity không thấy MCP <code>chatgpt-image</code></td><td>Tắt hẳn Antigravity rồi mở lại. Vẫn không thấy: nhờ Agent đọc lại file <code>.agents/mcp_config.json</code> xem có sai dấu phẩy, dấu ngoặc không.</td></tr>
+      <tr><td><b>MCP không hiện</b> trong Customizations, hoặc Agent nói không thấy <code>chatgpt-image</code></td><td>Kiểm tra lần lượt: file nằm đúng <code>.agents/mcp_config.json</code> (không phải <code>.agent</code>, không có đuôi <code>.txt</code>); nhờ Agent đọc lại file xem có sai dấu phẩy, dấu ngoặc không; MCP có đang bị <b>Disable</b> hay có dòng <code>"disabled": true</code> không. Sửa xong bấm Restart, vẫn không được thì tắt Antigravity mở lại.</td></tr>
       <tr><td>MCP báo lỗi không tìm thấy <code>uv</code></td><td>Antigravity mở trước khi cài uv. Mở lại Antigravity. Vẫn lỗi: thay chữ <code>uv</code> ở dòng <code>command</code> bằng đường dẫn đầy đủ, Windows <code>C:\\Users\\TEN-MAY\\.local\\bin\\uv.exe</code>, macOS <code>/Users/TEN-MAY/.local/bin/uv</code>.</td></tr>
       <tr><td>Đường dẫn sai, MCP không chạy</td><td>Trong JSON trên Windows, mỗi dấu <code>\</code> phải viết thành <code>\\</code>. Đường dẫn phải trỏ tới thư mục có file <code>install.ps1</code>, không phải thư mục cha.</td></tr>
-      <tr><td>Agent báo <code>not logged in</code></td><td>Chạy lại lệnh cài ở bước 1.3, đăng nhập lại.</td></tr>
+      <tr><td><b>Quá thời gian</b>: chờ lâu rồi báo timeout</td><td>Kiểm tra đã có <code>"timeoutSeconds": 300</code> chưa. Mỗi lần chỉ tạo 1 ảnh (<code>n</code> = 1). Mạng chậm thì thử lại sau ít phút; MCP treo hẳn thì bấm Restart.</td></tr>
+      <tr><td><b>Đăng nhập hết hạn</b>: <code>login_status</code> báo chưa đăng nhập, hoặc Agent báo <code>not logged in</code></td><td>MCP tự gia hạn đăng nhập, nhưng có lúc vẫn phải đăng nhập lại. Chạy lại trình cài ở bước 3.3 để đăng nhập, rồi Restart MCP.</td></tr>
+      <tr><td>Agent không gọi công cụ, chỉ viết prompt cho bạn tự dán</td><td>Agent chưa thấy MCP. Chạy câu lệnh 4.2; không thấy thì xử lý theo dòng "MCP không hiện". Nếu có dùng <code>enabledTools</code>, kiểm tra tên công cụ viết đúng.</td></tr>
       <tr><td>Ảnh tạo xong nhưng không thấy trong dự án</td><td>Agent không ghi <code>out_dir</code> là đường dẫn tuyệt đối, ảnh rơi vào thư mục <code>out</code> trong repo MCP. Nhắc Agent: "out_dir phải là đường dẫn tuyệt đối tới thư mục anh/... trong dự án".</td></tr>
-      <tr><td>Chờ lâu rồi báo quá thời gian</td><td>Kiểm tra đã có <code>"timeoutSeconds": 300</code> chưa. Mỗi lần chỉ tạo 1 ảnh (<code>n</code> = 1).</td></tr>
       <tr><td>ChatGPT từ chối tạo ảnh</td><td>Bộ lọc nội dung của ChatGPT chặn prompt. Bỏ tên người thật, tên thương hiệu khác, chi tiết nhạy cảm rồi thử lại. Lần từ chối có khi chỉ là tạm thời.</td></tr>
     </table></div>
   </section>
 
-  <!-- PHẦN 2 -->
-  <section class="card" id="p2">
-    <span class="phut">20:40 đến 20:50</span>
-    <h2><span class="so">2</span>Tải và cài bộ buổi 3</h2>
-    <p class="dung">Bộ buổi 3 gồm 1 skill tạo ảnh và 1 agent soát ảnh.</p>
+  <!-- PHẦN 5 -->
+  <section class="card" id="p5">
+    <span class="phut">21:10 đến 21:15</span>
+    <h2><span class="so">5</span>Cài bộ buổi 3</h2>
+    <p class="dung">Bộ buổi 3 gồm 1 skill tạo ảnh (skill này dùng MCP vừa cài) và 1 agent soát ảnh.</p>
     <div class="cay">buoi-03
 ├── skills/hinh-anh-nhan-vat/SKILL.md   skill tạo ảnh, khóa nhân vật
 ├── agents/nguoi-soat-anh.md            agent soát bộ ảnh, chỉ đọc
@@ -194,13 +351,58 @@ Việc cần làm:
 
 Kết quả: báo tôi danh sách skill và agent đã cài, kèm đường dẫn.</p></div>
     <p>Cài xong, mở một cuộc trò chuyện mới. Gõ <code>/</code> trong khung chat, thấy <code>hinh-anh-nhan-vat</code> là được.</p>
+    <div class="prompt"><span class="nhan-p">Xem skill dùng MCP thế nào</span><button>Chép</button><p>Tôi gửi bạn: skill .agents/skills/hinh-anh-nhan-vat/SKILL.md vừa cài.
+
+Việc cần làm: đọc skill đó và cho tôi biết skill dùng MCP nào, công cụ nào, ở những bước nào, và phần nào là "cách làm" do skill tự quy định (không cần MCP).
+
+Kết quả: trả lời ngắn trong khung chat, không sửa gì.</p></div>
   </section>
 
-  <!-- PHẦN 3 -->
-  <section class="card" id="p3">
-    <span class="phut">20:50 đến 21:05</span>
-    <h2><span class="so">3</span>Ảnh sản phẩm và poster 3 tỷ lệ</h2>
-    <p class="dung">Một ý poster, ba khổ cho ba chỗ đăng:</p>
+  <!-- PHẦN 6 -->
+  <section class="card" id="p6">
+    <span class="phut">21:15 đến 21:30</span>
+    <h2><span class="so">6</span>Khóa nhân vật</h2>
+    <p class="dung">Muốn một người xuất hiện ở 5 cảnh mà không thành 5 người khác nhau, cần hai thứ:</p>
+    <div class="luoi">
+      <div><b>Phiếu nhân vật</b>Một đoạn mô tả cố định: khuôn mặt, tóc, trang phục, màu, logo trên áo. Cảnh nào cũng dán nguyên văn, không sửa chữ nào.<i>Giống bản vẽ đồng phục: thợ may nào cầm cũng may ra một kiểu.</i></div>
+      <div><b>Ảnh nhân vật gốc</b>Một ảnh chân dung bạn chọn trong 3 bản thử. Cảnh sau đính kèm ảnh này để AI nhìn theo.<i>Giống ảnh thẻ dán vào hồ sơ diễn viên.</i></div>
+    </div>
+    <div class="prompt"><span class="nhan-p">Tạo phiếu và ảnh nhân vật gốc</span><button>Chép</button><p>/hinh-anh-nhan-vat
+Làm phần A: phiếu nhân vật và ảnh nhân vật gốc theo kịch bản kich-ban/KICH-BAN-CUA-BAN.md và mô tả hình ảnh trong kich-ban/mo-ta-hinh-canh-TEN-SAN-PHAM.md.
+Đề xuất 2 phương án nhân vật cho tôi chọn trước, rồi mới viết phiếu và tạo ảnh.</p></div>
+    <p>Mở <code>anh/nhan-vat/phieu-nhan-vat.md</code> đọc lại. Chưa ưng điểm nào thì nói thẳng, ví dụ "đổi tóc thành buộc gọn", Agent sẽ sao lưu phiếu cũ rồi sửa.</p>
+    <div class="note do"><b>Nhân vật phải là người hư cấu.</b> Không yêu cầu "giống ca sĩ X", "giống hoa hậu Y", không đưa ảnh người khác vào làm mẫu. Dùng hình ảnh người thật khi chưa được đồng ý là vi phạm quyền hình ảnh, quảng cáo dễ bị nền tảng gỡ.</div>
+    <div class="note vang"><b>Nói trước để không thất vọng:</b> AI không giữ khuôn mặt giống tuyệt đối 100% qua mọi ảnh. Phiếu và ảnh gốc giúp giống nhiều nhất có thể; cảnh nào lệch nhiều thì tạo lại cảnh đó.</div>
+  </section>
+
+  <!-- PHẦN 7 -->
+  <section class="card" id="p7">
+    <span class="phut">21:30 đến 21:42</span>
+    <h2><span class="so">7</span>Ảnh từng cảnh, cặp ảnh đầu cảnh và cuối cảnh</h2>
+    <p class="dung">Ở buổi 4, công cụ dựng video nhận <b>ảnh đầu cảnh</b> và <b>ảnh cuối cảnh</b> rồi tự tạo chuyển động ở giữa, giống người làm phim hoạt hình vẽ khung đầu, khung cuối rồi vẽ phần nối.</p>
+    <ul>
+      <li>Hai ảnh cùng bối cảnh, cùng ánh sáng, cùng nhân vật.</li>
+      <li>Khác nhau đúng theo cột <b>Chuyển động máy quay</b> trong kịch bản: "đẩy vào gần" thì ảnh cuối cận hơn, "lia ngang" thì ảnh cuối lệch khung sang bên.</li>
+    </ul>
+    <div class="prompt"><span class="nhan-p">Tạo cặp ảnh cho 2 cảnh đầu</span><button>Chép</button><p>/hinh-anh-nhan-vat
+Làm phần C cho cảnh 1 và cảnh 2 trong kịch bản kich-ban/KICH-BAN-CUA-BAN.md, lấy mô tả hình ảnh trong kich-ban/mo-ta-hinh-canh-TEN-SAN-PHAM.md.
+Dùng ảnh anh/nhan-vat/nhan-vat-goc.png làm tham chiếu nhân vật.
+Xong mỗi cảnh cho tôi xem cặp ảnh rồi mới làm cảnh tiếp.</p></div>
+    <div class="cay">anh/
+├── thu/        ảnh thử ở phần 4
+├── nhan-vat/   phieu-nhan-vat.md, nhan-vat-goc.png, ban-thu-01.png ...
+├── canh/       canh-01-dau.png, canh-01-cuoi.png, canh-02-dau.png ...
+├── san-pham/   san-pham-1x1.png
+├── poster/     poster-1x1.png, poster-9x16.png, poster-16x9.png
+└── danh-sach-anh.md   bảng mọi ảnh và prompt đã dùng</div>
+    <div class="note xanh"><b>Mẹo:</b> ảnh chưa ưng thì nói đúng chỗ, ví dụ "Ảnh cuối cảnh 2 tay cầm ly bị lệch, tạo lại riêng ảnh đó". Agent chuyển ảnh cũ vào <code>_backup/</code> rồi mới lưu ảnh mới, không ghi đè.</div>
+  </section>
+
+  <!-- PHẦN 8 -->
+  <section class="card" id="p8">
+    <span class="phut">21:42 đến 21:50</span>
+    <h2><span class="so">8</span>Ảnh sản phẩm và poster 3 tỷ lệ</h2>
+    <p class="dung">Một ý poster, ba khổ cho ba chỗ đăng. Trên lớp làm ảnh sản phẩm và poster 1:1; bản 9:16 và 16:9 làm ở nhà.</p>
     <div class="luoi">
       <div><b>1:1 vuông</b>Bài đăng Facebook, Instagram, ảnh sản phẩm trên sàn.</div>
       <div><b>9:16 dọc</b>Story, ảnh bìa video TikTok, Reels.</div>
@@ -209,78 +411,43 @@ Kết quả: báo tôi danh sách skill và agent đã cài, kèm đường dẫ
     <div class="prompt"><span class="nhan-p">Tạo ảnh sản phẩm và poster</span><button>Chép</button><p>/hinh-anh-nhan-vat
 Làm phần B: ảnh sản phẩm và poster 3 tỷ lệ cho sản phẩm trong file du-lieu/TEN-FILE-SAN-PHAM.md.
 Ảnh sản phẩm thật của tôi (nếu có): du-lieu/TEN-ANH-SAN-PHAM.jpg.
-Trình bày kế hoạch trước, tôi đồng ý thì mới tạo.</p></div>
+Hôm nay chỉ làm ảnh sản phẩm và poster 1:1. Trình bày kế hoạch trước, tôi đồng ý thì mới tạo.</p></div>
     <div class="note xanh"><b>Vì sao poster không có chữ?</b> AI hay vẽ chữ tiếng Việt méo, sai dấu. Skill chừa sẵn một vùng trống trên poster; tiêu đề, giá, logo bạn thêm sau bằng công cụ thiết kế để chữ luôn đúng.</div>
     <div class="note vang"><b>Không có ảnh sản phẩm thật:</b> AI tự vẽ bao bì theo mô tả, nên bao bì sẽ không giống hàng thật. Dùng để thực hành được, nhưng trước khi đăng quảng cáo cần thay bằng ảnh chụp sản phẩm thật.</div>
   </section>
 
-  <!-- PHẦN 4 -->
-  <section class="card" id="p4">
-    <span class="phut">21:10 đến 21:30</span>
-    <h2><span class="so">4</span>Khóa nhân vật</h2>
-    <p class="dung">Muốn một người xuất hiện ở 5 cảnh mà không thành 5 người khác nhau, cần hai thứ:</p>
-    <div class="luoi">
-      <div><b>Phiếu nhân vật</b>Một đoạn mô tả cố định: khuôn mặt, tóc, trang phục, màu, logo trên áo. Cảnh nào cũng dán nguyên văn, không sửa chữ nào.<i>Giống bản vẽ đồng phục: thợ may nào cầm cũng may ra một kiểu.</i></div>
-      <div><b>Ảnh nhân vật gốc</b>Một ảnh chân dung bạn chọn trong 3 bản thử. Cảnh sau đính kèm ảnh này để AI nhìn theo.<i>Giống ảnh thẻ dán vào hồ sơ diễn viên.</i></div>
-    </div>
-    <div class="prompt"><span class="nhan-p">Tạo phiếu và ảnh nhân vật gốc</span><button>Chép</button><p>/hinh-anh-nhan-vat
-Làm phần A: phiếu nhân vật và ảnh nhân vật gốc theo kịch bản kich-ban/KICH-BAN-CUA-BAN.md.
-Đề xuất 2 phương án nhân vật cho tôi chọn trước, rồi mới viết phiếu và tạo ảnh.</p></div>
-    <p>Mở <code>anh/nhan-vat/phieu-nhan-vat.md</code> đọc lại. Chưa ưng điểm nào thì nói thẳng, ví dụ "đổi tóc thành buộc gọn", Agent sẽ sao lưu phiếu cũ rồi sửa.</p>
-    <div class="note do"><b>Nhân vật phải là người hư cấu.</b> Không yêu cầu "giống ca sĩ X", "giống hoa hậu Y", không đưa ảnh người khác vào làm mẫu. Dùng hình ảnh người thật khi chưa được đồng ý là vi phạm quyền hình ảnh, quảng cáo dễ bị nền tảng gỡ.</div>
-    <div class="note vang"><b>Nói trước để không thất vọng:</b> AI không giữ khuôn mặt giống tuyệt đối 100% qua mọi ảnh. Phiếu và ảnh gốc giúp giống nhiều nhất có thể; cảnh nào lệch nhiều thì tạo lại cảnh đó.</div>
-  </section>
-
-  <!-- PHẦN 5 -->
-  <section class="card" id="p5">
-    <span class="phut">21:30 đến 21:45</span>
-    <h2><span class="so">5</span>Ảnh từng cảnh, cặp ảnh đầu cảnh và cuối cảnh</h2>
-    <p class="dung">Ở buổi 4, công cụ dựng video nhận <b>ảnh đầu cảnh</b> và <b>ảnh cuối cảnh</b> rồi tự tạo chuyển động ở giữa, giống người làm phim hoạt hình vẽ khung đầu, khung cuối rồi vẽ phần nối.</p>
-    <ul>
-      <li>Hai ảnh cùng bối cảnh, cùng ánh sáng, cùng nhân vật.</li>
-      <li>Khác nhau đúng theo cột <b>Chuyển động máy quay</b> trong kịch bản: "đẩy vào gần" thì ảnh cuối cận hơn, "lia ngang" thì ảnh cuối lệch khung sang bên.</li>
-    </ul>
-    <div class="prompt"><span class="nhan-p">Tạo cặp ảnh cho 2 cảnh đầu</span><button>Chép</button><p>/hinh-anh-nhan-vat
-Làm phần C cho cảnh 1 và cảnh 2 trong kịch bản kich-ban/KICH-BAN-CUA-BAN.md.
-Dùng ảnh anh/nhan-vat/nhan-vat-goc.png làm tham chiếu nhân vật.
-Xong mỗi cảnh cho tôi xem cặp ảnh rồi mới làm cảnh tiếp.</p></div>
-    <div class="cay">anh/
-├── nhan-vat/   phieu-nhan-vat.md, nhan-vat-goc.png, ban-thu-01.png ...
-├── san-pham/   san-pham-1x1.png
-├── poster/     poster-1x1.png, poster-9x16.png, poster-16x9.png
-├── canh/       canh-01-dau.png, canh-01-cuoi.png, canh-02-dau.png ...
-└── danh-sach-anh.md   bảng mọi ảnh và prompt đã dùng</div>
-    <div class="note xanh"><b>Mẹo:</b> ảnh chưa ưng thì nói đúng chỗ, ví dụ "Ảnh cuối cảnh 2 tay cầm ly bị lệch, tạo lại riêng ảnh đó". Agent chuyển ảnh cũ vào <code>_backup/</code> rồi mới lưu ảnh mới, không ghi đè.</div>
-  </section>
-
-  <!-- PHẦN 6 -->
-  <section class="card" id="p6">
-    <span class="phut">21:45 đến 21:52</span>
-    <h2><span class="so">6</span>Gọi agent soát ảnh</h2>
+  <!-- PHẦN 9 -->
+  <section class="card" id="p9">
+    <span class="phut">21:50 đến 21:55</span>
+    <h2><span class="so">9</span>Gọi agent soát ảnh</h2>
     <p class="dung">Người tạo ảnh dễ bỏ sót lỗi của chính mình. Agent <code>nguoi-soat-anh</code> soát độc lập theo 8 câu hỏi: nhân vật có đúng người không, trang phục và logo, màu thương hiệu, tỷ lệ, tay và ngón, chữ lạ, dấu hiệu "ảnh AI", bao bì sản phẩm.</p>
     <div class="prompt"><span class="nhan-p">Soát bộ ảnh</span><button>Chép</button><p>Gọi agent nguoi-soat-anh soát toàn bộ ảnh trong thư mục anh, đối chiếu với phiếu nhân vật và kịch bản kich-ban/KICH-BAN-CUA-BAN.md. Báo tôi bảng soát, chưa sửa và chưa tạo lại ảnh nào.</p></div>
     <p>Đọc bảng soát, chọn ảnh lỗi nặng nhất, bảo Agent tạo lại đúng ảnh đó theo đề xuất của người soát.</p>
   </section>
 
-  <!-- PHẦN 7 -->
-  <section class="card" id="p7">
-    <span class="phut">21:52 đến 22:00</span>
-    <h2><span class="so">7</span>Kiểm tra cuối buổi và bài tập</h2>
+  <!-- PHẦN 10 -->
+  <section class="card" id="p10">
+    <span class="phut">21:55 đến 22:00</span>
+    <h2><span class="so">10</span>Kiểm tra cuối buổi và bài tập</h2>
     <ul class="check">
-      <li>Agent gọi được MCP <code>chatgpt-image</code>, có ảnh thử trong <code>anh/thu</code>.</li>
+      <li>Nói được bằng lời của mình: Skill là cách làm, MCP là công cụ; skill <code>hinh-anh-nhan-vat</code> dùng MCP <code>chatgpt-image</code>.</li>
+      <li>Có file <code>.agents/mcp_config.json</code> trong dự án, không chứa mã khóa nào.</li>
+      <li>Thấy <code>chatgpt-image</code> trong Customizations, mục MCP Servers; biết chỗ bấm Restart, Disable.</li>
+      <li>Agent kể đúng các công cụ của <code>chatgpt-image</code>; có ảnh thử trong <code>anh/thu</code>.</li>
       <li>Đã cài skill <code>hinh-anh-nhan-vat</code> và agent <code>nguoi-soat-anh</code>; gõ <code>/</code> thấy skill.</li>
-      <li>Có ảnh sản phẩm và ít nhất poster 1:1.</li>
       <li>Có <code>phieu-nhan-vat.md</code> và <code>nhan-vat-goc.png</code>.</li>
       <li>Có cặp ảnh đầu cảnh, cuối cảnh cho cảnh 1 và cảnh 2.</li>
+      <li>Có ảnh sản phẩm và poster 1:1.</li>
       <li>Có bảng soát của agent <code>nguoi-soat-anh</code>.</li>
     </ul>
-    <p>Chụp màn hình ảnh nhân vật gốc và cặp ảnh cảnh 1 gửi vào nhóm lớp.</p>
+    <p>Chụp màn hình ảnh nhân vật gốc và cặp ảnh cảnh 1 gửi vào nhóm lớp. Không chụp file cấu hình MCP hay cửa sổ đăng nhập.</p>
     <h3>Bài tập trước buổi 4</h3>
     <ol>
       <li>Làm phần C cho các cảnh còn lại để đủ cặp ảnh đầu cảnh, cuối cảnh cho mọi cảnh trong kịch bản.</li>
-      <li>Tạo đủ poster 9:16 và 16:9 nếu trên lớp chưa xong.</li>
+      <li>Tạo poster 9:16 và 16:9 từ bản 1:1 đã duyệt.</li>
       <li>Chạy lại agent <code>nguoi-soat-anh</code>, tạo lại các ảnh bị báo lỗi tới khi bảng soát đạt.</li>
       <li>Mở <code>anh/danh-sach-anh.md</code> kiểm tra mọi ảnh dùng cho video đều ghi "đã duyệt". Buổi 4 sẽ dựng video từ bộ ảnh này.</li>
+      <li>Thử tự quản lý MCP: Disable <code>chatgpt-image</code>, hỏi Agent câu lệnh 4.2 xem Agent còn thấy không, rồi bật lại và Restart.</li>
       <li>Làm trước <b>phần 1 trang buổi 4</b> (cài phần mềm dựng video, tải khoảng 2 tới 3 GB) để buổi 4 không mất thời gian chờ tải.</li>
     </ol>
   </section>

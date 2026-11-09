@@ -16,12 +16,12 @@ Làm video cho sản phẩm trong du-lieu/TEN-FILE-SAN-PHAM.md, đăng lên TIKT
 
 ## Trước khi chạy
 
-1. Kiểm tra đã cài đủ các skill và agent sau trong `.agents/`. Thiếu cái nào thì dừng, báo tên cái đang thiếu và buổi học có nó:
+1. Kiểm tra đã cài đủ các skill và agent sau, ở trong dự án (`.agents/skills`, `.agents/agents`) hoặc global (`~/.gemini/config/skills`, `~/.gemini/config/agents`); chỉ đọc để kiểm tra, không ghi gì ra ngoài dự án. Kiểm tra thêm MCP `chatgpt-image` đã nối và có `cong-cu/VideoMotion` trong dự án. Thiếu cái nào thì dừng, báo tên cái đang thiếu và buổi học có nó:
 
 | Buổi | Skill | Agent soát, chấm |
 |---|---|---|
 | 1 | `file-thuong-hieu`, `hook-video-3-giay` | `nguoi-soat` |
-| 2 | `kich-ban-video` | `nguoi-cham-kich-ban` |
+| 2 | `kich-ban-video`, `mo-ta-hinh-canh` (tự tạo ở buổi 2) | `nguoi-cham-kich-ban` |
 | 3 | `hinh-anh-nhan-vat` | `nguoi-soat-anh` |
 | 4 | `dung-video` | `nguoi-cham-video` |
 | 5 | `dang-bai`, `quy-trinh-video` | `dao-dien` |
@@ -39,7 +39,8 @@ Làm video cho sản phẩm trong du-lieu/TEN-FILE-SAN-PHAM.md, đăng lên TIKT
 | 3 | Hook | `hook-video-3-giay` | `nguoi-soat` | `kich-ban/hook-<ten>.md` |
 | 4 | Kịch bản | `kich-ban-video` (dùng hook tốt nhất) | `nguoi-cham-kich-ban` | file kịch bản trong `kich-ban/` |
 | | **Điểm duyệt 1** | | `dao-dien` tổng hợp | chủ dự án duyệt kịch bản |
-| 5 | Ảnh, nhân vật | `hinh-anh-nhan-vat` | `nguoi-soat-anh` | ảnh trong `anh/` |
+| 4b | Mô tả hình | `mo-ta-hinh-canh` | `nguoi-soat` | `kich-ban/mo-ta-hinh-canh-<ten>.md` |
+| 5 | Ảnh, nhân vật | `hinh-anh-nhan-vat` (đọc file mô tả hình của bước 4b) | `nguoi-soat-anh` | ảnh trong `anh/` |
 | | **Điểm duyệt 2** | | `dao-dien` tổng hợp | chủ dự án duyệt ảnh |
 | 6 | Video | `dung-video` | `nguoi-cham-video` | video MP4 trong `video/` |
 | 7 | Đăng | `dang-bai` | `nguoi-soat` (soát caption) | trang đăng điền sẵn, dừng trước nút Đăng |

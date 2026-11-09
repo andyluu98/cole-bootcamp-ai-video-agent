@@ -23,7 +23,7 @@
     <img class="logo" src="assets/logo-cole-trang.png" alt="Cole">
     <div><span class="nhan">Buổi 5 · Buổi cuối · Thực hành</span></div>
     <h1>Đăng bài tự động và đấu nối quy trình</h1>
-    <p>Cho Agent mở trang đăng TikTok, Facebook, điền sẵn rồi dừng chờ bạn bấm Đăng. Nối 5 skill thành một quy trình chạy bằng một câu lệnh, lưu lên GitHub để dùng lại, và trình bày sản phẩm cuối khóa.</p>
+    <p>Cho Agent mở trang đăng TikTok, Facebook, điền sẵn rồi dừng chờ bạn bấm Đăng. Nối 5 skill thành một quy trình chạy bằng một câu lệnh, đóng gói bộ skill mang về dùng cho mọi dự án, và trình bày sản phẩm cuối khóa.</p>
     <div class="chips">
       <span>Thời gian: <b>20:00 đến 22:00, thứ 3 24/11/2026</b></span>
       <a href="slide/buoi-5.html">Mở slide buổi 5</a>
@@ -44,9 +44,9 @@
       <tr><td>20:45 đến 21:00</td><td><a href="#p3">3. Đấu nối quy trình</a></td><td>Quy trình 1 câu lệnh, 3 điểm duyệt</td></tr>
       <tr><td>21:00 đến 21:05</td><td>Nghỉ</td><td></td></tr>
       <tr><td>21:05 đến 21:20</td><td><a href="#p4">4. Chạy thử cho sản phẩm thứ 2</a></td><td>Kịch bản sản phẩm thứ 2 qua điểm duyệt 1</td></tr>
-      <tr><td>21:20 đến 21:30</td><td><a href="#p5">5. Lưu lên GitHub</a></td><td>Repo riêng tư chứa bộ skill của bạn</td></tr>
-      <tr><td>21:30 đến 21:35</td><td><a href="#p6">6. Đặt lịch chạy (giới thiệu)</a></td><td>Biết cách hẹn giờ cho Agent</td></tr>
-      <tr><td>21:35 đến 21:55</td><td><a href="#p7">7. Showcase</a></td><td>Trình bày quy trình và video, nhận góp ý</td></tr>
+      <tr><td>21:20 đến 21:35</td><td><a href="#p5">5. Đóng gói bộ skill mang về</a></td><td>File zip bộ skill, skill cài global, cách mở dự án mới</td></tr>
+      <tr><td>21:35 đến 21:40</td><td><a href="#p6">6. Đặt lịch chạy (giới thiệu)</a></td><td>Biết cách hẹn giờ cho Agent</td></tr>
+      <tr><td>21:40 đến 21:55</td><td><a href="#p7">7. Showcase</a></td><td>Trình bày quy trình và video, nhận góp ý</td></tr>
       <tr><td>21:55 đến 22:00</td><td><a href="#p8">8. Bộ skill mang về và tổng kết khóa</a></td><td>Checklist cuối khóa</td></tr>
     </table></div>
     <div class="note lam"><b>Cách đọc câu lệnh mẫu:</b> chữ IN HOA trong câu lệnh là chỗ bạn thay bằng thông tin của mình. Kết quả chưa ưng thì nói thẳng chỗ chưa ưng, không cần gõ lại cả câu lệnh.</div>
@@ -71,7 +71,7 @@ Kết quả: trả lời trong khung chat, không tạo hay sửa file nào.</p>
       <li>Video đã qua <code>nguoi-cham-video</code> và đã sửa lỗi người chấm báo.</li>
       <li>Đã cài các skill buổi 1 tới buổi 4: <code>file-thuong-hieu</code>, <code>hook-video-3-giay</code>, <code>kich-ban-video</code>, <code>hinh-anh-nhan-vat</code>, <code>dung-video</code>.</li>
     </ul>
-    <div class="note vang"><b>Chưa có video?</b> Không sao. Phần 2 bạn vẫn tập đăng được với video của bạn cùng nhóm, hoặc giảng viên gửi một video mẫu vào nhóm lớp. Video của bạn làm bù sau buổi học.</div>
+    <div class="note vang"><b>Chưa có video?</b> Không sao. Phần 2 bạn vẫn tập đăng được với video mẫu giảng viên gửi vào nhóm lớp (hoặc video của bạn cùng nhóm). Chép video đó vào thư mục <code>video/</code> của dự án, gọi agent <code>nguoi-cham-video</code> chấm trước, vì skill <code>dang-bai</code> chỉ đăng video đã qua người chấm. Video của bạn làm bù sau buổi học.</div>
   </section>
 
   <!-- PHẦN 1 -->
@@ -162,6 +162,7 @@ Kết quả: bảng tóm tắt bài đăng để tôi duyệt. Tôi tự bấm �
  3. Hook             hook-video-3-giay      soát: nguoi-soat
  4. Kịch bản         kich-ban-video         chấm: nguoi-cham-kich-ban
     ĐIỂM DUYỆT 1     bạn duyệt kịch bản
+ 4b. Mô tả hình     mo-ta-hinh-canh        soát: nguoi-soat
  5. Ảnh, nhân vật    hinh-anh-nhan-vat      soát: nguoi-soat-anh
     ĐIỂM DUYỆT 2     bạn duyệt ảnh
  6. Video            dung-video             chấm: nguoi-cham-video
@@ -204,32 +205,79 @@ Làm video cho sản phẩm trong du-lieu/TEN-FILE-SAN-PHAM-THU-2.md, đăng lê
 
   <!-- PHẦN 5 -->
   <section class="card" id="p5">
-    <span class="phut">21:20 đến 21:30</span>
-    <h2><span class="so">5</span>Lưu lên GitHub</h2>
-    <p class="dung">Bộ skill của bạn là tài sản. Lưu lên GitHub để không mất khi đổi máy, và mang sang dự án khác.</p>
-    <h3>5.1. Tạo repo riêng tư (không cần dòng lệnh)</h3>
-    <ol>
-      <li>Đăng nhập <a href="https://github.com">github.com</a>, bấm dấu <b>+</b> góc phải trên, chọn <b>New repository</b>.</li>
-      <li>Đặt tên, ví dụ <code>bo-skill-video-TEN-BAN</code>. Chọn <b>Private</b> (riêng tư). Bấm <b>Create repository</b>.</li>
-      <li>Ở trang repo mới, bấm dòng <b>uploading an existing file</b>.</li>
-      <li>Mở File Explorer (bật <b>Hidden items</b> để thấy <code>.agents</code>), kéo thả vào trang: thư mục <code>.agents</code>, file <code>AGENTS.md</code>, thư mục <code>bo-cai</code>.</li>
-      <li>Kéo xuống dưới, bấm <b>Commit changes</b>.</li>
-    </ol>
-    <div class="note do"><b>Không tải lên:</b> mật khẩu, mã khóa (API key), file <code>.env</code>, cookie, thư mục hồ sơ Chrome, file đăng nhập của bất kỳ công cụ nào. Không tải dữ liệu khách hàng thật. Video lớn cũng không cần đưa lên: GitHub chỉ cho tải qua trang web file tối đa 25 MB.</div>
-    <div class="prompt"><span class="nhan-p">Nhờ Agent soát trước khi tải lên</span><button>Chép</button><p>Tôi gửi bạn: thư mục .agents, file AGENTS.md và thư mục bo-cai trong dự án này.
+    <span class="phut">21:20 đến 21:35</span>
+    <h2><span class="so">5</span>Đóng gói bộ skill mang về</h2>
+    <p class="dung">Bộ skill, agent bạn cài qua 5 buổi là tài sản. Gói lại thành một file zip để cất, rồi cài global để dự án nào mở sau này cũng dùng được.</p>
+    <div class="luoi">
+      <div><b>Gom và nén</b>Một thư mục <code>bo-skill-cua-toi</code>, nén thành file zip có ngày trong tên.<i>Như chụp lại toàn bộ sổ tay công thức, cất một bản ở nơi an toàn.</i></div>
+      <div><b>Cài global</b>Chép skill, agent dùng chung vào thư mục <code>.gemini</code> của máy.<i>Buổi 1 đã học: cài global thì mọi dự án đều thấy.</i></div>
+      <div><b>Dự án mới</b>Khung dự án mới, file thương hiệu mới, skill có sẵn khi gõ <code>/</code>.<i>Đổi sản phẩm, đổi thương hiệu, giữ nguyên dây chuyền.</i></div>
+    </div>
+
+    <h3>5.1. Gom bộ skill vào một thư mục</h3>
+    <p>Việc này nằm trong dự án nên Agent làm được. Dán câu lệnh:</p>
+    <div class="prompt"><span class="nhan-p">Gom bộ skill và agent đã cài</span><button>Chép</button><p>Tôi gửi bạn: thư mục .agents/skills và .agents/agents trong dự án này.
 
 Việc cần làm:
-1. Tìm xem có file nào chứa mật khẩu, mã khóa, cookie, số điện thoại, email, dữ liệu khách hàng thật không.
-2. Liệt kê file đáng ngờ kèm dòng đáng ngờ.
+1. Tạo thư mục bo-skill-cua-toi ở gốc dự án, bên trong có 2 thư mục con skills và agents. Đã có thư mục tên đó thì hỏi tôi trước.
+2. Chép (không di chuyển) từng thư mục skill trong .agents/skills vào bo-skill-cua-toi/skills, từng file agent trong .agents/agents vào bo-skill-cua-toi/agents.
+3. Không chép file thương hiệu .agents/rules/thuong-hieu.md, file .agents/mcp_config.json, ảnh, video, dữ liệu sản phẩm.
+4. Tìm trong bo-skill-cua-toi xem có mật khẩu, mã khóa, cookie, số điện thoại, email, dữ liệu khách hàng thật không. Có thì liệt kê kèm dòng đáng ngờ, chưa sửa gì.
+5. Đọc từng skill: skill nào ghi cứng tên, màu, giá, sản phẩm của riêng thương hiệu này (thay vì đọc từ file .agents/rules/thuong-hieu.md) thì đánh dấu "chỉ dùng cho dự án này".
+6. Tạo file bo-skill-cua-toi/danh-sach.md: mỗi skill, agent một dòng gồm tên, buổi học, một câu làm gì, cài global được hay chỉ dùng cho dự án này.
 
-Kết quả: trả lời trong khung chat, không sửa, không xóa file nào.</p></div>
-    <h3>5.2. Dùng lại ở dự án mới</h3>
-    <p>Mở repo của bạn trên GitHub, bấm <b>Code</b>, chọn <b>Download ZIP</b>, giải nén. File zip của GitHub luôn bọc ngoài một thư mục tên <code>TEN-REPO-main</code>: mở đúng thư mục đó trong Antigravity làm dự án mới, để <code>AGENTS.md</code> và <code>.agents</code> nằm ở gốc dự án. Chạy <code>/file-thuong-hieu</code> cho thương hiệu mới là dùng được ngay.</p>
+Kết quả: bảng skill, agent đã gom, kèm cột "cài global được" hoặc "chỉ dùng cho dự án này". Không xóa file nào.</p></div>
+    <div class="note do"><b>Không cho vào bộ skill:</b> mật khẩu, mã khóa (API key), file <code>.env</code>, cookie, thư mục hồ sơ Chrome, file đăng nhập của bất kỳ công cụ nào, dữ liệu khách hàng thật. File zip có thể rơi vào tay người khác khi bạn cho mượn USB hay chia sẻ nhầm thư mục Drive.</div>
+
+    <h3>5.2. Nén zip và cất, ghi phiên bản bằng ngày</h3>
+    <ol>
+      <li>Mở thư mục dự án bằng File Explorer (Windows) hoặc Finder (macOS).</li>
+      <li>Chuột phải vào thư mục <code>bo-skill-cua-toi</code>. Windows chọn <b>Compress to ZIP file</b> (hoặc <b>Send to</b>, <b>Compressed (zipped) folder</b>); macOS chọn <b>Compress</b> (Nén).</li>
+      <li>Đổi tên file zip, thêm ngày hôm nay theo dạng năm-tháng-ngày: <code>bo-skill-cua-toi_2026-11-24.zip</code>. Ngày trong tên chính là số phiên bản.</li>
+      <li>Kéo file zip lên Google Drive hoặc chép vào USB.</li>
+    </ol>
+    <div class="note lam"><b>Lần sau sửa skill:</b> gói lại một file zip mới mang ngày hôm đó, giữ nguyên các file cũ. Bản mới chạy kém thì mở lại file zip ngày trước là quay về được.</div>
+
+    <h3>5.3. Cài global để dùng cho mọi dự án mới</h3>
+    <p>Skill global nằm ở <code>~/.gemini/config/skills/TEN-SKILL/SKILL.md</code>, agent con global ở <code>~/.gemini/config/agents/TEN-AGENT.md</code> (dấu <code>~</code> là thư mục tài khoản của bạn trên máy). Thư mục này nằm ngoài dự án, mà nội quy <code>AGENTS.md</code> cấm Agent ghi ra ngoài dự án, nên <b>bạn tự chép</b> bằng File Explorer hoặc Finder.</p>
+    <ol>
+      <li>Mở thư mục global. Windows: mở File Explorer, gõ <code>%USERPROFILE%\.gemini\config</code> vào thanh địa chỉ, bấm Enter. macOS: mở Finder, bấm <b>Cmd + Shift + G</b>, gõ <code>~/.gemini/config</code>, bấm Enter.</li>
+      <li>Trong đó chưa có thư mục <code>skills</code> hoặc <code>agents</code> thì tạo mới (chuột phải, <b>New</b>, <b>Folder</b>; macOS chọn <b>New Folder</b>). Báo không tìm thấy <code>config</code> thì vào <code>.gemini</code> rồi tạo thư mục <code>config</code> trước.</li>
+      <li>Mở cửa sổ thứ hai ở <code>bo-skill-cua-toi</code> trong dự án. Chép <b>từng thư mục skill</b> ở cột "cài global được" sang <code>.gemini/config/skills</code>. Chép nguyên thư mục, không chép riêng file <code>SKILL.md</code>.</li>
+      <li>Chép <b>từng file agent</b> trong <code>bo-skill-cua-toi/agents</code> sang <code>.gemini/config/agents</code>.</li>
+      <li>Máy hỏi có thay file trùng tên không: chọn <b>Skip</b> (bỏ qua), đối chiếu hai bản trước rồi mới quyết.</li>
+    </ol>
+    <div class="bang-cuon"><table>
+      <tr><th>Thứ gì</th><th>Để ở đâu</th><th>Vì sao</th></tr>
+      <tr><td>Skill dùng chung (<code>hook-video-3-giay</code>, <code>kich-ban-video</code>, <code>dang-bai</code>...) và các agent (4 agent soát chấm, agent đạo diễn)</td><td>Global</td><td>Skill không ghi cứng thương hiệu, mỗi lần chạy đọc file thương hiệu của dự án đang mở</td></tr>
+      <tr><td>File thương hiệu <code>.agents/rules/thuong-hieu.md</code></td><td>Project</td><td>Mỗi thương hiệu một file; để global thì video tiệm bánh dính màu quán cà phê</td></tr>
+      <tr><td>Skill riêng thương hiệu (ghi cứng tên, màu, giá, sản phẩm của một dự án)</td><td>Project</td><td>Chỉ đúng cho một thương hiệu, để global sẽ lẫn sang dự án khác</td></tr>
+      <tr><td>VideoMotion <code>cong-cu/VideoMotion</code>, cấu hình MCP <code>.agents/mcp_config.json</code></td><td>Project, chép sang dự án mới</td><td>Skill <code>dung-video</code> tìm VideoMotion trong <code>cong-cu/</code> của dự án; MCP tạo ảnh cài cho dự án ở buổi 3</td></tr>
+    </table></div>
+    <div class="note vang"><b>Muốn Agent giúp chép?</b> Được, nhưng chỉ ở dạng đưa lệnh. Nói: "Viết cho tôi lệnh chép các thư mục skill trong bo-skill-cua-toi/skills vào ~/.gemini/config/skills và các file agent vào ~/.gemini/config/agents, không ghi đè file trùng tên. Chỉ đưa lệnh, giải thích từng dòng, chưa chạy." Đọc kỹ, bạn trả lời rõ "Tôi đồng ý chạy lệnh này" thì Agent mới chạy. Không chắc thì tự chép bằng File Explorer, Finder.</div>
+    <div class="note lam"><b>Dự án cũ:</b> skill nào đã cài global thì chuyển bản trong <code>.agents/skills</code> của dự án cũ vào <code>_backup/</code> (không xóa), để mỗi skill chỉ có một bản, tránh trùng tên ở hai nơi. Sửa skill thì sửa trong <code>bo-skill-cua-toi</code>, gói zip ngày mới, rồi chép bản mới vào thư mục global để mọi dự án dùng cùng một bản.</div>
+
+    <h3>5.4. Mở dự án mới cho sản phẩm khác</h3>
+    <ol>
+      <li>Tải lại khung dự án <a href="tai-ve/du-an-mau.zip">du-an-mau.zip</a>, giải nén ra một thư mục mới, đặt tên theo sản phẩm, ví dụ <code>du-an-TEN-SAN-PHAM</code>. Khung đã có sẵn <code>AGENTS.md</code> và các thư mục <code>du-lieu</code>, <code>kich-ban</code>, <code>anh</code>, <code>video</code>.</li>
+      <li>Từ dự án cũ, chép sang dự án mới: thư mục <code>cong-cu</code> (có VideoMotion) và file <code>.agents/mcp_config.json</code>. Không chép file thương hiệu cũ.</li>
+      <li>Trong Antigravity mở thư mục dự án mới, mở một cuộc trò chuyện mới, gõ <code>/</code>: thấy <code>file-thuong-hieu</code>, <code>quy-trinh-video</code>... dù <code>.agents/skills</code> của dự án mới còn trống là skill global đã chạy.</li>
+      <li>Chạy <code>/file-thuong-hieu</code> để tạo file thương hiệu mới cho sản phẩm này, rồi đưa file sản phẩm vào <code>du-lieu/</code>.</li>
+    </ol>
+    <div class="prompt"><span class="nhan-p">Kiểm tra dự án mới trước khi chạy</span><button>Chép</button><p>Tôi gửi bạn: thư mục dự án mới này.
+
+Việc cần làm:
+1. Liệt kê các skill và agent bạn đang thấy, chia 2 nhóm: global (dùng cho mọi dự án) và của workspace này. Mỗi cái ghi file nằm ở đâu.
+2. Kiểm tra dự án đã có: file .agents/rules/thuong-hieu.md của thương hiệu mới, thư mục cong-cu/VideoMotion, MCP chatgpt-image.
+3. Đối chiếu với bảng skill trong skill quy-trinh-video, cho tôi biết còn thiếu gì.
+
+Kết quả: trả lời trong khung chat, không tạo hay sửa file nào.</p></div>
+    <div class="note vang"><b>Gõ <code>/</code> không thấy skill global?</b> Tắt hẳn Antigravity rồi mở lại. Vẫn không thấy: kiểm tra mỗi skill là một thư mục riêng nằm ngay trong <code>.gemini/config/skills</code>, bên trong có file <code>SKILL.md</code>, không bị bọc thêm một lớp thư mục khi giải nén. Đường dẫn global lấy theo tài liệu chính thức (antigravity.google/docs), tra ngày 09/11/2026.</div>
   </section>
 
   <!-- PHẦN 6 -->
   <section class="card" id="p6">
-    <span class="phut">21:30 đến 21:35</span>
+    <span class="phut">21:35 đến 21:40</span>
     <h2><span class="so">6</span>Đặt lịch chạy (giới thiệu)</h2>
     <p class="dung">Hẹn giờ cho Agent tự làm phần chuẩn bị, bạn chỉ vào duyệt. Phần đăng vẫn do bạn bấm.</p>
     <div class="bang-cuon"><table>
@@ -243,9 +291,9 @@ Kết quả: trả lời trong khung chat, không sửa, không xóa file nào.<
 
   <!-- PHẦN 7 -->
   <section class="card" id="p7">
-    <span class="phut">21:35 đến 21:55</span>
+    <span class="phut">21:40 đến 21:55</span>
     <h2><span class="so">7</span>Showcase: trình bày quy trình và video</h2>
-    <p class="dung">Mỗi bạn 3 phút, chia sẻ màn hình. Giảng viên góp ý ngay sau mỗi phần trình bày.</p>
+    <p class="dung">5 bạn đại diện, mỗi bạn 3 phút, chia sẻ màn hình; các bạn khác gửi link video vào nhóm lớp. Giảng viên góp ý ngay sau mỗi phần trình bày.</p>
     <div class="bang-cuon"><table>
       <tr><th style="width:90px">Thời lượng</th><th>Bạn trình bày</th></tr>
       <tr><td>30 giây</td><td>Thương hiệu, sản phẩm, khách hàng mục tiêu</td></tr>
@@ -267,8 +315,8 @@ Kết quả: trả lời trong khung chat, không sửa, không xóa file nào.<
     <h2><span class="so">8</span>Bộ skill mang về và tổng kết khóa</h2>
     <div class="bang-cuon"><table>
       <tr><th>Buổi</th><th>Skill</th><th>Agent soát, chấm</th></tr>
-      <tr><td>1</td><td><code>file-thuong-hieu</code>, <code>hook-video-3-giay</code></td><td><code>nguoi-soat</code></td></tr>
-      <tr><td>2</td><td><code>kich-ban-video</code></td><td><code>nguoi-cham-kich-ban</code></td></tr>
+      <tr><td>1</td><td><code>file-thuong-hieu</code>, <code>hook-video-3-giay</code>; tự tạo: <code>caption-ngan</code></td><td><code>nguoi-soat</code></td></tr>
+      <tr><td>2</td><td><code>kich-ban-video</code>; tự tạo: <code>tieu-de-video</code>, <code>mo-ta-hinh-canh</code></td><td><code>nguoi-cham-kich-ban</code></td></tr>
       <tr><td>3</td><td><code>hinh-anh-nhan-vat</code></td><td><code>nguoi-soat-anh</code></td></tr>
       <tr><td>4</td><td><code>dung-video</code></td><td><code>nguoi-cham-video</code></td></tr>
       <tr><td>5</td><td><code>dang-bai</code>, <code>quy-trinh-video</code></td><td><code>dao-dien</code></td></tr>
@@ -279,15 +327,16 @@ Kết quả: trả lời trong khung chat, không sửa, không xóa file nào.<
       <li>Có ít nhất 1 video đăng thật trên tài khoản thử, có nhãn AI, chính bạn bấm Đăng.</li>
       <li>Chạy được <code>/quy-trinh-video</code> bằng một câu lệnh, có dừng ở điểm duyệt.</li>
       <li>Sản phẩm thứ 2 đã qua điểm duyệt 1.</li>
-      <li>Có repo GitHub riêng tư chứa <code>.agents</code>, <code>AGENTS.md</code>, <code>bo-cai</code>, không có mật khẩu hay file đăng nhập.</li>
+      <li>Có file <code>bo-skill-cua-toi_NGAY.zip</code> cất trên Google Drive hoặc USB, không có mật khẩu hay file đăng nhập.</li>
+      <li>Đã chép skill, agent dùng chung vào <code>~/.gemini/config/skills</code> và <code>~/.gemini/config/agents</code>; mở một dự án mới, gõ <code>/</code> thấy skill.</li>
     </ul>
     <h3>Sau khóa học</h3>
     <ol>
       <li>Chạy tiếp quy trình cho sản phẩm thứ 2 tới khi đăng xong; gửi link vào nhóm lớp.</li>
-      <li>Mỗi tuần sửa skill một chỗ theo điều bạn rút ra, rồi tải bản mới lên repo GitHub.</li>
+      <li>Mỗi tuần sửa skill một chỗ theo điều bạn rút ra, gói một file zip mới mang ngày hôm đó, rồi chép bản mới vào thư mục global.</li>
       <li>Đăng ổn định trên tài khoản thử vài tuần rồi mới chuyển sang tài khoản chính, vẫn từng bài một, vẫn tự bấm Đăng.</li>
     </ol>
-    <div class="note xanh"><b>Bạn mang về:</b> một quy trình chạy bằng một câu lệnh, một video đã đăng thật, và bộ 7 skill và 5 agent của riêng bạn trên GitHub.</div>
+    <div class="note xanh"><b>Bạn mang về:</b> một quy trình chạy bằng một câu lệnh, một video đã đăng thật, và bộ 7 skill của khóa, 3 skill bạn tự tạo, 4 agent soát chấm và 1 agent đạo diễn của riêng bạn: một file zip có ngày để cất, một bản cài global dùng cho mọi dự án.</div>
   </section>
 
 </main>

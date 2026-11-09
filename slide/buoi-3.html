@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Buổi 3: Hình ảnh và khóa nhân vật</title>
+<title>Buổi 3: MCP đầu tiên, hình ảnh và khóa nhân vật</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 .sm-stage{
@@ -175,6 +175,82 @@ code,.ma{font-family:Consolas,'Courier New',monospace}
 .s14 .sau{position:absolute;left:120px;top:690px;width:1400px;font:500 34px/1.45 var(--fb);color:#CFE2F7}
 .s14 .ky{position:absolute;left:120px;bottom:100px;font:600 26px/1.5 var(--fb);color:#fff}
 .s14 .ky span{color:#9CC3EE;font-weight:500}
+
+/* 15. Skill va MCP */
+.s15 *,.s17 *,.s18 *,.s19 *,.s20 *{box-sizing:border-box}
+.s15 .cot{position:absolute;top:270px;width:810px;padding:36px 44px 24px;border-radius:24px}
+.s15 .sk{left:120px;background:#fff;border:3px solid var(--line)}
+.s15 .mc{left:990px;background:var(--navy);color:#fff}
+.s15 .cot .the{display:inline-block;font:700 22px/1 var(--fb);letter-spacing:2px;text-transform:uppercase;padding:10px 16px;border-radius:30px;background:var(--sky);color:var(--blue)}
+.s15 .mc .the{background:#ffffff1c;color:#9CC3EE}
+.s15 .cot h3{margin:20px 0 22px;font:800 46px/1.1 var(--fd);color:var(--navy)}
+.s15 .mc h3{color:#fff}
+.s15 .cot li{font:500 28px/1.4 var(--fb);margin-bottom:14px;list-style:none;padding-left:36px;position:relative;color:var(--muted)}
+.s15 .mc li{color:#D5E4F5}
+.s15 .cot li::before{content:"";position:absolute;left:0;top:14px;width:14px;height:14px;border-radius:50%;background:var(--blue)}
+.s15 .cot ul{margin:0;padding:0}
+.s15 .noi{position:absolute;left:120px;top:740px;width:1680px;height:190px;border-radius:24px;background:var(--sky);border:3px solid #BFD5EE}
+.s15 .noi .tt{position:absolute;left:40px;top:28px;font:800 30px/1.2 var(--fd);color:var(--navy)}
+.s15 .noi .o{position:absolute;top:84px;height:76px;padding:0 26px;border-radius:16px;background:#fff;border:3px solid var(--line);display:flex;align-items:center;font:700 26px/1 var(--fb);color:var(--navy);white-space:nowrap}
+.s15 .noi .o.c{background:var(--navy);border-color:var(--navy);color:#fff}
+.s15 .noi .o1{left:40px}.s15 .noi .o2{left:440px}.s15 .noi .o3{left:940px}.s15 .noi .o4{left:1340px}
+.s15 .noi svg{position:absolute;left:0;top:0;width:1680px;height:190px}
+
+/* 17. Project va global */
+.s17 .the{position:absolute;top:270px;width:810px;height:470px;padding:40px 44px;border-radius:24px;background:#fff;border:3px solid var(--line)}
+.s17 .pj{left:120px;border-color:var(--blue);background:var(--sky)}
+.s17 .gl{left:990px}
+.s17 .the b{display:block;font:800 44px/1.1 var(--fd);color:var(--navy)}
+.s17 .the .duong{display:block;margin:22px 0 26px;padding:18px 22px;border-radius:14px;background:#0F2036;color:#F2D38A;font:500 27px/1.3 Consolas,'Courier New',monospace}
+.s17 .the p{font:500 28px/1.45 var(--fb);color:var(--muted);margin-bottom:10px}
+.s17 .dau{position:absolute;right:36px;top:34px;padding:12px 22px;border-radius:12px;background:var(--ok);color:#fff;font:800 24px/1 var(--fd);letter-spacing:1px}
+.s17 .chot{position:absolute;left:120px;top:790px;width:1680px;padding:26px 36px;border-left:8px solid var(--blue);background:#fff;font:500 28px/1.45 var(--fb);color:var(--ink)}
+.s17 .chot b{color:var(--blue)}
+
+/* 18. An toan */
+.s18 .luoi{position:absolute;left:120px;top:270px;width:1680px;display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+.s18 .luoi>div{padding:34px 30px;border-radius:22px;background:#ffffff12;border:3px solid #ffffff2a;min-height:440px}
+.s18 .luoi .so{display:block;font:800 64px/1 var(--fd);color:var(--blue);margin-bottom:18px}
+.s18 .luoi b{display:block;font:800 32px/1.2 var(--fd);color:#fff;margin-bottom:16px}
+.s18 .luoi p{font:500 25px/1.45 var(--fb);color:#D5E4F5}
+.s18 .chot{position:absolute;left:120px;top:780px;width:1680px;padding:26px 36px;border-radius:18px;background:#ffffff14;border:2px solid #ffffff30;font:500 27px/1.45 var(--fb);color:#fff}
+.s18 .chot code{color:#F2D38A}
+
+/* 19. Quan ly MCP */
+.s19 .ui{position:absolute;left:120px;top:270px;width:860px;height:560px;border-radius:24px;background:#fff;border:3px solid var(--line);box-shadow:0 20px 50px #1E3A5F18;overflow:hidden}
+.s19 .ui .thanh{height:70px;background:var(--navy);color:#fff;display:flex;align-items:center;padding:0 30px;font:700 26px/1 var(--fb);gap:30px}
+.s19 .ui .thanh span{color:#9CC3EE;font-weight:500}
+.s19 .ui .muc{display:flex;justify-content:space-between;align-items:center;padding:26px 30px 14px;font:800 28px/1 var(--fd);color:var(--navy)}
+.s19 .ui .muc i{font:600 20px/1 var(--fb);font-style:normal;color:var(--blue);padding:10px 14px;border:2px solid var(--line);border-radius:10px}
+.s19 .ui .dong{margin:0 30px;padding:22px 24px;border-radius:14px;border:3px solid var(--blue);background:var(--sky);display:flex;align-items:center;gap:16px;font:700 28px/1 Consolas,'Courier New',monospace;color:var(--navy)}
+.s19 .ui .dong .xanh{width:16px;height:16px;border-radius:50%;background:var(--ok)}
+.s19 .ui .dong .ba{margin-left:auto;font:800 34px/1 var(--fb);color:var(--navy)}
+.s19 .menu{position:absolute;left:640px;top:484px;width:310px;border-radius:16px;background:#fff;border:3px solid var(--line);box-shadow:0 18px 40px #1E3A5F30;overflow:hidden}
+.s19 .menu div{padding:18px 24px;border-bottom:2px solid var(--line)}
+.s19 .menu div:last-child{border:0}
+.s19 .menu b{display:block;font:700 26px/1.1 var(--fb);color:var(--navy)}
+.s19 .menu i{display:block;font:500 19px/1.3 var(--fb);font-style:normal;color:var(--muted);margin-top:4px}
+.s19 .menu .xoa b{color:var(--warn)}
+.s19 .cc{position:absolute;left:1040px;top:270px;width:760px}
+.s19 .cc h3{margin:0 0 18px;font:800 32px/1.2 var(--fd);color:var(--navy)}
+.s19 .cc .t{display:flex;justify-content:space-between;align-items:center;padding:14px 22px;margin-bottom:10px;border-radius:12px;background:#fff;border:2px solid var(--line);font:600 25px/1.2 Consolas,'Courier New',monospace;color:var(--muted)}
+.s19 .cc .t span{font:600 20px/1 var(--fb);color:var(--muted)}
+.s19 .cc .t.dung{border:3px solid var(--blue);background:var(--sky);color:var(--navy)}
+.s19 .cc .t.dung span{color:var(--blue)}
+.s19 .hoi{position:absolute;left:120px;top:870px;width:1680px;padding:22px 34px;border-radius:16px;background:#0F2036;color:#D8E6F5;font:500 26px/1.45 var(--fb)}
+.s19 .hoi b{color:#9CC3EE}
+
+/* 20. Loi hay gap */
+.s20 .luoi{position:absolute;left:120px;top:270px;width:1680px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:36px}
+.s20 .luoi>div{border-radius:22px;background:#fff;border:3px solid var(--line);overflow:hidden;min-height:560px}
+.s20 .luoi .hien{padding:30px 34px;background:#FBEDE9;border-bottom:3px solid #E7B8AC}
+.s20 .luoi .hien i{display:block;font:700 20px/1 var(--fb);font-style:normal;letter-spacing:2px;text-transform:uppercase;color:var(--warn);margin-bottom:12px}
+.s20 .luoi .hien b{display:block;font:800 36px/1.15 var(--fd);color:var(--navy)}
+.s20 .luoi .sua{padding:30px 34px}
+.s20 .luoi .sua i{display:block;font:700 20px/1 var(--fb);font-style:normal;letter-spacing:2px;text-transform:uppercase;color:var(--ok);margin-bottom:16px}
+.s20 .luoi .sua li{font:500 26px/1.4 var(--fb);color:var(--ink);margin-bottom:14px}
+.s20 .luoi .sua ol{margin:0;padding-left:30px}
+.s20 code{font-size:.92em;color:var(--blue)}
 </style>
 </head>
 <body>
@@ -186,7 +262,7 @@ code,.ma{font-family:Consolas,'Courier New',monospace}
   <section class="slide toi s1" data-trans="iris" data-origin="70% 50%">
     <div class="vach" data-anim="wipe"></div>
     <h1 data-fx="words" data-stagger="90">Hình ảnh và khóa nhân vật</h1>
-    <p class="hoi" data-anim="blur" data-delay="700">Làm thế nào để một nhân vật giữ nguyên khuôn mặt, trang phục qua mọi cảnh của video?</p>
+    <p class="hoi" data-anim="blur" data-delay="700">Buổi đầu tiên cắm MCP vào Agent. Làm thế nào để một nhân vật giữ nguyên khuôn mặt, trang phục qua mọi cảnh?</p>
     <p class="meta" data-anim="rise" data-delay="1000">Buổi 3 · Bootcamp AI Agent for Video Marketing<br><span>Cole.vn · Giảng viên Lưu Tuấn Anh · Thứ 3, 17/11/2026</span></p>
     <div class="khung k1" data-anim="drop" data-delay="300"><svg viewBox="0 0 300 533"><circle cx="150" cy="210" r="62" fill="#F2D9C4"/><path d="M88 200 Q90 130 150 128 Q212 130 212 200 Q200 160 150 158 Q100 160 88 200Z" fill="#3B2A22"/><path d="M60 533 Q62 330 150 318 Q238 330 240 533Z" fill="#5B3A29"/><path d="M118 330 L150 380 L182 330" fill="#F2E6D8"/><circle cx="190" cy="372" r="9" fill="#2F6B4F"/></svg><span class="nhan-k">Cảnh 1</span></div>
     <div class="khung k2" data-anim="drop" data-delay="450"><svg viewBox="0 0 300 533"><circle cx="150" cy="180" r="70" fill="#F2D9C4"/><path d="M80 170 Q82 92 150 90 Q220 92 220 170 Q206 126 150 124 Q94 126 80 170Z" fill="#3B2A22"/><path d="M40 533 Q44 312 150 298 Q256 312 260 533Z" fill="#5B3A29"/><path d="M112 312 L150 370 L188 312" fill="#F2E6D8"/><circle cx="196" cy="362" r="10" fill="#2F6B4F"/></svg><span class="nhan-k">Cảnh 2</span></div>
@@ -199,19 +275,19 @@ code,.ma{font-family:Consolas,'Courier New',monospace}
     <h2 class="tieu" data-anim="wipe">Bốn chặng tới bộ ảnh hoàn chỉnh</h2>
     <div class="duong" data-anim="wipe" data-delay="300"></div>
     <div data-stagger="160" data-delay="400">
-      <div class="tram t1 now" data-anim="pop"><div class="cham">1</div><b>Kết nối MCP</b><i>Cài, đăng nhập, gọi thử 1 ảnh</i></div>
-      <div class="tram t2" data-anim="pop"><div class="cham">2</div><b>Sản phẩm và poster</b><i>Ảnh 1:1, poster 3 tỷ lệ</i></div>
+      <div class="tram t1 now" data-anim="pop"><div class="cham">1</div><b>Hiểu MCP</b><i>MCP là gì, khác Skill ở đâu, cài ở đâu, cài an toàn</i></div>
+      <div class="tram t2" data-anim="pop"><div class="cham">2</div><b>Cài MCP</b><i>chatgpt-image, kiểm tra, ảnh thử</i></div>
       <div class="tram t3" data-anim="pop"><div class="cham">3</div><b>Khóa nhân vật</b><i>Phiếu cố định, ảnh gốc</i></div>
-      <div class="tram t4" data-anim="pop"><div class="cham">4</div><b>Ảnh từng cảnh</b><i>Cặp đầu cảnh, cuối cảnh; soát ảnh</i></div>
+      <div class="tram t4" data-anim="pop"><div class="cham">4</div><b>Ảnh cảnh, poster</b><i>Cặp đầu cuối, poster, soát ảnh</i></div>
     </div>
     <div class="dich" data-anim="rise" data-delay="1200">Kết quả buổi học: <span>01 nhân vật đại diện</span> và <span>bộ ảnh đủ cho các cảnh</span> trong kịch bản buổi 2.</div>
   </section>
 
   <!-- 3. MCP -->
   <section class="slide s3" data-trans="iris" data-origin="15% 50%">
-    <span class="nho" data-anim="fade">Chặng 1 · Kết nối</span>
-    <h2 class="tieu" data-anim="wipe">MCP nối Agent với công cụ tạo ảnh</h2>
-    <p class="dn" data-anim="blur" data-delay="300"><b>MCP</b> là chuẩn kết nối giữa Agent và phần mềm khác. Agent gửi yêu cầu, công cụ thực hiện, kết quả trả về thẳng thư mục dự án.</p>
+    <span class="nho" data-anim="fade">Chặng 1 · MCP là gì</span>
+    <h2 class="tieu" data-anim="wipe">MCP nối Agent với phần mềm bên ngoài</h2>
+    <p class="dn" data-anim="blur" data-delay="300"><b>MCP</b> là chuẩn kết nối giữa Agent và phần mềm khác. Mỗi MCP mang theo vài <b>công cụ</b>; Agent tự chọn công cụ, kết quả trả về thẳng thư mục dự án.</p>
     <div class="so-do">
       <svg viewBox="0 0 1680 360" style="position:absolute;inset:0;width:100%;height:100%">
         <g data-anim="draw" data-delay="700" data-stagger="250" fill="none" stroke="#3A7CC6" stroke-width="5" stroke-linecap="round">
@@ -228,27 +304,102 @@ code,.ma{font-family:Consolas,'Courier New',monospace}
     <span class="chan">Nguồn: README repo github.com/andyluu98/chatgpt-image-mcp, tra ngày 09/11/2026</span>
   </section>
 
+  <!-- 15. SKILL VA MCP -->
+  <section class="slide s15" data-trans="push">
+    <span class="nho" data-anim="fade">Chặng 1 · Skill và MCP</span>
+    <h2 class="tieu" data-anim="wipe">Skill là cách làm, MCP là công cụ</h2>
+    <div class="cot sk" data-anim="left" data-delay="300"><span class="the">Skill</span><h3>Công thức nấu ăn</h3><ul>
+      <li>Quy trình, quy tắc, mẫu câu</li>
+      <li>Thư mục có file SKILL.md, viết bằng chữ</li>
+      <li>Gọi bằng /ten-skill hoặc Agent tự chọn</li>
+      <li>Thiếu skill: mỗi lần làm một kiểu</li>
+    </ul></div>
+    <div class="cot mc" data-anim="right" data-delay="500"><span class="the">MCP</span><h3>Cái bếp, cái nồi</h3><ul>
+      <li>Giúp Agent làm việc nó không tự làm được</li>
+      <li>Phần mềm chạy riêng, khai báo trong mcp_config.json</li>
+      <li>Agent tự gọi công cụ, bạn cho phép từng lần</li>
+      <li>Thiếu MCP: Agent chỉ viết prompt để bạn tự dán</li>
+    </ul></div>
+    <div class="noi" data-step="1" data-anim="rise">
+      <svg viewBox="0 0 1680 190"><g fill="none" stroke="#3A7CC6" stroke-width="5" stroke-linecap="round"><path d="M366 122 H426 M414 110 L428 122 L414 134"/><path d="M866 122 H926 M914 110 L928 122 L914 134"/><path d="M1266 122 H1326 M1314 110 L1328 122 L1314 134"/></g></svg>
+      <span class="tt">Một skill có thể dùng MCP</span>
+      <span class="o o1">/hinh-anh-nhan-vat</span>
+      <span class="o o2">gọi công cụ generate_image</span>
+      <span class="o o3 c">MCP chatgpt-image</span>
+      <span class="o o4">anh/canh/*.png</span>
+    </div>
+    <span class="chan">Skill hinh-anh-nhan-vat ghi sẵn: dùng MCP chatgpt-image, công cụ generate_image, tham số cho từng loại ảnh</span>
+  </section>
+
+  <!-- 16. CAU HOI SKILL HAY MCP -->
+  <section class="slide toi s6 s16" data-trans="zoom" data-quiz>
+    <span class="nho" data-anim="fade">Câu hỏi nhanh</span>
+    <p class="hoi" data-anim="blur">Việc nào bắt buộc phải có MCP, không thể chỉ viết thành Skill?</p>
+    <div class="pa" data-stagger="150" data-delay="400">
+      <div data-anim="rise"><b>A</b>Mọi caption có 5 hashtag và một câu kêu gọi mua hàng</div>
+      <div class="right" data-anim="rise"><b>B</b>Agent tự đọc bình luận dưới video TikTok của bạn</div>
+      <div data-anim="rise"><b>C</b>Mỗi ảnh tạo xong ghi vào danh sách kèm prompt đã dùng</div>
+    </div>
+    <p class="dap" data-step="1" data-anim="pop">Đáp án B: phải nối sang TikTok nên cần MCP. A và C là cách làm, viết thành Skill.</p>
+  </section>
+
+  <!-- 17. PROJECT HAY GLOBAL -->
+  <section class="slide s17" data-trans="push">
+    <span class="nho" data-anim="fade">Chặng 1 · Cài ở đâu</span>
+    <h2 class="tieu" data-anim="wipe">Một file cấu hình cho mỗi nơi cài</h2>
+    <div class="the pj" data-anim="left" data-delay="300">
+      <span class="dau" data-step="1" data-anim="stamp">Khóa này dùng</span>
+      <b>Project</b>
+      <span class="duong">du-an-video/.agents/mcp_config.json</span>
+      <p>Chỉ dự án đó dùng được.</p>
+      <p>Agent đọc, sửa giúp được; gỡ thì sửa đúng một file.</p>
+      <p>Gửi dự án cho người khác: kiểm tra không có mã khóa.</p>
+    </div>
+    <div class="the gl" data-anim="right" data-delay="500">
+      <b>Global</b>
+      <span class="duong">~/.gemini/config/mcp_config.json</span>
+      <p>Mọi dự án trên máy dùng được.</p>
+      <p>Hợp với MCP dùng hằng ngày, đã tin tưởng.</p>
+      <p>Nằm ngoài dự án: bạn tự sửa, Agent không ghi vào.</p>
+    </div>
+    <p class="chot" data-step="1" data-anim="rise"><b>Mỗi MCP chỉ khai báo ở một nơi.</b> Dấu ~ là thư mục tài khoản: Windows C:\Users\TEN-BAN, macOS /Users/TEN-BAN.</p>
+    <span class="chan">Nguồn: antigravity.google/docs/mcp, tra ngày 09/11/2026</span>
+  </section>
+
+  <!-- 18. AN TOAN -->
+  <section class="slide toi s18" data-trans="push">
+    <span class="nho" data-anim="fade">Chặng 1 · An toàn</span>
+    <h2 class="tieu" data-anim="wipe">Bốn điều an toàn khi cài MCP lạ</h2>
+    <div class="luoi" data-stagger="160" data-delay="300">
+      <div data-anim="rise"><span class="so">01</span><b>Đọc trước khi cài</b><p>Xem ai làm, README có rõ không. Nhờ Agent đọc README, giải thích MCP làm gì, gửi dữ liệu đi đâu.</p></div>
+      <div data-anim="rise"><span class="so">02</span><b>Không dán mã khóa vào chat</b><p>Tự mở file mcp_config.json, dán mã vào mục env, lưu.</p></div>
+      <div data-anim="rise"><span class="so">03</span><b>Không chia sẻ file cấu hình</b><p>Không gửi, không chụp màn hình, không đưa vào zip dự án. Lộ mã thì thu hồi, tạo mã mới.</p></div>
+      <div data-anim="rise"><span class="so">04</span><b>Cho phép từng lần</b><p>Giữ Request Review. Đọc tên công cụ trước khi đồng ý; gặp delete, send, post thì dừng lại.</p></div>
+    </div>
+    <p class="chot" data-step="1" data-anim="rise">chatgpt-image không cần mã khóa trong env: mã đăng nhập lưu ở <code>%APPDATA%\cgimg\auth.json</code> (Windows), <code>~/.config/cgimg/auth.json</code> (macOS). Coi file đó như mật khẩu.</p>
+  </section>
+
   <!-- 4. CAI DAT -->
   <section class="slide s4" data-trans="push">
-    <span class="nho" data-anim="fade">Chặng 1 · Cài đặt</span>
+    <span class="nho" data-anim="fade">Chặng 2 · Cài đặt</span>
     <h2 class="tieu" data-anim="wipe">Năm bước cài đặt, làm một lần mỗi máy</h2>
     <div class="buoc">
       <div data-step="1" data-anim="left"><span class="n">1</span><span><b>Cài uv</b><i>Trình cài Python gọn nhẹ, tự tải Python và thư viện cần thiết</i></span></div>
       <div data-step="2" data-anim="left"><span class="n">2</span><span><b>Tải repo chatgpt-image-mcp</b><i>Code, Download ZIP, giải nén vào Documents</i></span></div>
       <div data-step="3" data-anim="left"><span class="n">3</span><span><b>Chạy trình cài, đăng nhập ChatGPT</b><i>Dán toàn bộ đường link trang platform.openai.com vào cửa sổ cài</i></span></div>
-      <div data-step="4" data-anim="left"><span class="n">4</span><span><b>Thêm MCP vào Antigravity</b><i>File .agents/mcp_config.json, mở lại Antigravity</i></span></div>
-      <div data-step="5" data-anim="left"><span class="n">5</span><span><b>Gọi thử 1 ảnh</b><i>login_status, rồi generate_image tỷ lệ 1:1</i></span></div>
+      <div data-step="4" data-anim="left"><span class="n">4</span><span><b>Khai báo MCP cho dự án</b><i>File .agents/mcp_config.json, rồi Restart MCP</i></span></div>
+      <div data-step="5" data-anim="left"><span class="n">5</span><span><b>Kiểm tra, gọi thử 1 ảnh</b><i>Xem Customizations, hỏi Agent công cụ, rồi generate_image 1:1</i></span></div>
     </div>
     <div class="canh-bao" data-anim="right" data-delay="500">
       <b>Lưu ý về tài khoản</b>
       <p>README của repo nêu rõ: công cụ đi qua giao diện web ChatGPT, không phải kênh chính thức của OpenAI, vi phạm điều khoản sử dụng và có rủi ro bị giới hạn hoặc khóa tài khoản.<br><br>Khuyến nghị dùng tài khoản ChatGPT phụ.</p>
     </div>
-    <span class="chan">Lệnh cài chi tiết: trang buổi 3, mục 1</span>
+    <span class="chan">Lệnh cài chi tiết: trang buổi 3, mục 3 và 4</span>
   </section>
 
   <!-- 5. CAU HINH -->
   <section class="slide s5" data-trans="push">
-    <span class="nho" data-anim="fade">Chặng 1 · Cấu hình</span>
+    <span class="nho" data-anim="fade">Chặng 2 · Cấu hình</span>
     <h2 class="tieu" data-anim="wipe">Ba điểm quyết định MCP chạy đúng</h2>
     <div class="json" data-anim="zoom" data-delay="300">{
   <span class="k">"mcpServers"</span>: {
@@ -269,6 +420,32 @@ code,.ma{font-family:Consolas,'Courier New',monospace}
     <span class="chan">Nguồn: README chatgpt-image-mcp; tài liệu Antigravity antigravity.google/docs, tra ngày 09/11/2026</span>
   </section>
 
+  <!-- 19. QUAN LY MCP -->
+  <section class="slide s19" data-trans="push">
+    <span class="nho" data-anim="fade">Chặng 2 · Kiểm tra</span>
+    <h2 class="tieu" data-anim="wipe">Xem MCP, công cụ và nút quản lý</h2>
+    <div class="ui" data-anim="zoom" data-delay="300">
+      <div class="thanh">Customizations <span>Installed</span></div>
+      <div class="muc">MCP Servers <i>Copy Config File Path</i></div>
+      <div class="dong"><span class="xanh"></span>chatgpt-image<span class="ba">⋮</span></div>
+    </div>
+    <div class="menu" data-step="1" data-anim="drop">
+      <div><b>Restart</b><i>Sau khi sửa cấu hình, khi MCP treo</i></div>
+      <div><b>Disable</b><i>Tắt tạm, giữ cấu hình</i></div>
+      <div class="xoa"><b>Delete</b><i>Gỡ hẳn: sao lưu cấu hình trước</i></div>
+    </div>
+    <div class="cc" data-stagger="90" data-delay="600">
+      <h3 data-anim="fade">6 công cụ của chatgpt-image</h3>
+      <div class="t dung" data-anim="right">login_status<span>Dùng: xem đăng nhập</span></div>
+      <div class="t dung" data-anim="right">generate_image<span>Dùng: vẽ ảnh</span></div>
+      <div class="t" data-anim="right">build_pptx<span>Không dùng</span></div>
+      <div class="t" data-anim="right">generate_slide_deck<span>Không dùng</span></div>
+      <div class="t" data-anim="right">branded_deck<span>Không dùng</span></div>
+      <div class="t" data-anim="right">styled_deck<span>Không dùng</span></div>
+    </div>
+    <p class="hoi" data-step="2" data-anim="rise"><b>Hỏi Agent:</b> "Liệt kê các MCP bạn kết nối được và công cụ của chatgpt-image. Chỉ đọc thông tin, chưa gọi công cụ nào."</p>
+  </section>
+
   <!-- 6. CAU HOI -->
   <section class="slide toi s6" data-trans="zoom" data-quiz>
     <span class="nho" data-anim="fade">Câu hỏi kiểm tra</span>
@@ -281,19 +458,35 @@ code,.ma{font-family:Consolas,'Courier New',monospace}
     <p class="dap" data-step="1" data-anim="pop">Đáp án B. Chưa đăng nhập thì tool báo lỗi, không có ảnh nào được tạo. Ảnh đã tạo mà không thấy: kiểm tra thư mục out trong repo MCP.</p>
   </section>
 
-  <!-- 7. BA TY LE -->
-  <section class="slide s7" data-trans="iris" data-origin="50% 70%">
-    <span class="nho" data-anim="fade">Chặng 2 · Sản phẩm và poster</span>
-    <h2 class="tieu" data-anim="wipe">Một ý poster, ba tỷ lệ cho ba nơi đăng</h2>
-    <div class="ty a" data-anim="pop" data-delay="300"><div class="o"></div><b>1:1</b><i>Bài đăng Facebook, Instagram, ảnh sản phẩm trên sàn</i></div>
-    <div class="ty b" data-anim="pop" data-delay="480"><div class="o"></div><b>9:16</b><i>Story, ảnh bìa TikTok, Reels</i></div>
-    <div class="ty c" data-anim="pop" data-delay="660"><div class="o"></div><b>16:9</b><i>Ảnh bìa fanpage, YouTube, banner web</i></div>
-    <p class="chu" data-step="1" data-anim="rise">Poster <b>không chứa chữ trong ảnh</b>: vùng nét đứt là khoảng trống dành cho tiêu đề, giá, logo, thêm sau bằng công cụ thiết kế để chữ tiếng Việt luôn đúng dấu. Bản 1:1 được duyệt trước, rồi làm tham chiếu cho 9:16 và 16:9.</p>
+  <!-- 20. LOI HAY GAP -->
+  <section class="slide s20" data-trans="push">
+    <span class="nho" data-anim="fade">Chặng 2 · Lỗi hay gặp</span>
+    <h2 class="tieu" data-anim="wipe">Ba lỗi MCP hay gặp và cách xử lý</h2>
+    <div class="luoi" data-stagger="180" data-delay="300">
+      <div data-anim="rise"><div class="hien"><i>Hiện tượng</i><b>MCP không hiện</b></div><div class="sua"><i>Cách xử lý</i><ol>
+        <li>Tên file đúng <code>.agents/mcp_config.json</code></li>
+        <li>Nhờ Agent soát dấu phẩy, dấu ngoặc</li>
+        <li>MCP có đang bị Disable không</li>
+        <li>Restart; vẫn lỗi thì mở lại Antigravity</li>
+      </ol></div></div>
+      <div data-anim="rise"><div class="hien"><i>Hiện tượng</i><b>Quá thời gian chờ</b></div><div class="sua"><i>Cách xử lý</i><ol>
+        <li>Có <code>"timeoutSeconds": 300</code></li>
+        <li>Mỗi lần chỉ tạo 1 ảnh, n = 1</li>
+        <li>Mạng chậm: thử lại sau ít phút</li>
+        <li>MCP treo hẳn: Restart</li>
+      </ol></div></div>
+      <div data-anim="rise"><div class="hien"><i>Hiện tượng</i><b>Đăng nhập hết hạn</b></div><div class="sua"><i>Cách xử lý</i><ol>
+        <li><code>login_status</code> báo chưa đăng nhập</li>
+        <li>Chạy lại trình cài, đăng nhập tài khoản phụ</li>
+        <li>Restart MCP rồi gọi lại</li>
+      </ol></div></div>
+    </div>
+    <span class="chan">Bảng lỗi đầy đủ: trang buổi 3, mục 4</span>
   </section>
 
   <!-- 8. CHONG ANH AI -->
   <section class="slide s8" data-trans="push">
-    <span class="nho" data-anim="fade">Chặng 2 · Chất lượng ảnh</span>
+    <span class="nho" data-anim="fade">Chặng 3 · Chất lượng ảnh</span>
     <h2 class="tieu" data-anim="wipe">Prompt mô tả như một buổi chụp thật</h2>
     <div class="cot x" data-anim="left" data-delay="300"><h3>Dấu hiệu "ảnh AI"</h3><ul>
       <li>Ánh sáng ám vàng, ám cam</li>
@@ -358,6 +551,16 @@ code,.ma{font-family:Consolas,'Courier New',monospace}
     <span class="chan">Tên file: anh/canh/canh-01-dau.png, canh-01-cuoi.png; trùng tên thì bản cũ chuyển vào _backup/</span>
   </section>
 
+  <!-- 7. BA TY LE -->
+  <section class="slide s7" data-trans="iris" data-origin="50% 70%">
+    <span class="nho" data-anim="fade">Chặng 4 · Sản phẩm và poster</span>
+    <h2 class="tieu" data-anim="wipe">Một ý poster, ba tỷ lệ cho ba nơi đăng</h2>
+    <div class="ty a" data-anim="pop" data-delay="300"><div class="o"></div><b>1:1</b><i>Bài đăng Facebook, Instagram, ảnh sản phẩm trên sàn</i></div>
+    <div class="ty b" data-anim="pop" data-delay="480"><div class="o"></div><b>9:16</b><i>Story, ảnh bìa TikTok, Reels</i></div>
+    <div class="ty c" data-anim="pop" data-delay="660"><div class="o"></div><b>16:9</b><i>Ảnh bìa fanpage, YouTube, banner web</i></div>
+    <p class="chu" data-step="1" data-anim="rise">Poster <b>không chứa chữ trong ảnh</b>: vùng nét đứt là khoảng trống dành cho tiêu đề, giá, logo, thêm sau bằng công cụ thiết kế để chữ tiếng Việt luôn đúng dấu. Trên lớp làm bản 1:1; bản này được duyệt rồi làm tham chiếu cho 9:16 và 16:9 ở nhà.</p>
+  </section>
+
   <!-- 12. SOAT ANH -->
   <section class="slide s12" data-trans="push">
     <span class="nho" data-anim="fade">Chặng 4 · Soát ảnh</span>
@@ -381,9 +584,9 @@ code,.ma{font-family:Consolas,'Courier New',monospace}
     <h2 class="tieu" data-anim="wipe">Ba ý cần nhớ và việc chuẩn bị cho buổi 4</h2>
     <div class="trai" data-stagger="160" data-delay="300">
       <h3 data-anim="fade">Ba ý cần nhớ</h3>
-      <div data-anim="left"><span class="n">1</span><p>MCP nối Agent với ChatGPT; out_dir luôn là đường dẫn tuyệt đối tới anh/.</p></div>
-      <div data-anim="left"><span class="n">2</span><p>Phiếu nhân vật cố định cộng ảnh gốc giữ nhân vật qua mọi cảnh.</p></div>
-      <div data-anim="left"><span class="n">3</span><p>Mỗi cảnh một cặp ảnh đầu, cuối; soát xong mới chuyển sang dựng video.</p></div>
+      <div data-anim="left"><span class="n">1</span><p>Skill là cách làm, MCP là công cụ; một skill có thể gọi MCP.</p></div>
+      <div data-anim="left"><span class="n">2</span><p>MCP khai báo trong .agents/mcp_config.json; mã khóa để trong env, không dán vào chat.</p></div>
+      <div data-anim="left"><span class="n">3</span><p>Phiếu cố định cộng ảnh gốc giữ nhân vật; mỗi cảnh một cặp ảnh đầu, cuối.</p></div>
     </div>
     <div class="phai" data-anim="right" data-delay="700">
       <h3>Bài tập trước buổi 4</h3>
@@ -781,6 +984,8 @@ svg [data-anim],svg [data-loop]{transform-box:fill-box;transform-origin:center}
         P.forEach(q => { q.y -= q.v; q.x += Math.sin(t / 1400 + q.p) * .35; if (q.y < -10) { q.y = 1090; q.x = Math.random() * 1920; }
           g.globalAlpha = .35 + .5 * Math.sin(t / 500 + q.p * 3) ** 2; g.drawImage(sp, q.x - q.r, q.y - q.r, q.r * 2, q.r * 2); });
       }
+      requestAnimationFrame(tick);
+    };
     requestAnimationFrame(tick);
   });
 

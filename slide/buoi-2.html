@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Buổi 2: Kịch bản video bằng Agent</title>
+<title>Buổi 2: Skill và kịch bản video</title>
 <meta name="description" content="Slide buổi 2, Bootcamp AI Agent for Video Marketing, Cole.vn">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -175,31 +175,137 @@
 .s14 .cau em { font-style:normal; color:#bfe0ff; }
 .s14 .sau { position:absolute; left:120px; top:760px; font:500 34px/1.4 var(--fb); color:#e3f0fc; }
 .s14 .meta { position:absolute; left:120px; bottom:90px; font:600 24px var(--fb); color:#bcd8f5; }
+
+/* ===== bổ sung bản 09/11/2026: các slide về Skill ===== */
+.chan { position:absolute; left:120px; right:120px; top:850px; font:600 27px/1.4 var(--fb); background:var(--light); padding:18px 26px; border-radius:16px; border-left:8px solid var(--accent); }
+
+/* 3 định nghĩa: hai cách gọi */
+.s3 .goi { position:absolute; right:120px; top:280px; width:600px; display:flex; flex-direction:column; gap:22px; }
+.s3 .goi div { background:#fff; border:2px solid var(--line); border-radius:18px; padding:26px 28px; box-shadow:0 10px 30px rgba(30,58,95,.06); }
+.s3 .goi code { font:700 34px Consolas, monospace; color:var(--fg); background:var(--light); padding:4px 14px; border-radius:10px; }
+.s3 .goi .noi { font:600 28px/1.35 var(--fb); color:var(--fg); }
+.s3 .goi small { display:block; margin-top:12px; font:500 22px var(--fb); color:var(--muted); }
+
+/* 4 so sánh */
+.s4b .cmp { position:absolute; left:120px; right:120px; top:330px; display:grid; grid-template-columns:repeat(3,1fr); gap:28px; }
+.s4b .cmp div { background:#fff; border:2px solid var(--line); border-radius:22px; padding:30px 32px; box-shadow:0 10px 30px rgba(30,58,95,.06); }
+.s4b .cmp b { display:block; font:800 44px var(--fd); color:var(--fg); }
+.s4b .cmp i { display:block; font:600 24px var(--fb); font-style:normal; color:var(--accent); margin:6px 0 16px; }
+.s4b .cmp p { font:500 25px/1.4 var(--fb); margin:0 0 10px; }
+.s4b .cmp em { display:block; margin-top:14px; font:600 21px Consolas, monospace; font-style:normal; color:var(--muted); }
+.s4b .cmp .nhan { background:var(--accent); border-color:var(--accent); color:#fff; box-shadow:0 20px 50px rgba(58,124,198,.35); }
+.s4b .cmp .nhan b, .s4b .cmp .nhan i, .s4b .cmp .nhan em { color:#fff; }
+
+/* 6 cây thư mục */
+.s6b .cay2 { position:absolute; left:120px; top:320px; width:1000px; font:700 34px Consolas, monospace; }
+.s6b .cay2 > div { position:relative; padding:12px 0 12px 0; color:var(--fg); }
+.s6b .cay2 small { font:500 23px var(--fb); color:var(--muted); margin-left:22px; }
+.s6b .cay2 .tm { margin-left:60px; color:var(--accent); }
+.s6b .cay2 .f { margin-left:140px; }
+.s6b .cay2 .f::before { content:""; position:absolute; left:-46px; top:34px; width:32px; border-top:4px solid var(--line); }
+.s6b .cay2 .bat { color:#fff; background:var(--fg); display:inline-block; padding:12px 22px; border-radius:12px; margin-top:6px; margin-bottom:6px; }
+.s6b .cay2 .bat small { color:#cfe0f2; }
+.s6b .canh-bao { position:absolute; right:120px; top:370px; width:520px; background:#fff7ed; border:4px solid #d97706; border-radius:22px; padding:28px 30px; rotate:-2deg; }
+.s6b .canh-bao b { display:block; font:800 36px var(--fd); color:#7c2d12; margin-bottom:10px; }
+.s6b .canh-bao span { display:block; font:600 22px/1.5 Consolas, monospace; color:#7c2d12; }
+
+/* 7 mổ xẻ SKILL.md */
+.s7b .giay-doc { position:absolute; left:120px; top:320px; width:820px; background:#fff; border-radius:22px; box-shadow:0 20px 50px rgba(30,58,95,.12); overflow:hidden; }
+.s7b .fm { background:#0f1e33; color:#e9f2ff; padding:26px 32px; font:500 24px/1.55 Consolas, monospace; }
+.s7b .fm span { display:block; }
+.s7b .fm i { font-style:normal; color:#8fc1f2; font-weight:700; }
+.s7b .than { padding:26px 32px 30px; font:500 26px/1.8 Consolas, monospace; color:var(--fg); }
+.s7b .than b { display:block; font-size:28px; }
+.s7b .than span { display:block; color:var(--accent); font-weight:700; }
+.s7b .chu-thich { position:absolute; right:120px; top:320px; width:760px; display:flex; flex-direction:column; gap:18px; }
+.s7b .chu-thich div { background:#fff; border:2px solid var(--line); border-left:8px solid var(--accent); border-radius:0 16px 16px 0; padding:18px 24px; }
+.s7b .chu-thich .dau { border-left-color:var(--fg); }
+.s7b .chu-thich b { display:block; font:800 28px var(--fd); }
+.s7b .chu-thich span { font:500 23px/1.4 var(--fb); color:var(--muted); }
+
+/* 8 description */
+.s8b .cthuc { position:absolute; left:120px; right:120px; top:320px; background:var(--fg); color:#e9f2ff; border-radius:20px; padding:26px 34px; font:500 30px/1.45 var(--fb); }
+.s8b .cthuc b { color:#9cc6f0; }
+.s8b .vd3 { position:absolute; left:120px; right:120px; top:500px; display:flex; flex-direction:column; gap:20px; }
+.s8b .vd3 div { position:relative; background:#fff; border:2px solid var(--line); border-radius:16px; padding:18px 200px 18px 26px; }
+.s8b .vd3 code { font:600 24px/1.4 Consolas, monospace; color:var(--fg); }
+.s8b .vd3 small { display:block; margin-top:6px; font:500 22px var(--fb); color:var(--muted); }
+.s8b .vd3 .dau { position:absolute; right:28px; top:50%; margin-top:-30px; height:60px; padding:0 22px; display:grid; place-items:center; border:4px solid; border-radius:12px; font:900 28px var(--fd); text-transform:uppercase; rotate:-6deg; }
+.s8b .kem { color:#d08a12; } .s8b .hong { color:#b4372f; } .s8b .tot { color:var(--ok); }
+
+/* 9 project hay global */
+.s9b .pg { position:absolute; left:120px; right:120px; top:330px; display:grid; grid-template-columns:1fr 1fr; gap:36px; }
+.s9b .pg > div { border-radius:24px; padding:32px 36px; }
+.s9b .pg .p { background:#fff; border:3px solid var(--accent); }
+.s9b .pg .g { background:var(--fg); color:#fff; }
+.s9b .pg b { display:block; font:800 48px var(--fd); }
+.s9b .pg .g b { color:#fff; }
+.s9b .pg code { display:inline-block; margin:12px 0 18px; font:700 24px Consolas, monospace; background:var(--light); color:var(--fg); padding:6px 14px; border-radius:10px; }
+.s9b .pg p { margin:0 0 10px; font:500 25px/1.4 var(--fb); }
+.s9b .pg em { display:inline-block; margin-top:8px; font:700 22px var(--fb); font-style:normal; padding:6px 16px; border-radius:999px; background:var(--accent); color:#fff; }
+
+/* 11 ba cách */
+.s11b .cach { position:absolute; left:120px; right:120px; top:330px; display:grid; grid-template-columns:repeat(3,1fr); gap:28px; }
+.s11b .cach div { background:#fff; border:2px solid var(--line); border-radius:24px; padding:34px 32px; min-height:440px; box-shadow:0 10px 30px rgba(30,58,95,.06); }
+.s11b .cach i { display:grid; place-items:center; width:84px; height:84px; border-radius:22px; background:var(--light); color:var(--accent); font:900 44px var(--fd); font-style:normal; margin-bottom:22px; }
+.s11b .cach b { display:block; font:800 34px/1.2 var(--fd); color:var(--fg); }
+.s11b .cach p { margin:14px 0 0; font:500 26px/1.4 var(--fb); }
+.s11b .cach em { display:block; margin-top:22px; font:600 22px/1.4 var(--fb); font-style:normal; color:var(--muted); }
+.s11b .cach .nhan { border-color:var(--accent); }
+.s11b .cach .nhan i { background:var(--accent); color:#fff; }
+
+/* 12, 18 ba khối nối nhau */
+.noi3 { position:absolute; left:120px; top:330px; width:1680px; height:300px; overflow:visible; }
+.b3 { position:absolute; left:120px; right:120px; top:330px; display:grid; grid-template-columns:repeat(3,1fr); gap:120px; }
+.b3 > div { background:#fff; border:2px solid var(--line); border-radius:22px; padding:28px 30px; min-height:300px; box-shadow:0 10px 30px rgba(30,58,95,.06); }
+.b3 i { display:inline-block; font:800 22px var(--fb); font-style:normal; color:#fff; background:var(--accent); border-radius:999px; padding:4px 16px; margin-bottom:14px; }
+.b3 b { display:block; font:800 34px/1.2 var(--fd); color:var(--fg); margin-bottom:12px; }
+.b3 span { display:block; font:500 24px/1.4 var(--fb); color:var(--muted); }
+.b3 code { display:block; font:600 20px/1.4 Consolas, monospace; color:var(--fg); background:var(--light); padding:8px 12px; border-radius:10px; margin-bottom:12px; word-break:break-all; }
+.b3 .nhan { background:var(--accent); border-color:var(--accent); box-shadow:0 20px 50px rgba(58,124,198,.35); }
+.b3 .nhan b, .b3 .nhan span { color:#fff; }
+.b3 .nhan i { background:#fff; color:var(--accent); }
+.b3 .nhan code { background:rgba(255,255,255,.18); color:#fff; }
+.noi3 path { stroke-width:6; }
+
+/* 19 file kết quả 5 mục */
+.s11 .muc5 { grid-template-columns:1fr 1fr; gap:18px; }
+.s11 .muc5 div { padding:18px 24px; }
+.s11 .muc5 b { font-size:27px; }
+.s11 .muc5 span { font-size:23px; }
+.s11 .muc5 .nhan { border-color:var(--accent); background:var(--light); }
+.s11 .muc5 > div:nth-child(4) { grid-column:span 2; }
+.s11 .luu { top:830px; }
+.s11 .muc5 > div:nth-child(4) { order:5; }
+.s11 .muc5 > div:nth-child(5) { order:4; }
+.s1 h1 { font-size:100px; }
+.s8 .flow { top:340px; }
+.s8 .lenh { top:870px; }
 </style>
 </head>
 <body>
 <div class="sm-stage">
 
-  <!-- thước phim xuyên suốt -->
-  <div class="thuoc"><div class="day"></div><div class="da"></div><div class="dau"></div><span class="mo" style="left:0">0 giây</span><span class="mo" style="right:0">20 giây</span></div>
+  <!-- thước phim xuyên suốt: tiến độ buổi học -->
+  <div class="thuoc"><div class="day"></div><div class="da"></div><div class="dau"></div><span class="mo" style="left:0">20:00</span><span class="mo" style="right:0">22:00</span></div>
 
   <!-- 1 BÌA -->
   <section class="slide s1" data-scene="bia">
     <div class="vong" data-loop="float"></div><div class="vong2"></div>
     <div class="nhan" data-anim="fade">Bootcamp AI Agent for Video Marketing · Buổi 2</div>
-    <h1 data-fx="chars" data-stagger="22">Kịch bản video bằng Agent</h1>
-    <p class="hoi" data-anim="rise" data-delay="900">Câu hỏi của buổi học: làm thế nào để Agent viết kịch bản video bán hàng 20 giây, đúng thương hiệu, sẵn sàng tạo hình ảnh?</p>
-    <svg class="clap" viewBox="0 0 520 420" data-anim="zoom" data-delay="400" aria-hidden="true">
-      <g data-loop="sway"><g>
-        <rect x="20" y="40" width="470" height="80" rx="12" fill="#fff" transform="rotate(-9 20 120)"/>
-        <g transform="rotate(-9 20 120)" fill="#1E3A5F"><polygon points="70,40 130,40 100,120 40,120"/><polygon points="190,40 250,40 220,120 160,120"/><polygon points="310,40 370,40 340,120 280,120"/><polygon points="430,40 490,40 460,120 400,120"/></g>
-      </g></g>
-      <rect x="20" y="130" width="470" height="270" rx="18" fill="#fff"/>
-      <rect x="20" y="130" width="470" height="70" rx="18" fill="#E8F4FD"/>
-      <g stroke="#3A7CC6" stroke-width="6" stroke-linecap="round">
-        <line x1="60" y1="250" x2="300" y2="250"/><line x1="60" y1="300" x2="440" y2="300"/><line x1="60" y1="350" x2="360" y2="350"/>
+    <h1 data-fx="chars" data-stagger="22">Skill: sổ tay quy trình của Agent</h1>
+    <p class="hoi" data-anim="rise" data-delay="900">Câu hỏi của buổi học: làm sao để một việc hôm nay làm tốt, lần sau chỉ cần gõ một dòng là Agent làm lại đúng như vậy?</p>
+    <svg class="clap" viewBox="0 0 520 440" data-anim="zoom" data-delay="400" aria-hidden="true">
+      <g data-loop="sway">
+        <rect x="70" y="40" width="380" height="370" rx="22" fill="#fff"/>
+        <rect x="70" y="40" width="60" height="370" rx="22" fill="#E8F4FD"/>
+        <g fill="#3A7CC6"><circle cx="100" cy="100" r="9"/><circle cx="100" cy="200" r="9"/><circle cx="100" cy="300" r="9"/></g>
+        <rect x="165" y="80" width="240" height="56" rx="10" fill="#1E3A5F"/>
+        <g stroke="#3A7CC6" stroke-width="10" stroke-linecap="round">
+          <line x1="170" y1="190" x2="390" y2="190"/><line x1="170" y1="240" x2="350" y2="240"/><line x1="170" y1="290" x2="380" y2="290"/><line x1="170" y1="340" x2="310" y2="340"/>
+        </g>
+        <path d="M400 20 v90 l22 -16 l22 16 v-90 z" fill="#5BA3E6"/>
       </g>
-      <circle cx="430" cy="250" r="22" fill="#3A7CC6"/>
     </svg>
     <div class="meta" data-anim="fade" data-delay="1200">Cole.vn · Giảng viên Lưu Tuấn Anh · Thứ 5, 12/11/2026, 20:00 đến 22:00</div>
   </section>
@@ -207,32 +313,168 @@
   <!-- 2 BẢN ĐỒ -->
   <section class="slide s2" data-scene="ban-do" data-trans="iris" data-origin="50% 50%">
     <div class="kick" data-anim="fade">Bản đồ buổi học</div>
-    <h2 class="tit" data-anim="wipe">Năm trạm từ thông tin sản phẩm tới kịch bản hoàn chỉnh</h2>
+    <h2 class="tit" data-anim="wipe">Năm trạm: từ hiểu skill tới tự tạo skill cho kịch bản video</h2>
     <div class="ban-do">
       <div class="duong"></div>
-      <div class="tram now" style="left:6%" data-anim="pop" data-delay="300"><div class="o">1</div><b>Cấu trúc</b><span>Hook, thân, kêu gọi hành động</span></div>
-      <div class="tram" style="left:28%" data-anim="pop" data-delay="450"><div class="o">2</div><b>Viết</b><span>Skill kich-ban-video</span></div>
-      <div class="tram" style="left:50%" data-anim="pop" data-delay="600"><div class="o">3</div><b>Chấm và sửa</b><span>Người chấm kịch bản</span></div>
-      <div class="tram" style="left:72%" data-anim="pop" data-delay="750"><div class="o">4</div><b>Tách hình ảnh</b><span>Chuẩn bị cho buổi 3</span></div>
-      <div class="tram" style="left:94%" data-anim="pop" data-delay="900"><div class="o">5</div><b>Mở rộng</b><span>MCP tìm video đang hot</span></div>
+      <div class="tram now" style="left:6%" data-anim="pop" data-delay="300"><div class="o">1</div><b>Skill là gì</b><span>Khác prompt, khác rule</span></div>
+      <div class="tram" style="left:28%" data-anim="pop" data-delay="450"><div class="o">2</div><b>Cấu tạo</b><span>SKILL.md, description, project hay global</span></div>
+      <div class="tram" style="left:50%" data-anim="pop" data-delay="600"><div class="o">3</div><b>Tạo skill</b><span>3 cách, chạy thử, sao lưu</span></div>
+      <div class="tram" style="left:72%" data-anim="pop" data-delay="750"><div class="o">4</div><b>Kịch bản</b><span>kich-ban-video, người chấm</span></div>
+      <div class="tram" style="left:94%" data-anim="pop" data-delay="900"><div class="o">5</div><b>Tự tạo skill</b><span>mo-ta-hinh-canh cho buổi 3</span></div>
     </div>
+    <div class="src" data-anim="fade" data-delay="1200">Đầu ra buổi 2: 01 kịch bản phân cảnh và 01 danh sách mô tả hình ảnh từng cảnh.</div>
   </section>
 
   <!-- 3 ĐỊNH NGHĨA -->
   <section class="slide s3" data-scene="dn" data-trans="push">
     <div class="kick" data-anim="fade">Trạm 1 · Khái niệm</div>
-    <p class="dn" data-fx="words"><em>Kịch bản phân cảnh</em> là bảng chia video thành từng cảnh: mỗi cảnh dài bao nhiêu giây, người xem thấy gì, nghe gì, đọc chữ gì.</p>
-    <div class="vv" data-step="1" data-anim="left">Tương tự bản vẽ thi công trước khi xây dựng: có bản vẽ, các bước tạo ảnh và dựng video chỉ việc làm theo.</div>
-    <div class="bang" data-stagger="120" data-delay="600">
-      <div class="hang dau" data-anim="rise"><div>Cảnh</div><div>Giây</div><div>Hình ảnh</div></div>
-      <div class="hang" data-anim="rise"><div>Máy quay<small>đẩy vào, lia ngang</small></div><div>Lời thoại<small>giọng đọc nói gì</small></div></div>
-      <div class="hang" data-anim="rise"><div>Chữ trên màn hình<small>dòng chữ lớn, khác phụ đề</small></div></div>
+    <p class="dn" data-fx="words"><em>Skill</em> là một quy trình viết ra một lần, cất trong dự án, lần sau chỉ cần gọi tên.</p>
+    <div class="vv" data-step="1" data-anim="left">Giống sổ tay của nhân viên lành nghề: "làm hook thì làm 5 bước này, lưu vào chỗ này". Agent mở đúng cuốn sổ khi cần.</div>
+    <div class="goi" data-stagger="140" data-delay="600">
+      <div data-anim="rise"><code>/hook-video-3-giay</code><small>Gọi thẳng tên bằng dấu /</small></div>
+      <div data-anim="rise"><span class="noi">"Viết giúp tôi mấy câu mở đầu video"</span><small>Hoặc nói tự nhiên, Agent tự chọn skill khớp việc</small></div>
     </div>
   </section>
 
-  <!-- 4 CẤU TRÚC -->
-  <section class="slide s4" data-scene="cau-truc" data-trans="push">
-    <div class="kick" data-anim="fade">Trạm 1 · Cấu trúc</div>
+  <!-- 4 SO SÁNH -->
+  <section class="slide s4b" data-scene="so-sanh" data-trans="push">
+    <div class="kick" data-anim="fade">Trạm 1 · Phân biệt</div>
+    <h2 class="tit" data-anim="wipe">Prompt dặn một lần, rule luôn áp dụng, skill gọi khi cần</h2>
+    <div class="cmp" data-stagger="160" data-delay="300">
+      <div data-anim="drop"><b>Prompt</b><i>Lời dặn miệng một lần</i><p>Trôi mất khi sang cuộc trò chuyện khác</p><p>Hợp: việc làm một lần</p><em>"Dịch câu này sang tiếng Anh"</em></div>
+      <div data-anim="drop"><b>Rule</b><i>Nội quy dán trên tường</i><p>Agent luôn đọc, mọi việc đều áp dụng</p><p>Hợp: giọng văn, màu, cấm xóa file</p><em>.agents/rules/thuong-hieu.md</em></div>
+      <div class="nhan" data-anim="drop"><b>Skill</b><i>Sổ tay quy trình trên kệ</i><p>Agent chỉ mở khi việc khớp description</p><p>Hợp: việc lặp lại, nhiều bước, có file kết quả</p><em>.agents/skills/TEN/SKILL.md</em></div>
+    </div>
+    <div class="chan" data-step="1" data-anim="rise">Vì sao không nhét hết vào rule? Rule đọc mọi lúc, nhiều sẽ rối. Skill chỉ mở khi cần, cài 20 skill Agent vẫn gọn.</div>
+  </section>
+
+  <!-- 5 CÂU HỎI -->
+  <section class="slide s7" data-scene="hoi-1" data-quiz data-trans="zoom">
+    <div class="kick">Câu hỏi kiểm tra</div>
+    <p class="q" data-fx="words">"Mỗi tuần viết 5 tiêu đề video theo 3 kiểu, lưu thành file." Việc này nên là gì?</p>
+    <div class="phuong">
+      <div data-anim="rise" data-delay="600">A. Prompt</div>
+      <div data-anim="rise" data-delay="700">B. Rule</div>
+      <div class="right" data-anim="rise" data-delay="800">C. Skill</div>
+    </div>
+    <p class="dap" data-step="1" data-anim="pop">Đáp án <b>C</b>. Việc lặp lại, nhiều bước, ra file kết quả rõ ràng. Còn "luôn xưng Mây Núi" là rule; "tóm tắt bài báo này" là prompt.</p>
+  </section>
+
+  <!-- 6 CẤU TẠO THƯ MỤC -->
+  <section class="slide s6b" data-scene="cau-tao" data-trans="iris" data-origin="25% 50%">
+    <div class="kick" data-anim="fade">Trạm 2 · Cấu tạo</div>
+    <h2 class="tit" data-anim="wipe">Một skill là một thư mục, bắt buộc có SKILL.md</h2>
+    <div class="cay2">
+      <div class="goc" data-anim="left">.agents/skills/</div>
+      <div class="tm" data-anim="left" data-delay="200">mo-ta-hinh-canh/<small>tên thư mục là tên skill</small></div>
+      <div class="f bat" data-anim="pop" data-delay="450">SKILL.md<small>bắt buộc, đúng tên, chữ in hoa</small></div>
+      <div class="f" data-step="1" data-anim="right">mau/<small>khung file kết quả</small></div>
+      <div class="f" data-step="1" data-anim="right" data-delay="120">examples/<small>bài làm mẫu</small></div>
+      <div class="f" data-step="1" data-anim="right" data-delay="240">resources/, scripts/<small>tài liệu, lệnh chạy sẵn (khóa này không dùng scripts)</small></div>
+    </div>
+    <div class="canh-bao" data-step="2" data-anim="stamp"><b>Chỉ tìm một lớp</b><span>.agents/skills/ten/SKILL.md: thấy</span><span>.agents/skills/nhom/ten/SKILL.md: không thấy</span></div>
+    <div class="src">Nguồn: antigravity.google/docs, mục Skills, tra ngày 09/11/2026.</div>
+  </section>
+
+  <!-- 7 MỔ XẺ SKILL.md -->
+  <section class="slide s7b" data-scene="mo-xe" data-trans="push">
+    <div class="kick" data-anim="fade">Trạm 2 · Mổ xẻ hook-video-3-giay</div>
+    <h2 class="tit" data-anim="wipe">SKILL.md có phần đầu để Agent chọn, phần thân để Agent làm</h2>
+    <div class="giay-doc" data-anim="zoom" data-delay="200">
+      <div class="fm"><span>---</span><span><i>name:</i> hook-video-3-giay</span><span><i>description:</i> Viết 5 câu mở đầu (hook) 3 giây... Dùng khi người dùng nói "viết hook"...</span><span>---</span></div>
+      <div class="than"><b># Viết hook 3 giây cho video ngắn</b><span>## Trước khi viết</span><span>## Cách viết</span><span>## Kết quả</span></div>
+    </div>
+    <div class="chu-thich">
+      <div class="dau" data-step="1" data-anim="right"><b>Phần đầu</b><span>Nhãn ngoài bìa sổ. description bắt buộc; name tùy chọn, bỏ trống thì lấy tên thư mục.</span></div>
+      <div data-step="2" data-anim="right"><b>Trước khi làm</b><span>Đọc thương hiệu, sản phẩm. Thiếu thì hỏi đúng 1 câu.</span></div>
+      <div data-step="3" data-anim="right"><b>Các bước, quy tắc</b><span>5 kiểu hook, tối đa 12 chữ, không bịa số.</span></div>
+      <div data-step="4" data-anim="right"><b>Kết quả</b><span>Lưu file tên gì, ở đâu; trùng tên thì sao lưu.</span></div>
+    </div>
+  </section>
+
+  <!-- 8 DESCRIPTION -->
+  <section class="slide s8b" data-scene="description" data-trans="push">
+    <div class="kick" data-anim="fade">Trạm 2 · Description</div>
+    <h2 class="tit" data-anim="wipe">Description là tấm biển trước cửa: Agent đọc biển để vào đúng phòng</h2>
+    <div class="cthuc" data-anim="rise" data-delay="300"><b>Làm gì, ra kết quả gì.</b> Dùng khi người dùng nói <b>"câu hay nói"</b>, hoặc gõ <b>/ten-skill</b>. Không dùng để <b>việc gần giống</b>.</div>
+    <div class="vd3">
+      <div data-step="1" data-anim="left"><code>Viết hook.</code><span class="dau kem">Kém</span><small>Quá ngắn, không rõ lúc nào dùng</small></div>
+      <div data-step="2" data-anim="left"><code>Dùng khi: người dùng cần hook</code><span class="dau hong">Hỏng</span><small>Dấu hai chấm kèm khoảng trắng làm hỏng phần đầu file, skill biến mất</small></div>
+      <div data-step="3" data-anim="left"><code>Viết 5 câu mở đầu (hook) 3 giây cho video ngắn bán hàng... Dùng khi người dùng nói "viết hook", "3 giây đầu"...</code><span class="dau tot">Tốt</span><small>Rõ việc, rõ kết quả, có đúng câu bạn hay nói</small></div>
+    </div>
+  </section>
+
+  <!-- 9 PROJECT HAY GLOBAL -->
+  <section class="slide s9b" data-scene="pg" data-trans="push">
+    <div class="kick" data-anim="fade">Trạm 2 · Để ở đâu</div>
+    <h2 class="tit" data-anim="wipe">Skill gắn với thương hiệu để project, dùng chung mọi nơi để global</h2>
+    <div class="pg">
+      <div class="p" data-anim="spring" data-from="-200,0"><b>Project</b><code>.agents/skills/TEN/SKILL.md</code><p>Chỉ dự án này dùng. Agent chép giúp được.</p><p>Ví dụ: kich-ban-video đọc kich-ban/, mo-ta-hinh-canh.</p><em>Buổi 1 tới 4</em></div>
+      <div class="g" data-anim="spring" data-from="200,0" data-delay="200"><b>Global</b><code>~/.gemini/config/skills/TEN/SKILL.md</code><p>Mọi dự án trên máy dùng. Bạn tự chép, vì nội quy cấm Agent ghi ra ngoài workspace.</p><p>Ví dụ: tóm tắt tài liệu, viết email.</p><em>Buổi 5 đóng gói</em></div>
+    </div>
+    <div class="chan" data-step="1" data-anim="rise">Tránh đặt một tên skill ở cả hai nơi. Xem skill đang có ở Customizations, tab Installed, mục Skills.</div>
+  </section>
+
+  <!-- 10 CÂU HỎI -->
+  <section class="slide s7" data-scene="hoi-2" data-quiz data-trans="zoom">
+    <div class="kick">Câu hỏi kiểm tra</div>
+    <p class="q" data-fx="words">Skill để trong .agents/skills/video/hook/. Gõ / có thấy không?</p>
+    <div class="phuong">
+      <div data-anim="rise" data-delay="600">A. Có</div>
+      <div class="right" data-anim="rise" data-delay="750">B. Không</div>
+    </div>
+    <p class="dap" data-step="1" data-anim="pop">Đáp án <b>B</b>. Thư mục skill lồng hai lớp. Chuyển thư mục <b>hook</b> lên thẳng trong .agents/skills/.</p>
+  </section>
+
+  <!-- 11 BA CÁCH TẠO -->
+  <section class="slide s11b" data-scene="ba-cach" data-trans="iris" data-origin="50% 55%">
+    <div class="kick" data-anim="fade">Trạm 3 · Tạo skill</div>
+    <h2 class="tit" data-anim="wipe">Ba cách tạo skill, chọn theo mức bạn đã rõ</h2>
+    <div class="cach" data-stagger="180" data-delay="300">
+      <div data-anim="flip"><i>1</i><b>Nhờ Agent viết theo mô tả</b><p>Hợp khi đã biết rõ các bước.</p><em>caption-ngan (buổi 1), mo-ta-hinh-canh (hôm nay)</em></div>
+      <div class="nhan" data-anim="flip"><i>2</i><b>Biến cuộc trò chuyện làm tốt thành skill</b><p>Hợp khi chưa rõ các bước, cần làm thử trước.</p><em>tieu-de-video (thực hành ngay)</em></div>
+      <div data-anim="flip"><i>3</i><b>Tự viết, tự sửa trong file</b><p>Hợp khi sửa một chữ, một con số.</p><em>Từ bo-cai/buoi-02/mau/khung-skill.md</em></div>
+    </div>
+  </section>
+
+  <!-- 12 CÁCH 2 -->
+  <section class="slide s12b" data-scene="cach-2" data-trans="push">
+    <div class="kick" data-anim="fade">Trạm 3 · Thực hành cách 2</div>
+    <h2 class="tit" data-anim="wipe">Làm thử, sửa tới khi ưng, rồi đóng gói thành tieu-de-video</h2>
+    <svg class="noi3" viewBox="0 0 1680 300" aria-hidden="true">
+      <g data-anim="draw" data-delay="500" data-stagger="300" fill="none" stroke="#3A7CC6" stroke-width="6" stroke-linecap="round">
+        <path d="M495 150 L 585 150"/><path d="M1095 150 L 1185 150"/>
+      </g>
+    </svg>
+    <div class="b3">
+      <div data-anim="pop" data-delay="200"><i>1</i><b>Làm thử bằng lời</b><span>"Viết 5 tiêu đề video TikTok, tối đa 10 chữ, 3 kiểu"</span></div>
+      <div data-anim="pop" data-delay="500"><i>2</i><b>Sửa 1 tới 2 lần</b><span>"Bỏ chữ 'siêu', thêm tiêu đề nhắc ngày rang"</span></div>
+      <div class="nhan" data-anim="pop" data-delay="800"><i>3</i><b>Đóng gói</b><span>"Ghi lại đúng các bước và chỗ tôi đã sửa thành skill"</span></div>
+    </div>
+    <div class="chan" data-step="1" data-anim="rise">Skill sinh ra ghi đúng những gì đã chạy tốt, kể cả các lần bạn sửa. Câu lệnh đầy đủ ở trang buổi 2, phần 4.</div>
+  </section>
+
+  <!-- 13 CHẠY THỬ, SỬA, SAO LƯU -->
+  <section class="slide s10" data-scene="sua" data-trans="push">
+    <div class="kick" data-anim="fade">Trạm 3 · Chạy thử, sửa skill</div>
+    <h2 class="tit" data-anim="wipe">Thử đủ 3 kiểu câu, sửa thì sao lưu trước</h2>
+    <svg class="vongsua" viewBox="0 0 620 620" aria-hidden="true">
+      <circle cx="310" cy="310" r="250" fill="none" stroke="#cfe0f2" stroke-width="18"/>
+      <g transform="rotate(-90 310 310)"><circle cx="310" cy="310" r="250" fill="none" stroke="#3A7CC6" stroke-width="18" stroke-linecap="round" data-anim="draw" data-dur="1800"/></g>
+      <g data-loop="spin" data-loop-dur="9000" style="transform-box:view-box;transform-origin:310px 310px"><circle cx="310" cy="60" r="26" fill="#1E3A5F"/></g>
+    </svg>
+    <div class="muctieu" data-anim="pop" data-delay="600"><b>3</b><span>kiểu câu thử</span></div>
+    <div class="buoc">
+      <div data-step="1" data-anim="right"><i>1</i><p style="margin:0"><b>Thử</b><span>Gọi /ten, nói tự nhiên, và một câu không liên quan (skill không được chạy).</span></p></div>
+      <div class="bk" data-step="2" data-anim="right"><i>2</i><p style="margin:0"><b>Sao lưu</b><span>Chép bản cũ vào _backup/, không để trong .agents/skills/ kẻo thành skill thứ hai.</span></p></div>
+      <div data-step="3" data-anim="right"><i>3</i><p style="margin:0"><b>Sửa đúng chỗ</b><span>Giữ hai dòng --- và description trên một dòng.</span></p></div>
+      <div data-step="4" data-anim="right"><i>4</i><p style="margin:0"><b>Trò chuyện mới</b><span>Mở cuộc trò chuyện mới để Agent đọc bản skill mới nhất, rồi thử lại.</span></p></div>
+    </div>
+  </section>
+
+  <!-- 14 CẤU TRÚC VIDEO -->
+  <section class="slide s4" data-scene="cau-truc" data-trans="iris" data-origin="50% 50%">
+    <div class="kick" data-anim="fade">Trạm 4 · Áp dụng: cấu trúc video</div>
     <h2 class="tit" data-anim="wipe">Video ngắn bán hàng gồm ba phần, mỗi phần một nhiệm vụ</h2>
     <div class="tl">
       <div class="p1" data-step="1" data-anim="rise-wipe"><b>Hook</b><span>giữ người xem</span></div>
@@ -242,14 +484,14 @@
     <div class="giay"><i style="left:0">0 giây</i><i style="left:14.5%">3</i><i style="left:84%">17</i><i style="right:0">20 giây</i></div>
     <div class="giai">
       <div data-step="1" data-anim="fade"><b>3 giây đầu</b>Một câu nói hoặc dòng chữ khiến người xem dừng lướt.</div>
-      <div data-step="2" data-anim="fade"><b>2 tới 4 cảnh giữa</b>Mỗi cảnh một ý, không dồn nhiều thông tin vào một cảnh.</div>
+      <div data-step="2" data-anim="fade"><b>2 tới 4 cảnh giữa</b>Mỗi cảnh một ý. Lời thoại tối đa 3 chữ mỗi giây.</div>
       <div data-step="3" data-anim="fade"><b>3 tới 5 giây cuối</b>Nói rõ một việc: bấm giỏ hàng, nhắn tin fanpage.</div>
     </div>
   </section>
 
-  <!-- 5 VÍ DỤ -->
+  <!-- 15 VÍ DỤ -->
   <section class="slide s5" data-scene="vi-du" data-trans="push">
-    <div class="kick" data-anim="fade">Trạm 1 · Ví dụ</div>
+    <div class="kick" data-anim="fade">Trạm 4 · Ví dụ</div>
     <h2 class="tit" data-anim="wipe">Cà Phê Mây Núi: 20 giây chia thành 5 cảnh</h2>
     <div class="canh" data-stagger="140" data-delay="300">
       <div class="hook" data-anim="drop" style="flex:3"><span class="so">CẢNH 1</span><span class="gi">0 tới 3</span><span class="y">Cà phê quán đắt, chờ lâu</span><span class="vai">Hook</span></div>
@@ -261,32 +503,10 @@
     <div class="src" data-anim="fade" data-delay="1200">Nguồn: du-an-mau/du-lieu/san-pham-mau.md (dữ liệu giả lập dùng để thực hành)</div>
   </section>
 
-  <!-- 6 ĐỌC KỊP -->
-  <section class="slide s6" data-scene="doc-kip" data-trans="iris" data-origin="20% 40%">
-    <div class="kick" data-anim="fade">Trạm 1 · Quy tắc đọc kịp</div>
-    <div class="so-lon" data-anim="pop">3</div>
-    <div class="don" data-anim="right" data-delay="300">chữ mỗi giây<small>Tốc độ đọc thoải mái của giọng đọc. Lời thoại vượt mức này sẽ bị cắt hoặc đọc vội.</small></div>
-    <div class="vd">
-      <div data-step="1" data-anim="rise">Cảnh dài <b>4 giây</b>: lời thoại tối đa <b>12 chữ</b>.</div>
-      <div data-step="2" data-anim="rise">Chữ trên màn hình tối đa <b>8 chữ</b>, vì người xem còn phải nhìn hình.</div>
-    </div>
-  </section>
-
-  <!-- 7 CÂU HỎI -->
-  <section class="slide s7" data-scene="hoi" data-quiz data-trans="zoom">
-    <div class="kick">Câu hỏi kiểm tra</div>
-    <p class="q" data-fx="words">Cảnh dài 3 giây, lời thoại có 15 chữ. Cảnh này có đọc kịp không?</p>
-    <div class="phuong">
-      <div data-anim="rise" data-delay="600">A. Đọc kịp</div>
-      <div class="right" data-anim="rise" data-delay="750">B. Không đọc kịp</div>
-    </div>
-    <p class="dap" data-step="1" data-anim="pop">Đáp án <b>B</b>. Cảnh 3 giây chỉ chứa tối đa <b>9 chữ</b> (3 giây nhân 3 chữ). Cách sửa: rút lời thoại, hoặc kéo dài cảnh lên 5 giây.</p>
-  </section>
-
-  <!-- 8 SKILL -->
-  <section class="slide s8" data-scene="viet" data-trans="iris" data-origin="50% 45%">
-    <div class="kick" data-anim="fade">Trạm 2 · Viết kịch bản</div>
-    <h2 class="tit" data-anim="wipe">Skill kịch bản: ba nguồn vào, hai kết quả ra</h2>
+  <!-- 16 SKILL KỊCH BẢN -->
+  <section class="slide s8" data-scene="viet" data-trans="push">
+    <div class="kick" data-anim="fade">Trạm 4 · Skill có sẵn</div>
+    <h2 class="tit" data-anim="wipe">kich-ban-video: ba nguồn vào, một kịch bản phân cảnh ra</h2>
     <div class="flow">
       <svg class="mui" viewBox="0 0 1680 470" aria-hidden="true">
         <g data-anim="draw" data-delay="700" data-stagger="150" fill="none" stroke="#3A7CC6" stroke-width="5" stroke-linecap="round">
@@ -302,19 +522,19 @@
         <div data-anim="left">Thông tin sản phẩm<small>du-lieu/san-pham-mau.md</small></div>
         <div data-anim="left">Hook đã chọn ở buổi 1<small>kich-ban/hook-....md</small></div>
       </div>
-      <div class="giua" data-anim="pop" data-delay="500"><b>kich-ban-video</b><span>dọc 9:16 · 15 tới 30 giây · 4 tới 6 cảnh</span></div>
+      <div class="giua" data-anim="pop" data-delay="500"><b>/kich-ban-video</b><span>dọc 9:16 · 15 tới 30 giây · 4 tới 6 cảnh</span></div>
       <div class="ra" data-stagger="160" data-delay="1100">
         <div data-anim="right">Bảng kịch bản phân cảnh<small>giây, hình ảnh, máy quay, lời thoại, chữ</small></div>
-        <div data-anim="right">Mô tả hình ảnh từng cảnh<small>chuẩn bị tạo ảnh ở buổi 3</small></div>
+        <div data-anim="right">Mô tả hình ảnh từng cảnh<small>còn nằm lẫn trong kịch bản</small></div>
       </div>
     </div>
-    <div class="lenh" data-anim="fade" data-delay="1400">Gọi skill trong khung chat Antigravity: <code>/kich-ban-video</code> · Thiếu thông tin thì Agent ghi [CHỜ BỔ SUNG], không tự điền.</div>
+    <div class="lenh" data-anim="fade" data-delay="1400">File lưu ở <code>kich-ban/kich-ban-TEN-SAN-PHAM.md</code> · Thiếu thông tin thì Agent ghi [CHỜ BỔ SUNG], không tự điền.</div>
   </section>
 
-  <!-- 9 THANG CHẤM -->
-  <section class="slide s9" data-scene="cham" data-trans="iris" data-origin="50% 45%">
-    <div class="kick" data-anim="fade">Trạm 3 · Chấm kịch bản</div>
-    <h2 class="tit" data-anim="wipe">Người chấm kịch bản: 5 tiêu chí, tổng 10 điểm</h2>
+  <!-- 17 THANG CHẤM -->
+  <section class="slide s9" data-scene="cham" data-trans="push">
+    <div class="kick" data-anim="fade">Trạm 4 · Agent con chấm độc lập</div>
+    <h2 class="tit" data-anim="wipe">nguoi-cham-kich-ban: 5 tiêu chí, tổng 10 điểm</h2>
     <div class="thang" data-stagger="110" data-delay="300">
       <div class="tc" data-anim="left"><b>Hook</b><span>Cảnh 1 không quá 3 giây, không quá 12 chữ</span><i>2</i></div>
       <div class="tc" data-anim="left"><b>Nhịp</b><span>4 tới 6 cảnh, tổng 15 tới 30 giây</span><i>2</i></div>
@@ -327,31 +547,30 @@
       <div class="x2" data-step="1" data-anim="stamp" data-delay="150"><b>6 tới 8</b>Sửa nhẹ</div>
       <div class="x3" data-step="1" data-anim="stamp" data-delay="300"><b>Dưới 6</b>Viết lại</div>
     </div>
-    <div class="chu" data-anim="fade" data-delay="1000">Agent nguoi-cham-kich-ban chỉ đọc và báo cáo, không sửa file.</div>
+    <div class="chu" data-anim="fade" data-delay="1000">Người chấm chỉ đọc và báo cáo. Sửa thì sao lưu bản cũ vào _backup/, chấm lại tới khi từ 9 điểm.</div>
   </section>
 
-  <!-- 10 VÒNG SỬA -->
-  <section class="slide s10" data-scene="sua" data-trans="push">
-    <div class="kick" data-anim="fade">Trạm 3 · Sửa theo góp ý</div>
-    <h2 class="tit" data-anim="wipe">Mỗi lần sửa đều có bản sao lưu</h2>
-    <svg class="vongsua" viewBox="0 0 620 620" aria-hidden="true">
-      <circle cx="310" cy="310" r="250" fill="none" stroke="#cfe0f2" stroke-width="18"/>
-      <g transform="rotate(-90 310 310)"><circle cx="310" cy="310" r="250" fill="none" stroke="#3A7CC6" stroke-width="18" stroke-linecap="round" data-anim="draw" data-dur="1800"/></g>
-      <g data-loop="spin" data-loop-dur="9000" style="transform-box:view-box;transform-origin:310px 310px"><circle cx="310" cy="60" r="26" fill="#1E3A5F"/></g>
+  <!-- 18 CHUỖI MO-TA-HINH-CANH -->
+  <section class="slide s18" data-scene="chuoi" data-trans="iris" data-origin="50% 50%">
+    <div class="kick" data-anim="fade">Trạm 5 · Tự tạo skill</div>
+    <h2 class="tit" data-anim="wipe">mo-ta-hinh-canh tách phần hình ra file riêng để buổi 3 tạo ảnh</h2>
+    <svg class="noi3" viewBox="0 0 1680 300" aria-hidden="true">
+      <g data-anim="draw" data-delay="600" data-stagger="350" fill="none" stroke="#3A7CC6" stroke-width="6" stroke-linecap="round" stroke-dasharray="2 14">
+        <path d="M495 150 L 585 150"/><path d="M1095 150 L 1185 150"/>
+      </g>
     </svg>
-    <div class="muctieu" data-anim="pop" data-delay="600"><b>9+</b><span>điểm mục tiêu</span></div>
-    <div class="buoc">
-      <div data-step="1" data-anim="right"><i>1</i><p style="margin:0"><b>Chấm</b><span>Đọc bảng điểm và tối đa 5 góp ý của người chấm.</span></p></div>
-      <div class="bk" data-step="2" data-anim="right"><i>2</i><p style="margin:0"><b>Sao lưu</b><span>Agent chép bản cũ vào _backup trước khi sửa, theo AGENTS.md.</span></p></div>
-      <div data-step="3" data-anim="right"><i>3</i><p style="margin:0"><b>Sửa đúng cảnh</b><span>Chỉ sửa cảnh được góp ý, cộng lại tổng thời lượng.</span></p></div>
-      <div data-step="4" data-anim="right"><i>4</i><p style="margin:0"><b>Chấm lại</b><span>Lặp lại tới khi đạt từ 9 điểm. Người dùng quyết định cuối cùng.</span></p></div>
+    <div class="b3 file">
+      <div data-anim="drop" data-delay="200"><i>Buổi 2</i><b>Kịch bản</b><code>kich-ban/kich-ban-ca-phe-arabica-cau-dat.md</code><span>do /kich-ban-video viết</span></div>
+      <div class="nhan" data-anim="drop" data-delay="550"><i>Buổi 2 · bạn tạo</i><b>Danh sách mô tả hình</b><code>kich-ban/mo-ta-hinh-canh-ca-phe-arabica-cau-dat.md</code><span>do /mo-ta-hinh-canh tách ra</span></div>
+      <div data-anim="drop" data-delay="900"><i>Buổi 3</i><b>Ảnh từng cảnh</b><code>anh/canh/canh-01-dau.png, canh-01-cuoi.png</code><span>do /hinh-anh-nhan-vat tạo</span></div>
     </div>
+    <div class="chan" data-step="1" data-anim="rise">Việc này lặp lại với mọi kịch bản, nên làm thành skill. Tạo bằng cách 1: câu lệnh đầy đủ ở trang buổi 2, phần 8.</div>
   </section>
 
-  <!-- 11 MÔ TẢ HÌNH ẢNH -->
-  <section class="slide s11" data-scene="hinh" data-trans="iris" data-origin="20% 55%">
-    <div class="kick" data-anim="fade">Trạm 4 · Tách mô tả hình ảnh</div>
-    <h2 class="tit" data-anim="wipe">Mỗi cảnh một đoạn mô tả để tạo ảnh</h2>
+  <!-- 19 FILE KẾT QUẢ -->
+  <section class="slide s11" data-scene="hinh" data-trans="push">
+    <div class="kick" data-anim="fade">Trạm 5 · File kết quả</div>
+    <h2 class="tit" data-anim="wipe">Năm mục cố định, buổi 3 đọc theo tên mục</h2>
     <div class="khung" data-anim="zoom" data-delay="200">
       <svg viewBox="0 0 380 676" width="308" height="557" aria-hidden="true">
         <rect x="0" y="420" width="380" height="256" fill="#b9d3ee"/>
@@ -364,69 +583,71 @@
       </svg>
       <span class="tyle">9:16</span>
     </div>
-    <div class="muc" data-stagger="110" data-delay="400">
-      <div data-anim="rise"><b>Nhân vật</b><span>Tuổi, trang phục, biểu cảm, hành động</span></div>
-      <div data-anim="rise"><b>Sản phẩm</b><span>Xuất hiện ở đâu, trong tay hay trên bàn</span></div>
-      <div data-anim="rise"><b>Bối cảnh</b><span>Địa điểm, đồ vật, màu theo thương hiệu</span></div>
-      <div data-anim="rise"><b>Ánh sáng</b><span>Thời điểm, hướng sáng, cảm giác</span></div>
-      <div data-anim="rise"><b>Góc máy</b><span>Cận, trung, toàn; nhìn ngang hay từ trên</span></div>
-      <div data-anim="rise"><b>Tỷ lệ</b><span>Luôn ghi 9:16 (dọc)</span></div>
+    <div class="muc muc5" data-stagger="110" data-delay="400">
+      <div data-anim="rise"><b>1. Thông tin chung</b><span>Kịch bản nguồn, số cảnh, mã màu thương hiệu</span></div>
+      <div class="nhan" data-anim="rise"><b>2. Nhân vật cố định</b><span>Một đoạn liền, dán nguyên văn vào mọi cảnh</span></div>
+      <div data-anim="rise"><b>3. Bảng tổng các cảnh</b><span>Cảnh 01, 02..., giây, máy quay, tên file ảnh</span></div>
+      <div data-anim="rise"><b>4. Mô tả từng cảnh</b><span>Nhân vật, sản phẩm, bối cảnh, ánh sáng, góc máy, ảnh đầu cảnh, ảnh cuối cảnh</span></div>
+      <div data-anim="rise"><b>5. Cần kiểm tra</b><span>Chỗ nhân vật lệch, chỗ [CHỜ BỔ SUNG]</span></div>
     </div>
-    <div class="luu" data-step="1" data-anim="left">Cùng một nhân vật thì mô tả giống hệt nhau ở mọi cảnh. Không đưa chữ, logo vào mô tả ảnh.</div>
+    <div class="luu" data-step="1" data-anim="left">Skill gồm SKILL.md, mau/ (khung) và examples/ (bài mẫu). Không đưa chữ, logo, giá vào mô tả ảnh.</div>
   </section>
 
-  <!-- 12 MCP -->
+  <!-- 20 MCP -->
   <section class="slide s12" data-scene="mcp" data-trans="iris" data-origin="50% 50%">
-    <div class="kick" data-anim="fade">Trạm 5 · Mở rộng</div>
-    <h2 class="tit" data-anim="wipe">MCP tìm video đang hot làm nguồn ý tưởng</h2>
+    <div class="kick" data-anim="fade">Mở rộng · Giảng viên demo</div>
+    <h2 class="tit" data-anim="wipe">Skill cho cách làm, MCP cho thêm công cụ</h2>
     <div class="cam" data-stagger="200" data-delay="300">
-      <p data-anim="rise"><b>Scrape Creators MCP</b> nối Agent với dịch vụ đọc dữ liệu công khai trên TikTok, Instagram, YouTube.</p>
+      <p data-anim="rise"><b>Scrape Creators MCP</b> nối Agent với dịch vụ đọc dữ liệu công khai trên TikTok, Instagram, YouTube, Facebook.</p>
       <p data-anim="rise">Agent tìm video theo từ khóa ngành, lấy lời thoại, phân tích hook của video có lượt xem cao.</p>
-      <p data-anim="rise">Kết quả dùng làm ý tưởng, không sao chép lời thoại của người khác.</p>
+      <p data-anim="rise">Kết quả dùng làm ý tưởng cho /kich-ban-video, không chép lời thoại của người khác.</p>
     </div>
     <div class="demo" data-anim="right" data-delay="500">
       <div class="nhan">Giảng viên demo</div>
       <ol>
-        <li>Thêm MCP trong Customizations, mục MCP Servers.</li>
         <li>Tìm video TikTok theo từ khóa "cà phê pha phin".</li>
-        <li>Lấy lời thoại, ghi hook 3 giây đầu của 5 video.</li>
-        <li>Rút 3 ý tưởng hook hợp thương hiệu, đưa vào skill kịch bản.</li>
+        <li>Chọn 5 video lượt xem cao, lấy lời thoại.</li>
+        <li>Ghi hook 3 giây đầu và kiểu hook.</li>
+        <li>Rút 3 ý tưởng hook hợp thương hiệu.</li>
       </ol>
     </div>
     <div class="luuy">
-      <div data-step="1" data-anim="rise">Cần API key, dịch vụ tính phí: học viên không bắt buộc cài.</div>
+      <div data-step="1" data-anim="rise">Cần API key, tính phí: học viên chỉ xem. MCP học kỹ và tự cài ở buổi 3.</div>
       <div data-step="1" data-anim="rise" data-delay="150">Cách miễn phí: tự lướt TikTok, ghi lại 3 video, nhờ Agent phân tích.</div>
     </div>
   </section>
 
-  <!-- 13 TÓM TẮT -->
+  <!-- 21 TÓM TẮT -->
   <section class="slide s13" data-scene="tom-tat" data-trans="shutter" data-trans-color="#1E3A5F">
     <div class="kick" data-anim="fade">Tóm tắt buổi 2</div>
     <h2 class="tit" data-anim="wipe">Ba ý cần nhớ và việc chuẩn bị cho buổi 3</h2>
     <div class="ba" data-stagger="180" data-delay="300">
-      <div data-anim="left"><i>1</i><span>Video bán hàng: hook 3 giây, thân, kêu gọi hành động.</span></div>
-      <div data-anim="left"><i>2</i><span>Kịch bản tốt đọc kịp: 3 chữ mỗi giây, chữ trên màn hình tối đa 8 chữ.</span></div>
-      <div data-anim="left"><i>3</i><span>Viết, chấm, sao lưu, sửa, rồi tách mô tả hình ảnh cho buổi 3.</span></div>
+      <div data-anim="left"><i>1</i><span>Skill là thư mục có SKILL.md: phần đầu để Agent chọn, phần thân để Agent làm.</span></div>
+      <div data-anim="left"><i>2</i><span>Description rõ việc, có câu bạn hay nói, không dấu hai chấm, trên một dòng.</span></div>
+      <div data-anim="left"><i>3</i><span>Tạo, thử 3 kiểu câu, sao lưu vào _backup/ rồi mới sửa.</span></div>
     </div>
     <div class="bt" data-anim="right" data-delay="700">
       <h3>Bài tập trước buổi 3</h3>
       <ol>
-        <li>Kịch bản cho 1 sản phẩm thật, đạt từ 9 điểm, kèm file mô tả hình ảnh.</li>
-        <li>1 tới 3 ảnh sản phẩm thật, rõ nét, đủ sáng, đặt trong du-lieu/.</li>
-        <li>Tài khoản ChatGPT phụ đăng nhập sẵn để tạo hình ảnh.</li>
+        <li>Kịch bản cho 1 sản phẩm thật, đạt từ 9 điểm, chạy /mo-ta-hinh-canh.</li>
+        <li>Biến 1 việc lặp lại của bạn thành skill, thử đủ 3 kiểu câu.</li>
+        <li>1 tới 3 ảnh sản phẩm thật trong du-lieu/.</li>
+        <li>Tài khoản ChatGPT phụ đăng nhập sẵn.</li>
       </ol>
     </div>
   </section>
 
-  <!-- 14 KẾT -->
+  <!-- 22 KẾT -->
   <section class="slide s14" data-scene="ket" data-trans="iris" data-origin="50% 50%">
-    <p class="cau" data-fx="words">Thông tin sản phẩm cộng file thương hiệu, qua skill và người chấm, thành <em>một kịch bản sẵn sàng tạo hình ảnh</em>.</p>
-    <p class="sau" data-anim="rise" data-delay="1400">Buổi 3: Hình ảnh và khóa nhân vật.</p>
+    <p class="cau" data-fx="words">Việc làm tốt một lần, viết thành skill, <em>lần sau chỉ cần gõ một dòng</em>.</p>
+    <p class="sau" data-anim="rise" data-delay="1400">Buổi 3: cắm MCP, tạo hình ảnh và khóa nhân vật từ file mô tả hình cảnh.</p>
     <div class="meta" data-anim="fade" data-delay="1600">Cole.vn · Giảng viên Lưu Tuấn Anh</div>
   </section>
 
 </div>
-<script>/* SlideMotion runtime: the smallest thing a free-form deck needs.
+
+<script>
+/* SlideMotion runtime: the smallest thing a free-form deck needs.
    - scales a 1920x1080 .sm-stage to the window
    - keys / click / swipe / F fullscreen / #hash
    - data-anim (enter effects), data-loop (ambient loops), data-step (click reveals)
@@ -611,8 +832,10 @@ svg [data-anim],svg [data-loop]{transform-box:fill-box;transform-origin:center}
   const start = () => setTimeout(() => { cur < 0 && go((parseInt(location.hash.slice(1)) || 1) - 1); setTimeout(() => stage.classList.add('sm-ready'), 60); }, 0);
   document.readyState === 'loading' ? addEventListener('DOMContentLoaded', start) : start();
 })();
+
 </script>
-<script>/* SlideMotion cinema layer: optional, load AFTER deck.js. Web Animations API only, no dependency, works offline.
+<script>
+/* SlideMotion cinema layer: optional, load AFTER deck.js. Web Animations API only, no dependency, works offline.
    - data-trans on a slide (how it ARRIVES): iris | shutter | zoom | push | flash
        data-origin="30% 60%" for iris, data-trans-color="#000" for shutter / flash
    - data-fx on any element: chars | words | scramble | spring | curtain | glow | flip | kenburns
@@ -800,12 +1023,15 @@ svg [data-anim],svg [data-loop]{transform-box:fill-box;transform-origin:center}
         P.forEach(q => { q.y -= q.v; q.x += Math.sin(t / 1400 + q.p) * .35; if (q.y < -10) { q.y = 1090; q.x = Math.random() * 1920; }
           g.globalAlpha = .35 + .5 * Math.sin(t / 500 + q.p * 3) ** 2; g.drawImage(sp, q.x - q.r, q.y - q.r, q.r * 2, q.r * 2); });
       }
+      requestAnimationFrame(tick);
+    };
     requestAnimationFrame(tick);
   });
 
   addEventListener('beforeprint', () => document.getAnimations().forEach(a => { try { a.finish(); } catch (_) { a.cancel(); } }));
   window.cinema = { play, cancel };
 })();
+
 </script>
 <script>
 (() => {

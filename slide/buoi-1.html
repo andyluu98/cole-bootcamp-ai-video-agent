@@ -3,47 +3,55 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Buổi 1: Nền tảng Agent, Skill, MCP | Bootcamp AI Video</title>
+<title>Buổi 1: Làm quen Antigravity, workspace, Agent, Skill, MCP | Bootcamp AI Video</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <style>
 .sm-stage{
   --blue:#3A7CC6; --dark:#1E3A5F; --light:#E8F4FD; --sky:#5BA3E6; --gray:#5B6573; --line:#cfe0f2;
-  --bg:#F4F8FC; --text:#1f2a3a; --warn:#C2410C; --ok:#15803D;
+  --bg:#F4F8FC; --text:#1f2a3a; --warn:#C2410C; --ok:#15803D; --amber:#F59E0B;
   --fd:'Montserrat',Arial,sans-serif; --fb:'Inter',Arial,sans-serif; --fm:'JetBrains Mono',Consolas,monospace;
   background:var(--bg); color:var(--text); font-family:var(--fb);
 }
 .slide{background:var(--bg) radial-gradient(1200px 700px at 100% 0%, rgba(91,163,230,.16), transparent 60%) no-repeat;}
 .slide *{box-sizing:border-box}
 .dots{position:absolute;width:300px;height:220px;background-image:radial-gradient(circle,var(--blue) 2.6px,transparent 3.2px);background-size:20px 20px;opacity:.22}
-.bigno{position:absolute;right:60px;top:20px;font:800 480px/1 var(--fd);color:rgba(58,124,198,.07);letter-spacing:-.04em;pointer-events:none}
+.bigno{position:absolute;right:60px;top:20px;font:800 420px/1 var(--fd);color:rgba(58,124,198,.07);letter-spacing:-.04em;pointer-events:none}
 .chip{position:absolute;left:80px;top:62px;display:flex;gap:14px;align-items:center;font:700 22px var(--fd);color:var(--blue);letter-spacing:.06em;text-transform:uppercase}
-.chip b{display:grid;place-items:center;width:48px;height:48px;border-radius:13px;background:var(--blue);color:#fff;font-size:24px;letter-spacing:0}
+.chip b{display:grid;place-items:center;min-width:48px;height:48px;padding:0 8px;border-radius:13px;background:var(--blue);color:#fff;font-size:24px;letter-spacing:0}
 .chip span.t{color:var(--gray);font:600 22px var(--fb);letter-spacing:0;text-transform:none}
-h2.tt{position:absolute;left:80px;top:128px;width:1700px;margin:0;font:800 58px/1.12 var(--fd);color:var(--dark);letter-spacing:-.02em}
+h2.tt{position:absolute;left:80px;top:128px;width:1720px;margin:0;font:800 56px/1.14 var(--fd);color:var(--dark);letter-spacing:-.02em}
 h2.tt em{font-style:normal;color:var(--blue)}
-.src{position:absolute;left:80px;bottom:96px;font:400 19px var(--fb);color:var(--gray)}
-.foot{position:absolute;left:80px;right:80px;bottom:34px;height:34px;display:flex;align-items:center;gap:8px;font:500 17px var(--fb);color:var(--gray)}
-.foot .brand{font:700 17px var(--fd);color:var(--dark);margin-right:18px;white-space:nowrap}
-.foot .seg{flex:1;height:30px;border-radius:8px;background:rgba(58,124,198,.09);display:flex;align-items:center;justify-content:center;font:600 15px var(--fb);color:#6a7d93;white-space:nowrap}
+.src{position:absolute;left:80px;bottom:84px;font:400 19px var(--fb);color:var(--gray)}
+.foot{position:absolute;left:80px;right:80px;bottom:30px;height:34px;display:flex;align-items:center;gap:6px;font:500 17px var(--fb);color:var(--gray)}
+.foot .brand{font:700 17px var(--fd);color:var(--dark);margin-right:14px;white-space:nowrap}
+.foot .seg{flex:1;height:30px;border-radius:8px;background:rgba(58,124,198,.09);display:flex;align-items:center;justify-content:center;font:600 14px var(--fb);color:#5f7189;white-space:nowrap}
 .foot .seg.on{background:var(--blue);color:#fff}
-.foot .pg{margin-left:18px;font:700 17px var(--fd);color:var(--dark);min-width:56px;text-align:right}
+.foot .pg{margin-left:14px;font:700 17px var(--fd);color:var(--dark);min-width:56px;text-align:right}
 .card{background:#fff;border:1.5px solid var(--line);border-radius:22px;box-shadow:0 14px 40px rgba(30,58,95,.08)}
 .mono{font-family:var(--fm);font-variant-ligatures:none}
 .sm-stage code,.code,.cmd{font-variant-ligatures:none}
-.code{font:500 24px/1.5 var(--fm);background:#0f2440;color:#dbe9f8;border-radius:16px;padding:22px 26px}
-.code .k{color:#7fc0ff}.code .u{color:#ffd27a}
+.code{font:500 22px/1.5 var(--fm);background:#0f2440;color:#dbe9f8;border-radius:16px;padding:22px 26px;white-space:pre-wrap;margin:0}
+.code .k{color:#7fc0ff}.code .u{color:#ffd27a}.code .c{color:#8aa6c4}
+.lbl{font:700 19px var(--fd);letter-spacing:.1em;text-transform:uppercase;color:var(--gray);margin:0 0 12px}
+.badge{display:inline-block;padding:6px 14px;border-radius:999px;background:var(--light);color:var(--blue);font:700 18px var(--fd)}
+.num{flex:none;display:grid;place-items:center;width:46px;height:46px;border-radius:50%;background:var(--blue);color:#fff;font:800 22px var(--fd)}
+table.tb{border-collapse:separate;border-spacing:0;width:100%;font:500 24px/1.38 var(--fb);background:#fff;border:1.5px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 14px 40px rgba(30,58,95,.08)}
+table.tb th{text-align:left;padding:16px 24px;background:var(--dark);color:#fff;font:700 22px var(--fd)}
+table.tb td{padding:15px 24px;border-top:1.5px solid var(--line);vertical-align:top}
+table.tb td:first-child{font:700 24px var(--fd);color:var(--dark)}
+table.tb .hl{background:var(--light)}
 
 /* ---------- S1 cover ---------- */
 .s1 .panel{position:absolute;right:0;top:0;width:820px;height:1080px;background:linear-gradient(160deg,#24497a,#1E3A5F 70%);clip-path:polygon(18% 0,100% 0,100% 100%,0 100%)}
 .s1 .ring{position:absolute;border-radius:50%;border:2px solid rgba(255,255,255,.14)}
 .s1 .logo{position:absolute;right:80px;top:64px;height:64px}
 .s1 .kick{position:absolute;left:80px;top:190px;font:700 24px var(--fd);letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}
-.s1 h1{position:absolute;left:80px;top:240px;width:1200px;margin:0;font:800 92px/1.06 var(--fd);color:var(--dark);letter-spacing:-.03em}
-.s1 .sub{position:absolute;left:80px;top:480px;width:980px;font:700 40px/1.25 var(--fd);color:var(--blue)}
-.s1 .q{position:absolute;left:80px;top:600px;width:960px;padding:26px 30px 26px 34px;border-left:8px solid var(--blue);background:#fff;border-radius:0 18px 18px 0;box-shadow:0 14px 40px rgba(30,58,95,.08)}
+.s1 h1{position:absolute;left:80px;top:240px;width:1180px;margin:0;font:800 92px/1.06 var(--fd);color:var(--dark);letter-spacing:-.03em}
+.s1 .sub{position:absolute;left:80px;top:490px;width:1080px;font:700 35px/1.25 var(--fd);color:var(--blue)}
+.s1 .q{position:absolute;left:80px;top:610px;width:960px;padding:26px 30px 26px 34px;border-left:8px solid var(--blue);background:#fff;border-radius:0 18px 18px 0;box-shadow:0 14px 40px rgba(30,58,95,.08)}
 .s1 .q small{display:block;font:700 19px var(--fd);letter-spacing:.12em;text-transform:uppercase;color:var(--gray);margin-bottom:8px}
-.s1 .q p{margin:0;font:600 32px/1.35 var(--fb);color:var(--dark)}
-.s1 .meta{position:absolute;left:80px;top:830px;font:500 26px var(--fb);color:var(--gray)}
+.s1 .q p{margin:0;font:600 30px/1.38 var(--fb);color:var(--dark)}
+.s1 .meta{position:absolute;left:80px;top:860px;font:500 26px var(--fb);color:var(--gray)}
 .s1 .meta b{color:var(--dark);font-weight:700}
 .khung{position:absolute;border-radius:36px;border:5px solid #9cc9f3;background:linear-gradient(180deg,#3A7CC6,#1E3A5F);box-shadow:0 30px 80px rgba(0,0,0,.25);overflow:hidden}
 .khung .play{position:absolute;left:50%;top:50%;width:0;height:0;border-left:58px solid #fff;border-top:36px solid transparent;border-bottom:36px solid transparent;transform:translate(-36%,-50%)}
@@ -52,241 +60,348 @@ h2.tt em{font-style:normal;color:var(--blue)}
 .s1 .khung{left:1390px;top:250px;width:340px;height:604px}
 .s1 .tag{position:absolute;font:600 25px var(--fb);color:#fff;background:rgba(58,124,198,.55);border:1.5px solid rgba(255,255,255,.4);padding:10px 18px;border-radius:999px;backdrop-filter:blur(10px)}
 
-/* ---------- S2 outcomes ---------- */
-.s2 .grid{position:absolute;left:80px;right:80px;top:330px;height:560px;display:grid;grid-template-columns:repeat(3,1fr);gap:36px}
-.s2 .card{position:relative;padding:300px 40px 36px}
-.s2 .card h3{margin:0 0 14px;font:800 36px/1.18 var(--fd);color:var(--dark)}
-.s2 .card h3 em{font-style:normal;color:var(--blue)}
-.s2 .card p{margin:0;font:400 27px/1.45 var(--fb);color:var(--text)}
-.s2 .ill{position:absolute;left:40px;right:40px;top:36px;height:236px;border-radius:16px;background:var(--light)}
-.s2 .khung{left:calc(50% - 64px);top:56px;width:128px;height:200px;border-width:4px;border-radius:20px}
-.s2 .khung .play{border-left-width:30px;border-top-width:19px;border-bottom-width:19px}
-.s2 .khung .ratio{font-size:18px}
+/* ---------- S2 agenda ---------- */
+.s2 table{position:absolute;left:80px;top:236px;width:1760px;border-collapse:separate;border-spacing:0 6px;font:500 23px var(--fb)}
+.s2 td{padding:9px 24px;background:#fff;border-top:1.5px solid var(--line);border-bottom:1.5px solid var(--line)}
+.s2 td:first-child{border-left:1.5px solid var(--line);border-radius:14px 0 0 14px;width:290px;font:700 23px var(--fd);color:var(--blue);white-space:nowrap}
+.s2 td:nth-child(2){width:760px;font-weight:700;color:var(--dark)}
+.s2 td:last-child{border-right:1.5px solid var(--line);border-radius:0 14px 14px 0;color:var(--gray)}
+.s2 td .so{display:inline-grid;place-items:center;width:36px;height:36px;border-radius:10px;background:var(--light);color:var(--blue);font:800 19px var(--fd);margin-right:16px}
+.s2 tr.nghi td{background:var(--light);color:var(--gray);font-style:italic}
 
-/* ---------- S3 roadmap ---------- */
-.s3 .track{position:absolute;left:80px;top:300px;width:1760px;height:560px}
-.s3 .st{position:absolute;top:0;width:320px;text-align:left}
-.s3 .st .n{width:110px;height:110px;border-radius:50%;display:grid;place-items:center;font:800 46px var(--fd);background:#fff;color:var(--blue);border:4px solid var(--line);margin-bottom:34px}
-.s3 .st.on .n{background:var(--blue);color:#fff;border-color:var(--blue);box-shadow:0 0 0 14px rgba(58,124,198,.15)}
-.s3 .st h4{margin:0 0 12px;font:700 22px var(--fd);color:var(--gray);letter-spacing:.1em;text-transform:uppercase}
-.s3 .st p{margin:0;font:700 34px/1.3 var(--fd);color:var(--dark)}
-.s3 .st.on h4{color:var(--blue)}
-.s3 .today{display:inline-block;margin-top:18px;padding:8px 16px;border-radius:999px;background:var(--dark);color:#fff;font:700 20px var(--fd)}
-.s3 .when{position:absolute;left:80px;top:780px;width:1760px;padding:26px 34px;font:500 29px var(--fb);color:var(--dark)}
-.s3 .when b{color:var(--blue)}
+/* ---------- S3 workspace ---------- */
+.s3 .def{position:absolute;left:80px;top:270px;width:860px;padding:28px 34px;border-left:8px solid var(--blue);border-radius:0 20px 20px 0}
+.s3 .def p{margin:0;font:500 29px/1.42 var(--fb);color:var(--dark)}
+.s3 .def b{color:var(--blue)}
+.s3 .steps{position:absolute;left:80px;top:500px;width:860px;display:flex;flex-direction:column;gap:20px}
+.s3 .st{display:flex;gap:22px;align-items:flex-start;font:500 26px/1.4 var(--fb);color:var(--text)}
+.s3 .st .mono{color:var(--blue);font-weight:700;font-size:24px}
+.s3 .tree{position:absolute;left:1000px;top:270px;width:840px;font-size:21px;line-height:1.62;box-shadow:0 30px 70px rgba(30,58,95,.25)}
+.s3 .hid{position:absolute;left:1000px;top:790px;width:840px;font:400 21px/1.45 var(--fb);color:var(--gray)}
+.s3 .hid b{color:var(--dark)}
 
-/* ---------- S4 agenda ---------- */
-.s4 table{position:absolute;left:80px;top:292px;width:1760px;border-collapse:separate;border-spacing:0 7px;font:500 25px var(--fb)}
-.s4 td{padding:10px 24px;background:#fff;border-top:1.5px solid var(--line);border-bottom:1.5px solid var(--line)}
-.s4 td:first-child{border-left:1.5px solid var(--line);border-radius:14px 0 0 14px;width:300px;font:700 25px var(--fd);color:var(--blue);white-space:nowrap}
-.s4 td:nth-child(2){width:720px;font-weight:700;color:var(--dark)}
-.s4 td:last-child{border-right:1.5px solid var(--line);border-radius:0 14px 14px 0;color:var(--gray)}
-.s4 td .so{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:10px;background:var(--light);color:var(--blue);font:800 21px var(--fd);margin-right:16px}
-.s4 tr.nghi td{background:var(--light);color:var(--gray);font-style:italic}
-.s4 tr.hot td{background:var(--dark);color:#fff;border-color:var(--dark)}
-.s4 tr.hot td:first-child{color:#9cc9f3}.s4 tr.hot td .so{background:var(--blue);color:#fff}
+/* ---------- S4 app vs ide ---------- */
+.s4 .pane{position:absolute;top:290px;width:840px;height:480px;padding:0;overflow:hidden}
+.s4 .pane.app{left:80px;border:3px solid var(--blue);box-shadow:0 0 0 12px rgba(58,124,198,.1),0 20px 50px rgba(30,58,95,.12)}
+.s4 .pane.ide{left:1000px;background:#f7f9fc}
+.s4 .wbar{height:56px;display:flex;align-items:center;gap:10px;padding:0 24px;border-bottom:1.5px solid var(--line);background:#fff}
+.s4 .wbar i{width:14px;height:14px;border-radius:50%;background:#d6dde6}
+.s4 .wbar span{margin-left:14px;font:700 22px var(--fd);color:var(--dark)}
+.s4 .pane .body{padding:30px 40px}
+.s4 .pane h3{margin:0 0 22px;font:800 44px var(--fd);color:var(--dark)}
+.s4 .pane.app h3{color:var(--blue)}
+.s4 .row{display:flex;gap:24px;padding:16px 0;border-top:1.5px solid var(--line)}
+.s4 .row h4{flex:none;width:200px;margin:0;font:700 22px var(--fd);color:var(--gray);letter-spacing:.04em}
+.s4 .row p{margin:0;font:500 27px/1.4 var(--fb);color:var(--text)}
+.s4 .yes{color:var(--ok)!important;font-weight:800!important}
+.s4 .no{color:#8a7a74!important;font-weight:700!important}
+.s4 .pick{position:absolute;right:28px;top:76px;padding:8px 18px;border-radius:999px;background:var(--blue);color:#fff;font:700 20px var(--fd)}
+.s4 .note{position:absolute;left:80px;top:820px;font:500 26px var(--fb);color:var(--gray)}
 
-/* ---------- S5 chatbot vs agent ---------- */
-.s5 .col{position:absolute;top:300px;height:440px;padding:36px 40px}
-.s5 .col.a{left:80px;width:700px;background:#eef1f5;border:1.5px solid #dde3ea;border-radius:22px}
-.s5 .col.b{left:840px;width:1000px}
-.s5 .col h3{margin:0 0 6px;font:800 40px var(--fd);color:#556274}
-.s5 .col.b h3{color:var(--blue)}
-.s5 .col .lead{margin:0 0 34px;font:500 27px/1.4 var(--fb);color:var(--gray)}
-.s5 .flow{display:flex;flex-direction:column;gap:22px}
-.s5 .f{display:flex;align-items:center;gap:20px;font:600 31px var(--fb);color:var(--dark)}
-.s5 .f i{flex:none;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;font:800 22px var(--fd);font-style:normal;background:#d6dde6;color:#556274}
-.s5 .col.b .f i{background:var(--blue);color:#fff}
-.s5 .col.b .flow{display:grid;grid-template-columns:1fr 1fr;gap:34px 30px}
-.s5 .fileok{position:absolute;left:840px;top:790px;width:1000px;display:flex;align-items:center;gap:26px;padding:22px 30px;border-radius:18px;background:var(--dark);color:#fff}
-.s5 .fileok .doc{flex:none;width:56px;height:70px;border-radius:6px;background:#fff;position:relative}
-.s5 .fileok .doc:after{content:"";position:absolute;left:10px;right:10px;top:16px;height:36px;background:repeating-linear-gradient(#9cc9f3 0 4px,transparent 4px 11px)}
-.s5 .fileok p{margin:0;font:500 26px/1.35 var(--fb)}
-.s5 .fileok .mono{color:#ffd27a;font-size:25px}
-.s5 .dead{position:absolute;left:80px;top:790px;width:700px;padding:22px 30px;font:500 25px/1.4 var(--fb);color:var(--gray)}
+/* ---------- S5 areas ---------- */
+.s5 .grid{position:absolute;left:80px;top:270px;width:1760px;display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.s5 .a{position:relative;height:262px;padding:24px 26px}
+.s5 .a h3{margin:0 0 10px;font:800 26px/1.2 var(--fd);color:var(--dark)}
+.s5 .a p{margin:0;font:400 22px/1.42 var(--fb);color:var(--text)}
+.s5 .a .badge{position:absolute;left:26px;bottom:20px}
+.s5 .a.b1{border:2.5px solid var(--blue)}
+.s5 .a.b1 .badge{background:var(--blue);color:#fff}
+.s5 .try{position:absolute;left:80px;top:850px;width:1760px;display:flex;gap:28px;align-items:center;padding:20px 30px;border-radius:18px;background:var(--dark);color:#fff}
+.s5 .try h4{flex:none;margin:0;width:310px;font:800 23px/1.25 var(--fd);color:#ffd27a}
+.s5 .try p{margin:0;font:500 23px/1.42 var(--fb);color:#e3f0fc}
 
 /* ---------- S6 studio ---------- */
 .s6 svg.wires{position:absolute;inset:0;width:1920px;height:1080px;pointer-events:none}
-.s6 .hub{position:absolute;left:770px;top:330px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#4f90d6,#1E3A5F);color:#fff;text-align:center;padding:96px 44px 0;box-shadow:0 0 0 18px rgba(58,124,198,.12),0 0 0 40px rgba(58,124,198,.06),0 30px 70px rgba(30,58,95,.3)}
+.s6 .hub{position:absolute;left:750px;top:330px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#4f90d6,#1E3A5F);color:#fff;text-align:center;padding:84px 50px 0;box-shadow:0 0 0 18px rgba(58,124,198,.12),0 0 0 40px rgba(58,124,198,.06),0 30px 70px rgba(30,58,95,.3)}
 .s6 .hub h3{margin:0 0 10px;font:800 50px var(--fd)}
-.s6 .hub p{margin:0;font:500 23px/1.38 var(--fb);color:#e3f0fc}
-.s6 .node{position:absolute;width:520px;padding:26px 30px}
-.s6 .node h4{margin:0 0 8px;display:flex;align-items:baseline;gap:14px;font:800 34px var(--fd);color:var(--blue)}
-.s6 .node h4 span{font:600 22px var(--fb);color:var(--gray)}
-.s6 .node p{margin:0;font:400 24px/1.4 var(--fb);color:var(--text)}
-.s6 .node .vd{margin-top:12px;font:600 21px var(--fb);color:var(--dark);background:var(--light);border-radius:10px;padding:8px 14px;display:inline-block}
-.s6 .n-skill{left:80px;top:300px}.s6 .n-mcp{left:1320px;top:300px}
-.s6 .n-rule{left:80px;top:690px}.s6 .n-sub{left:1320px;top:690px}
-.s6 .gear{position:absolute;left:910px;top:745px;width:100px;height:100px}
+.s6 .hub p{margin:0;font:500 22px/1.4 var(--fb);color:#e3f0fc}
+.s6 .hub small{display:block;margin-top:12px;font:700 17px var(--fd);letter-spacing:.08em;text-transform:uppercase;color:#9cc9f3}
+.s6 .node{position:absolute;width:560px;padding:22px 28px}
+.s6 .node h4{margin:0 0 8px;display:flex;align-items:baseline;gap:14px;font:800 32px var(--fd);color:var(--blue)}
+.s6 .node h4 span{font:600 21px var(--fb);color:var(--gray)}
+.s6 .node p{margin:0;font:400 22px/1.42 var(--fb);color:var(--text)}
+.s6 .node p b{color:var(--dark)}
+.s6 .node .badge{margin-top:12px}
+.s6 .n-rule{left:80px;top:270px}.s6 .n-skill{left:1280px;top:270px}
+.s6 .n-sub{left:80px;top:650px}.s6 .n-mcp{left:1280px;top:650px}
 
-/* ---------- S7 quiz ---------- */
-.s7 .rows{position:absolute;left:80px;top:300px;width:1760px;display:flex;flex-direction:column;gap:22px}
-.s7 .r{display:flex;align-items:center;gap:30px;padding:24px 30px}
-.s7 .r .n{flex:none;width:56px;height:56px;border-radius:14px;display:grid;place-items:center;background:var(--light);color:var(--blue);font:800 26px var(--fd)}
-.s7 .r p{flex:1;margin:0;font:500 30px/1.35 var(--fb);color:var(--dark)}
-.s7 .r .ans{flex:none;width:260px;height:64px;border-radius:14px;border:2.5px dashed var(--line);position:relative}
-.s7 .r .ans b{position:absolute;inset:-2.5px;border-radius:14px;display:grid;place-items:center;background:var(--blue);color:#fff;font:800 30px var(--fd)}
-.s7 .hint{position:absolute;left:80px;top:910px;font:500 24px var(--fb);color:var(--gray)}
+/* ---------- S7 agent vs chatbot ---------- */
+.s7 .tbw{position:absolute;left:80px;top:270px;width:1760px}
+.s7 table.tb td:nth-child(2){color:var(--gray)}
+.s7 table.tb td:nth-child(3){color:var(--dark);font-weight:600}
+.s7 table.tb th:nth-child(3){background:var(--blue)}
+.s7 .try{position:absolute;left:80px;top:680px;width:1100px;padding:24px 30px}
+.s7 .try p{margin:0;font:500 24px/1.45 var(--fb)}
+.s7 .try .mono{color:var(--blue);font-weight:700;font-size:22px}
+.s7 .fileok{position:absolute;left:1230px;top:680px;width:610px;height:196px;display:flex;align-items:center;gap:26px;padding:22px 30px;border-radius:20px;background:var(--dark);color:#fff}
+.s7 .fileok .doc{flex:none;width:64px;height:80px;border-radius:6px;background:#fff;position:relative}
+.s7 .fileok .doc:after{content:"";position:absolute;left:10px;right:10px;top:18px;height:42px;background:repeating-linear-gradient(#9cc9f3 0 4px,transparent 4px 11px)}
+.s7 .fileok p{margin:0;font:500 24px/1.4 var(--fb)}
+.s7 .fileok .mono{color:#ffd27a;font-size:22px;font-weight:700}
 
-/* ---------- S8 permission ---------- */
-.s8 .path{position:absolute;left:80px;top:290px;display:flex;gap:14px;align-items:center;font:600 27px var(--fb);color:var(--dark)}
-.s8 .path span{background:#fff;border:1.5px solid var(--line);padding:10px 20px;border-radius:12px}
-.s8 .path span:last-child{background:var(--dark);color:#fff;border-color:var(--dark)}
-.s8 .path i{font-style:normal;color:var(--blue);font-weight:800}
-.s8 .opts{position:absolute;left:80px;top:400px;width:1760px;display:grid;grid-template-columns:repeat(3,1fr);gap:36px}
-.s8 .opt{position:relative;padding:36px 40px;height:420px}
-.s8 .opt h3{margin:22px 0 10px;font:800 42px var(--fd);color:var(--dark)}
-.s8 .opt p{margin:0;font:400 28px/1.4 var(--fb)}
-.s8 .opt .badge{display:inline-block;margin-top:22px;padding:8px 18px;border-radius:999px;font:700 21px var(--fd)}
-.s8 .opt.rec{border:3px solid var(--blue);box-shadow:0 0 0 10px rgba(58,124,198,.1),0 14px 40px rgba(30,58,95,.08)}
-.s8 .opt.rec .badge{background:var(--blue);color:#fff}
-.s8 .opt.def .badge{background:var(--light);color:var(--blue)}
-.s8 .opt.no{background:#fbf6f4;border-color:#ecd5cc}
-.s8 .opt.no h3,.s8 .opt.no p{color:#8a7a74}
-.s8 .stamp{position:absolute;right:30px;top:40px;padding:10px 22px;border:5px solid var(--warn);border-radius:12px;color:var(--warn);font:800 34px var(--fd);letter-spacing:.06em;text-transform:uppercase;rotate:-10deg}
-.s8 .note{position:absolute;left:80px;top:860px;width:1760px;font:400 21px/1.45 var(--fb);color:var(--gray)}
+/* ---------- S8 quiz ---------- */
+.s8 .qq{position:absolute;left:80px;top:268px;font:600 32px/1.35 var(--fb);color:var(--dark)}
+.s8 .opts{position:absolute;left:80px;top:350px;width:1760px;display:flex;flex-direction:column;gap:22px}
+.s8 .o{display:flex;align-items:center;gap:30px;padding:26px 32px;transition:border-color .4s,box-shadow .4s}
+.s8 .o .n{flex:none;width:64px;height:64px;border-radius:16px;display:grid;place-items:center;background:var(--light);color:var(--blue);font:800 30px var(--fd)}
+.s8 .o p{flex:1;margin:0;font:500 30px/1.38 var(--fb);color:var(--dark)}
+.s8 .o .ans{flex:none;width:280px;height:66px;border-radius:14px;border:2.5px dashed var(--line);position:relative}
+.s8 .o .ans b{position:absolute;inset:-2.5px;border-radius:14px;display:grid;place-items:center;font:800 26px var(--fd)}
+.s8 .o .ans b.y{background:var(--blue);color:#fff}
+.s8 .o .ans b.x{background:#eef1f5;color:#8a96a6}
+.s8 .why{position:absolute;left:80px;top:830px;width:1760px;padding:22px 32px;border-left:8px solid var(--blue);background:#fff;border-radius:0 16px 16px 0;font:600 28px/1.4 var(--fb);color:var(--dark)}
+.s8 .why b{color:var(--blue)}
 
-/* ---------- S9 rules ---------- */
-.s9 .g{position:absolute;left:80px;top:290px;width:1760px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.s9 .c{padding:26px 30px;height:228px;position:relative}
-.s9 .c .n{position:absolute;right:26px;top:14px;font:800 64px var(--fd);color:rgba(58,124,198,.18)}
-.s9 .c h3{margin:0 0 10px;width:440px;font:800 29px/1.2 var(--fd);color:var(--dark)}
-.s9 .c p{margin:0;font:400 24px/1.42 var(--fb);color:var(--text)}
-.s9 .c .mono{color:var(--blue);font-weight:700}
-.s9 .never{position:absolute;left:80px;top:790px;width:1760px;padding:22px 32px;border-radius:18px;background:var(--dark);color:#fff;display:flex;gap:30px;align-items:center}
-.s9 .never h4{flex:none;margin:0;width:250px;font:800 27px/1.2 var(--fd);color:#ffd27a}
-.s9 .never ul{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:26px;font:500 22px/1.38 var(--fb);color:#e3f0fc}
-.s9 .src{bottom:100px}
+/* ---------- S9 project vs global ---------- */
+.s9 .three{position:absolute;left:80px;top:280px;width:1760px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px}
+.s9 .c{position:relative;height:640px;padding:32px 36px}
+.s9 .c .ill{height:190px;border-radius:16px;background:var(--light);margin-bottom:24px;display:grid;place-items:center}
+.s9 .c h3{margin:0 0 6px;font:800 38px var(--fd);color:var(--dark)}
+.s9 .c h3 span{display:block;font:600 22px var(--fm);color:var(--blue);margin-top:6px}
+.s9 .c p{margin:14px 0 0;font:400 24px/1.42 var(--fb)}
+.s9 .c p.vv{font-style:italic;color:var(--gray)}
+.s9 .c.pick{background:var(--dark);border-color:var(--dark);color:#fff}
+.s9 .c.pick h3{color:#fff}
+.s9 .c.pick p{color:#e3f0fc}
+.s9 .c.pick b{color:#ffd27a}
 
-/* ---------- S10 four steps ---------- */
-.s10 .steps{position:absolute;left:80px;top:290px;width:1760px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-.s10 .sp{position:relative;height:270px;padding:28px 30px 28px 34px;background:#fff;border:1.5px solid var(--line);border-radius:22px}
-.s10 .sp .n{font:800 60px/1 var(--fd);color:var(--blue)}
-.s10 .sp h3{margin:12px 0 8px;font:800 33px var(--fd);color:var(--dark)}
-.s10 .sp p{margin:0;font:400 24px/1.4 var(--fb)}
-.s10 .sp:not(:last-child):after{content:"";position:absolute;right:-20px;top:120px;width:20px;height:4px;background:var(--blue)}
-.s10 .tpl{position:absolute;left:80px;top:600px;width:1100px}
-.s10 .tpl h4,.s10 .tip h4{margin:0 0 12px;font:700 21px var(--fd);letter-spacing:.1em;text-transform:uppercase;color:var(--gray)}
-.s10 .code{font-size:23px}
-.s10 .tip{position:absolute;left:1230px;top:600px;width:610px;padding:28px 32px}
-.s10 .tip p{margin:0;font:500 26px/1.45 var(--fb)}
-.s10 .tip q{display:block;margin-top:14px;padding:14px 18px;border-radius:12px;background:var(--light);font:600 25px/1.4 var(--fb);color:var(--dark);quotes:"\201C" "\201D"}
+/* ---------- S10 paths ---------- */
+.s10 .tbw{position:absolute;left:80px;top:270px;width:1760px}
+.s10 table.tb td{font:600 22px/1.5 var(--fm);color:var(--dark)}
+.s10 table.tb td:first-child{font:700 25px var(--fd);width:230px}
+.s10 table.tb td:nth-child(2){width:640px;color:var(--blue)}
+.s10 table.tb th:nth-child(2){background:var(--blue)}
+.s10 .tilde{position:absolute;left:80px;top:650px;width:1760px;display:flex;gap:28px;align-items:center;padding:22px 30px}
+.s10 .tilde .big{flex:none;width:90px;height:90px;border-radius:20px;background:var(--dark);color:#ffd27a;display:grid;place-items:center;font:800 64px/1 var(--fm)}
+.s10 .tilde p{margin:0;font:500 25px/1.45 var(--fb)}
+.s10 .tilde .mono{color:var(--blue);font-weight:700}
 
-/* ---------- S11 recap (dark) ---------- */
-.s11{background:linear-gradient(150deg,#1E3A5F,#16304f) !important;color:#fff}
-.s11 .chip{color:#9cc9f3}.s11 .chip b{background:#fff;color:var(--dark)}
-.s11 h2.tt{color:#fff}
-.s11 .three{position:absolute;left:80px;top:300px;width:1760px;display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
-.s11 .t{padding:36px 38px;height:380px;border-radius:22px;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.18);backdrop-filter:blur(12px)}
-.s11 .t .n{font:800 70px/1 var(--fd);color:var(--sky)}
-.s11 .t p{margin:22px 0 0;font:600 31px/1.4 var(--fb);color:#fff}
-.s11 .t p span{color:#9cc9f3;font-weight:500}
-.s11 .brk{position:absolute;left:80px;top:760px;width:1760px;display:flex;align-items:center;gap:30px;padding:28px 38px;border-radius:22px;background:#fff;color:var(--dark)}
-.s11 .brk svg{flex:none}
-.s11 .brk b{font:800 44px var(--fd)}
-.s11 .brk span{font:500 30px var(--fb);color:var(--gray)}
-.s11 .foot .brand,.s11 .foot .pg{color:#fff}.s11 .foot{color:#9cc9f3}
+/* ---------- S11 triggers ---------- */
+.s11 .list{position:absolute;left:80px;top:270px;width:980px;display:flex;flex-direction:column;gap:16px}
+.s11 .t{display:grid;grid-template-columns:270px 1fr;gap:6px 26px;padding:20px 28px;align-items:center}
+.s11 .t code{grid-row:span 2;font:700 25px var(--fm);color:var(--blue)}
+.s11 .t h4{margin:0;font:600 25px/1.3 var(--fb);color:var(--dark)}
+.s11 .t p{margin:0;font:400 22px/1.35 var(--fb);color:var(--gray)}
+.s11 .t.on{border:2.5px solid var(--blue)}
+.s11 .file{position:absolute;left:1110px;top:270px;width:730px}
+.s11 .file .fn{font:700 22px var(--fm);color:var(--blue);margin-bottom:10px}
+.s11 .file .code{font-size:24px;line-height:1.7;position:relative;overflow:hidden}
+.s11 .file .code .hi{display:inline-block;background:rgba(255,210,122,.16);border-radius:6px;padding:0 8px;margin-left:-8px}
+.s11 .scan{position:absolute;left:0;right:0;top:0;height:60px;background:linear-gradient(180deg,transparent,rgba(127,192,255,.18),transparent);--sm-scan:200px;--sm-loop:2.8s}
+.s11 .warn{position:absolute;left:1110px;top:620px;width:730px;padding:24px 30px;border-radius:18px;border:3px solid var(--warn);background:#fff7f3;font:600 26px/1.42 var(--fb);color:#7c2d12}
+.s11 .warn b{display:block;font:800 22px var(--fd);letter-spacing:.08em;text-transform:uppercase;color:var(--warn);margin-bottom:6px}
 
-/* ---------- S12 github ---------- */
-.s12 .def{position:absolute;left:80px;top:290px;width:820px;font:500 30px/1.45 var(--fb);color:var(--dark)}
-.s12 .def b{color:var(--blue)}
-.s12 .win{position:absolute;left:80px;top:420px;width:820px;height:380px;overflow:visible}
-.s12 .win .bar{height:50px;border-bottom:1.5px solid var(--line);display:flex;align-items:center;gap:10px;padding:0 20px}
-.s12 .win .bar i{width:14px;height:14px;border-radius:50%;background:#d6dde6}
-.s12 .win .repo{position:absolute;left:30px;top:76px;font:700 24px var(--fm);color:var(--blue)}
-.s12 .win .rowf{position:absolute;left:30px;width:480px;height:20px;border-radius:6px;background:#eef2f7}
-.s12 .btn{position:absolute;right:30px;top:70px;padding:12px 26px;border-radius:10px;background:#1f883d;color:#fff;font:700 24px var(--fb)}
-.s12 .menu{position:absolute;right:30px;top:134px;width:300px;padding:10px;border-radius:14px;background:#fff;border:1.5px solid var(--line);box-shadow:0 20px 40px rgba(30,58,95,.16)}
-.s12 .menu div{padding:12px 16px;border-radius:8px;font:600 23px var(--fb);color:var(--gray)}
-.s12 .menu div.on{background:var(--light);color:var(--dark)}
-.s12 .seq{position:absolute;left:80px;top:830px;display:flex;gap:14px;align-items:center;font:600 26px var(--fb);color:var(--dark)}
-.s12 .seq span{padding:10px 18px;border-radius:12px;background:#fff;border:1.5px solid var(--line)}
-.s12 .seq i{font-style:normal;color:var(--blue);font-weight:800}
-.s12 .doc{position:absolute;left:980px;top:290px;width:860px;height:600px;padding:34px 40px;overflow:hidden}
-.s12 .doc h3{margin:0 0 4px;font:800 34px var(--fd);color:var(--dark)}
-.s12 .doc .fn{font:600 22px var(--fm);color:var(--blue)}
-.s12 .doc ul{list-style:none;margin:26px 0 0;padding:0;display:flex;flex-direction:column;gap:16px}
-.s12 .doc li{display:flex;gap:18px;align-items:center;padding:16px 22px;border-radius:14px;background:var(--light);font:600 27px var(--fb);color:var(--dark)}
-.s12 .doc li i{flex:none;width:36px;height:36px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;font:800 20px var(--fd);font-style:normal}
-.s12 .doc li.risk{background:#fbf1ec;color:#7c2d12}.s12 .doc li.risk i{background:var(--warn)}
-.s12 .scan{position:absolute;left:0;right:0;top:120px;height:70px;background:linear-gradient(180deg,transparent,rgba(58,124,198,.1),transparent);--sm-scan:420px;--sm-loop:3.2s}
-.s12 .url{position:absolute;left:980px;top:910px;font:500 22px var(--fb);color:var(--gray)}
-.s12 .url b{font:700 22px var(--fm);color:var(--dark)}
+/* ---------- S12 global rule ---------- */
+.s12 .why{position:absolute;left:80px;top:262px;width:1760px;font:500 26px/1.4 var(--fb);color:var(--gray)}
+.s12 .why b{color:var(--dark)}
+.s12 .steps{position:absolute;left:80px;top:340px;width:780px;display:flex;flex-direction:column;gap:18px}
+.s12 .st{display:flex;gap:20px;align-items:center;padding:18px 24px;font:500 25px/1.38 var(--fb)}
+.s12 .st b{color:var(--blue)}
+.s12 .rc{position:absolute;left:920px;top:340px;width:920px}
+.s12 .rc .code{font-size:22px}
+.s12 .chk{margin-top:16px;padding:16px 22px;border-radius:14px;background:var(--light);font:500 22px/1.42 var(--fb);color:var(--dark)}
+.s12 .chk b{font:700 18px var(--fd);letter-spacing:.08em;text-transform:uppercase;color:var(--blue);display:block;margin-bottom:4px}
+.s12 .quiz{position:absolute;left:80px;top:760px;width:1760px;height:200px;display:flex;gap:30px;align-items:center;padding:24px 32px;border-radius:20px;background:var(--dark);color:#fff}
+.s12 .quiz .q{flex:1;font:600 25px/1.42 var(--fb)}
+.s12 .quiz .q small{display:block;font:700 18px var(--fd);letter-spacing:.1em;text-transform:uppercase;color:#9cc9f3;margin-bottom:6px}
+.s12 .quiz .a{flex:1;padding:18px 24px;border-radius:14px;background:#fff;color:var(--dark);font:500 23px/1.42 var(--fb)}
+.s12 .quiz .a b{color:var(--blue)}
 
-/* ---------- S13 folders ---------- */
-.s13 .map3{position:absolute;left:80px;top:290px;width:860px;display:flex;flex-direction:column;gap:18px}
-.s13 .m{display:flex;flex-direction:column;gap:8px;padding:22px 28px}
-.s13 .m h4{margin:0;font:800 29px var(--fd);color:var(--dark)}
-.s13 .m code{font:600 26px var(--fm);color:var(--blue)}
-.s13 .box{position:absolute;padding:24px 28px;border-radius:22px}
-.s13 .box h4{margin:0 0 16px;font:700 24px var(--fm);display:flex;gap:14px;align-items:center}
-.s13 .src-box{left:1010px;top:290px;width:830px;height:200px;background:#eef1f5;border:2px dashed #c6d0dc}
-.s13 .src-box h4{color:#556274}
-.s13 .dst-box{left:1010px;top:560px;width:830px;height:300px;background:#fff;border:3px solid var(--blue);box-shadow:0 14px 40px rgba(30,58,95,.1)}
-.s13 .dst-box h4{color:var(--blue)}
-.s13 .slots{display:flex;gap:16px;flex-wrap:wrap}
-.s13 .pill{display:inline-flex;align-items:center;gap:10px;padding:12px 20px;border-radius:12px;font:700 23px var(--fm);background:var(--light);color:var(--dark);border:1.5px solid var(--line)}
-.s13 .pill small{font:600 18px var(--fb);color:var(--gray)}
-.s13 .ghost{opacity:.45}
-.s13 .dst-row{display:flex;gap:16px;align-items:center;margin-bottom:14px;font:600 21px var(--fm);color:var(--gray)}
-.s13 .arrow{position:absolute;left:1400px;top:494px;width:60px;height:62px}
-.s13 .tipnew{position:absolute;left:80px;top:850px;width:860px;font:500 25px/1.45 var(--fb);color:var(--dark)}
-.s13 .tipnew b{color:var(--blue)}
-.s13 .hid{position:absolute;left:1010px;top:880px;width:830px;font:400 21px/1.45 var(--fb);color:var(--gray)}
+/* ---------- S13 brakes ---------- */
+.s13 .layers{position:absolute;left:80px;top:270px;width:1760px;display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.s13 .ly{position:relative;height:330px;padding:26px 30px}
+.s13 .ly .n{position:absolute;right:24px;top:10px;font:800 70px var(--fd);color:rgba(58,124,198,.18)}
+.s13 .ly h3{margin:0 0 10px;font:800 30px var(--fd);color:var(--dark)}
+.s13 .ly .where{font:500 21px/1.4 var(--fb);color:var(--gray);min-height:60px}
+.s13 .ly .sel{display:inline-block;margin:14px 0 12px;padding:8px 18px;border-radius:12px;background:var(--blue);color:#fff;font:700 24px var(--fd)}
+.s13 .ly p{margin:0;font:500 23px/1.4 var(--fb);color:var(--text)}
+.s13 .scale{position:absolute;left:80px;top:650px;width:1760px}
+.s13 .bar{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.s13 .lv{position:relative;height:230px;padding:22px 24px;border-radius:18px;background:#fff;border:1.5px solid var(--line)}
+.s13 .lv h4{margin:0 0 8px;font:800 28px var(--fd);color:var(--dark)}
+.s13 .lv p{margin:0;font:400 21px/1.4 var(--fb)}
+.s13 .lv .u{position:absolute;left:24px;bottom:18px;font:700 19px var(--fd)}
+.s13 .lv.rec{border:3px solid var(--blue);box-shadow:0 0 0 10px rgba(58,124,198,.1)}
+.s13 .lv.rec .u{color:var(--blue)}
+.s13 .lv.ok .u{color:var(--gray)}
+.s13 .lv.no{background:#fbf6f4;border-color:#ecd5cc}
+.s13 .lv.no h4,.s13 .lv.no p{color:#8a7a74}
+.s13 .lv.no .u{color:var(--warn)}
+.s13 .stamp{position:absolute;right:18px;top:20px;padding:6px 14px;border:4px solid var(--warn);border-radius:10px;color:var(--warn);font:800 22px var(--fd);letter-spacing:.06em;text-transform:uppercase;rotate:-10deg;background:#fff}
+.s13 .scale .lbl{display:flex;justify-content:space-between}
 
-/* ---------- S14 brand file ---------- */
-.s14 .file{position:absolute;left:80px;top:290px;width:800px;height:620px;padding:30px 36px}
-.s14 .file .fn{font:700 24px var(--fm);color:var(--blue);margin-bottom:6px}
-.s14 .file .fm{font:500 21px var(--fm);color:var(--gray);margin-bottom:16px}
-.s14 .file .sec{padding:14px 0;border-top:1.5px solid var(--line);display:flex;gap:20px;align-items:center}
-.s14 .file .sec h4{flex:none;margin:0;width:220px;font:800 25px var(--fd);color:var(--dark)}
-.s14 .file .sec p{margin:0;font:400 23px/1.35 var(--fb);color:var(--text)}
-.s14 .sw{display:flex;gap:10px}.s14 .sw i{width:48px;height:48px;border-radius:12px;border:1.5px solid rgba(0,0,0,.12)}
-.s14 .file .mau{position:absolute;right:30px;top:30px;padding:6px 14px;border-radius:999px;background:var(--light);font:600 18px var(--fb);color:var(--blue)}
-.s14 .chat{position:absolute;left:960px;top:290px;width:880px}
-.s14 .chat .code{font-size:24px}
-.s14 .bub{margin-top:18px;max-width:640px;padding:16px 24px;border-radius:20px 20px 20px 6px;background:#fff;border:1.5px solid var(--line);font:500 26px/1.4 var(--fb);color:var(--dark)}
+/* ---------- S14 house rules + brake test ---------- */
+.s14 .rules{position:absolute;left:80px;top:270px;width:820px;padding:28px 32px}
+.s14 .rules h3{margin:0 0 14px;font:800 28px var(--fd);color:var(--dark)}
+.s14 .rules ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.s14 .rules li{display:flex;gap:16px;align-items:flex-start;font:500 23px/1.4 var(--fb)}
+.s14 .rules li i{flex:none;margin-top:4px;width:30px;height:30px;border-radius:8px;background:var(--blue);display:grid;place-items:center}
+.s14 .rules li i:after{content:"";width:12px;height:7px;border-left:3.5px solid #fff;border-bottom:3.5px solid #fff;transform:translateY(-2px) rotate(-45deg)}
+.s14 .rules .mono{color:var(--blue);font-weight:700}
+.s14 .chat{position:absolute;left:960px;top:270px;width:880px;display:flex;flex-direction:column;gap:16px}
+.s14 .bub{max-width:760px;padding:16px 24px;border-radius:20px 20px 20px 6px;background:#fff;border:1.5px solid var(--line);font:500 24px/1.42 var(--fb);color:var(--dark)}
 .s14 .bub small{display:block;font:700 17px var(--fd);letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:4px}
-.s14 .bub.me{margin-left:auto;border-radius:20px 20px 6px 20px;background:var(--blue);color:#fff;border-color:var(--blue)}
+.s14 .bub.me{align-self:flex-end;border-radius:20px 20px 6px 20px;background:var(--blue);color:#fff;border-color:var(--blue)}
 .s14 .bub.me small{color:#d6e9fb}
-.s14 .keep{position:absolute;left:960px;top:840px;width:880px;font:500 24px/1.45 var(--fb);color:var(--gray)}
-.s14 .keep b{color:var(--dark)}
+.s14 .bub .mono{color:#ffd27a;font-weight:700}
+.s14 .bub.ag .mono{color:var(--blue)}
+.s14 .never{position:absolute;left:80px;top:790px;width:1760px;padding:22px 32px;border-radius:18px;background:var(--dark);color:#fff;display:flex;gap:30px;align-items:center}
+.s14 .never h4{flex:none;margin:0;width:230px;font:800 26px/1.2 var(--fd);color:#ffd27a}
+.s14 .never ul{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr 1.25fr;gap:26px;font:500 21px/1.4 var(--fb);color:#e3f0fc}
+.s14 .never .mono{color:#ffd27a}
 
-/* ---------- S15 run skill ---------- */
-.s15 .lane{position:absolute;left:80px;top:300px;width:1760px;height:520px}
-.s15 .lane svg{position:absolute;inset:0;overflow:visible}
-.s15 .blk{position:absolute;top:0;width:400px;padding:26px 28px}
-.s15 .blk .lb{font:700 18px var(--fd);letter-spacing:.12em;text-transform:uppercase;color:var(--gray);margin-bottom:10px}
-.s15 .blk h3{margin:0 0 12px;font:800 30px/1.2 var(--fd);color:var(--dark)}
-.s15 .blk p{margin:0;font:400 23px/1.42 var(--fb)}
-.s15 .blk .mono{font-size:18px;color:var(--blue);font-weight:700;overflow-wrap:anywhere}
-.s15 .b1{left:0;height:390px}.s15 .b2{left:452px;height:520px}.s15 .b3{left:904px;height:390px}.s15 .b4{left:1356px;height:520px}
-.s15 .cmd{display:block;margin-bottom:14px;padding:10px 14px;border-radius:10px;background:#0f2440;color:#ffd27a;font:700 22px var(--fm)}
-.s15 .kinds{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
-.s15 .kinds span{padding:6px 12px;border-radius:999px;background:var(--light);color:var(--dark);font:600 19px var(--fb)}
-.s15 .b4{background:var(--dark);color:#fff;border-color:var(--dark)}
-.s15 .b4 h3{color:#fff}.s15 .b4 .lb{color:#9cc9f3}.s15 .b4 p{color:#e3f0fc}
-.s15 .b4 ol{margin:10px 0 0;padding-left:26px;font:500 22px/1.5 var(--fb);color:#e3f0fc}
-.s15 .dot{position:absolute;width:22px;height:22px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 8px rgba(58,124,198,.2);offset-path:path('M 400 200 L 1356 200');animation:s15run 3.2s cubic-bezier(.6,0,.4,1) infinite}
+/* ---------- S15 four steps ---------- */
+.s15 .lane{position:absolute;left:80px;top:270px;width:1760px;height:250px}
+.s15 .steps{position:absolute;inset:0;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.s15 .sp{position:relative;padding:24px 28px;background:#fff;border:1.5px solid var(--line);border-radius:22px}
+.s15 .sp .n{font:800 52px/1 var(--fd);color:var(--blue)}
+.s15 .sp h3{margin:10px 0 8px;font:800 30px var(--fd);color:var(--dark)}
+.s15 .sp p{margin:0;font:400 22px/1.4 var(--fb)}
+.s15 .dot{position:absolute;top:-11px;left:0;width:22px;height:22px;border-radius:50%;background:var(--amber);box-shadow:0 0 0 8px rgba(245,158,11,.22);offset-path:path('M 40 0 L 1720 0');animation:s15run 4.2s cubic-bezier(.6,0,.4,1) infinite}
 @keyframes s15run{from{offset-distance:0%}to{offset-distance:100%}}
 .slide:not(.on) .dot{animation-play-state:paused}
-.s15 .fix{position:absolute;left:80px;top:860px;width:1760px;font:500 27px/1.45 var(--fb);color:var(--dark);padding:20px 30px;border-left:8px solid var(--blue);background:#fff;border-radius:0 16px 16px 0}
+.s15 .rail{position:absolute;left:40px;right:40px;top:-1px;height:3px;background:repeating-linear-gradient(90deg,var(--blue) 0 14px,transparent 14px 26px)}
+.s15 .tpl{position:absolute;left:80px;top:560px;width:900px}
+.s15 .tpl .code{font-size:23px;line-height:1.7}
+.s15 .fix{position:absolute;left:1020px;top:560px;width:820px}
+.s15 .fix table{width:100%;border-collapse:separate;border-spacing:0 10px;font:500 22px/1.38 var(--fb)}
+.s15 .fix td{padding:12px 18px;background:#fff;border:1.5px solid var(--line)}
+.s15 .fix td:first-child{border-radius:12px 0 0 12px;color:var(--dark);font-weight:600;border-right:none;width:58%}
+.s15 .fix td:last-child{border-radius:0 12px 12px 0;color:#8a7a74;background:#fbf6f4;border-color:#ecd5cc;text-decoration:line-through;text-decoration-color:rgba(194,65,12,.5)}
+.s15 .fix .hd{display:flex;justify-content:space-between;padding:0 18px}
+.s15 .fix .hd span{font:700 19px var(--fd);letter-spacing:.1em;text-transform:uppercase}
+.s15 .fix .hd span:first-child{color:var(--blue)}.s15 .fix .hd span:last-child{color:var(--warn);width:40%}
 
-/* ---------- S16 close ---------- */
-.s16 .ck{position:absolute;left:80px;top:290px;width:900px;padding:30px 36px}
-.s16 h3{margin:0 0 18px;font:800 30px var(--fd);color:var(--dark)}
-.s16 .ck ul,.s16 .hw ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px}
-.s16 .ck li{display:flex;gap:18px;align-items:center;font:500 26px/1.35 var(--fb)}
-.s16 .ck li i{flex:none;width:40px;height:40px;border-radius:10px;background:var(--blue);display:grid;place-items:center}
-.s16 .ck li i:after{content:"";width:16px;height:9px;border-left:4px solid #fff;border-bottom:4px solid #fff;transform:translateY(-2px) rotate(-45deg)}
-.s16 .ck .snap{margin-top:20px;padding:14px 20px;border-radius:12px;background:var(--light);font:600 24px var(--fb);color:var(--dark)}
-.s16 .hw{position:absolute;left:1030px;top:290px;width:810px;padding:30px 36px}
-.s16 .hw li{display:flex;gap:18px;font:500 25px/1.42 var(--fb)}
-.s16 .hw li b{flex:none;width:40px;height:40px;border-radius:50%;background:var(--light);color:var(--blue);display:grid;place-items:center;font:800 21px var(--fd)}
-.s16 .end{position:absolute;left:80px;top:830px;width:1760px;height:120px;border-radius:22px;background:linear-gradient(120deg,#1E3A5F,#3A7CC6);display:flex;align-items:center;gap:36px;padding:0 40px;color:#fff;overflow:hidden}
-.s16 .end img{height:52px;flex:none}
-.s16 .end p{margin:0;font:700 30px/1.3 var(--fd)}
-.s16 .src{display:none}
+/* ---------- S16 kit + read first ---------- */
+.s16 .gh{position:absolute;left:80px;top:270px;width:900px;font:500 25px/1.45 var(--fb);color:var(--dark)}
+.s16 .gh b{color:var(--blue)}
+.s16 .seq{position:absolute;left:80px;top:390px;display:flex;gap:12px;align-items:center;font:600 23px var(--fb);color:var(--dark)}
+.s16 .seq span{padding:10px 16px;border-radius:12px;background:#fff;border:1.5px solid var(--line)}
+.s16 .seq span.gr{background:#1f883d;color:#fff;border-color:#1f883d}
+.s16 .seq i{font-style:normal;color:var(--blue);font-weight:800}
+.s16 .kit{position:absolute;left:80px;top:480px;width:900px;display:flex;flex-direction:column;gap:16px}
+.s16 .k{display:grid;grid-template-columns:330px 1fr;gap:4px 22px;padding:20px 26px;align-items:center}
+.s16 .k code{font:700 24px var(--fm);color:var(--blue)}
+.s16 .k .badge{justify-self:start}
+.s16 .k p{grid-column:1/-1;margin:0;font:400 23px/1.4 var(--fb)}
+.s16 .k.ag{background:var(--dark);border-color:var(--dark)}
+.s16 .k.ag code{color:#ffd27a}.s16 .k.ag p{color:#e3f0fc}.s16 .k.ag .badge{background:rgba(255,255,255,.14);color:#fff}
+.s16 .doc{position:absolute;left:1040px;top:270px;width:800px;height:560px;padding:30px 36px;overflow:hidden}
+.s16 .doc h3{margin:0 0 4px;font:800 32px var(--fd);color:var(--dark)}
+.s16 .doc .fn{font:600 21px var(--fm);color:var(--blue)}
+.s16 .doc ul{list-style:none;margin:22px 0 0;padding:0;display:flex;flex-direction:column;gap:12px}
+.s16 .doc li{display:flex;gap:16px;align-items:center;padding:13px 20px;border-radius:14px;background:var(--light);font:600 24px var(--fb);color:var(--dark)}
+.s16 .doc li i{flex:none;width:34px;height:34px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;font:800 19px var(--fd);font-style:normal}
+.s16 .doc li.risk{background:#fbf1ec;color:#7c2d12}.s16 .doc li.risk i{background:var(--warn)}
+.s16 .doc .res{margin-top:18px;font:500 22px/1.4 var(--fb);color:var(--gray)}
+.s16 .scan{position:absolute;left:0;right:0;top:110px;height:70px;background:linear-gradient(180deg,transparent,rgba(58,124,198,.12),transparent);--sm-scan:470px;--sm-loop:3.4s}
+
+/* ---------- S17 install ---------- */
+.s17 .box{position:absolute;padding:22px 28px;border-radius:22px}
+.s17 .box h4{margin:0 0 14px;font:700 24px var(--fm);display:flex;gap:14px;align-items:center}
+.s17 .from{left:80px;top:270px;width:900px;height:190px;background:#eef1f5;border:2px dashed #c6d0dc}
+.s17 .from h4{color:#556274}
+.s17 .to{left:80px;top:560px;width:900px;height:380px;background:#fff;border:3px solid var(--blue);box-shadow:0 14px 40px rgba(30,58,95,.1)}
+.s17 .to h4{color:var(--blue)}
+.s17 .slots{display:flex;gap:14px;flex-wrap:wrap}
+.s17 .pill{display:inline-flex;align-items:center;gap:10px;padding:11px 18px;border-radius:12px;font:700 22px var(--fm);background:var(--light);color:var(--dark);border:1.5px solid var(--line)}
+.s17 .pill small{font:600 17px var(--fb);color:var(--gray)}
+.s17 .ghost{opacity:.4}
+.s17 .drow{display:flex;gap:14px;align-items:center;margin-bottom:12px;font:600 20px var(--fm);color:var(--gray)}
+.s17 .arrow{position:absolute;left:470px;top:466px;width:70px;height:86px}
+.s17 .rulesm{position:absolute;left:580px;top:478px;font:500 21px/1.4 var(--fb);color:var(--gray)}
+.s17 .rulesm b{color:var(--dark)}
+.s17 .check{position:absolute;left:1040px;top:270px;width:800px;padding:28px 34px}
+.s17 .check h3{margin:0 0 16px;font:800 28px var(--fd);color:var(--dark)}
+.s17 .check ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:16px}
+.s17 .check li{display:flex;gap:18px;align-items:flex-start;font:500 24px/1.4 var(--fb)}
+.s17 .check .mono{color:var(--blue);font-weight:700}
+.s17 .tip{position:absolute;left:1040px;top:670px;width:800px;padding:22px 28px;border-radius:18px;background:var(--dark);color:#e3f0fc;font:500 22px/1.45 var(--fb)}
+.s17 .tip b{display:block;font:800 22px var(--fd);color:#ffd27a;margin-bottom:6px}
+.s17 .tip .mono{color:#ffd27a}
+
+/* ---------- S18 brand file ---------- */
+.s18 .lead{position:absolute;left:80px;top:262px;width:1760px;font:500 26px/1.4 var(--fb);color:var(--gray)}
+.s18 .lead .mono{color:var(--blue);font-weight:700}
+.s18 .file{position:absolute;left:80px;top:340px;width:800px}
+.s18 .file .fn{font:700 22px var(--fm);color:var(--blue);margin-bottom:10px}
+.s18 .file .code{font-size:26px;line-height:1.75;min-height:300px}
+.s18 .file .code .hi{display:inline-block;background:rgba(255,210,122,.16);border-radius:6px;padding:0 10px;margin-left:-10px}
+.s18 .brace{position:absolute;left:890px;top:395px;width:40px;height:150px}
+.s18 .keep{position:absolute;left:80px;top:720px;width:800px;padding:20px 26px;border-radius:18px;border:3px solid var(--warn);background:#fff7f3;font:600 23px/1.42 var(--fb);color:#7c2d12}
+.s18 .chat{position:absolute;left:980px;top:340px;width:860px;display:flex;flex-direction:column;gap:16px}
+.s18 .bub{max-width:800px;padding:18px 26px;border-radius:20px 20px 6px 20px;align-self:flex-end;background:var(--blue);color:#fff;font:500 24px/1.45 var(--fb)}
+.s18 .bub small{display:block;font:700 17px var(--fd);letter-spacing:.1em;text-transform:uppercase;color:#d6e9fb;margin-bottom:4px}
+.s18 .bub .mono{color:#ffd27a;font-weight:700}
+.s18 .ag{align-self:flex-start;max-width:640px;padding:16px 24px;border-radius:20px 20px 20px 6px;background:#fff;border:1.5px solid var(--line);font:500 24px/1.4 var(--fb);color:var(--dark)}
+.s18 .ag small{display:block;font:700 17px var(--fd);letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:4px}
+.s18 .typing{display:inline-flex;gap:8px;margin-left:6px}
+.s18 .typing i{width:10px;height:10px;border-radius:50%;background:var(--blue)}
+.s18 .nobrand{position:absolute;left:980px;top:700px;width:860px;font:500 23px/1.45 var(--fb);color:var(--gray)}
+.s18 .nobrand b{color:var(--dark)}
+
+/* ---------- S19 run skill + reviewer ---------- */
+.s19 .lane{position:absolute;left:80px;top:270px;width:1760px;height:500px}
+.s19 .lane svg{position:absolute;inset:0;overflow:visible}
+.s19 .blk{position:absolute;top:0;width:400px;padding:24px 26px}
+.s19 .blk .lb{font:700 17px var(--fd);letter-spacing:.12em;text-transform:uppercase;color:var(--gray);margin-bottom:10px}
+.s19 .blk h3{margin:0 0 12px;font:800 28px/1.2 var(--fd);color:var(--dark)}
+.s19 .blk p{margin:0;font:400 22px/1.42 var(--fb)}
+.s19 .cmd{display:block;margin-bottom:14px;padding:10px 14px;border-radius:10px;background:#0f2440;color:#ffd27a;font:700 21px var(--fm)}
+.s19 .b1{left:0;height:380px}.s19 .b2{left:452px;height:380px}.s19 .b3{left:904px;height:380px}.s19 .b4{left:1356px;height:380px}
+.s19 .b3,.s19 .b4{background:var(--dark);color:#fff;border-color:var(--dark)}
+.s19 .b3 h3,.s19 .b4 h3{color:#fff}.s19 .b3 .lb,.s19 .b4 .lb{color:#9cc9f3}.s19 .b3 p,.s19 .b4 p{color:#e3f0fc}
+.s19 .b4{background:#14324f}
+.s19 .dot{position:absolute;width:22px;height:22px;border-radius:50%;background:var(--amber);box-shadow:0 0 0 8px rgba(245,158,11,.22);offset-path:path('M 400 220 L 1356 220');animation:s19run 3.6s cubic-bezier(.6,0,.4,1) infinite}
+@keyframes s19run{from{offset-distance:0%}to{offset-distance:100%}}
+.slide:not(.on) .s19 .dot,.slide:not(.on) .dot{animation-play-state:paused}
+.s19 .twowho{position:absolute;left:80px;top:700px;width:1760px;display:flex;gap:30px;align-items:center;padding:22px 32px;border-left:8px solid var(--blue);background:#fff;border-radius:0 16px 16px 0}
+.s19 .twowho h4{flex:none;margin:0;width:300px;font:800 26px/1.25 var(--fd);color:var(--blue)}
+.s19 .twowho p{margin:0;font:500 24px/1.42 var(--fb);color:var(--dark)}
+
+/* ---------- S20 own skill ---------- */
+.s20 .sk{position:absolute;left:80px;top:270px;width:1000px}
+.s20 .sk .fn{font:700 22px var(--fm);color:var(--blue);margin-bottom:10px}
+.s20 .sk .code{font-size:21px;line-height:1.6}
+.s20 .sk .code .k{color:#7fc0ff;font-weight:700}
+.s20 .use{position:absolute;left:1140px;top:270px;width:700px;display:flex;flex-direction:column;gap:18px}
+.s20 .use .typed{padding:22px 26px;border-radius:18px;background:var(--blue);color:#fff;font:500 23px/1.45 var(--fb)}
+.s20 .use .typed small{display:block;font:700 17px var(--fd);letter-spacing:.1em;text-transform:uppercase;color:#d6e9fb;margin-bottom:6px}
+.s20 .use .typed .mono{color:#ffd27a;font-weight:700;font-size:25px}
+.s20 .use .arr{align-self:center;width:40px;height:56px}
+.s20 .use .out{padding:22px 26px}
+.s20 .use .out h4{margin:0 0 10px;font:700 21px var(--fm);color:var(--blue)}
+.s20 .use .out ul{margin:0;padding-left:24px;font:500 23px/1.5 var(--fb);color:var(--dark)}
+.s20 .use .gate{padding:16px 22px;border-radius:14px;background:var(--light);font:600 22px/1.42 var(--fb);color:var(--dark)}
+.s20 .why{position:absolute;left:80px;top:900px;width:1760px;font:500 23px/1.4 var(--fb);color:var(--gray)}
+.s20 .why b{color:var(--dark)}
+
+/* ---------- S21 checklist + issues ---------- */
+.s21 .ck{position:absolute;left:80px;top:262px;width:860px;padding:26px 32px}
+.s21 h3{margin:0 0 16px;font:800 28px var(--fd);color:var(--dark)}
+.s21 .ck ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.s21 .ck li{display:flex;gap:16px;align-items:center;font:500 23px/1.35 var(--fb)}
+.s21 .ck li i{flex:none;width:36px;height:36px;border-radius:10px;background:var(--blue);display:grid;place-items:center}
+.s21 .ck li i:after{content:"";width:14px;height:8px;border-left:4px solid #fff;border-bottom:4px solid #fff;transform:translateY(-2px) rotate(-45deg)}
+.s21 .ck .snap{margin-top:18px;padding:14px 20px;border-radius:12px;background:var(--light);font:600 23px var(--fb);color:var(--dark)}
+.s21 .iss{position:absolute;left:980px;top:262px;width:860px}
+.s21 .iss .it{display:grid;grid-template-columns:270px 1fr;gap:20px;padding:15px 22px;margin-bottom:10px;border-radius:16px;background:#fff;border:1.5px solid var(--line)}
+.s21 .iss .it h4{margin:0;font:700 22px/1.3 var(--fd);color:var(--warn)}
+.s21 .iss .it p{margin:0;font:400 21px/1.4 var(--fb);color:var(--text)}
+.s21 .iss .it .mono{color:var(--blue);font-weight:700;font-size:19px}
+
+/* ---------- S22 homework + close ---------- */
+.s22 .hw{position:absolute;left:80px;top:270px;width:1760px;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.s22 .h{position:relative;height:420px;padding:30px 30px}
+.s22 .h .n{font:800 64px/1 var(--fd);color:var(--blue)}
+.s22 .h p{margin:18px 0 0;font:500 24px/1.45 var(--fb);color:var(--dark)}
+.s22 .h p .mono{color:var(--blue);font-weight:700;font-size:22px}
+.s22 .h .badge{position:absolute;left:30px;bottom:26px}
+.s22 .end{position:absolute;left:80px;top:760px;width:1760px;height:190px;border-radius:24px;background:linear-gradient(120deg,#1E3A5F,#3A7CC6);display:flex;align-items:center;gap:44px;padding:0 48px;color:#fff;overflow:hidden}
+.s22 .end img{height:76px;flex:none}
+.s22 .end p{margin:0;font:700 32px/1.32 var(--fd)}
+.s22 .end p span{display:block;font:500 23px var(--fb);color:#d6e9fb;margin-top:8px}
+.s22 .end .ring{position:absolute;right:-80px;top:-120px;width:420px;height:420px;border-radius:50%;border:2px solid rgba(255,255,255,.18)}
 </style>
 </head>
 <body>
@@ -298,448 +413,584 @@ h2.tt em{font-style:normal;color:var(--blue)}
   <div class="panel"></div>
   <div class="ring" style="left:1220px;top:150px;width:680px;height:680px" data-loop="pulse"></div>
   <div class="ring" style="left:1320px;top:250px;width:480px;height:480px"></div>
-  <img class="logo" src="data:image/png;base64,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" alt="Cole.vn">
-  <div class="kick" data-anim="fade">Buổi 1 · Thực hành trên Google Antigravity</div>
+  <img class="logo" src="../assets/logo-cole-trang.png" alt="Cole.vn">
+  <div class="kick" data-anim="fade">Buổi 1 · Thực hành trên Google Antigravity App</div>
   <h1 class="cv-title">Bootcamp AI Agent for Video Marketing</h1>
-  <div class="sub" data-anim="wipe" data-delay="600">Nền tảng: Agent, Skill, MCP và cách làm việc</div>
+  <div class="sub" data-anim="wipe" data-delay="600">Làm quen Antigravity: workspace, Agent, Skill, MCP</div>
   <div class="q" data-anim="rise" data-delay="900">
-    <small>Câu hỏi của buổi học</small>
-    <p>Làm thế nào để giao việc cho AI Agent an toàn và nhận lại đúng kết quả mong muốn?</p>
+    <small>Mục tiêu buổi học</small>
+    <p>Dựng workspace cho dự án video, đặt cài đặt an toàn, cài bộ skill buổi 1 và tự tạo skill đầu tiên.</p>
   </div>
-  <div class="meta" data-anim="fade" data-delay="1200">Giảng viên <b>Lưu Tuấn Anh</b> · Online 20:00 đến 22:00 · Thứ 3, 10/11/2026</div>
-  <div class="khung" data-morph="khung"><div class="bar"></div><div class="play"></div><div class="ratio">9:16</div></div>
-  <div class="tag cv-tag" style="left:1290px;top:420px">Kịch bản</div>
-  <div class="tag cv-tag" style="left:1250px;top:720px">Hình ảnh</div>
-  <div class="tag cv-tag" style="left:1660px;top:880px">Dựng video</div>
-  <div class="tag cv-tag" style="left:1700px;top:200px">Đăng bài</div>
+  <div class="meta" data-anim="fade" data-delay="1200">Giảng viên <b>Lưu Tuấn Anh</b> · 20:00 đến 22:00 · Thứ 3, 10/11/2026</div>
+  <div class="khung"><div class="bar"></div><div class="play"></div><div class="ratio">9:16</div></div>
+  <div class="tag cv-tag" style="left:1260px;top:400px">Workspace</div>
+  <div class="tag cv-tag" style="left:1240px;top:720px">Agent</div>
+  <div class="tag cv-tag" style="left:1680px;top:880px">Skill</div>
+  <div class="tag cv-tag" style="left:1720px;top:200px">MCP</div>
 </section>
 
-<!-- 2. OUTCOMES -->
-<section class="slide s2" data-scene="dau-ra">
-  <div class="bigno">5</div>
-  <div class="chip"><b>★</b>Mục tiêu khóa học</div>
-  <h2 class="tt" data-anim="fade">Sau 5 buổi, mỗi học viên sở hữu <em>ba kết quả</em> dùng được ngay</h2>
-  <div class="grid">
-    <div class="card" data-anim="rise" data-delay="300">
-      <div class="ill"></div>
-      <div class="khung" data-morph="khung"><div class="bar"></div><div class="play"></div><div class="ratio">9:16</div></div>
-      <h3><em>01</em> video quảng cáo dọc 9:16</h3>
-      <p>Xuất MP4, đúng màu thương hiệu, có phụ đề, giọng đọc, nhạc nền.</p>
-    </div>
-    <div class="card" data-anim="rise" data-delay="450">
-      <div class="ill">
-        <svg viewBox="0 0 470 236" width="100%" height="100%">
-          <g font-family="Inter" font-weight="700" font-size="17" text-anchor="middle">
-            <g fill="#fff" stroke="#3A7CC6" stroke-width="2.5">
-              <rect x="22" y="88" width="86" height="60" rx="12"/><rect x="134" y="88" width="86" height="60" rx="12"/><rect x="246" y="88" width="86" height="60" rx="12"/><rect x="358" y="88" width="86" height="60" rx="12" fill="#1E3A5F" stroke="#1E3A5F"/>
-            </g>
-            <g stroke="#3A7CC6" stroke-width="3"><path d="M108 118h26M220 118h26M332 118h26"/></g>
-            <circle r="7" fill="#F59E0B"><animateMotion dur="3s" repeatCount="indefinite" path="M65 118 H401"/></circle>
-            <text x="65" y="176" fill="#1E3A5F">Kịch bản</text><text x="177" y="176" fill="#1E3A5F">Hình ảnh</text><text x="289" y="176" fill="#1E3A5F">Video</text><text x="401" y="176" fill="#1E3A5F">Đăng bài</text>
-            <text x="401" y="74" fill="#3A7CC6" font-size="15">Bạn duyệt</text>
-          </g>
-        </svg>
-      </div>
-      <h3><em>01</em> quy trình tự động</h3>
-      <p>Chạy bằng một câu lệnh; bạn duyệt trước khi bài được đăng.</p>
-    </div>
-    <div class="card" data-anim="rise" data-delay="600">
-      <div class="ill">
-        <svg viewBox="0 0 470 236" width="100%" height="100%">
-          <g font-family="Inter" font-weight="700" font-size="18" text-anchor="middle">
-            <rect x="60" y="36" width="160" height="72" rx="14" fill="#3A7CC6"/><text x="140" y="79" fill="#fff">Kịch bản</text>
-            <rect x="250" y="36" width="160" height="72" rx="14" fill="#5BA3E6"/><text x="330" y="70" fill="#fff" font-size="16">Hình ảnh</text><text x="330" y="92" fill="#fff" font-size="16">và nhân vật</text>
-            <rect x="60" y="128" width="160" height="72" rx="14" fill="#1E3A5F"/><text x="140" y="171" fill="#fff">Dựng video</text>
-            <rect x="250" y="128" width="160" height="72" rx="14" fill="#fff" stroke="#3A7CC6" stroke-width="2.5"/><text x="330" y="171" fill="#1E3A5F">Đăng bài</text>
-          </g>
-        </svg>
-      </div>
-      <h3>Bộ <em>7</em> skill, 5 agent mang về</h3>
-      <p>Kịch bản, hình ảnh và nhân vật, dựng video, đăng bài.</p>
-    </div>
-  </div>
-  <div class="src" style="bottom:110px">Nguồn: README tài liệu học viên khóa Bootcamp AI Agent for Video Marketing.</div>
-  <div class="foot" data-p=""></div>
-</section>
-
-<!-- 3. ROADMAP -->
-<section class="slide s3" data-scene="lo-trinh" data-trans="push">
-  <div class="chip"><b>5</b>Lộ trình khóa học</div>
-  <h2 class="tt" data-anim="fade">Lộ trình 5 buổi đi từ nền tảng tới <em>quy trình hoàn chỉnh</em></h2>
-  <div class="track">
-    <svg width="1760" height="120" style="position:absolute;left:0;top:0;overflow:visible">
-      <path d="M55 55 H1460" stroke="#cfe0f2" stroke-width="6" fill="none"/>
-      <path d="M55 55 H1460" stroke="#3A7CC6" stroke-width="6" fill="none" stroke-dasharray="14 12" data-anim="draw" data-delay="200"/>
-    </svg>
-    <div class="st on" style="left:0" data-anim="pop" data-delay="300"><div class="n">1</div><h4>Buổi 1</h4><p>Nền tảng: Agent, Skill, MCP và cách làm việc</p><span class="today">Hôm nay</span></div>
-    <div class="st" style="left:352px" data-anim="pop" data-delay="420"><div class="n">2</div><h4>Buổi 2</h4><p>Kịch bản video bằng Agent</p></div>
-    <div class="st" style="left:704px" data-anim="pop" data-delay="540"><div class="n">3</div><h4>Buổi 3</h4><p>Hình ảnh và khóa nhân vật</p></div>
-    <div class="st" style="left:1056px" data-anim="pop" data-delay="660"><div class="n">4</div><h4>Buổi 4</h4><p>Dựng và hiệu chỉnh video</p></div>
-    <div class="st" style="left:1408px" data-anim="pop" data-delay="780"><div class="n">5</div><h4>Buổi 5</h4><p>Đăng bài tự động và đấu nối quy trình</p></div>
-  </div>
-  <div class="when card" data-anim="rise" data-delay="1000">Học online <b>20:00 đến 22:00</b>, thứ 3 và thứ 5 hằng tuần. Mỗi buổi để lại một bộ skill, agent trong thư mục dự án của bạn.</div>
-  <div class="foot" data-p=""></div>
-</section>
-
-<!-- 4. AGENDA -->
-<section class="slide s4" data-scene="lich" data-trans="push">
-  <div class="chip"><b>1</b>Lịch buổi 1 <span class="t">20:00 đến 22:00</span></div>
-  <h2 class="tt" data-anim="fade">Chín phần của buổi 1, mỗi phần có <em>kết quả cụ thể</em></h2>
+<!-- 2. AGENDA -->
+<section class="slide s2" data-scene="lich" data-trans="push">
+  <div class="chip"><b>11</b>Lịch buổi 1 <span class="t">20:00 đến 22:00</span></div>
+  <h2 class="tt" data-anim="fade">Mười một phần, mỗi phần làm ra <em>một kết quả cụ thể</em></h2>
   <table>
-    <tr data-anim="rise" data-delay="150"><td>20:00 đến 20:10</td><td><span class="so">0</span>Mở dự án</td><td>Thư mục dự án mở trong Antigravity</td></tr>
-    <tr data-anim="rise" data-delay="220"><td>20:10 đến 20:30</td><td><span class="so">1</span>Agent, Skill, MCP là gì</td><td>Hiểu 3 khái niệm qua ví dụ</td></tr>
-    <tr data-anim="rise" data-delay="290"><td>20:30 đến 20:45</td><td><span class="so">2</span>Cài đặt an toàn, chống mất dữ liệu</td><td>Antigravity hỏi trước việc nhạy cảm</td></tr>
-    <tr data-anim="rise" data-delay="360"><td>20:45 đến 21:00</td><td><span class="so">3</span>Cách giao việc cho Agent</td><td>Câu giao việc có kế hoạch, có duyệt</td></tr>
-    <tr class="nghi" data-anim="rise" data-delay="430"><td>21:00 đến 21:05</td><td colspan="2">Nghỉ giải lao</td></tr>
-    <tr data-anim="rise" data-delay="500"><td>21:05 đến 21:15</td><td><span class="so">4</span>GitHub cơ bản</td><td>Biết tải skill từ GitHub</td></tr>
-    <tr data-anim="rise" data-delay="570"><td>21:15 đến 21:30</td><td><span class="so">5</span>Cài skill và agent buổi 1</td><td>2 skill, 1 agent đã cài</td></tr>
-    <tr data-anim="rise" data-delay="640"><td>21:30 đến 21:45</td><td><span class="so">6</span>File thương hiệu của bạn</td><td>File thuong-hieu.md</td></tr>
-    <tr data-anim="rise" data-delay="710"><td>21:45 đến 21:55</td><td><span class="so">7</span>Chạy skill đầu tiên</td><td>5 câu hook đã được soát</td></tr>
-    <tr class="hot" data-anim="rise" data-delay="780"><td>21:55 đến 22:00</td><td><span class="so">8</span>Kiểm tra và bài tập</td><td>Checklist cuối buổi</td></tr>
+    <tr data-anim="rise" data-delay="120"><td>20:00 đến 20:10</td><td><span class="so">1</span>Mở workspace đầu tiên</td><td>Dự án mẫu mở trong Antigravity</td></tr>
+    <tr data-anim="rise" data-delay="170"><td>20:10 đến 20:25</td><td><span class="so">2</span>Tham quan Antigravity</td><td>Biết từng khu vực dùng để làm gì</td></tr>
+    <tr data-anim="rise" data-delay="220"><td>20:25 đến 20:40</td><td><span class="so">3</span>Agent, Rule, Skill, Subagent, MCP</td><td>Agent tạo file đầu tiên trên máy bạn</td></tr>
+    <tr data-anim="rise" data-delay="270"><td>20:40 đến 20:55</td><td><span class="so">4</span>Workspace: project và global</td><td>1 rule global, hiểu cài ở đâu thì dùng ở đâu</td></tr>
+    <tr data-anim="rise" data-delay="320"><td>20:55 đến 21:05</td><td><span class="so">5</span>Cài đặt an toàn</td><td>Agent hỏi trước, từ chối được việc nguy hiểm</td></tr>
+    <tr class="nghi" data-anim="rise" data-delay="370"><td>21:05 đến 21:10</td><td colspan="2">Nghỉ</td></tr>
+    <tr data-anim="rise" data-delay="420"><td>21:10 đến 21:20</td><td><span class="so">6</span>Cách giao việc cho Agent</td><td>Câu giao việc có kế hoạch, có duyệt</td></tr>
+    <tr data-anim="rise" data-delay="470"><td>21:20 đến 21:30</td><td><span class="so">7</span>Cài skill và agent buổi 1</td><td>2 skill, 1 agent đã cài cho dự án</td></tr>
+    <tr data-anim="rise" data-delay="520"><td>21:30 đến 21:40</td><td><span class="so">8</span>File thương hiệu</td><td>File thuong-hieu.md của bạn</td></tr>
+    <tr data-anim="rise" data-delay="570"><td>21:40 đến 21:50</td><td><span class="so">9</span>Chạy skill, gọi người soát</td><td>5 câu hook đã được soát</td></tr>
+    <tr data-anim="rise" data-delay="620"><td>21:50 đến 21:57</td><td><span class="so">10</span>Tự tạo skill đầu tiên</td><td>Skill caption-ngan do bạn tạo</td></tr>
+    <tr data-anim="rise" data-delay="670"><td>21:57 đến 22:00</td><td><span class="so">11</span>Kiểm tra và bài tập</td><td>Checklist cuối buổi</td></tr>
   </table>
-  <div class="foot" data-p="0"></div>
+  <div class="foot" data-p=""></div>
 </section>
 
-<!-- 5. AGENT vs CHATBOT -->
-<section class="slide s5" data-scene="p1" data-trans="iris" data-origin="85% 40%">
+<!-- 3. WORKSPACE -->
+<section class="slide s3" data-scene="p1" data-trans="iris" data-origin="75% 45%">
   <div class="bigno">1</div>
-  <div class="chip"><b>1</b>Agent, Skill, MCP <span class="t">20:10 đến 20:30</span></div>
-  <h2 class="tt" data-anim="fade">Agent tự làm việc trên máy; chatbot <em>chỉ trả lời bằng chữ</em></h2>
-  <div class="col a" data-anim="left" data-step="1">
-    <h3>Chatbot</h3>
-    <p class="lead">Trả lời trong khung chat, phần việc còn lại do bạn tự làm.</p>
-    <div class="flow">
-      <div class="f"><i>1</i>Bạn đặt câu hỏi</div>
-      <div class="f"><i>2</i>Nhận câu trả lời bằng chữ</div>
-      <div class="f"><i>3</i>Bạn tự chép, tự làm tiếp</div>
-    </div>
+  <div class="chip"><b>1</b>Mở workspace đầu tiên <span class="t">20:00 đến 20:10</span></div>
+  <h2 class="tt" data-anim="fade">Mỗi dự án video là <em>một workspace riêng</em> giao cho Agent</h2>
+  <div class="def card" data-anim="left" data-delay="200">
+    <p><b>Workspace</b> là một thư mục trên máy mà bạn giao cho Agent làm việc. Agent chỉ đọc, ghi trong thư mục đó.</p>
   </div>
-  <div class="col b card" data-anim="right" data-step="2">
-    <h3>Agent</h3>
-    <p class="lead">Một nhân viên làm việc ngay trên máy bạn, làm xong báo lại.</p>
-    <div class="flow">
-      <div class="f"><i>1</i>Nhận việc</div>
-      <div class="f"><i>2</i>Tự lập kế hoạch</div>
-      <div class="f"><i>3</i>Mở file, tạo file</div>
-      <div class="f"><i>4</i>Báo lại kết quả</div>
-    </div>
+  <div class="steps">
+    <div class="st" data-anim="rise" data-step="1"><span class="num">1</span><div>Tải <span class="mono">du-an-mau.zip</span>, giải nén vào Documents. Bạn có thư mục <span class="mono">du-an-video</span>.</div></div>
+    <div class="st" data-anim="rise" data-step="2"><span class="num">2</span><div>Mở Antigravity App, mở thư mục <span class="mono">du-an-video</span> làm workspace (Open Folder hoặc thêm vào project, tùy phiên bản).</div></div>
+    <div class="st" data-anim="rise" data-step="3"><span class="num">3</span><div>Cuộc trò chuyện mới, dán câu lệnh: Agent đọc <span class="mono">AGENTS.md</span>, kể các thư mục con và quy tắc phải theo, không tạo hay sửa file.</div></div>
   </div>
-  <div class="dead" data-step="1" data-anim="fade">Kết quả nằm trong khung chat, chưa thành file trên máy.</div>
-  <div class="fileok" data-anim="stamp" data-step="3">
-    <div class="doc"></div>
-    <p>Bài thử trên lớp: Agent đọc <span class="mono">du-lieu/san-pham-mau.md</span> và tự lưu <span class="mono">kich-ban/gioi-thieu-thu.md</span></p>
-  </div>
+<pre class="code tree" data-anim="right" data-delay="400"><span class="u">du-an-video</span>          <span class="c">workspace của dự án</span>
+├── <span class="k">AGENTS.md</span>      <span class="c">nội quy, Agent tự đọc</span>
+├── <span class="k">.agents/</span>       <span class="c">cài đặt riêng dự án</span>
+│   ├── rules/     <span class="c">quy tắc, file thương hiệu</span>
+│   ├── skills/    <span class="c">skill (cài ở phần 7)</span>
+│   └── agents/    <span class="c">agent con (phần 7)</span>
+├── du-lieu/       <span class="c">thông tin, ảnh sản phẩm</span>
+├── kich-ban/      <span class="c">kịch bản video</span>
+├── anh/           <span class="c">ảnh AI tạo, nhân vật</span>
+├── video/         <span class="c">video xuất ra</span>
+├── bo-cai/        <span class="c">bộ tải về, chưa cài</span>
+└── _backup/       <span class="c">bản cũ, file bỏ đi</span></pre>
+  <div class="hid" data-anim="fade" data-delay="900"><b>Không thấy .agents?</b> Thư mục bắt đầu bằng dấu chấm thường bị ẩn. Windows: File Explorer, tab View, tích Hidden items. macOS: Cmd + Shift + . (Antigravity vẫn đọc được.)</div>
   <div class="foot" data-p="1"></div>
 </section>
 
-<!-- 6. STUDIO -->
-<section class="slide s6" data-scene="p1" data-trans="push">
-  <div class="chip"><b>1</b>Ví dụ: xưởng làm video <span class="t">20:10 đến 20:30</span></div>
-  <h2 class="tt" data-anim="fade">Xưởng làm video: mỗi khái niệm <em>một vai trò riêng</em></h2>
+<!-- 4. APP vs IDE -->
+<section class="slide s4" data-scene="p2" data-trans="iris" data-origin="30% 50%">
+  <div class="bigno">2</div>
+  <div class="chip"><b>2</b>Tham quan Antigravity <span class="t">20:10 đến 20:25</span></div>
+  <h2 class="tt" data-anim="fade">Khóa này dùng <em>Antigravity App</em> vì App có đủ agent con</h2>
+  <div class="pane app card" data-anim="left" data-delay="250">
+    <div class="wbar"><i></i><i></i><i></i><span>Antigravity App</span></div>
+    <div class="pick">Khóa này dùng</div>
+    <div class="body">
+      <h3>App</h3>
+      <div class="row"><h4>Dùng để</h4><p>Giao việc cho Agent, theo dõi Agent làm, xem kết quả</p></div>
+      <div class="row"><h4>Hợp với</h4><p>Người giao việc (khóa này)</p></div>
+      <div class="row"><h4>Agent con</h4><p class="yes">Có</p></div>
+    </div>
+  </div>
+  <div class="pane ide card" data-anim="right" data-delay="450">
+    <div class="wbar"><i></i><i></i><i></i><span>Antigravity IDE</span></div>
+    <div class="body">
+      <h3>IDE</h3>
+      <div class="row"><h4>Dùng để</h4><p>Mở thư mục, xem và sửa file như phần mềm soạn thảo</p></div>
+      <div class="row"><h4>Hợp với</h4><p>Người cần sửa tay file skill, quy tắc</p></div>
+      <div class="row"><h4>Agent con</h4><p class="no">Không có</p></div>
+    </div>
+  </div>
+  <div class="note" data-anim="fade" data-delay="800">Hai phần mềm dùng chung một tài khoản Google.</div>
+  <div class="foot" data-p="2"></div>
+</section>
+
+<!-- 5. AREAS -->
+<section class="slide s5" data-scene="p2" data-trans="push">
+  <div class="chip"><b>2.1</b>Những khu vực dùng trong khóa</div>
+  <h2 class="tt" data-anim="fade">Tám khu vực của App sẽ <em>gặp lại suốt khóa học</em></h2>
+  <div class="grid">
+    <div class="a card b1" data-anim="pop" data-delay="150"><h3>Khung trò chuyện</h3><p>Giao việc, duyệt kế hoạch, sửa kết quả bằng lời. Gõ / để gọi skill.</p><span class="badge">Mọi buổi</span></div>
+    <div class="a card b1" data-anim="pop" data-delay="220"><h3>Chọn mô hình AI</h3><p>Mô hình nhẹ cho việc ngắn, mô hình mạnh cho việc nhiều bước.</p><span class="badge">Mọi buổi</span></div>
+    <div class="a card b1" data-anim="pop" data-delay="290"><h3>Planning mode, Fast mode</h3><p>Planning: lập kế hoạch trước rồi mới làm. Fast: làm ngay, hợp việc đơn giản.</p><span class="badge">Buổi 1</span></div>
+    <div class="a card b1" data-anim="pop" data-delay="360"><h3>Artifacts</h3><p>Implementation Plan để bạn duyệt, Walkthrough báo đã làm gì. Bấm Proceed để đồng ý.</p><span class="badge">Buổi 1</span></div>
+    <div class="a card b1" data-anim="pop" data-delay="430"><h3>Customizations</h3><p>Xem và quản lý Rule, Skill, MCP đã cài (tab Installed, tab Rules).</p><span class="badge">Buổi 1, 2, 3</span></div>
+    <div class="a card b1" data-anim="pop" data-delay="500"><h3>Settings</h3><p>Mức quyền, chính sách duyệt kế hoạch.</p><span class="badge">Buổi 1</span></div>
+    <div class="a card" data-anim="pop" data-delay="570"><h3>Trình duyệt của Agent</h3><p>Gõ /browser: Agent tự mở web, bấm, điền.</p><span class="badge">Buổi 5</span></div>
+    <div class="a card" data-anim="pop" data-delay="640"><h3>Automations</h3><p>Việc Agent tự chạy theo lịch.</p><span class="badge">Buổi 5</span></div>
+  </div>
+  <div class="try" data-anim="rise" data-step="1">
+    <h4>Thử ngay: hỏi Agent về chính nó</h4>
+    <p>Chọn Planning mode, hỏi 4 điều: đang làm việc trong thư mục nào, dùng mô hình AI nào, đọc những file quy tắc nào, việc nào phải hỏi trước. Lần này chỉ trả lời, chưa tạo hay sửa file.</p>
+  </div>
+  <div class="foot" data-p="2"></div>
+</section>
+
+<!-- 6. STUDIO: 5 CONCEPTS -->
+<section class="slide s6" data-scene="p3" data-trans="iris" data-origin="50% 52%">
+  <div class="chip"><b>3</b>Agent, Rule, Skill, Subagent, MCP <span class="t">20:25 đến 20:40</span></div>
+  <h2 class="tt" data-anim="fade">Năm khái niệm của khóa nằm trong <em>một xưởng video</em></h2>
   <svg class="wires" viewBox="0 0 1920 1080">
     <g fill="none" stroke="#3A7CC6" stroke-width="4" stroke-linecap="round" stroke-dasharray="2 12">
-      <path d="M600 420 C 680 420, 700 470, 780 480" data-anim="draw" data-step="1"/>
-      <path d="M1320 420 C 1240 420, 1220 470, 1140 480" data-anim="draw" data-step="2"/>
-      <path d="M600 800 C 690 800, 720 700, 800 640" data-anim="draw" data-step="3"/>
-      <path d="M1320 800 C 1230 800, 1200 700, 1120 640" data-anim="draw" data-step="4"/>
+      <path d="M640 400 C 700 400, 720 450, 790 470" data-anim="draw" data-step="1"/>
+      <path d="M1280 400 C 1220 400, 1200 450, 1130 470" data-anim="draw" data-step="2"/>
+      <path d="M640 780 C 710 780, 730 690, 800 660" data-anim="draw" data-step="3"/>
+      <path d="M1280 780 C 1210 780, 1190 690, 1120 660" data-anim="draw" data-step="4"/>
     </g>
   </svg>
   <div class="hub" data-anim="zoom" data-delay="300">
     <h3>Agent</h3>
-    <p>Nhân viên của xưởng: tự lập kế hoạch, mở file, tạo file, làm xong báo lại.</p>
+    <p>Nhân viên làm việc ngay tại bàn: tự lập kế hoạch, mở tủ hồ sơ, làm xong báo lại.</p>
+    <small>Học sâu ở buổi 1</small>
   </div>
-  <div class="node card n-skill" data-anim="left" data-step="1">
+  <div class="node card n-rule" data-anim="left" data-step="1">
+    <h4>Rule <span>nội quy dán trên tường</span></h4>
+    <p>Ai vào xưởng cũng phải theo. Trong Antigravity: <b>AGENTS.md</b>, file trong <b>.agents/rules/</b>, Agent luôn đọc.</p>
+    <span class="badge">Học sâu ở buổi 1</span>
+  </div>
+  <div class="node card n-skill" data-anim="right" data-step="2">
     <h4>Skill <span>sổ tay quy trình</span></h4>
-    <p>Quy trình viết sẵn. Gõ tên skill, Agent làm đúng các bước, lần nào cũng như nhau.</p>
-    <span class="vd">Ví dụ: /hook-video-3-giay (hôm nay)</span>
+    <p>"Làm hook thì làm 5 bước này". Thư mục có file <b>SKILL.md</b>, gọi bằng <b>/ten-skill</b> hoặc Agent tự chọn.</p>
+    <span class="badge">Học sâu ở buổi 2</span>
   </div>
-  <div class="node card n-mcp" data-anim="right" data-step="2">
-    <h4>MCP <span>ổ cắm nối phần mềm</span></h4>
-    <p>Giúp Agent nối sang phần mềm khác: tạo ảnh, đọc mạng xã hội, điều khiển trình duyệt.</p>
-    <span class="vd">Ví dụ: ChatGPT Image MCP (buổi 3)</span>
+  <div class="node card n-sub" data-anim="left" data-step="3">
+    <h4>Subagent <span>người soát bài độc lập</span></h4>
+    <p>Chỉ làm một việc. File trong <b>.agents/agents/</b>, Agent chính gọi khi cần.</p>
+    <span class="badge">Học sâu ở buổi 1, 2</span>
   </div>
-  <div class="node card n-rule" data-anim="left" data-step="3">
-    <h4>Rule <span>nội quy xưởng</span></h4>
-    <p>Điều Agent luôn phải nhớ trong mọi việc.</p>
-    <span class="vd">Ví dụ: file thương hiệu, quy tắc chống mất dữ liệu</span>
-  </div>
-  <div class="node card n-sub" data-anim="right" data-step="4">
-    <h4>Subagent <span>trợ lý chuyên trách</span></h4>
-    <p>Trợ lý chuyên một việc, Agent chính gọi khi cần.</p>
-    <span class="vd">Ví dụ: người soát nội dung nguoi-soat</span>
-  </div>
-  <div class="foot" data-p="1"></div>
-</section>
-
-<!-- 7. QUIZ -->
-<section class="slide s7" data-scene="p1" data-trans="zoom">
-  <div class="chip"><b>?</b>Câu hỏi kiểm tra</div>
-  <h2 class="tt" data-anim="fade">Mỗi tình huống dưới đây ứng với <em>khái niệm nào?</em></h2>
-  <div class="rows">
-    <div class="r card" data-anim="rise" data-delay="200"><span class="n">1</span><p>Gõ <b class="mono">/hook-video-3-giay</b>, Agent viết hook theo đúng các bước có sẵn.</p><span class="ans"><b data-anim="stamp" data-step="1">Skill</b></span></div>
-    <div class="r card" data-anim="rise" data-delay="300"><span class="n">2</span><p>Agent nối sang ChatGPT Image để tạo ảnh sản phẩm.</p><span class="ans"><b data-anim="stamp" data-step="2">MCP</b></span></div>
-    <div class="r card" data-anim="rise" data-delay="400"><span class="n">3</span><p>Video nào làm ra cũng đúng màu, đúng giọng của thương hiệu.</p><span class="ans"><b data-anim="stamp" data-step="3">Rule</b></span></div>
-    <div class="r card" data-anim="rise" data-delay="500"><span class="n">4</span><p>Agent chính gọi <b class="mono">nguoi-soat</b> kiểm tra hook vừa viết.</p><span class="ans"><b data-anim="stamp" data-step="4">Subagent</b></span></div>
-  </div>
-  <div class="hint">Học viên trả lời trước, giảng viên bấm để hiện đáp án từng dòng.</div>
-  <div class="foot" data-p="1"></div>
-</section>
-
-<!-- 8. PERMISSION -->
-<section class="slide s8" data-scene="p2" data-trans="iris" data-origin="50% 60%">
-  <div class="bigno">2</div>
-  <div class="chip"><b>2</b>Cài đặt an toàn <span class="t">20:30 đến 20:45</span></div>
-  <h2 class="tt" data-anim="fade">Chọn mức quyền <em>trước khi</em> giao việc lớn cho Agent</h2>
-  <div class="path" data-anim="wipe" data-delay="300"><span>Settings</span><i>›</i><span>General</span><i>›</i><span>Global Permissions</span><i>›</i><span>Permission Preset</span></div>
-  <div class="opts">
-    <div class="opt card rec" data-anim="rise" data-delay="500">
-      <svg width="64" height="64" viewBox="0 0 64 64"><path d="M32 4 56 13v18c0 15-10 25-24 29C18 56 8 46 8 31V13z" fill="#3A7CC6"/><path d="m20 32 8 8 16-17" stroke="#fff" stroke-width="6" fill="none" stroke-linecap="round"/></svg>
-      <h3>Request Review</h3>
-      <p>Lệnh nào Agent cũng hỏi trước khi chạy.</p>
-      <span class="badge">Đề xuất cho người mới</span>
-    </div>
-    <div class="opt card def" data-anim="rise" data-delay="650">
-      <svg width="64" height="64" viewBox="0 0 64 64"><path d="M32 4 56 13v18c0 15-10 25-24 29C18 56 8 46 8 31V13z" fill="none" stroke="#3A7CC6" stroke-width="5"/><path d="M32 20v16M32 44v1" stroke="#3A7CC6" stroke-width="6" stroke-linecap="round"/></svg>
-      <h3>Default</h3>
-      <p>Agent hỏi trước các việc nhạy cảm.</p>
-      <span class="badge">Được phép dùng</span>
-    </div>
-    <div class="opt card no" data-anim="rise" data-delay="800">
-      <svg width="64" height="64" viewBox="0 0 64 64"><path d="M36 4 12 36h18l-4 24 26-34H34z" fill="#d9c6be"/></svg>
-      <h3>Turbo</h3>
-      <p>Chạy mọi lệnh mà không hỏi.</p>
-      <div class="stamp" data-anim="stamp" data-delay="1300">Không dùng</div>
-    </div>
-  </div>
-  <div class="note">Tên mục cài đặt lấy theo tài liệu chính thức của Antigravity, tra ngày 09/11/2026. Antigravity cập nhật thường xuyên, tên mục trên máy học viên có thể khác đôi chút.</div>
-  <div class="foot" data-p="2"></div>
-</section>
-
-<!-- 9. SIX RULES -->
-<section class="slide s9" data-scene="p2" data-trans="push">
-  <div class="chip"><b>2</b>Chống mất dữ liệu <span class="t">20:30 đến 20:45</span></div>
-  <h2 class="tt" data-anim="fade">Sáu nguyên tắc trong AGENTS.md <em>bảo vệ dữ liệu</em></h2>
-  <div class="g">
-    <div class="c card" data-anim="pop" data-delay="200"><span class="n">1</span><h3>Chỉ làm trong thư mục dự án</h3><p>Không đụng tới file ở nơi khác trên máy.</p></div>
-    <div class="c card" data-anim="pop" data-delay="300"><span class="n">2</span><h3>Không bao giờ xóa</h3><p>Cần bỏ file nào thì chuyển vào <span class="mono">_backup/</span>.</p></div>
-    <div class="c card" data-anim="pop" data-delay="400"><span class="n">3</span><h3>Sao lưu trước khi sửa</h3><p>Chép bản cũ vào <span class="mono">_backup/</span> kèm ngày giờ, rồi mới ghi bản mới.</p></div>
-    <div class="c card" data-anim="pop" data-delay="500"><span class="n">4</span><h3>Không ghi đè file trùng tên</h3><p>Gặp trùng tên thì hỏi chủ dự án trước.</p></div>
-    <div class="c card" data-anim="pop" data-delay="600"><span class="n">5</span><h3>Lệnh nhạy cảm chờ đồng ý</h3><p>Lệnh có thể xóa, ghi đè, cài phần mềm: giải thích rồi chờ duyệt.</p></div>
-    <div class="c card" data-anim="pop" data-delay="700"><span class="n">6</span><h3>Không lưu mật khẩu, mã khóa</h3><p>Không dán API key, cookie vào file hay khung chat.</p></div>
-  </div>
-  <div class="never" data-anim="rise" data-step="1">
-    <h4>Ba điều không bao giờ làm</h4>
-    <ul>
-      <li>Mở Antigravity ở cả ổ C:\ hay thư mục Desktop.</li>
-      <li>Dán mật khẩu, mã khóa vào khung chat.</li>
-      <li>Đồng ý lệnh có delete, rm, Remove-Item khi chưa hiểu nó xóa gì.</li>
-    </ul>
-  </div>
-  <div class="src" style="bottom:96px">Nguồn: du-an-mau/AGENTS.md, mục 1. Antigravity tự đọc file này mỗi lần làm việc.</div>
-  <div class="foot" data-p="2"></div>
-</section>
-
-<!-- 10. FOUR STEPS -->
-<section class="slide s10" data-scene="p3" data-trans="iris" data-origin="20% 50%">
-  <div class="bigno">3</div>
-  <div class="chip"><b>3</b>Cách giao việc <span class="t">20:45 đến 21:00</span></div>
-  <h2 class="tt" data-anim="fade">Bốn bước giao việc <em>áp dụng cho mọi bài</em> trong khóa</h2>
-  <div class="steps">
-    <div class="sp" data-anim="drop" data-step="1"><div class="n">1</div><h3>Giao rõ</h3><p>Bạn gửi gì, cần làm gì, kết quả là file gì, lưu ở đâu.</p></div>
-    <div class="sp" data-anim="drop" data-step="2"><div class="n">2</div><h3>Đòi kế hoạch</h3><p>Yêu cầu Agent trình bày cách làm trước, chưa làm ngay.</p></div>
-    <div class="sp" data-anim="drop" data-step="3"><div class="n">3</div><h3>Duyệt rồi làm</h3><p>Đọc kế hoạch, sửa chỗ chưa đúng, rồi mới đồng ý.</p></div>
-    <div class="sp" data-anim="drop" data-step="4"><div class="n">4</div><h3>Kiểm tra</h3><p>Mở kết quả; chưa đạt thì nêu đúng chỗ cần sửa.</p></div>
-  </div>
-  <div class="tpl" data-anim="rise" data-step="5">
-    <h4>Mẫu giao việc chuẩn</h4>
-    <div class="code"><span class="k">Tôi gửi bạn:</span> file .agents/rules/thuong-hieu.md, bộ nhận diện thương hiệu mẫu.<br><span class="k">Việc cần làm:</span> đọc file, tóm tắt trong 5 gạch đầu dòng.<br><span class="u">Trình bày kế hoạch trước, tôi đồng ý thì mới làm.</span><br><span class="k">Kết quả:</span> trả lời ngay trong khung chat, không tạo file.</div>
-  </div>
-  <div class="tip card" data-anim="rise" data-step="5" data-delay="200">
-    <h4>Sửa kết quả</h4>
-    <p>Chưa ưng thì nói đúng chỗ chưa ưng, không cần gõ lại cả yêu cầu.</p>
-    <q>Câu thứ 2 dài quá, rút còn 10 chữ.</q>
+  <div class="node card n-mcp" data-anim="right" data-step="4">
+    <h4>MCP <span>ổ cắm chuẩn</span></h4>
+    <p>Cắm máy in, máy ảnh vào là dùng. Cổng nối Agent với phần mềm ngoài: tạo ảnh, đọc mạng xã hội.</p>
+    <span class="badge">Học sâu ở buổi 3</span>
   </div>
   <div class="foot" data-p="3"></div>
 </section>
 
-<!-- 11. RECAP + BREAK -->
-<section class="slide s11" data-scene="tom-tat" data-trans="shutter" data-trans-color="#3A7CC6">
-  <div class="chip"><b>✓</b>Tóm tắt phần 1 đến 3</div>
-  <h2 class="tt" data-anim="fade">Ba ý cần nắm vững trước giờ nghỉ</h2>
-  <div class="three">
-    <div class="t" data-anim="rise" data-delay="300"><div class="n">01</div><p>Agent làm thật trên máy. <span>Tự đọc file, tạo file, làm xong báo lại.</span></p></div>
-    <div class="t" data-anim="rise" data-delay="450"><div class="n">02</div><p>An toàn đặt trước. <span>Chọn Request Review hoặc Default; AGENTS.md giữ sáu nguyên tắc.</span></p></div>
-    <div class="t" data-anim="rise" data-delay="600"><div class="n">03</div><p>Giao việc theo bốn bước. <span>Giao rõ, đòi kế hoạch, duyệt rồi làm, kiểm tra.</span></p></div>
+<!-- 7. AGENT vs CHATBOT -->
+<section class="slide s7" data-scene="p3" data-trans="push">
+  <div class="chip"><b>3.1</b>Agent khác chatbot ở đâu</div>
+  <h2 class="tt" data-anim="fade">Agent <em>tự làm và tạo file</em>, chatbot chỉ trả lời</h2>
+  <div class="tbw" data-anim="rise" data-delay="200">
+    <table class="tb">
+      <tr><th style="width:230px"></th><th style="width:640px">Chatbot (ChatGPT, Gemini trên web)</th><th>Agent (Antigravity)</th></tr>
+      <tr><td>Cách làm</td><td>Trả lời từng câu</td><td>Tự lập kế hoạch, làm nhiều bước liền</td></tr>
+      <tr><td>Với file</td><td>Bạn dán hoặc tải lên từng file, tự chép kết quả</td><td>Tự mở, đọc, tạo file trong workspace</td></tr>
+      <tr><td>Công cụ</td><td>Trong khung chat</td><td>Chạy lệnh, mở trình duyệt, nối phần mềm ngoài qua MCP</td></tr>
+      <tr><td>Kiểm soát</td><td>Đọc lại câu trả lời</td><td>Duyệt kế hoạch, cho phép từng lệnh, giới hạn thư mục</td></tr>
+    </table>
   </div>
-  <div class="brk" data-anim="zoom" data-delay="900">
-    <svg width="76" height="76" viewBox="0 0 76 76"><circle cx="38" cy="38" r="33" fill="none" stroke="#3A7CC6" stroke-width="6"/><path d="M38 18v20l13 9" stroke="#1E3A5F" stroke-width="6" fill="none" stroke-linecap="round"><animateTransform attributeName="transform" type="rotate" from="0 38 38" to="360 38 38" dur="8s" repeatCount="indefinite"/></path></svg>
-    <b>Nghỉ giải lao 5 phút</b><span>21:00 đến 21:05 · Tiếp theo: GitHub cơ bản</span>
+  <div class="try card" data-anim="left" data-step="1">
+    <div class="lbl">Thử ngay: Agent tự đọc file, tự tạo file</div>
+    <p>Gửi Agent file <span class="mono">du-lieu/san-pham-mau.md</span> (cà phê mẫu), nhờ viết 3 dòng giới thiệu cho bài Facebook theo giọng văn file thương hiệu, lưu vào <span class="mono">kich-ban/gioi-thieu-thu.md</span>.</p>
   </div>
-  <div class="foot" data-p=""></div>
+  <div class="fileok" data-anim="stamp" data-step="2">
+    <div class="doc"></div>
+    <p>Mở thư mục kich-ban: <span class="mono">gioi-thieu-thu.md</span> đã nằm đó. Đây là điểm khác chatbot.</p>
+  </div>
+  <div class="foot" data-p="3"></div>
 </section>
 
-<!-- 12. GITHUB -->
-<section class="slide s12" data-scene="p4" data-trans="iris" data-origin="70% 40%">
-  <div class="bigno">4</div>
-  <div class="chip"><b>4</b>GitHub cơ bản <span class="t">21:05 đến 21:15</span></div>
-  <h2 class="tt" data-anim="fade">GitHub là kho chia sẻ skill; <em>đọc SKILL.md</em> trước khi cài</h2>
-  <p class="def" data-anim="fade" data-delay="200"><b>GitHub</b> lưu và chia sẻ code, tài liệu, skill. Mỗi dự án là một <b>repo</b> (kho).</p>
-  <div class="win card" data-anim="rise" data-delay="400">
-    <div class="bar"><i></i><i></i><i></i></div>
-    <div class="repo">cole-bootcamp-ai-video-agent</div>
-    <div class="rowf" style="top:150px"></div><div class="rowf" style="top:190px;width:400px"></div><div class="rowf" style="top:230px;width:440px"></div><div class="rowf" style="top:270px;width:360px"></div><div class="rowf" style="top:310px;width:420px"></div>
-    <div class="btn">Code ▾</div>
-    <div class="menu" data-anim="drop" data-step="1"><div>Clone</div><div class="on">Download ZIP</div></div>
+<!-- 8. QUIZ -->
+<section class="slide s8" data-scene="p3" data-trans="zoom">
+  <div class="chip"><b>?</b>Câu hỏi nhanh</div>
+  <h2 class="tt" data-anim="fade">Việc nhiều bước, nhiều file thì <em>giao cho Agent</em></h2>
+  <div class="qq" data-anim="fade" data-delay="200">Việc nào nên giao cho Agent thay vì chatbot?</div>
+  <div class="opts">
+    <div class="o card" data-anim="rise" data-delay="300"><span class="n">A</span><p>Hỏi nghĩa của từ "hook".</p><span class="ans"><b class="x" data-anim="pop" data-step="1">Chatbot đủ</b></span></div>
+    <div class="o card" data-anim="rise" data-delay="420"><span class="n">B</span><p>Đọc 10 file sản phẩm trong thư mục rồi viết hook cho từng sản phẩm, lưu thành file.</p><span class="ans"><b class="y" data-anim="stamp" data-step="1">Đáp án: Agent</b></span></div>
+    <div class="o card" data-anim="rise" data-delay="540"><span class="n">C</span><p>Dịch một câu ngắn.</p><span class="ans"><b class="x" data-anim="pop" data-step="1">Chatbot đủ</b></span></div>
   </div>
-  <div class="seq" data-anim="wipe" data-step="1"><span>Bấm Code</span><i>›</i><span>Download ZIP</span><i>›</i><span>Giải nén</span></div>
-  <div class="doc card" data-anim="right" data-step="2">
-    <div class="scan" data-loop="scan"></div>
-    <h3>Trước khi cài skill lạ</h3>
-    <div class="fn">SKILL.md</div>
-    <ul>
-      <li><i>1</i>Skill này làm gì?</li>
-      <li><i>2</i>Cần đọc những file nào?</li>
-      <li><i>3</i>Sẽ tạo ra file nào?</li>
-      <li class="risk"><i>!</i>Có lệnh xóa file hay gửi dữ liệu ra ngoài không?</li>
-    </ul>
+  <div class="why" data-anim="wipe" data-step="2"><b>Đáp án B:</b> việc nhiều bước, nhiều file, cần lưu kết quả là việc của Agent.</div>
+  <div class="foot" data-p="3"></div>
+</section>
+
+<!-- 9. PROJECT vs GLOBAL -->
+<section class="slide s9" data-scene="p4" data-trans="iris" data-origin="50% 60%">
+  <div class="chip"><b>4</b>Workspace: project và global <span class="t">20:40 đến 20:55</span></div>
+  <h2 class="tt" data-anim="fade">Cài cho Agent ở hai chỗ: <em>dự án</em> hoặc <em>cả máy</em></h2>
+  <div class="three">
+    <div class="c card" data-anim="rise" data-delay="200">
+      <div class="ill">
+        <svg width="260" height="150" viewBox="0 0 260 150">
+          <path d="M40 40h60l14 16h106v84H40z" fill="#fff" stroke="#3A7CC6" stroke-width="4" stroke-linejoin="round"/>
+          <text x="130" y="108" text-anchor="middle" font-family="JetBrains Mono" font-weight="700" font-size="22" fill="#3A7CC6">.agents/</text>
+        </svg>
+      </div>
+      <h3>Project<span>trong workspace</span></h3>
+      <p>Để trong thư mục .agents/ của dự án. Chỉ dự án đó dùng được.</p>
+      <p class="vv">Như nội quy riêng của một xưởng.</p>
+      <p>Dùng cho: file thương hiệu, skill riêng của thương hiệu.</p>
+    </div>
+    <div class="c card" data-anim="rise" data-delay="380">
+      <div class="ill">
+        <svg width="300" height="150" viewBox="0 0 300 150">
+          <rect x="70" y="18" width="160" height="100" rx="10" fill="#fff" stroke="#1E3A5F" stroke-width="4"/>
+          <path d="M50 130h200" stroke="#1E3A5F" stroke-width="6" stroke-linecap="round"/>
+          <text x="150" y="76" text-anchor="middle" font-family="JetBrains Mono" font-weight="700" font-size="22" fill="#1E3A5F">.gemini</text>
+          <g fill="#5BA3E6"><rect x="6" y="40" width="44" height="32" rx="5"/><rect x="250" y="40" width="44" height="32" rx="5"/><rect x="6" y="84" width="44" height="32" rx="5"/><rect x="250" y="84" width="44" height="32" rx="5"/></g>
+        </svg>
+      </div>
+      <h3>Global<span>cả máy</span></h3>
+      <p>Để trong thư mục .gemini của tài khoản máy bạn. Mọi dự án đều dùng được.</p>
+      <p class="vv">Như thói quen của chính bạn, mang theo đi đâu cũng vậy.</p>
+      <p>Dùng cho: cách xưng hô, skill dùng chung mọi thương hiệu.</p>
+    </div>
+    <div class="c card pick" data-anim="rise" data-step="1">
+      <div class="ill" style="background:rgba(255,255,255,.08)">
+        <svg width="200" height="150" viewBox="0 0 200 150"><path d="M100 18v114M40 50h120" stroke="#ffd27a" stroke-width="5" stroke-linecap="round"/><path d="M40 50l-26 50h52zM160 50l-26 50h52z" fill="none" stroke="#ffd27a" stroke-width="4" stroke-linejoin="round"/></svg>
+      </div>
+      <h3>Chọn chỗ nào?</h3>
+      <p>Chỉ đúng cho một thương hiệu: <b>để project</b>. Đúng cho mọi dự án: <b>để global</b>.</p>
+      <p>Khóa này cài project trước để dễ kiểm soát; buổi 5 mới đóng gói bộ skill cài global mang về.</p>
+    </div>
   </div>
-  <div class="url" data-anim="fade" data-step="2">Repo của khóa: <b>github.com/andyluu98/cole-bootcamp-ai-video-agent</b></div>
   <div class="foot" data-p="4"></div>
 </section>
 
-<!-- 13. FOLDERS -->
-<section class="slide s13" data-scene="p5" data-trans="iris" data-origin="50% 50%">
-  <div class="bigno">5</div>
-  <div class="chip"><b>5</b>Cài skill và agent <span class="t">21:15 đến 21:30</span></div>
-  <h2 class="tt" data-anim="fade">Antigravity chỉ nhận skill và agent <em>đặt đúng thư mục</em></h2>
-  <div class="map3">
-    <div class="m card"><h4>Skill</h4><code>.agents/skills/TEN-SKILL/SKILL.md</code></div>
-    <div class="m card"><h4>Agent con (subagent)</h4><code>.agents/agents/TEN-AGENT.md</code></div>
-    <div class="m card"><h4>Quy tắc (rule)</h4><code>.agents/rules/ và file AGENTS.md</code></div>
+<!-- 10. PATHS -->
+<section class="slide s10" data-scene="p4" data-trans="push">
+  <div class="chip"><b>4</b>Bảng đường dẫn</div>
+  <h2 class="tt" data-anim="fade">Mỗi loại có <em>đường dẫn project</em> và đường dẫn global</h2>
+  <div class="tbw" data-anim="rise" data-delay="200">
+    <table class="tb">
+      <tr><th>Loại</th><th>Project (trong workspace)</th><th>Global (cả máy)</th></tr>
+      <tr><td>Rule</td><td>AGENTS.md hoặc GEMINI.md ở gốc<br>.agents/rules/*.md</td><td>~/.gemini/GEMINI.md hoặc ~/.gemini/AGENTS.md<br>~/.gemini/config/rules/*.md</td></tr>
+      <tr><td>Skill</td><td>.agents/skills/TEN-SKILL/SKILL.md</td><td>~/.gemini/config/skills/TEN-SKILL/SKILL.md</td></tr>
+      <tr><td>Agent con</td><td>.agents/agents/TEN-AGENT.md</td><td>~/.gemini/config/agents/TEN-AGENT.md</td></tr>
+      <tr><td>MCP</td><td>.agents/mcp_config.json</td><td>~/.gemini/config/mcp_config.json</td></tr>
+    </table>
   </div>
-  <p class="tipnew">Cài xong, <b>mở cuộc trò chuyện mới</b> và gõ <b class="mono">/</b>: thấy <b>file-thuong-hieu</b> và <b>hook-video-3-giay</b> là đạt.</p>
-  <div class="box src-box">
-    <h4>bo-cai/buoi-01/ <span style="font:500 19px Inter;color:#6a7d93">bộ cài tải về, chưa cài</span></h4>
-    <div class="slots">
-      <span class="pill ghost">file-thuong-hieu</span>
-      <span class="pill ghost">hook-video-3-giay</span>
-      <span class="pill ghost">nguoi-soat</span>
+  <div class="tilde card" data-anim="left" data-step="1">
+    <div class="big">~</div>
+    <p>Dấu ~ là thư mục tài khoản của bạn trên máy. Windows: <span class="mono">C:\Users\TEN-BAN</span>. macOS: <span class="mono">/Users/TEN-BAN</span>.</p>
+  </div>
+  <div class="src">Nguồn: antigravity.google/docs/rules, /skills, /subagents, /mcp, tra ngày 09/11/2026.</div>
+  <div class="foot" data-p="4"></div>
+</section>
+
+<!-- 11. TRIGGERS -->
+<section class="slide s11" data-scene="p4" data-trans="push">
+  <div class="chip"><b>4.1</b>Rule có 4 kiểu kích hoạt</div>
+  <h2 class="tt" data-anim="fade">Rule chỉ có hiệu lực khi đầu file <em>ghi đúng trigger</em></h2>
+  <div class="list">
+    <div class="t card on" data-anim="left" data-delay="200"><code>always_on</code><h4>Luôn luôn</h4><p>Ví dụ: file thương hiệu</p></div>
+    <div class="t card" data-anim="left" data-delay="320"><code>model_decision</code><h4>Agent tự quyết khi thấy cần (phải có description)</h4><p>Ví dụ: quy tắc chỉ dùng khi viết caption</p></div>
+    <div class="t card" data-anim="left" data-delay="440"><code>glob</code><h4>Khi làm với loại file nhất định</h4><p>Ví dụ: quy tắc cho file trong kich-ban/</p></div>
+    <div class="t card" data-anim="left" data-delay="560"><code>manual</code><h4>Khi bạn gọi tên</h4><p>Ví dụ: quy tắc dùng thỉnh thoảng</p></div>
+  </div>
+  <div class="file" data-anim="right" data-delay="400">
+    <div class="fn">.agents/rules/thuong-hieu.md</div>
+<pre class="code"><div class="scan" data-loop="scan"></div><span class="c">---</span>
+<span class="hi"><span class="k">trigger:</span> <span class="u">always_on</span></span>
+<span class="c">---</span>
+# Bộ nhận diện thương hiệu:
+  Cà Phê Mây Núi
+...</pre>
+  </div>
+  <div class="warn" data-anim="stamp" data-step="1"><b>Cẩn thận</b>File trong .agents/rules/ phải có dòng trigger ở đầu file. Ghi sai hoặc thiếu thì Antigravity bỏ qua cả file mà không báo.</div>
+  <div class="foot" data-p="4"></div>
+</section>
+
+<!-- 12. GLOBAL RULE PRACTICE -->
+<section class="slide s12" data-scene="p4" data-trans="push">
+  <div class="chip"><b>4.2</b>Thực hành: tạo một rule global</div>
+  <h2 class="tt" data-anim="fade">Rule global <em>tự tạo bằng giao diện</em>, không nhờ Agent</h2>
+  <div class="why" data-anim="fade" data-delay="200"><b>Vì sao?</b> Nội quy dự án cấm Agent ghi ra ngoài workspace. Rule global là thói quen của bạn, đi theo mọi dự án.</div>
+  <div class="steps">
+    <div class="st card" data-anim="rise" data-delay="300"><span class="num">1</span><div>Mở <b>Customizations</b>, tab <b>Rules</b>, bấm <b>+ Global</b>.</div></div>
+    <div class="st card" data-anim="rise" data-delay="420"><span class="num">2</span><div>Dán nội dung rule bên phải, lưu.</div></div>
+    <div class="st card" data-anim="rise" data-delay="540"><span class="num">3</span><div>Mở cuộc trò chuyện mới, dán câu lệnh kiểm tra.</div></div>
+  </div>
+  <div class="rc" data-anim="right" data-delay="400">
+<pre class="code"><span class="c">Nội dung rule global</span>
+Luôn trả lời bằng tiếng Việt, xưng "tôi",
+gọi người dùng là "bạn".
+Trả lời ngắn gọn, đi thẳng vào việc.
+Trước khi làm việc nhiều bước, trình bày
+kế hoạch ngắn và chờ tôi đồng ý.</pre>
+    <div class="chk"><b>Câu lệnh kiểm tra</b>Agent kể quy tắc đang theo, chia 2 nhóm: global và của workspace này, mỗi quy tắc nằm ở file nào. Chỉ trả lời, không sửa gì.</div>
+  </div>
+  <div class="quiz" data-anim="rise" data-step="1">
+    <div class="q"><small>Câu hỏi nhanh</small>Bạn có 2 thương hiệu: Cà Phê Mây Núi và một tiệm bánh. Bảng màu thương hiệu nên để ở đâu?</div>
+    <div class="a" data-anim="wipe" data-step="2"><b>Mỗi dự án một file thương hiệu</b> trong .agents/rules/ của dự án đó. Để global thì video tiệm bánh cũng ra màu cà phê.</div>
+  </div>
+  <div class="foot" data-p="4"></div>
+</section>
+
+<!-- 13. THREE BRAKES -->
+<section class="slide s13" data-scene="p5" data-trans="iris" data-origin="50% 40%">
+  <div class="chip"><b>5</b>Cài đặt an toàn <span class="t">20:55 đến 21:05</span></div>
+  <h2 class="tt" data-anim="fade">Đặt <em>ba lớp phanh</em> trước khi giao việc lớn cho Agent</h2>
+  <div class="layers">
+    <div class="ly card" data-anim="drop" data-delay="200"><span class="n">1</span><h3>Mức quyền chạy lệnh</h3><div class="where">Settings, General, Global Permissions, Permission Preset</div><span class="sel">Request Review</span><p>Lệnh nào Agent cũng phải xin phép.</p></div>
+    <div class="ly card" data-anim="drop" data-delay="350"><span class="n">2</span><h3>Duyệt kế hoạch</h3><div class="where">Settings, General, Plan Review Policy</div><span class="sel">Always Ask</span><p>Kế hoạch nào cũng chờ bạn bấm Proceed.</p></div>
+    <div class="ly card" data-anim="drop" data-delay="500"><span class="n">3</span><h3>Nội quy dự án</h3><div class="where">File AGENTS.md (có sẵn)</div><span class="sel">Giữ nguyên</span><p>Không xóa file, sao lưu trước khi sửa, hỏi trước khi ghi đè.</p></div>
+  </div>
+  <div class="scale">
+    <div class="lbl" data-anim="fade" data-step="1"><span>Bốn mức quyền chạy lệnh</span><span>Càng sang phải, Agent càng ít hỏi</span></div>
+    <div class="bar">
+      <div class="lv rec" data-anim="rise" data-step="1"><h4>Request Review</h4><p>Lệnh nào cũng hỏi.</p><span class="u">Mới làm quen: đề xuất cả khóa</span></div>
+      <div class="lv ok" data-anim="rise" data-step="1"><h4>Default</h4><p>Lệnh trong vùng cách ly (Sandbox) chạy không hỏi, ra ngoài thì hỏi.</p><span class="u">Đã quen, máy hỗ trợ Sandbox</span></div>
+      <div class="lv no" data-anim="rise" data-step="1"><h4>Auto</h4><p>Lệnh an toàn tự chạy.</p><span class="u">Không dùng trong khóa</span></div>
+      <div class="lv no" data-anim="rise" data-step="1"><h4>Turbo</h4><p>Chạy mọi lệnh không hỏi.</p><span class="u">Không bao giờ</span><div class="stamp" data-anim="stamp" data-step="2">Cấm</div></div>
     </div>
   </div>
-  <svg class="arrow" data-loop="float" viewBox="0 0 60 62"><path d="M30 4v44M12 32l18 20 18-20" stroke="#3A7CC6" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-  <div class="box dst-box">
-    <h4>.agents/ <span style="font:500 19px Inter;color:#6a7d93">Antigravity đọc ở đây</span></h4>
-    <div class="dst-row">skills/ <span class="pill" data-anim="drop" data-step="1">file-thuong-hieu</span><span class="pill" data-anim="drop" data-step="1" data-delay="250">hook-video-3-giay</span></div>
-    <div class="dst-row">agents/ <span class="pill" data-anim="drop" data-step="1" data-delay="500">nguoi-soat <small>.md</small></span></div>
-    <div class="dst-row">rules/ <span class="pill" style="background:#fff">thuong-hieu.md</span></div>
-  </div>
-  <p class="hid">Thư mục bắt đầu bằng dấu chấm thường bị ẩn. Windows: File Explorer, tab View, tích Hidden items.</p>
   <div class="foot" data-p="5"></div>
 </section>
 
-<!-- 14. BRAND FILE -->
-<section class="slide s14" data-scene="p6" data-trans="iris" data-origin="25% 55%">
-  <div class="bigno">6</div>
-  <div class="chip"><b>6</b>File thương hiệu <span class="t">21:30 đến 21:45</span></div>
-  <h2 class="tt" data-anim="fade">File thương hiệu giúp mọi video <em>đúng màu, đúng giọng</em></h2>
-  <div class="file card" data-anim="left" data-delay="300">
-    <span class="mau">Mẫu giả lập</span>
-    <div class="fn">.agents/rules/thuong-hieu.md</div>
-    <div class="fm">trigger: always_on</div>
-    <div class="sec"><h4>Thương hiệu</h4><p>Cà Phê Mây Núi, cà phê rang xay túi 250g</p></div>
-    <div class="sec"><h4>Màu sắc</h4><div class="sw"><i style="background:#5B3A29"></i><i style="background:#F2E6D8"></i><i style="background:#2F6B4F"></i></div></div>
-    <div class="sec"><h4>Chữ</h4><p>Be Vietnam Pro</p></div>
-    <div class="sec"><h4>Giọng văn</h4><p>Xưng hô, mức trang trọng, điều cấm</p></div>
-    <div class="sec"><h4>Quy tắc video</h4><p>Áp dụng cho mọi video của thương hiệu</p></div>
+<!-- 14. HOUSE RULES + BRAKE TEST -->
+<section class="slide s14" data-scene="p5" data-trans="push">
+  <div class="chip"><b>5.1</b>Nội quy và thử phanh</div>
+  <h2 class="tt" data-anim="fade">Nội quy có sẵn giúp Agent <em>không xóa file</em> dù được yêu cầu</h2>
+  <div class="rules card" data-anim="left" data-delay="200">
+    <h3>Nội quy chống mất dữ liệu trong AGENTS.md</h3>
+    <ul>
+      <li><i></i><span>Chỉ đọc, ghi file trong thư mục dự án.</span></li>
+      <li><i></i><span>Không bao giờ xóa file. File bỏ đi chuyển vào <span class="mono">_backup/</span>.</span></li>
+      <li><i></i><span>Trước khi sửa file đã có: chép bản cũ vào <span class="mono">_backup/</span> kèm ngày giờ.</span></li>
+      <li><i></i><span>Không ghi đè file trùng tên, phải hỏi trước.</span></li>
+      <li><i></i><span>Lệnh có thể xóa, ghi đè, cài phần mềm: nói rõ và chờ bạn đồng ý.</span></li>
+      <li><i></i><span>Không lưu mật khẩu, mã khóa vào file hay khung chat.</span></li>
+    </ul>
   </div>
   <div class="chat">
-    <div class="code" data-anim="rise" data-step="1"><span class="u">/file-thuong-hieu</span><br>Phỏng vấn tôi để viết lại file thương hiệu cho thương hiệu <span class="k">TÊN THƯƠNG HIỆU CỦA BẠN</span>. Hỏi từng câu một.</div>
-    <div class="bub" data-anim="left" data-step="2"><small>Agent · câu 1/8</small>Tên thương hiệu là gì?</div>
-    <div class="bub me" data-anim="right" data-step="2" data-delay="300"><small>Bạn</small>Trả lời từng câu, Agent hỏi tiếp câu sau.</div>
-    <div class="bub" data-anim="left" data-step="2" data-delay="600"><small>Agent · câu 8/8</small>Những từ, lời hứa nào không được nói?</div>
+    <div class="bub me" data-anim="rise" data-step="1"><small>Bạn · thử phanh</small><span class="mono">/plan</span> Tôi muốn dọn thư mục cho gọn: bạn xóa hết các file trong thư mục kich-ban giúp tôi.</div>
+    <div class="bub ag" data-anim="rise" data-step="2"><small>Agent làm đúng nội quy</small>Đề nghị chuyển file vào <span class="mono">_backup/</span> thay vì xóa, hoặc hỏi lại bạn.</div>
+    <div class="bub me" data-anim="rise" data-step="3"><small>Bạn · không bấm Proceed</small>"Không làm việc này."</div>
   </div>
-  <p class="keep" data-anim="fade" data-step="3">Agent cho xem bản nháp, bạn đồng ý mới ghi; bản cũ chép vào <b>_backup/</b>. Chưa có thương hiệu riêng: giữ file mẫu <b>Cà Phê Mây Núi</b> để thực hành.</p>
+  <div class="never" data-anim="rise" data-delay="600">
+    <h4>Ba điều không bao giờ làm</h4>
+    <ul>
+      <li>Mở cả ổ C:\ hay cả thư mục Desktop làm workspace.</li>
+      <li>Dán mật khẩu, mã khóa vào khung chat.</li>
+      <li>Bấm đồng ý lệnh có chữ <span class="mono">delete, rm, Remove-Item, del</span> khi chưa hiểu nó xóa gì.</li>
+    </ul>
+  </div>
+  <div class="foot" data-p="5"></div>
+</section>
+
+<!-- 15. FOUR STEPS -->
+<section class="slide s15" data-scene="p6" data-trans="iris" data-origin="20% 40%">
+  <div class="chip"><b>6</b>Cách giao việc cho Agent <span class="t">21:10 đến 21:20</span></div>
+  <h2 class="tt" data-anim="fade">Bốn bước giao việc <em>dùng cho mọi việc</em> trong khóa</h2>
+  <div class="lane">
+    <div class="steps">
+      <div class="sp" data-anim="pop" data-delay="200"><div class="n">1</div><h3>Giao rõ</h3><p>Bạn gửi gì, cần làm gì, kết quả là file gì, lưu ở đâu.</p></div>
+      <div class="sp" data-anim="pop" data-delay="350"><div class="n">2</div><h3>Đòi kế hoạch</h3><p>Planning mode hoặc gõ /plan: Agent trình cách làm trước.</p></div>
+      <div class="sp" data-anim="pop" data-delay="500"><div class="n">3</div><h3>Duyệt rồi làm</h3><p>Đọc kế hoạch, ghi chú chỗ chưa đúng, rồi mới bấm Proceed.</p></div>
+      <div class="sp" data-anim="pop" data-delay="650"><div class="n">4</div><h3>Kiểm tra</h3><p>Mở file Agent tạo ra, đọc Walkthrough, xem có đúng yêu cầu không.</p></div>
+    </div>
+    <div class="rail"></div><div class="dot"></div>
+  </div>
+  <div class="tpl" data-anim="left" data-step="1">
+    <div class="lbl">Khung câu lệnh dùng cả khóa</div>
+<pre class="code"><span class="k">Tôi gửi bạn:</span> <span class="u">[file nào, nằm ở đâu, là gì]</span>
+<span class="k">Việc cần làm:</span> <span class="u">[từng bước, đánh số]</span>
+<span class="k">Kết quả:</span> <span class="u">[file gì, lưu ở đâu, báo lại gì]</span></pre>
+  </div>
+  <div class="fix" data-anim="right" data-step="2">
+    <div class="lbl">6.1. Sửa kết quả bằng lời</div>
+    <div class="hd"><span>Nên nói</span><span>Không nên</span></div>
+    <table>
+      <tr><td>"Gạch thứ 2 dài quá, rút còn 10 chữ."</td><td>Dán lại cả câu lệnh từ đầu</td></tr>
+      <tr><td>"Giọng văn trẻ hơn, bỏ chữ 'quý khách'."</td><td>"Viết lại cho hay hơn."</td></tr>
+      <tr><td>"Lưu bản này thành file, bản cũ chép vào _backup."</td><td>"Sửa đè lên file cũ."</td></tr>
+    </table>
+  </div>
   <div class="foot" data-p="6"></div>
 </section>
 
-<!-- 15. RUN SKILL -->
-<section class="slide s15" data-scene="p7" data-trans="iris" data-origin="15% 50%">
-  <div class="bigno">7</div>
-  <div class="chip"><b>7</b>Chạy skill đầu tiên <span class="t">21:45 đến 21:55</span></div>
-  <h2 class="tt" data-anim="fade">Một skill viết hook, <em>một agent độc lập</em> soát lại</h2>
-  <div class="lane">
-    <svg width="1760" height="520"><path d="M400 200 H1356" stroke="#cfe0f2" stroke-width="5" stroke-dasharray="3 12" stroke-linecap="round" fill="none"/></svg>
-    <div class="dot"></div>
-    <div class="blk card b1" data-anim="rise" data-delay="200">
-      <div class="lb">Đầu vào</div>
-      <h3>Thương hiệu và sản phẩm</h3>
-      <p><span class="mono">.agents/rules/thuong-hieu.md</span><br><span class="mono">du-lieu/san-pham-mau.md</span></p>
-    </div>
-    <div class="blk card b2" data-anim="rise" data-step="1">
-      <div class="lb">Skill</div>
-      <span class="cmd">/hook-video-3-giay</span>
-      <h3>5 hook, mỗi hook một kiểu</h3>
-      <div class="kinds"><span>Nỗi đau</span><span>Câu hỏi</span><span>Con số</span><span>Trái ngược</span><span>Kết quả</span></div>
-      <p>Tối đa 12 chữ, đọc to hết trong 3 giây; không bịa con số.</p>
-    </div>
-    <div class="blk card b3" data-anim="rise" data-step="1" data-delay="300">
-      <div class="lb">Kết quả</div>
-      <h3>Bảng hook đã lưu</h3>
-      <p><span class="mono">kich-ban/hook-&lt;ten-san-pham&gt;.md</span><br>Kèm gợi ý hình ảnh và hook nên dùng.</p>
-    </div>
-    <div class="blk card b4" data-anim="rise" data-step="2">
-      <div class="lb">Subagent</div>
-      <span class="cmd">nguoi-soat</span>
-      <h3>Soát theo 5 câu hỏi</h3>
-      <ol><li>Đúng giọng văn</li><li>Không dùng từ cấm</li><li>Không có số liệu bịa</li><li>Câu ngắn, dễ đọc</li><li>Đúng chính tả, dấu</li></ol>
-    </div>
+<!-- 16. KIT + READ FIRST -->
+<section class="slide s16" data-scene="p7" data-trans="iris" data-origin="25% 55%">
+  <div class="chip"><b>7</b>Cài skill và agent buổi 1 <span class="t">21:20 đến 21:30</span></div>
+  <h2 class="tt" data-anim="fade">Skill lạ có thể xóa file, nên <em>nhờ Agent đọc trước khi cài</em></h2>
+  <div class="gh" data-anim="fade" data-delay="200">Skill hay được chia sẻ miễn phí trên <b>GitHub</b>. Bộ buổi 1 đã nằm sẵn trong <b>bo-cai/buoi-01</b>, bạn không cần tải.</div>
+  <div class="seq" data-anim="wipe" data-delay="400"><span>Mở trang repo</span><i>›</i><span class="gr">Code</span><i>›</i><span>Download ZIP</span><i>›</i><span>Giải nén</span></div>
+  <div class="kit">
+    <div class="k card" data-anim="left" data-delay="550"><code>file-thuong-hieu</code><span class="badge">Skill</span><p>Phỏng vấn bạn từng câu rồi viết file thương hiệu.</p></div>
+    <div class="k card" data-anim="left" data-delay="680"><code>hook-video-3-giay</code><span class="badge">Skill</span><p>Viết 5 câu mở đầu video theo 5 kiểu.</p></div>
+    <div class="k card ag" data-anim="left" data-delay="810"><code>nguoi-soat</code><span class="badge">Agent con</span><p>Soát kết quả theo file thương hiệu, chỉ báo lỗi, không tự sửa.</p></div>
   </div>
-  <div class="fix" data-anim="wipe" data-step="3">Người soát chỉ đọc và báo cáo. Chỗ nào báo lỗi, bạn bảo Agent sửa đúng chỗ đó; bản cũ được chép vào <b>_backup/</b> trước khi sửa.</div>
+  <div class="doc card" data-anim="right" data-step="1">
+    <div class="scan" data-loop="scan"></div>
+    <h3>7.1. Đọc trước khi cài</h3>
+    <div class="fn">bo-cai/buoi-01: SKILL.md và file agent</div>
+    <ul>
+      <li><i>1</i>Mỗi cái làm gì</li>
+      <li><i>2</i>Đọc file nào, tạo file nào</li>
+      <li class="risk"><i>!</i>Có lệnh nào xóa file không</li>
+      <li class="risk"><i>!</i>Có cài phần mềm không</li>
+      <li class="risk"><i>!</i>Có gửi dữ liệu ra ngoài máy không</li>
+    </ul>
+    <div class="res">Kết quả: bảng trong khung chat. Không cài, không sửa gì.</div>
+  </div>
   <div class="foot" data-p="7"></div>
 </section>
 
-<!-- 16. CLOSE -->
-<section class="slide s16" data-scene="p8" data-trans="iris" data-origin="50% 80%">
-  <div class="bigno">8</div>
-  <div class="chip"><b>8</b>Kiểm tra và bài tập <span class="t">21:55 đến 22:00</span></div>
-  <h2 class="tt" data-anim="fade">Buổi 1 hoàn thành khi <em>đủ năm mục</em> kiểm tra</h2>
-  <div class="ck card" data-anim="left" data-delay="200">
-    <h3>Checklist cuối buổi</h3>
-    <ul>
-      <li data-anim="pop" data-delay="400"><i></i>Mở dự án, Agent đọc được AGENTS.md</li>
-      <li data-anim="pop" data-delay="520"><i></i>Đã chọn Default hoặc Request Review</li>
-      <li data-anim="pop" data-delay="640"><i></i>Đã cài 2 skill, 1 agent; gõ / thấy skill</li>
-      <li data-anim="pop" data-delay="760"><i></i>Có file thương hiệu (riêng hoặc mẫu)</li>
-      <li data-anim="pop" data-delay="880"><i></i>Có file hook trong kich-ban/ và bảng soát</li>
-    </ul>
-    <div class="snap">Chụp màn hình bảng hook, gửi vào nhóm lớp.</div>
+<!-- 17. INSTALL -->
+<section class="slide s17" data-scene="p7" data-trans="push">
+  <div class="chip"><b>7.2</b>Cài vào dự án</div>
+  <h2 class="tt" data-anim="fade">Bộ buổi 1 cài vào <em>.agents của dự án</em></h2>
+  <div class="box from" data-anim="fade" data-delay="200">
+    <h4>bo-cai/buoi-01/ <span class="badge" style="font-family:var(--fb)">chưa cài, không xóa gì ở đây</span></h4>
+    <div class="slots">
+      <span class="pill ghost">skills/file-thuong-hieu</span><span class="pill ghost">skills/hook-video-3-giay</span><span class="pill ghost">agents/nguoi-soat.md</span>
+    </div>
   </div>
-  <div class="hw card" data-anim="right" data-delay="400">
-    <h3>Bài tập trước buổi 2</h3>
-    <ul>
-      <li><b>1</b>Hoàn thiện file thương hiệu; thêm 1 tới 2 sản phẩm thật vào du-lieu/ theo mẫu san-pham-mau.md.</li>
-      <li><b>2</b>Chạy skill hook cho từng sản phẩm, chọn 1 hook ưng nhất.</li>
-      <li><b>3</b>Chuẩn bị 1 tới 3 ảnh sản phẩm thật (nếu có) trong du-lieu/ cho buổi 3.</li>
-    </ul>
+  <svg class="arrow" viewBox="0 0 70 86" data-anim="drop" data-delay="500"><path d="M35 4v62" stroke="#3A7CC6" stroke-width="7" stroke-linecap="round"/><path d="M12 48l23 28 23-28" fill="none" stroke="#3A7CC6" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <div class="rulesm" data-anim="fade" data-delay="600"><b>Trùng tên thì hỏi trước</b>, không ghi đè.<br>Không cài global. Chép xong, kiểm tra lại.</div>
+  <div class="box to" data-anim="zoom" data-delay="700">
+    <h4>du-an-video/.agents/</h4>
+    <div class="drow">rules/ <span class="pill"><small>đã có</small>thuong-hieu.md</span></div>
+    <div class="drow">skills/ <span class="pill" data-anim="drop" data-delay="1000">file-thuong-hieu/SKILL.md</span></div>
+    <div class="drow" style="padding-left:96px"><span class="pill" data-anim="drop" data-delay="1150">hook-video-3-giay/SKILL.md</span></div>
+    <div class="drow">agents/ <span class="pill" data-anim="drop" data-delay="1300">nguoi-soat.md</span></div>
   </div>
-  <div class="end" data-anim="rise" data-delay="1100">
-    <img src="data:image/png;base64,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" alt="Cole.vn">
-    <p>Giao việc rõ, duyệt kế hoạch, kiểm tra kết quả: Agent làm thật, dữ liệu vẫn an toàn.</p>
+  <div class="check card" data-anim="right" data-step="1">
+    <h3>Kiểm tra sau khi cài</h3>
+    <ol>
+      <li><span class="num">1</span><div>Mở cuộc trò chuyện mới để Agent nhận skill mới.</div></li>
+      <li><span class="num">2</span><div>Gõ / trong khung chat: thấy <span class="mono">file-thuong-hieu</span> và <span class="mono">hook-video-3-giay</span>.</div></li>
+      <li><span class="num">3</span><div>Customizations, tab Installed: thấy 2 skill trong danh sách Skills.</div></li>
+    </ol>
   </div>
+  <div class="tip" data-anim="rise" data-step="2"><b>Gõ / không thấy skill?</b>Mở cuộc trò chuyện mới. Vẫn không thấy: mỗi skill phải là một thư mục nằm ngay trong <span class="mono">.agents/skills/</span>, có file tên đúng <span class="mono">SKILL.md</span> (chữ in hoa). Lồng hai lớp thì Antigravity không thấy.</div>
+  <div class="foot" data-p="7"></div>
+</section>
+
+<!-- 18. BRAND FILE -->
+<section class="slide s18" data-scene="p8" data-trans="iris" data-origin="25% 45%">
+  <div class="chip"><b>8</b>File thương hiệu của bạn <span class="t">21:30 đến 21:40</span></div>
+  <h2 class="tt" data-anim="fade">File thương hiệu <em>always_on</em> giữ đúng màu, đúng giọng</h2>
+  <div class="lead" data-anim="fade" data-delay="200">File <span class="mono">.agents/rules/thuong-hieu.md</span> là rule của dự án mà Agent luôn đọc.</div>
+  <div class="file" data-anim="left" data-delay="300">
+    <div class="fn">.agents/rules/thuong-hieu.md</div>
+<pre class="code"><span class="hi"><span class="c">---</span></span>
+<span class="hi"><span class="k">trigger:</span> <span class="u">always_on</span></span>
+<span class="hi"><span class="c">---</span></span>
+# Bộ nhận diện thương hiệu:
+  Cà Phê Mây Núi
+...</pre>
+  </div>
+  <div class="keep" data-anim="stamp" data-step="2">Sửa bằng tay thì giữ nguyên 3 dòng đầu. Mất 3 dòng này, Agent không đọc file nữa.</div>
+  <div class="chat">
+    <div class="bub" data-anim="rise" data-delay="500"><small>Bạn gõ</small><span class="mono">/file-thuong-hieu</span><br>Phỏng vấn tôi để viết lại file thương hiệu cho thương hiệu TÊN THƯƠNG HIỆU CỦA BẠN. Hỏi từng câu một. Trước khi ghi đè file cũ, chép bản cũ vào _backup.</div>
+    <div class="ag" data-anim="rise" data-step="1"><small>Agent</small>Hỏi bạn từng câu một <span class="typing"><i data-loop="pulse"></i><i data-loop="pulse" style="animation-delay:.2s"></i><i data-loop="pulse" style="animation-delay:.4s"></i></span></div>
+  </div>
+  <div class="nobrand" data-anim="fade" data-step="1"><b>Chưa có thương hiệu riêng?</b> Giữ file mẫu Cà Phê Mây Núi để thực hành. Làm lại bước này lúc nào cũng được.</div>
   <div class="foot" data-p="8"></div>
+</section>
+
+<!-- 19. RUN SKILL + REVIEWER -->
+<section class="slide s19" data-scene="p9" data-trans="iris" data-origin="15% 50%">
+  <div class="chip"><b>9</b>Chạy skill, gọi người soát <span class="t">21:40 đến 21:50</span></div>
+  <h2 class="tt" data-anim="fade">Người viết và <em>người soát</em> là hai agent khác nhau</h2>
+  <div class="lane">
+    <svg width="1760" height="500"><path d="M400 220 H1356" stroke="#cfe0f2" stroke-width="5" stroke-dasharray="10 10" fill="none"/></svg>
+    <div class="dot"></div>
+    <div class="blk card b1" data-anim="rise" data-delay="200"><div class="lb">Cách 1: gọi bằng dấu /</div><span class="cmd">/hook-video-3-giay</span><h3>Gọi đích danh skill</h3><p>Viết hook cho video giới thiệu sản phẩm trong du-lieu/san-pham-mau.md.</p></div>
+    <div class="blk card b2" data-anim="rise" data-delay="350"><div class="lb">Cách 2: không gõ /</div><h3>Để Agent tự chọn skill</h3><p>Nhờ viết mấy câu mở đầu 3 giây, hỏi lại Agent đã dùng skill nào. Agent chọn được vì đọc phần description của skill và thấy khớp việc.</p></div>
+    <div class="blk card b3" data-anim="rise" data-step="1"><div class="lb">Người soát</div><span class="cmd">nguoi-soat</span><h3>Soát file hook trong kich-ban</h3><p>Báo kết quả soát, chưa sửa gì.</p></div>
+    <div class="blk card b4" data-anim="rise" data-step="2"><div class="lb">Sửa đúng chỗ</div><h3>Agent sửa chỗ bị báo lỗi</h3><p>Chỗ nào người soát báo lỗi, bạn bảo Agent sửa đúng chỗ đó. Agent chép bản cũ vào _backup/ trước khi sửa.</p></div>
+  </div>
+  <div class="twowho" data-anim="wipe" data-step="3">
+    <h4>Vì sao để agent khác soát?</h4>
+    <p>Người viết dễ bỏ qua lỗi của chính mình. nguoi-soat đọc lại từ đầu theo file thương hiệu, như quy trình biên tập: người viết và người duyệt là hai người.</p>
+  </div>
+  <div class="src" style="bottom:84px;left:auto;right:80px" data-anim="fade" data-delay="900">Buổi 2 học cách viết description cho đúng.</div>
+  <div class="foot" data-p="9"></div>
+</section>
+
+<!-- 20. OWN SKILL -->
+<section class="slide s20" data-scene="p10" data-trans="iris" data-origin="30% 45%">
+  <div class="chip"><b>10</b>Tự tạo skill đầu tiên <span class="t">21:50 đến 21:57</span></div>
+  <h2 class="tt" data-anim="fade">Việc lặp lại thì <em>đóng gói thành skill</em></h2>
+  <div class="sk" data-anim="left" data-delay="250">
+    <div class="fn">.agents/skills/caption-ngan/SKILL.md</div>
+<pre class="code"><span class="k">name:</span> <span class="u">caption-ngan</span>
+<span class="k">description:</span> Viết caption ngắn kèm hashtag cho video
+  TikTok, Facebook Reels theo file thương hiệu. Dùng khi
+  người dùng nói "viết caption", "chú thích bài đăng",
+  hoặc gõ /caption-ngan.
+<span class="c">Các bước:</span>
+1. Đọc file thương hiệu và thông tin sản phẩm trong du-lieu.
+2. Viết 3 caption, mỗi caption tối đa 150 chữ, câu đầu
+   gây tò mò, có lời kêu gọi hành động.
+3. Mỗi caption kèm 5 hashtag tiếng Việt không dấu.
+4. Không bịa giá, ưu đãi, lời khen của khách.
+5. Lưu vào kich-ban/caption-TEN-SAN-PHAM.md.</pre>
+  </div>
+  <div class="use">
+    <div class="gate card" data-anim="fade" data-delay="600">Nhờ Agent tạo skill. Agent trình kế hoạch trước, bạn duyệt rồi Agent mới tạo.</div>
+    <div class="typed" data-anim="rise" data-step="1"><small>Cuộc trò chuyện mới, bạn gõ</small><span class="mono">/caption-ngan</span> cho sản phẩm trong du-lieu/san-pham-mau.md</div>
+    <svg class="arr" viewBox="0 0 40 56" data-anim="drop" data-step="2"><path d="M20 2v40" stroke="#3A7CC6" stroke-width="6" stroke-linecap="round"/><path d="M6 32l14 18 14-18" fill="none" stroke="#3A7CC6" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <div class="out card" data-anim="zoom" data-step="2">
+      <h4>kich-ban/caption-TEN-SAN-PHAM.md</h4>
+      <ul><li>3 caption, tối đa 150 chữ mỗi caption</li><li>Mỗi caption kèm 5 hashtag</li></ul>
+    </div>
+  </div>
+  <div class="why" data-anim="fade" data-step="3"><b>Đọc thử file SKILL.md:</b> đây là cấu tạo một skill. Hôm nay nhờ Agent tạo giúp; buổi 2 học kỹ cách viết skill.</div>
+  <div class="foot" data-p="10"></div>
+</section>
+
+<!-- 21. CHECKLIST + ISSUES -->
+<section class="slide s21" data-scene="p11" data-trans="shutter" data-trans-color="#3A7CC6">
+  <div class="chip"><b>11</b>Kiểm tra cuối buổi <span class="t">21:57 đến 22:00</span></div>
+  <h2 class="tt" data-anim="fade">Buổi 1 hoàn thành khi <em>đủ bảy mục</em> kiểm tra</h2>
+  <div class="ck card" data-anim="left" data-delay="200">
+    <ul>
+      <li data-anim="pop" data-delay="350"><i></i>Mở được workspace du-an-video, Agent đọc được AGENTS.md.</li>
+      <li data-anim="pop" data-delay="450"><i></i>Permission Preset: Request Review; Plan Review Policy: Always Ask.</li>
+      <li data-anim="pop" data-delay="550"><i></i>Có 1 rule global, Agent kể đúng rule nào global, rule nào của workspace.</li>
+      <li data-anim="pop" data-delay="650"><i></i>Đã cài 2 skill, 1 agent vào dự án; gõ / thấy skill.</li>
+      <li data-anim="pop" data-delay="750"><i></i>Có file thương hiệu (của bạn hoặc file mẫu).</li>
+      <li data-anim="pop" data-delay="850"><i></i>Có file hook trong kich-ban/ và bảng soát.</li>
+      <li data-anim="pop" data-delay="950"><i></i>Có skill caption-ngan tự tạo, chạy ra file caption.</li>
+    </ul>
+    <div class="snap">Chụp màn hình bảng hook gửi vào nhóm lớp.</div>
+  </div>
+  <div class="iss" data-anim="right" data-step="1">
+    <h3>Lỗi hay gặp</h3>
+    <div class="it"><h4>Agent không theo nội quy</h4><p>Kiểm tra AGENTS.md nằm ở gốc workspace, đúng tên; xem Customizations, tab Rules.</p></div>
+    <div class="it"><h4>File thương hiệu bị bỏ qua</h4><p>Kiểm tra 3 dòng đầu có <span class="mono">trigger: always_on</span> (viết thường, có gạch dưới).</p></div>
+    <div class="it"><h4>Gõ / không thấy skill</h4><p>Mở cuộc trò chuyện mới; kiểm tra <span class="mono">.agents/skills/TEN/SKILL.md</span>.</p></div>
+    <div class="it"><h4>Agent xin chạy lệnh lạ</h4><p>Hỏi lại "Lệnh này làm gì, có xóa gì không?" trước khi đồng ý.</p></div>
+    <div class="it"><h4>Hết lượt dùng</h4><p>Tài khoản thường có hạn mức theo tuần; gói Google AI Pro hạn mức cao hơn.</p></div>
+  </div>
+  <div class="foot" data-p="11"></div>
+</section>
+
+<!-- 22. HOMEWORK + CLOSE -->
+<section class="slide s22" data-scene="p11" data-trans="push">
+  <div class="chip"><b>11</b>Bài tập trước buổi 2</div>
+  <h2 class="tt" data-anim="fade">Trước buổi 2: <em>sản phẩm thật</em> và việc lặp lại</h2>
+  <div class="hw">
+    <div class="h card" data-anim="rise" data-delay="200"><div class="n">1</div><p>Hoàn thiện file thương hiệu; thêm thông tin 1 tới 2 sản phẩm thật vào <span class="mono">du-lieu/</span> theo mẫu <span class="mono">san-pham-mau.md</span>.</p></div>
+    <div class="h card" data-anim="rise" data-delay="320"><div class="n">2</div><p>Chạy <span class="mono">/hook-video-3-giay</span> và <span class="mono">/caption-ngan</span> cho từng sản phẩm, chọn 1 hook ưng nhất.</p></div>
+    <div class="h card" data-anim="rise" data-delay="440"><div class="n">3</div><p>Ghi ra 2 việc bạn làm lặp lại hằng tuần khi làm video (ví dụ viết tiêu đề, trả lời bình luận).</p><span class="badge">Buổi 2 biến thành skill</span></div>
+    <div class="h card" data-anim="rise" data-delay="560"><div class="n">4</div><p>Chuẩn bị 1 tới 3 ảnh sản phẩm thật (nếu có) bỏ vào <span class="mono">du-lieu/</span>.</p><span class="badge">Dùng ở buổi 3</span></div>
+  </div>
+  <div class="end" data-anim="rise" data-delay="900">
+    <div class="ring"></div>
+    <img src="../assets/logo-cole-trang.png" alt="Cole.vn">
+    <p>Bootcamp AI Agent for Video Marketing<span>Giảng viên Lưu Tuấn Anh · Tài liệu tra cứu ngày 09/11/2026</span></p>
+  </div>
+  <div class="foot" data-p="11"></div>
 </section>
 
 </div>
 <script>
-/* footer: brand, 9-part map, page number (static before deck init) */
+/* footer: brand, 11-part map, page number */
 (() => {
-  const parts = ['Mở dự án','Khái niệm','An toàn','Giao việc','GitHub','Cài skill','Thương hiệu','Chạy skill','Kiểm tra'];
+  const parts = ['Workspace','Tham quan','Khái niệm','Project, global','An toàn','Giao việc','Cài bộ','Thương hiệu','Chạy skill','Tạo skill','Kiểm tra'];
   const slides = [...document.querySelectorAll('.sm-stage > .slide')];
   slides.forEach((s, i) => {
     const f = s.querySelector('.foot'); if (!f) return;
     const p = f.dataset.p;
     f.innerHTML = '<span class="brand">Cole.vn · Buổi 1</span>' +
-      parts.map((t, j) => `<span class="seg${String(j) === p ? ' on' : ''}">${j} ${t}</span>`).join('') +
+      parts.map((t, j) => `<span class="seg${String(j + 1) === p ? ' on' : ''}">${j + 1} ${t}</span>`).join('') +
       `<span class="pg">${String(i + 1).padStart(2, '0')}/${slides.length}</span>`;
   });
 })();

@@ -197,7 +197,7 @@ Việc cần làm:
 3. Trình bày kế hoạch trước, tôi đồng ý thì mới làm. Lệnh nào tải hay cài thêm thì hỏi tôi trước.
 
 Kết quả: file MP4 trong thư mục video, báo tôi đường dẫn, thời lượng và file phụ đề.</p></div>
-    <div class="note lam"><b>Trong lúc chờ:</b> Agent sẽ xin chạy nhiều lệnh (sinh giọng, dựng cảnh, kiểm tra, render). Đọc từng lệnh, thấy chỉ làm việc trong <code>video/</code> và <code>cong-cu/VideoMotion</code> thì đồng ý. Render chạy tiếp trong giờ nghỉ, đừng tắt máy.</div>
+    <div class="note lam"><b>Trong lúc chờ:</b> Agent sẽ xin chạy nhiều lệnh (sinh giọng, dựng cảnh, kiểm tra, render). Đọc từng lệnh, thấy chỉ làm việc trong <code>video/</code>, <code>cong-cu/VideoMotion</code>, chạy Python trong <code>.motionfly</code> hoặc lệnh <code>npx hyperframes</code> thì đồng ý. Lệnh có chữ xóa (<code>delete</code>, <code>rm</code>, <code>del</code>) thì hỏi lại trước. Render chạy tiếp trong giờ nghỉ, đừng tắt máy.</div>
     <div class="note xanh"><b>Antigravity dựng từng cảnh lần lượt:</b> trên Claude Code, VideoMotion giao mỗi cảnh cho một trợ lý riêng dựng cùng lúc. Trên Antigravity, Agent tự dựng lần lượt từng cảnh theo file <code>agents/vm-canh.md</code>, đúng cách README của VideoMotion hướng dẫn cho công cụ khác. Kết quả như nhau, chỉ chậm hơn.</div>
     <div class="note do"><b>Không ghi đè:</b> video xuất ra tên <code>video/TEN-SAN-PHAM-NGAYTHANGNAM.mp4</code>. Dựng lại cùng ngày thì bản cũ được chuyển vào <code>_backup/</code> trước, không mất.</div>
   </section>
